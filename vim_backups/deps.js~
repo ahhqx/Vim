@@ -1,0 +1,154 @@
+//moduleName, namespace, path, requires, assets
+//deps需要解决的问题是,在我们arale中所有的我们可以划分为模块的对象统一管理起来,通过名字
+//d等一些关键字来确定一些组件的依赖关系,还有通过模块的名字实动态加载.
+arale.deps = (function(){
+    //all module
+    var all_modules = {
+    
+    };
+    var LOAD = {
+        //没有加载
+        unload: 0,
+        //加载了,但是依赖的组件没有加载完
+        loading: 1,
+        //加载成功
+        loaded: 2
+    }
+    /**
+     * path array
+     * key string
+     * deps array
+     */
+    var Dependency = function(path, key, deps){
+        this.path = path;
+        this.key = key;
+        this.deps = deps || [];
+        this.status = LOAD.unload;
+    };
+    Dependency.prototype = {
+        /**
+        * 设置组件状态
+        * ,获取组件状态
+        */
+        moduleStatus: function(status){
+            if(status){
+                this.status = status;
+            }
+            return this.status;
+        },
+        isLoad: function(){
+            return this.status > 0;
+        },
+        /**
+         * fetch all file path of deps
+         * 需要传入版本,然后需要通过版本把文件名凑出来
+         * TODO 目前先不考虑版本,以后版本需要用来加到文件名中,来形成最终我们需要请求的文件
+         * 
+         * 我们获取yi'g一个模块的名字后,需要知道这个模块对应的文件路径,从而进行异步加载
+         * 但是我们可能会有组件依赖的情况,所以我们还需要把组件依赖的其他模块也要去找到依赖的文件
+         * y因为you'k有可能依赖的已经有加载过了,需要排除,把所有需要的都给加载进来.
+         */
+        getDepsPath: function(vers,moduleName){
+			var paths = [], moudleName, module, i, len, tempPath;
+			if(this.path.length > 0){
+				paths.unshift(this.path.join(','));	
+			}
+			if(this.deps.length > 0){
+				for(i = 0, len = this.deps.length; i< len; i++){
+	                moduleName = this.deps[i];
+	                module = arale.deps.getModule(moduleName);
+	                if(!module.isLoad()){
+						tempPath = module.getDepsPath(vers,moduleName);
+						if(tempPath.length > 0){
+							paths.unshift(tempPath.join(','));
+						}
+	                }
+	            }	
+			}  
+			return paths;
+        }
+    };
+
+    return{
+        /**
+         *
+         */
+        addDependency: function(paths, moduleName, deps){
+            if(!arale.isArray(paths)){
+                paths = [paths];
+            }
+            all_modules[moduleName]  = new Dependency(paths, moduleName, deps);
+        },
+        /**
+         * 目前我们通过use用到的模块名字来获取需要加载的文件的paht,来加载
+         * 这个方法给用户module有2个作用
+         * 1.用来让用户来判断组件是否已经加载
+         * 2.如果没有加载的话,需要自己加载后,在这个模块里面注册自己的状态.
+         */
+        getModule: function(moduleName){
+            return all_modules[moduleName];
+        },
+        LOAD: LOAD,
+		__getAllModule: function(){
+			return all_modules;
+		}
+
+
+    }
+
+})();
+
+arale.deps.addDependency(['arale/class/declare.js'], 'arale.class',[]);
+/**
+arale.deps.addDependency(['arale/dom/dom.js', 'arale/dom/sizzle.js', 'arale/dom/node.js'], 'arale.dom');
+**/
+
+arale.deps.addDependency(['arale/lang/aspect.js', 'arale/lang/md5.js','arale/lang/uri.js', 'arale/lang/tmpl.js', 'arale/lang/date.js'], 'arale.lang');
+
+arale.deps.addDependency(['arale/http/jsonp.js', 'arale/http/ajax.js', 'arale/http/core.js'], 'arale.http');
+
+arale.deps.addDependency(['arale/event/event-chain.js'], 'arale.event.chain');
+
+arale.deps.addDependency([], 'arale.corex', ['arale.lang', 'arale.http', 'arale.event.chain']);
+
+arale.deps.addDependency(['aralex/widget.js', 'aralex/tplwidget.js', 'aralex/view.js'], 'aralex.widget',['arale.corex']);
+
+arale.deps.addDependency(['aralex/xbox/xbox.js', 'aralex/xbox/domxbox.js', 'aralex/xbox/iframexbox.js', 'aralex/xbox/stringxbox.js'], 'aralex.xbox',['aralex.widget']);
+
+arale.deps.addDependency(['aralex/tab/tab.js'], 'aralex.tab', ['aralex.widget']);
+
+arale.deps.addDependency(['aralex/calculator/calculator.js'], 'aralex.calculator', ['aralex.widget']);
+
+arale.deps.addDependency(['aralex/cityhint/cityhint.js'], 'aralex.cityhint', ['aralex.widget']);
+
+arale.deps.addDependency(['aralex/cityhint/localcityhint.js'], 'aralex.localcityhint', ['aralex.cityhint']);
+
+arale.deps.addDependency(['aralex/countdown/countdown.js'], 'aralex.countdown', ['aralex.widget']);
+
+arale.deps.addDependency(['aralex/slider/slider.js'], 'aralex.slider', ['aralex.widget']);
+
+arale.deps.addDependency(['aralex/slider/switchslider.js'], 'aralex.switchslider', ['aralex.slider']);
+
+arale.deps.addDependency(['aralex/validator/validator.js'], 'aralex.validator', ['aralex.widget']);
+
+arale.deps.addDependency(['aralex/validator/classicvalidator.js'], 'aralex.classicvalidator', ['aralex.validator']);
+
+arale.deps.addDependency(['aralex/confirmbox/confirmbox.js'], 'aralex.confirmbox', ['aralex.widget']);
+
+arale.deps.addDependency(['aralex/dropdown/dropdown.js'], 'aralex.dropdown', ['aralex.widget']);
+
+arale.deps.addDependency(['aralex/dropdown/animdropdown.js'], 'aralex.animdropdown', ['aralex.dropdown']);
+
+arale.deps.addDependency(['aralex/cascadingcheckbox/cascadingcheckbox.js'], 'aralex.cascadingcheckbox', ['aralex.widget']);
+
+arale.deps.addDependency(['aralex/calendar/calendar.js'], 'aralex.calendar', ['aralex.widget']);
+
+arale.deps.addDependency(['aralex/contacts/picker.js', 'aralex/contacts/multipicker.js', 'aralex/contacts/cdropdown.js'], 'aralex.contacts', ['aralex.widget']);
+
+arale.deps.addDependency(['aralex/contacts/picker.js', 'aralex/contacts/multipicker.js'], 'aralex.contacts', ['aralex.widget']);
+
+arale.deps.addDependency(['aralex/apop/tallyremarkpop.js'], 'aralex.tallyRemarkPop', ['aralex.widget']);
+
+arale.deps.addDependency(['aralex/interfaces/switchable/switchable.js'], 'aralex.switchable', ['aralex.widget']);
+
+arale.deps.addDependency(['aralex/slider/fadeslider.js'], 'aralex.fadeslider', ['aralex.switchable']);

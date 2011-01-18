@@ -1,0 +1,37 @@
+#*
+ * 全站用户状态检测XBOX
+ *
+ * @server pa
+ * @template_type null
+ * @css_package null
+ * @js_package null
+ * @tmp_css_to_be_doomed true
+ * @tmp_js_to_be_doomed false
+ *
+ * @author 齐济
+ *#
+#if($taskInfoList.size()>0)
+<div class="container-xbox" id="J_userStatusCheckXbox">
+	<div class="no-title">
+		<a class="xbox-close-link" href="#" seed="xboxUserTaskCheck-Close">关闭</a>
+	</div>
+	<div class="notice n-warn-xbox">
+	#if($taskInfoList.size()>1)
+		<h3>为了您的资金安全，您的账户被保护起来，暂时不能使用。</h3>
+			<div class="n-explain">
+			<ul class="list">
+			#foreach ($item in $taskInfoList)
+				<!--判断guideTitle和guideUrl是否为空，如果为空则显示默认的展示文案和跳转地址，如果有值则显示后后台配置的文案和地址-->
+				<li>#SHTML($stringUtil.abbreviate($!item.notifyContent,66)) #if($stringUtil.isBlank($!item.guideUrl))<a href="$newHelpTaskModule.setTarget('userTaskIndex.vm').addQueryData('taskId',$!item.taskId)" seed="taskDetail" target="_blank">#if($stringUtil.isBlank($!item.guideTitle))点击查看详情#else$!item.guideTitle#end</a>#else<a href="$!item.guideUrl" target="_blank">#if($stringUtil.isBlank($!item.guideTitle))点击查看详情#else$!item.guideTitle#end</a>#end</li>
+			#end
+			</ul>		
+		</div>
+	#else
+		<h3>#SHTML($taskInfoList.get(0).notifyTitle)</h3>
+		<p class="n-explain">#SHTML($taskInfoList.get(0).notifyContent)</p>
+		<!--判断guideTitle和guideUrl是否为空，如果为空则显示默认的展示文案和跳转地址，如果有值则显示后后台配置的文案和地址-->
+		<p class="n-other">#if($stringUtil.isBlank($taskInfoList.get(0).guideUrl))<a href="$newHelpTaskModule.setTarget('userTaskIndex.vm').addQueryData('taskId',$taskInfoList.get(0).taskId)" target="_blank">#if($stringUtil.isBlank($taskInfoList.get(0).guideTitle))点击查看详情#else$taskInfoList.get(0).guideTitle#end</a>#else<a href="$taskInfoList.get(0).guideUrl" target="_blank">#if($stringUtil.isBlank($taskInfoList.get(0).guideTitle))点击查看详情#else$taskInfoList.get(0).guideTitle#end</a>#end</p>
+	#end
+	</div>	
+</div>
+#end

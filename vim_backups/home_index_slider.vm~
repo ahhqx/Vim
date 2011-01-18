@@ -1,0 +1,38 @@
+<div id="ib-slider" class="new-slider">
+	<ul id="newSliderPic" class="new-slider-picture fn-clear">
+		<li id="J-firstImg" seed="home-banner1-1">
+			<a href="#"><img alt="" src="http://img.alipay.net/home/index10.jpg"></a>
+		</li>
+		<li seed="home-banner1-2">
+			<a href="#"><img alt="" src="http://img.alipay.net/home/index11.jpg"></a>
+		</li>
+		<li seed="home-banner1-3">
+			<a href="#"><img alt="" src="http://img.alipay.net/home/index10.jpg"></a>
+		</li>
+		<li seed="home-banner1-4">
+			<a href="#"><img alt="" src="http://img.alipay.net/home/index11.jpg"></a>
+		</li>
+	</ul>
+    <div class="new-slider-page-bg"></div>
+	<ul id="newSliderPage" class="new-slider-page" start="1">
+		<li><a href="#">1</a></li>
+		<li><a href="#">2</a></li>
+		<li><a href="#">3</a></li>
+		<li><a href="#">4</a></li>
+	</ul>
+    
+</div> <!-- #ib-slider -->
+
+## 配置随机显示第一帧的图片
+<script type="text/javascript">
+	(function(){
+    var arr = [['1','http://img.alipay.net/home/index11.jpg','1'],['2','http://img.alipay.net/home/index11.jpg','2'],['3','http://img.alipay.net/home/index11.jpg','3'],['4','http://img.alipay.net/home/index11.jpg','4'],['5','http://img.alipay.net/home/index11.jpg','5']],
+        rand = Math.floor(Math.random()*4),
+        link = '';
+        link = '<a href="' + arr[rand][0] + '"><img src="' + arr[rand][1] + '" alt="' + arr[rand][2] + '" /></a>';
+        document.getElementById('J-firstImg').innerHTML = link;        
+	})();
+</script>
+
+	## 本地存储脚本/cms中有引该小区
+	#parse("/la/home_index_localstorage.vm")

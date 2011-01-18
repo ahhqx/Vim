@@ -1,0 +1,2 @@
+##银联手机支付
+#set($umpayBank = "ICBC ABC")

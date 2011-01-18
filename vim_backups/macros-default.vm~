@@ -1,0 +1,143 @@
+##将输入有误的表单字段高亮，支持自定义的高亮style，默认是fm-error
+#macro( highLightField $selfStyle)
+    #if($stringUtil.isBlank($selfStyle))
+    	#set ($style = "fm-error")
+    #else
+        #set ($style = $selfStyle)
+    #end
+    
+    #if($!status.isError()) $style #end
+#end
+
+##显示表单字段的错误提示，支持默认提示
+#macro( showFieldErrorMessage $defaultMsg)
+    #if($!status.isError())
+        <div class="fm-explain">#getErrorMessage()</div>
+    #elseif($stringUtil.isNotBlank($defaultMsg))
+        <div class="fm-explain">#springMessage("$defaultMsg")</div>
+    #end
+#end
+
+##显示表单字段的错误提示，支持默认提示,带转义特殊字符
+#macro( showFieldErrorMessageSLITERAL $defaultMsg)
+    #if($!status.isError())
+        <div class="fm-explain">#getErrorMessageSLITERAL()</div>
+    #elseif($stringUtil.isNotBlank($defaultMsg))
+        <div class="fm-explain">#SLITERAL($springMacroRequestContext.getMessage($defaultMsg))</div>
+    #end
+#end
+$springMacroRequestContext.getMessage($code)
+
+##充提记录的表单出错提示
+#macro( showFormErrorMessageInpour $isResettTime)
+    #if($!status.isError())
+		#if($isResettTime)
+		<p class="message">
+	    			#getErrorMessage()
+		</p>
+		#else
+			<div class="tip-angle t-error" id="searchResultTip">
+	        	<div class="tip-angle-container">
+	        		<div class="tip-angle-content">
+	        			#getErrorMessage()
+	        		</div>
+	        	</div>
+	        </div>
+		#end
+	#end
+#end
+
+#macro( showFormErrorMessage)
+    #if($!status.isError())		
+		<span class="m-error">#getErrorMessage()</span>
+	#end
+#end
+
+##显示表单错误，带转义特殊字符
+#macro( showFormErrorMessageSLITERAL)
+    #if($!status.isError())		
+		<span class="m-error">#getErrorMessageSLITERAL()</span>
+	#end
+#end
+
+##获得错误信息
+#macro( getErrorMessage )
+	#set($messages = $status.errorMessages)
+	#if($arrayUtil.getLength($messages) > 0)
+		$array.get($messages, 0)
+	#end
+#end
+
+##获得错误信息，带转义
+#macro( getErrorMessageSLITERAL )
+	#set($messages = $status.errorMessages)
+	#if($arrayUtil.getLength($messages) > 0)
+		#SLITERAL($array.get($messages, 0))
+	#end
+#end
+
+##添加form token
+#macro ( addFormToken $form)
+	<input type="hidden" name="$form.getTokenFieldName()" value="$form.getToken()"/>
+#end
+
+##添加隐藏字段
+#macro ( addHiddenField $form $name $value)
+    <input type="hidden" name="$name" value="$form.setField("$name", $stringUtil.defaultIfNull("$!value"))"/>
+#end
+
+##添加隐藏字段（对value值进行escapeHtml）
+#macro ( addHiddenFieldEscapeHtml $form $name $value)
+    <input type="hidden" name="$name" value="$stringEscapeUtil.escapeHtml($form.setField("$name", $stringUtil.defaultIfNull("$!value")))"/>
+#end
+
+##隐藏手机号码中间四位
+#macro(hideMobileMidPart $mobilePhone)#if($stringUtil.isNotBlank($mobilePhone)) $stringUtil.overlay($mobilePhone, "****", 3, 7)#end#end
+
+##日期格式化
+#macro(VMDateFormat $date $format)
+	#if($date)
+		$!dateUtil.format($date, $format)
+	#end
+#end
+
+##支持带参数取资源信息,$args =["a","b","c"]
+#macro( springMessageArgs $code $args)$springMacroRequestContext.getMessage($code,$args)#end
+
+
+##处理长email的宏
+##有可能传入的是手机号，加个判断，只处理email。
+#macro(handleLongEmail $longLogonId)$!emailUtil.getHiddenEmail($longLogonId)#end	
+
+##隐藏email或者手机号
+#macro(hiddenAccount $email)
+	#if($validateUtil.isValidEmail($email))#handleLongEmail($email)#else#hideMobileMidPart($email)#end
+#end
+
+##将输入有误的表单字段展开，支持自定义的高亮style，默认是fn-h ide：并且默认是隐藏的，只有在发生错误的时候才展开
+#macro( errorExpand $selfStyle)
+    #if($stringUtil.isBlank($selfStyle))
+    	#set ($style = "fn-hide")
+    #else
+        #set ($style = $selfStyle)
+    #end
+    
+    #if($!status.isError()) #else $style #end
+#end
+
+#macro( showLivehelp )
+   "sysName":"personal",
+   "supCnt" : {
+      ##循环打印所有的即时帮助信息
+       #if($!liveHelps && $!liveHelps.size()>0)
+          #foreach($liveHelp in $liveHelps)
+             '$liveHelp.field':
+             #parse("${liveHelp.path}")
+    		 ##每个json数据后面需要加上','，最后一个不能加
+    		 #if($velocityCount != $!liveHelps.size())
+    			,
+    		 #end
+          #end
+       #end
+   }
+#end

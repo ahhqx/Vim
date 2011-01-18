@@ -1,0 +1,94 @@
+#**
+ * 验证原来的安全保护问题
+ *
+ * @server personal
+ * @template_type null
+ * @css_package css:contacts
+ * @js_package js:contacts
+ * @tmp_css_to_be_doomed false
+ * @tmp_js_to_be_doomed true
+ *
+ * @author 齐济
+ *#
+#set($isExpandAside = false)
+<!-- 主体 -->
+<div id="content" #if($isExpandAside)class="expand"#end>
+		<div id="main">
+			<div class="title">
+				<h2>设置安全保护问题</h2>
+				<div class="link">
+					<a href="#faq" id="viewFaq">使用遇到问题？</a>
+				</div>
+				<a class="cancel" href="$requestUtil.getPreviousURL($request)">取消</a>
+			</div>
+			
+					<!--组件 步骤-->
+<ol class="step">
+	<li class="current"><span>1、验证安全保护问题</span></li>
+	<li><span>2、重设安全保护问题</span></li>
+	<li><span>3、确认安全保护问题</span></li>
+	<li class="last"><span>成功</span></li>
+</ol>
+<!--/组件 步骤-->		
+<!-- 组件 表单提示 -->
+<div class="tip-form">
+	<p class="message">请输入您的支付密码通过身份验证。</p>
+	<div class="tip-normal">
+		<ul>
+			#if($!hasBindedMobile)
+				#if($!isMobileQaServiceEnable)
+			    	<li>您已经开启手机管理安全问题服务，可直接通过<a href="$userModule.setTarget('secureQa/verifyMobile.vm')">手机重设安全保护问题</a>。</li>
+				#else
+					<li>您可以通过手机重新设置安全保护问题，<a href="$userModule.setTarget('mobile/index.vm')">点此开通</a>。</li>
+				#end
+			#end
+		</ul>
+	</div>
+</div>
+<!-- /组件 表单提示 -->	
+			
+			<!--  表单  -->
+			#set($f = $formManager.newForm($request))
+			<div class="fm-input">
+				<form id="qaPaymentPwdForm" action="$userModule.setTarget('secureQa/verify.vm')" method="post" name="qaPaymentPwdForm">
+					#addFormToken($f)
+					<input type="hidden" name="action" value="checkPaymentPwd"/>
+					#addHiddenField($f "operation" $!operation)
+					<fieldset>
+					<legend>验证支付密码</legend>
+					
+					#springBind("qaPaymentPwdForm.paymentPwd")
+					<div class="fm-item #highLightField('')">
+						<label class="fm-label" for="payPwd">支付密码：</label>
+						$tile.setTemplate("home:RSAEncryptTile.vm").setParameter('ActiveName','paymentPwd')
+						#showFieldErrorMessage("")
+					</div>
+
+					#springBind("qaPaymentPwdForm")
+					<div class="fm-item">
+						#if($!remainTimes)
+							<div class="tip-angle t-cue">
+								<div class="tip-angle-container">
+									<div class="tip-angle-content">您还有 $!remainTimes 次机会输入支付密码!</div>
+								</div>
+							</div>
+						#end
+						
+						<span class="btn btn-ok" onmouseover="this.className='btn btn-ok-hover';" onmouseout="this.className='btn btn-ok';">
+						<input id="nextbtn" type="submit" value="确 定" tabIndex="4" />
+						</span>
+						
+						<span class="fm-confirm">
+						#showFormErrorMessage()
+    					</span>
+					</div>
+					</fieldset>
+				</form>
+			</div>
+			<!-- /表单 -->
+<!--问答-->
+    $tile.setTemplate("home:pageFaq.vm")
+<!--/问答-->
+			</div>
+			$tile.setTemplate("home:aside.vm").setParameter("isExpandAside",$isExpandAside)
+	</div>

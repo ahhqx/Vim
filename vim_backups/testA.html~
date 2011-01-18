@@ -1,0 +1,237 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+	<meta charset="UTF-8">
+	<title></title>
+<script type="text/javascript">
+	window._to = {start: new Date()};
+</script>
+
+<link charset="utf-8" rel="stylesheet" href="pa.css" media="all" />
+<style type="text/css">
+	.helpBody .m-help{font-size:14px;}
+	.helpBody .helpUl{margin-bottom:0;}
+	.helpUl li{font-weight:600;}
+	.helpUl p{margin-bottom:10px;}
+	.helpLink{padding:10px 0 10px;border-bottom:1px dotted #999;}
+	.helpRank{margin-top:10px;}
+	.helpRank p{line-height:22px;margin-bottom:0;}
+	.helpRank a:hover{text-decoration:none;}
+	.userRanked{height:22px;line-height:22px;}
+	.helpRank p,.helpYes,.helpNo{float:left;}
+	.helpYes,.helpNo{
+		background:url(http://img.alipay.net/pa/frame/v2/helpRantBtn.png) no-repeat 0 0;
+		width:20px;
+		height:22px;
+		line-height:22px;
+		_display:inline;
+		padding-left:21px;
+		margin-left:10px;
+	}
+	.helpNo{background-position:0 -22px;}
+	.helpFoot{_float:none;}
+</style>
+</head>
+<body>
+	<a href="www.163.com">HITHITHIT</a>
+<div class="fm-input">
+	<form name="personalInfoForm" method="post" action="https://certify.alipay.com/mainland/personalInfo.htm" id="certifyForm" data-cert="IDENTITY_CARD" data-product="MAINLAND_PERSON_CERTIFY">
+	<input type="hidden" name="_form_token" value="FFu5KvfZmTd2cOaHAEzXPsg4yggo2MND">
+	<input type="hidden" id="email" name="email" value="860822688@qq.com">
+	<fieldset>
+	<legend>填写个人信息</legend>
+
+	<div class="fm-item fm-text">
+		<label for="email" class="fm-label">账户名：</label><em>860822688@qq.com</em>
+	</div>
+	<div class="fm-item fm-error" data-errcode="c02">
+		<label class="fm-label"><span class="required">*</span>真实姓名：</label>
+		<input type="text" class="i-text" id="realName" name="realName" value="" data-explain="若您的姓名里有生僻字，请&lt;a href='#' class='unfamiliarTag'&gt;点此打开生僻字库&lt;/a&gt;进行选择。">
+		<div class="fm-explain">若您的姓名里有生僻字，请<a href="#" class="unfamiliarTag">点此打开生僻字库</a>进行选择。</div>
+	</div>
+
+	<div class="fm-item fm-error autoOpen" data-errcode="p01">
+		<label class="fm-label"><span class="required">*</span>身份证号码(自动1)：</label>
+		<input type="text" class="i-text" id="IDcard" name="credentialsNo" value="" data-explain="请填写真实的身份证号码，身份证号码是15或18位数字。">
+		<div class="fm-explain">证件号码已被占用。</div>
+	</div>
+
+	<div class="fm-item fm-text fm-error" data-errcode="p03">
+		<label class="fm-label"><span class="required">*</span>联系方式：</label>
+		<div class="fm-explain-top" id="J_tip">固定电话与手机号码至少填写1项。</div>
+		<div id="J_between" class="fn-hide m-error fm-explain-top">电话号码与手机号码至少填写一项。</div>
+		<input type="text" class="i-text fn-tips" id="contactPhone" maxlength="20" name="phone" value="" data-explain="如：0571-88156688-0571，分机号码可不填写。" data-tips="联系电话">
+		<div class="fm-explain">如：0571-88156688-0571，分机号码可不填写。</div>
+	</div>
+
+	<div class="fm-item">
+		<input id="contactMobile" class="i-text fn-tips" maxlength="11" name="mobile" value="" data-explain="推荐填写。我们会将重要进度以短信形式通知您。" tabindex="7" type="text" data-tips="手机号码">
+		<div class="fm-explain">推荐填写。我们会将重要进度以短信形式通知您。</div>
+	</div>	
+
+	<input type="hidden" id="expand-all-value" name="expandFlag" value="">
+
+	<div class="fm-item">
+		<label for="authcode" class="fm-label"><span class="required">*</span> 校验码：</label>
+		<input class="i-text i-text-authcode" id="authcode" data-explain="请输入右侧图中的内容。" name="checkCode" maxlength="4">
+		<div class="fm-explain">请输入右侧图中的内容。</div>
+	</div>
+	<div class="fm-item">
+		<span class="btn btn-ok"><input type="submit" value="下一步"></span>
+		<span class="fm-confirm"><span class="loading-text fn-hide">正在提交信息</span></span>
+	</div>
+	</fieldset>
+	</form>
+	</div>
+<script charset="utf-8" src="arale.js"></script>
+<script>
+var INSHELP = {
+	"sysName" : "personal",
+	"p01" : {
+		"title0" : "001标题1",
+		"content0" : "001内容[url=http://help.alipay.com/lab/210440-210464/0-210464.htm]内容[/url]内容内ddddddddddddd内容[url=http://help.alipay.com/lab/210440-210464/0-210464.htm]内容[/url]内容内容[url=http://help.alipay.com/lab/210440-210464/0-210464.htm]内容[/url]内内容[url=http://help.alipay.com/lab/210440-210464/0-210464.htm]内容[/url]内1",
+		"title1" : "001标题2",
+		"content1" : "001内容内容内容001内容内容内容内001内容内容内容内001内容内容内容内001内容内容内容内001内容内容内容内内容2",
+		"title2" : "001标题3",
+		"content2" : "001内容内[url=http://www.163.com]容内[/url]容内容3",
+		"relateHelp" : "http://help.alipay.com/lab/210440-210464/0-210464.htm",
+		"onlineChat" : "true",
+		"hotLine" : "false"
+	},
+	"c02" : {
+		"title0" : "002题2",
+		"content0" : "002内容内容内容内容2",
+		"relateHelp" : "http://www.alipay.com",
+		"onlineChat" : "true",
+		"hotLine" : "true"
+	},
+	"p03" : {
+		"title0" : "003题1",
+		"content0" : "003内容[url=http://www.163.com]容内[/url]内容内容内容1",
+		"title1" : "",
+		"content1" : "003内容内容内容内容内容内容内容2内容内容内容内容2内容内容内容内容2内容内容内容内容2内容内容内容内容2内容内容内容内容2内容内容内容内容2内容内容内容内容2内容内容内容内容2内容内容内容内容2内容2"
+	}
+}
+
+var helpDom = "<div class=\"helpHead\"></div>\r\n\
+<div class=\"helpBody\">\r\n\
+<em class=\"m-help\">帮助信息</em>\r\n\
+<a class=\"closeHelp\" href=\"javascript:void(0)\" seed=\"ERR_personal_U\">关闭</a>\r\n\
+<ul class=\"helpUl\">\r\n\
+</ul>\r\n\
+</div>\r\n\
+<div class=\"helpFoot\"></div>\r\n\
+<div class=\"helpArrow\" style=\"top:20px;\"></div>"; 
+
+var helpRankDom = "<p>是否已解决了您的问题？</p><a href=\"javascript:void(0)\" class=\"helpYes\">是</a><a href=\"javascript:void(0)\" class=\"helpNo\">否</a>";
+
+//fm-error中含有data-errcode中插入问号,浮出层,并显示自动显示的第一个
+
+var fmError = D.query('.fm-error');
+
+for(var i = 0 ; i < fmError.length; i++){
+	if(fmError[i].getAttribute('data-errcode').length > 0){
+		var fmExplain = D.query('.fm-explain',fmError[i]),
+			helpWrap = {},
+			help,
+			instSupIcon = {},
+			errCode = fmError[i].getAttribute('data-errcode'),
+			sysName = INSHELP['sysName'];//the system name.ex:personal
+
+		D.setStyles(fmError[i],{'position':'relative'});
+		D.setStyles(
+			instSupIcon[i] = Element.create('span',{className:'instSupIco m-tips',appendTo:fmExplain[0]}),
+			{'cursor':'pointer'});
+		D.setStyles(
+			helpWrap[i] = Element.create('div',{innerHTML:helpDom,className:'instanceHelp fn-hide',appendTo:fmError[i]}),
+			{'left':'370px','top':'-18px','zIndex':'100'});
+		instSupIcon[i].setAttribute('seed','EER' + '_' + sysName + '_'  + errCode + '_' + 'open');
+		if(D.hasClass(fmError[i],'autoOpen')){
+			var openFlag;//标记第一个自动显示已显示
+			if(!openFlag){
+				D.removeClass(helpWrap[i],'fn-hide');
+				instSupIcon[i].setAttribute('seed','');
+			}
+			openFlag = true;
+			}
+				
+		insertCnt(fmError[i],errCode,sysName);
+	}
+};
+
+//插入帮助内容
+
+function insertCnt(item,code,sysname){
+	var helpUl = D.query('.helpUl',item),
+		t = INSHELP[code],//the content of each err
+		c = code,//the err code
+		helpLinkDom = '',
+		helpRank,
+		regTitle = /^title/,
+		regCnt = /^content/,
+		regLink = /(\[url\=)([a-zA-Z0-9\:\/\.\?\#\-\@\&]*)(\])([\u4e00-\u9fa5a-zA-Z0-9]*)(\[\/url\])/g;
+	for(var i in t){
+		if(regTitle.test(i)){
+			Element.create('li',{innerHTML : t[i],appendTo:helpUl[0]});
+		}else if(regCnt.test(i)){
+			if(regLink.test(t[i])){
+				t[i] = t[i].replace(regLink,'<a href="$2" target="_blank">$4</a>');
+			};
+			Element.create('p',{innerHTML : t[i],appendTo:helpUl[0]});
+		}else if(i == 'relateHelp'){
+			if(t[i].length>0){
+				helpLinkDom += '<a href="' + t[i] + '" target="_blank">更多相关帮助</a>';
+			}
+		}else if(i == 'onlineChat'){
+			if(t[i] == 'true'){
+				helpLinkDom += '<em class=\"ft-bar\">|</em><a>咨询在线客服</a>';
+			}
+		}else if(i == 'hotLine'){
+			if(t[i] == 'true'){
+				helpLinkDom += '<em class=\"ft-bar\">|</em><span>24小时服务热线：0571-88156688</span>';
+			}
+		}
+	}
+	if(helpLinkDom.length > 0){
+		Element.create('div',{className:'helpLink link',innerHTML:helpLinkDom,appendTo:helpUl[0]});
+	}
+	helpRank = Element.create('div',{className:'helpRank fn-clear',innerHTML:helpRankDom,appendTo:helpUl[0]});
+
+	helpRankBind(helpUl[0],helpRank,c,sysname);//add sys name to 
+}
+
+function helpRankBind(pa,current,errcode,sysname){
+	var item = [D.query('.helpYes',pa)[0],D.query('.helpNo',pa)[0]];
+	item[0].setAttribute('seed','ERR' + '_' + sysname + '_' + errcode + '_' + 'Y');
+	item[1].setAttribute('seed','ERR' + '_' + sysname + '_' + errcode + '_' + 'N');
+	E.on(item,'click',function(){
+		D.addClass(current,'fn-hide');
+		D.setStyles(
+			Element.create('p',{className:'userRanked',innerHTML:'您的评价已提交，谢谢！',appendTo:pa}),
+			{'marginTop':'10px','marginBottom':'0px','lineHeight':'20px'});
+		var closeHelp = D.query('.closeHelp',pa.parentNode)[0];
+		closeHelp.setAttribute('seed','');
+	});
+}
+
+//绑定点击事件
+
+var why = D.query('.instSupIco'); 
+	
+E.on(why,'click',function(){
+	D.addClass(D.query('.instanceHelp'),'fn-hide');
+	D.removeClass(D.query('.instanceHelp',this.parentNode.parentNode),'fn-hide');
+	this.setAttribute('seed','');
+	});
+
+var closeHelp = D.query('.closeHelp');
+	E.on(closeHelp,'click',function(){
+		D.addClass(this.parentNode.parentNode,'fn-hide');	
+});
+
+</script>
+<script src="https://static.alipay.com/build/js/app/tracker.js?v=083"></script>
+</body>
+</html>
+

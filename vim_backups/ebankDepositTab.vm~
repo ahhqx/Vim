@@ -1,0 +1,77 @@
+##文件内容：储蓄卡详细页tab内容
+
+<div id="tab-Cnt" class="ui-tab-body">
+
+	#if($!stringUtil.equals("$de", "true"))
+	#set($payment = "Bank")
+	
+	<div class="ui-accordion new-accordion">
+		<div class="ui-accordion-container fn-clear">
+			<h4 class="ui-accordion-header">如何开通网上银行</h4>
+			<div class="ui-accordion-content new-wrap">
+				#parse("/la/home_deposit_table.vm")
+			</div>
+		</div>
+		<div class="ui-accordion-container fn-clear">
+			<h4 class="ui-accordion-header">如何付款</h4>
+				#parse("/bank/tile/flowPayE.vm")
+		</div>
+		##常见问题
+        $tile.setTemplate("home:faq.vm")
+	</div>
+	#end
+
+	#if($!stringUtil.equals("$dk", "true"))
+	#set($card = "Deposit")
+
+	<div class="ui-accordion new-accordion">
+		#parse("/la/home_b_katongTip.vm")	
+		<div class="ui-accordion-container fn-clear">
+			<h4 class="ui-accordion-header">如何开通卡通</h4>
+				#parse("/bank/tile/flowActive.vm")
+		</div>
+		<div class="ui-accordion-container fn-clear">
+			<h4 class="ui-accordion-header">付款流程</h4>
+				#parse("/bank/tile/flowPayK.vm")
+		</div>
+		##常见问题
+        $tile.setTemplate("home:faq.vm")
+	</div>
+	#end
+
+	#if($!stringUtil.equals("$dm", "true"))
+
+	<div class="ui-accordion new-accordion">
+		<div class="ui-accordion-container tab-content-intro fn-clear">
+			<h4 class="ui-accordion-header">什么是银联手机支付？</h4>
+			<div class="ui-accordion-content">
+				<p class="tab-content-intro-desc">
+					无需开通网银，只需储蓄卡和手机即可便捷完成付款。采用互联网和手机双通道传输信息，两者相互独立，有效地保障了信息安全。银联手机支付为拥有储蓄卡，想要在淘宝网购但无网银的用户提供了更多的便利和安全。
+				</p>
+				<ul class="ui-list ui-list-square">
+					<li class="ui-list-item">无需开通网银，目前支持淘宝交易。</li>
+					<li class="ui-list-item"> 在支付宝填写信息，银联回呼手机。输入储蓄卡取款密码，即可完成付款。</li>
+				</ul>
+				<img src="$imageServer.getURI('/home/page/')/mobile-yinlian.png" class="tab-content-intro-img">
+			</div>
+		</div>
+		<div class="ui-accordion-container fn-clear">
+			<h4 class="ui-accordion-header">付款限额以及支持地区</h4>
+				#parse("/la/home_b_um_table.vm")
+		</div>
+		<div class="ui-accordion-container fn-clear">
+			<h4 class="ui-accordion-header">付款流程</h4>
+			<div class="ui-accordion-content">
+				<div class="new-wrap new-flow">
+					<img src="$imageServer.getURI('/home/flow/')/paymentMobileYinlian.png" alt="流程演示"/>
+					<a target="_blank" href="http://abc.alipay.com/show-how/PaymentUmPay.html?from=bank" class="new-icon new-icon-view-flow">查看流程演示</a>
+				</div>
+			</div>
+		</div>
+		##常见问题
+        $tile.setTemplate("home:faq.vm")
+	</div>
+	#end
+	
+</div>
+	

@@ -1,0 +1,223 @@
+
+<!--CMS大区域开始/储蓄卡信用卡付款/信用卡网银开通表格/home_credit_table-->
+
+
+<div class="ui-table new-tabble">
+#if($!stringUtil.equals("$id", "Icbc"))
+	
+	<table style="width: 600px;">
+		<thead>
+		<tr>
+			<th width="238">开通方式</th>
+			<th width="195">支付限额</th>
+			<th width="151">支付需要的信息</th>
+		</tr>
+		</thead>
+		<tbody>
+		<tr>
+			<td>请携带有效证件和银行卡到工行柜台，申请电子银行口令卡或U盾。<a target="_blank" href="http://help.lab.alipay.com/lab/help_detail.htm?help_id=212183" seed="illustrate">开通图解</a></td>
+			<td><p>静态密码：总累计限额300元</p><p>动态口令：500单笔，1000/日累计</p><p>U盾：信用卡本身额度</p></td>
+			<td>卡号、U盾、手机动态密码</td>
+		</tr>
+		</tbody>
+	</table>
+#elseif($!stringUtil.equals("$id", "Cmb"))		
+<table style="width: 600px;">
+	<thead>
+	<tr>
+		<th width="193">开通方式</th>
+		<th width="148">支付限额</th>
+		<th width="243">支付需要的信息</th>
+	</tr>
+	</thead>
+	<tbody>
+	<tr>
+		<td>不需要开通网银，只需在线申请开通网上支付功能 <a target="_blank" href="http://abc.alipay.com/show-how/paymentCardCmbOpen.html">流程演示</a></td>
+		<td>限额是您信用卡的信用额度。<a target="_blank" href="https://pbsz.ebank.cmbchina.com/CmbBank_GenShell/UI/GenShellPC/Login/Login.aspx?LoginType=C">修改支付额度</a></td>
+		<td>信用卡卡号、卡片有效月年、卡片背面签名栏末三位数字、查询密码</td>
+	</tr>
+	</tbody>
+</table>
+#elseif($!stringUtil.equals("$id", "China"))
+<table style="width: 600px;">
+	<thead>
+	<tr>
+		<th rowspan="2">卡种</th>
+		<th rowspan="2">开通帮助</th>
+		<th colspan="2">相关资费</th>
+	</tr>
+	<tr>
+		<th>网银产品</th>
+		<th>费用</th>
+	</tr>
+	</thead>
+	<tbody><tr>
+		<td>
+			借记卡<br>
+			信用卡
+		</td>
+		<td>携带身份证和银行卡去银行柜台开通<br>
+		<a target="_blank" href="http://abc.alipay.com/show-how/paymentCardChinaOpen.html">流程演示</a> | <a target="_blank" href="http://help.lab.alipay.com/lab/help_detail.htm?help_id=211558" seed="illustrate">开通图解</a> | <a target="_blank" href="http://club.alipay.com/show_thread-163---7415946-.htm">查看线下网点</a></td>
+		<td>注册客户</td>
+		<td>动态口令牌：首次办理免费</td>
+	</tr>
+</tbody></table>
+#elseif($!stringUtil.equals("$id", "Comm"))
+<table style="width: 670px;">
+<thead>
+<tr>
+	<th width="243">开通方式</th>
+	<th width="215">支付限额</th>
+	<th width="196">支付需要的信息</th>
+</tr>
+</thead>
+<tbody><tr>
+	<td><em>手机注册</em>-柜台办理网银用户签约手续，并开通网上支付功能 <a target="_blank" href="http://abc.alipay.com/show-how/paymentCardCommOpen.html" seed="liuchengys">流程演示</a></td>
+	<td>单笔每日不超过信用卡限额，最高5000元</td>
+	<td rowspan="2">银行卡号/支付卡号、附加码、信用卡网上支付密码。</td>
+</tr>
+<tr>
+	<td>
+		<em>证书认证</em>-银行柜台办理网银签约手续并开通网上支付功能，购买USB KEY <a target="_blank" href="http://abc.alipay.com/show-how/paymentCardCommOpen.html" seed="liuchengys01">流程演示</a>
+	</td>
+	<td>单笔每日不超过信用卡限额，最高1万元</td>
+</tr>
+</tbody></table>
+#elseif($!stringUtil.equals("$id", "Gdb"))
+<table class="fn-mt10" style="width: 600px;">
+	<thead>
+	<tr>
+		<th width="236">开通方式</th>
+		<th width="167">支付限额</th>
+		<th width="181">支付需要的信息</th>
+	</tr>
+	</thead>
+	<tbody><tr>
+	<td>
+		<p><em>通用版</em>-需要在线申请开通网上支付功能 </p>
+		<p><a target="_blank" href="http://abc.alipay.com/show-how/paymentCardGdbOpen.html" seed="liuchengys">流程演示</a></p>
+	</td>
+		<td>单笔不超过500元，每日累计不超过1500元</td>
+		<td rowspan="2">支付账号/卡号、有效期、支付密码、验证码。</td>
+	</tr>
+	<tr>
+		<td>
+			<p><em>证书版</em>-需要到网点办理数字证书和key盾 </p>
+			<p><a target="_blank" href="http://abc.alipay.com/show-how/paymentCardGdbOpen.html#s2-1-1" seed="liuchengys02">流程演示</a></p></td>
+		<td>若不设定支付限额，当日累计不限制</td>
+	</tr>
+</tbody></table>
+#elseif($!stringUtil.equals("$id", "Cib"))
+
+<table class="fn-mt10" style="width: 600px;">
+	<thead>
+	<tr>
+		<th>开通方式</th>
+		<th>支付限额</th>
+		<th>支付需要的信息</th>
+	</tr>
+	</thead>
+	<tbody><tr>
+		<td>不需要开通网银，只需在线申请开通网上支付功能<a target="_blank" href="http://abc.alipay.com/show-how/paymentCardCibOpen.html" seed="liuchengys"> 流程演示</a></td>
+		<td>单笔5000元，帐期内10000元</td>
+		<td>卡号、信用卡交易密码、卡背面签名栏末三位、卡有效年月、附加码</td>
+	</tr>
+</tbody></table>
+#elseif($!stringUtil.equals("$id", "Ceb"))
+<table class="fn-mt10" style="width: 600px;">
+	<thead>
+	<tr>
+		<th>开通方式</th>
+		<th>支付限额</th>
+		<th>支付需要的信息</th>
+	</tr>
+	</thead>
+	<tbody><tr>
+		<td><em>动态口令（免签约版）</em>-无需开通网上支付功能</td>
+		<td>单笔每日5000元</td>
+		<td rowspan="2">账号、信用卡有效期、ccv2（卡背面签名栏后三位数字）、验证码</td>
+	</tr>
+	<tr>
+		<td><em>阳光网盾</em>-需要去银行柜台开通网银，并到线上激活</td>
+		<td>单笔20万单日累计50万</td>
+	</tr>
+</tbody></table>		
+#elseif($!stringUtil.equals("$id", "Peace"))
+<table style="width: 675px;" class="fn-mt10">
+	<thead>
+	<tr>
+		<th>开通方式</th>
+		<th width="100px">支付限额</th>
+		<th>支付需要的信息</th>
+		<th width="100px">能否获得银行积分</th>
+	</tr>
+	</thead>
+	<tbody>
+	<tr>
+		<td>不需要开通网银，只需在线申请开通网上支付功能</td>
+		<td>50000元</td>
+		<td>信用卡卡号、卡片有效月年、卡片背面签名栏末三位数字、查询密码</td>
+		<td>否</td>
+	</tr>
+	</tbody>
+</table>		
+#elseif($!stringUtil.equals("$id", "Citic"))	
+<table style="width: 670px;">
+	<thead>
+	<tr>
+		<th width="290">开通方式</th>
+		<th width="177">支付限额</th>
+		<th width="187">支付需要的信息</th>
+	</tr>
+	</thead>
+	<tbody><tr>
+		<td>拨打中信银行信用卡中心客服热线40088-95558或登录<a target="_blank" href="http://bank.ecitic.com/cards/" seed="net">中信信用卡中心网站</a>即可开通 <a target="_blank" href="http://abc.alipay.com/show-how/paymentCardCiticOpen.html" seed="kaitongys">开通流程演示</a></td>
+		<td>默认额度为3000，可自行设置，最高为信用卡额度</td>
+		<td>卡号、有效期、CVV2、信用卡查询密码、手机动态口令</td>
+	</tr>
+	</tbody></table>	
+#elseif($!stringUtil.equals("$id", "Cmbc"))
+<table style="width: 600px;">
+	<thead>
+	<tr>
+		<th width="238">使用场景</th>
+		<th width="195">每笔限额</th>
+		<th width="151">支付需要的信息</th>
+	</tr>
+	</thead>
+	<tbody>
+	<tr>
+		<td>普通付款和充值 <a target="_blank" href="http://abc.alipay.com/show-how/paymentCardCmbcOpen.html">开通图解</a> </td>
+		<td><p>单笔限额不超过500</p><p>每日累计不超过500</p></td>
+		<td rowspan="2">只需输入支付宝账户支付密码</td>
+	</tr>
+	<tr>
+		<td>支持大额信用卡付款</td>
+		<td><p>单笔限额不超过5000</p><p>若不设定支付限额，当日累计以可用额度为准</p></td>
+	</tr>
+	</tbody>
+	</table>
+#elseif($!stringUtil.equals("$id", "Spd"))
+<table class="fn-mt10" style="width: 600px;">
+	<thead>
+		<tr>
+			<th>开通方式</th>
+			<th>支付限额</th>
+			<th>支付需要的信息</th>
+		</tr>
+	</thead>
+	<tbody><tr>
+		<td>不需要开通网银，只需在线申请开通网上支付功能</td>
+		<td>单笔10000元，日累计10000元</td>
+		<td>客户号、查询密码、交易密码</td>
+	</tr>
+	<tr>
+		<td>数字证书用户-银行柜台申请</td>
+		<td>单笔10000元，日累10000元</td>
+		<td>数字证书、查询密码、卡号、交易密码</td>
+	</tr>
+</tbody></table>
+#end
+</div>
+
+<!--CMS大区域结束/储蓄卡信用卡付款/信用卡网银开通表格/home_credit_table-->

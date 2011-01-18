@@ -1,0 +1,96 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+	
+	<a id="J-addForm" href="#">添加form</a>	
+	<div id="J-form">
+		<div class="xbox-form">
+		<p class="fn-clear">
+			<span class="fn-left"><input type="text" value="请输入帮助标题(选填)" name="title0"></span>
+				<a style="font-size: 12px; line-height: 12px; padding-left: 10px;" class="J_addBR" href="#">添加换行</a>
+				<a style="font-size: 12px; line-height: 12px; padding-left: 10px;" class="J_addA" href="#">添加链接</a>						
+				<a onclick="delform(this,event)" class="fn-right" href="#">×</a>
+			</p>
+			<p><textarea class="tx" name="content0">请输入帮助内容(必填)</textarea></p>
+		</div>
+	</div>	
+	<script charset="utf-8" src="http://bossimg.alipay.net/dev/js/arale/arale.js"></script>
+	<script type="text/javascript">
+
+	// 添加知识点
+	
+	formnode=D.query("#J-form .xbox-form")[0];
+	E.on("J-addForm","click",function(ev){
+		form=D.query("#J-form .xbox-form");
+		form_len=form.length;
+		if(form_len>=3){
+			D.removeClass("J-adderr","fn-hidden");
+		}else{
+		
+			var node=formnode.cloneNode(false);
+			node.innerHTML = formnode.innerHTML;
+
+			D.get("J-form").appendChild(node);
+			
+			var addBr = D.query('a.J_addBR',node)[0];
+			E.on(addBr,'click',function(ev){
+				alert(1);
+				var area = D.query('textarea',this.parentNode.parentNode)[0];
+				if(area.value=="请输入帮助标题(选填)" || area.value=="请输入帮助内容(必填)"){
+					area.value='<br2/>';
+				}else{
+					area.value += '<br2/>';
+				}
+				E.preventDefault(ev);
+			});
+			var addA = D.query('a.J_addA',node)[0];
+			E.on(addA,'click',function(ev){
+				var area = D.query('textarea',this.parentNode.parentNode)[0];
+				if(area.value=="请输入帮助标题(选填)" || area.value=="请输入帮助内容(必填)"){
+					area.value='[url=链接地址]链接文字[/url]';
+				}else{
+					area.value += '[url=链接地址]链接文字[/url]';
+				}
+				E.preventDefault(ev);
+				});
+				
+			
+		}
+		firstTextArea = 1;
+		E.preventDefault(ev);
+	});
+
+		var addBr = D.query('a.J_addBR');
+		for(var i=0;i<addBr.length;i++){
+			E.on(addBr[i],'click',function(ev){
+				var area = D.query('textarea',this.parentNode.parentNode)[0];
+				
+				if(area.value=="请输入帮助标题(选填)" || area.value=="请输入帮助内容(必填)"){
+					area.value='<br/>';
+				}else{
+					area.value += '<br/>';
+				}
+				E.preventDefault(ev);
+			});	
+		}	
+		var addA = D.query('a.J_addA');
+		for(var i=0;i<addA.length;i++){
+			E.on(addA[i],'click',function(ev){
+				var area = D.query('textarea',this.parentNode.parentNode)[0];
+				if(area.value=="请输入帮助标题(选填)" || area.value=="请输入帮助内容(必填)"){
+					area.value='[url=链接地址]链接文字[/url]';
+				}else{
+					area.value += '[url=链接地址]链接文字[/url]';
+				}
+				E.preventDefault(ev);
+			});
+		}
+
+	
+	</script>	
+</body>
+</html>

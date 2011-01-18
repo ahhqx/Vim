@@ -1,0 +1,77 @@
+#*
+*体验版帮助中心 页头
+*@server(help)
+*@project()
+*@pageflow_id()
+*@dl_id()
+*@date(2009-10-16)
+*@author(朝克图)
+***********************************
+*@变量列表
+*@变量名 数据类型&变量名说明
+*#
+
+<!-- 头部 -->
+<div id="header">
+	<!-- LOGO -->
+	<div class="title">
+		<h1 class="logo">
+			<a href="http://www.alipay.com/" title="返回支付宝首页" seed="help_Logo"><img src="http://img.alipay.com/pa/frame/v1/logo-alipay-96x31.png" width="96" height="31" alt="支付宝"/></a>
+		</h1>
+		<div class="home-link">
+			<a href="$personalModule.setTarget('index.vm')" title="帮助中心首页" seed="return_home">返回帮助中心首页</a>
+		</div>
+	</div>	
+	<!-- /LOGO -->
+	<!-- 快速信息及链接 -->
+	<div class="header-link">
+		<a class="f-link-f60" href="http://help.alipay.com/support/index_sh.htm" target ="_blank">商户帮助</a> | <a href="http://safe.alipay.com" target ="_blank">安全策略中心</a> | <a href="https://www.alipay.com/" target ="_blank" seed="alipay_home">支付宝首页</a>
+	</div>
+	<!-- /快速信息及链接 -->
+</div>
+<!-- / 头部 -->
+<!-- 导航 -->
+<div id="navHelp">
+	<ul class="navHelp-links">
+		<li #if($!searchType=="INDEX") class="current" #end>
+			<a href="$personalModule.setTarget('index.vm')" seed="nav_help_index"><strong>帮助中心</strong></a>
+		</li>
+		<li #if($!searchType=="SCHOOL") class="current" #end>
+			<a class="" href="$personalModule.setTarget('school.vm')" seed="nav_school"><strong>新手学堂</strong></a>
+		</li>
+		<li #if($!searchType=="SELFHELP") class="current" #end>
+			<a class="" href="$personalModule.setTarget('taskIndex.vm')" seed="nav_task_index"><strong>自助大厅</strong></a>
+		</li>
+		<li #if($!searchType=="HELPWITH") class="current" #end>
+			<a class="" href="$personalModule.setTarget('mutualHelp.vm')" seed="nav_mutual_help"><strong>互助问吧</strong></a>
+		</li>
+	</ul>
+	<div class="navHelp-search">	
+		<div class="navHelp-search-input">
+			$control.setTemplate("searchbar.vm").setParameter('index', $index).setParameter('catId', $catId).setParameter('searchType',$!searchType)
+		</div>
+
+		##这里判断是否是首页，是首页显示以下内容：
+		#if($!xian=="XIAN")
+			##CMS小区域开始#头部电话#help_lab_public_phone.vm
+			#parse("/la/help_lab_public_phone.vm")
+			##CMS小区域结束#头部电话#help_lab_public_phone.vm
+		#end
+		##不是首页显示（未登陆）：
+		#if($!searchType=="SELFHELP")
+		<div class="navHelp-search-regional">
+			#if("$!islogin"=="Y"||"$!taskList"=="Y"||"$!taskView"=="Y")您有<strong>$!doingCount</strong>个申请正在处理中<br />#end
+			#if("$!taskList"!="Y"&&"$!taskView"!="Y")<a href="$personalModule.setTarget('taskList.vm')?status=PROCESSING&src=ui_mm_help_chaxun01">查询申请进度</a><br />#end
+			#if("$!islogin"!="Y"||"$!taskList"=="Y"||"$!taskView"=="Y")支付宝客服会在48小时内处理您的申请#end
+		</div>
+		#end
+	</div>
+
+	
+	##CMS大区域开始#搜索关键字#help_lab_public_keyword.vm
+	#parse("/la/help_lab_public_keyword.vm")
+	##CMS大区域结束#搜索关键字#help_lab_public_keyword.vm
+		
+</div>
+<!-- /导航 -->
+<a name="skip"></a>

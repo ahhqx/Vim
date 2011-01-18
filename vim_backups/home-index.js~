@@ -1,0 +1,112 @@
+
+$E.domReady(function(){
+
+	// ARGUMENTS:
+	// 		d = Arale Dom_Element object
+	// 		inFn / outFn = 事件进入/退出（如 mouseover/mouseout）时的回调 
+	// 		evtIn/evtOut = 进入/退出的事件（如 mouseover/mouseout[默认]）
+	// EXAMPLE: 
+	// 		toggle(d, inFn, outFn [, inEvt, outEvt])
+	var toggle = function(d, inFn, outFn){
+			
+			var inEvt = arguments[3] ? arguments[3] : 'mouseover',
+				outEvt = arguments[4] ? arguments[4] : 'mouseout';
+
+			$E.connect(d, inEvt, inFn);
+			$E.connect(d, outEvt, outFn);
+		},
+		
+		// ARGUMENTS:
+		// 		d =  同上
+		// 		className = 要添加删除的 className
+		// EXAMPLE:
+		//		toggleClass(d, className [, inEvt, outEvt])
+		toggleClass = function(d, className){
+
+			var inEvt = arguments[2] ? arguments[2] : 'mouseover',
+				outEvt = arguments[3] ? arguments[3] : 'mouseout';
+
+			if(d.hasClass("selected")) {
+				var selected = true;
+			}		
+
+			toggle(d, function(inEvt, outEvt){
+				selected ? d.removeClass("selected") : ""; 
+				d.addClass(className)
+			}, function(){
+				d.removeClass(className)
+				selected ? d.addClass("selected") : ""; 
+			}, inEvt, outEvt);
+			
+		};
+
+	// index.htm: slider
+	if($('newSliderPic')){
+		Loader.use(['aralex.fadeslider'], function(){
+			var newSlider = new aralex.slider.FadeSlider({
+				id: 'newSliderPic',
+				triggerId: 'newSliderPage',
+				delay: 5000,
+                start: +$('newSliderPage').node.getAttribute('start') || 0 
+			})
+			A($$('#newSliderPage li')).each(function(v){
+				v.click(function(e){
+					e.preventDefault();
+				});
+			});
+		});
+	};
+	
+	//index.htm product slider
+	if($('newSliderProduct')){
+		Loader.use(['aralex.slider'],function(){
+			var newSlider2 = new aralex.slider.Slider({
+				id : 'product-slides-cnt',
+				auto : false
+			});
+			$$("a.product-slides-l")[0].click(function(e){
+				e.preventDefault();
+				newSlider2.previous(9);
+			});
+			$$("a.product-slides-r")[0].click(function(e){
+				e.preventDefault();
+				newSlider2.next(9);
+			});
+		});
+	};
+
+	// index form
+	if($('il-form')){
+		$A($$('.text'), $('il-form')).each(function(item){
+			toggleClass(item, 'text-focus', 'focus', 'blur');
+		});
+        
+        // input button
+        toggleClass($('il-smt'), 'new-btn-login-hover');
+
+        toggleClass($('il-return-pa'), 'new-btn-return-pa-hover');
+	};	
+// 全局：二级导航
+	$A($$(".nav-sub-item")).each(function(node){			
+		toggleClass(node, 'current');
+	});
+	
+	if(!!$('J_safeSignCheck') && ($('J_safeSignCheck')[0].checked=true)){
+		$('il-checkbox').click(function(){
+			$('il-user')[0].focus();
+		});
+	}
+
+//底部商家logo随机显示
+	(function(){
+		var targetImg = $('J_foot-b-icon');
+		if(!!window.HOMEINDEXBISLOGO && HOMEINDEXBISLOGO.length > 0){
+			var maxIndex = HOMEINDEXBISLOGO.length - 1,
+				randomNum = arale.$random(0,maxIndex);
+			targetImg.attr('src',HOMEINDEXBISLOGO[randomNum]);
+		}else{
+			targetImg.attr('src','https://img.alipay.com/images/cms2/201012/20101220512964.png');
+		}
+	})();
+
+});

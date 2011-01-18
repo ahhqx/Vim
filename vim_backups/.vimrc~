@@ -1,0 +1,188 @@
+" Use Vim settings, rather than Vi settings (much better!).
+" This must be first, because it changes other options as a side effect.
+set nocompatible
+
+set showcmd		" display incomplete commands
+set showmode
+set ruler
+set rulerformat=%15(%c%V\ %p%%%)
+"equal width/height when split window
+set equalalways
+if has("statusline")
+	set laststatus=2
+	set statusline=\ %F%m%r%h%y[%{&fileformat},\ %{&fileencoding}%{((exists(\"+bomb\")\ &&\ &bomb)?\"+\":\"\")}]\ %w%=(%b,0x%B)\ (%l,%c)\ %P\ %{&wrap?'WR':'NW'}\ %{&ic?'IC':'CS'}\ 
+endif
+
+if has("signs")
+	""" showmarks setting
+	" Enable ShowMarks
+	let showmarks_enable = 1
+	" Show which marks
+	let showmarks_include = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+	" Ignore help, quickfix, non-modifiable buffers
+	let showmarks_ignore_type = "hqm"
+	" Hilight lower & upper marks
+	let showmarks_hlline_lower = 1
+	let showmarks_hlline_upper = 1 
+endif
+
+" Don't use Ex mode, use Q for formatting
+map Q gq
+map \p i"<Esc>ea"<Esc>
+
+" CTRL-U in insert mode deletes a lot.  Use CTRL-G u to first break undo,
+" so that you can undo CTRL-U after inserting a line break.
+inoremap <C-U> <C-G>u<C-U>
+
+" In many terminal emulators the mouse works just fine, thus enable it.
+if has('mouse')
+  set mouse=a
+endif
+
+" Switch syntax highlighting on, when the terminal has colors
+" Also switch on highlighting the last used search pattern.
+if &t_Co > 2 || has("gui_running")
+  syntax on
+  set hlsearch
+endif
+
+  " Enable file type detection.
+  filetype plugin indent on
+
+  " For all text files set 'textwidth' to 78 characters.
+  autocmd FileType text setlocal textwidth=78
+
+  set go=e
+
+" global
+set encoding=utf-8
+" set termencoding=&encoding
+set history=128
+set autoread
+set helplang=cn,en
+set t_Co=256
+
+" lines
+set nowrap
+set number
+set cursorline
+
+" search
+set hlsearch
+set incsearch
+set ignorecase
+
+" indent & tab
+set autoindent
+"set smartindent
+set smarttab
+set shiftwidth=4
+set tabstop=4
+set softtabstop=4
+
+" autocmd
+if has("autocmd")
+	" helper function
+    "function! SetDict()
+	"	execute 'setlocal dict+='. GetFilePath('dict/'. &filetype . '.dict')
+	"endfunction
+
+	" TextBrowser settings
+	"let tlist_txt_settings = 'txt;c:content;f:figures;t:tables'
+	autocmd BufRead,BufNewFile *.txt setlocal filetype=txt
+	autocmd BufRead,BufNewFile *.log setlocal filetype=apachelogs
+	autocmd BufRead,BufNewFile *.html setlocal filetype=html.css.javascript
+	autocmd BufRead,BufNewFile *.htm setlocal filetype=html.css.javascript
+	autocmd BufRead,BufNewFile *.vm setlocal filetype=html.css.javascript
+	autocmd BufRead,BufNewFile *.css.vm setlocal filetype=css
+	autocmd BufRead,BufNewFile *.js.vm setlocal filetype=javascript
+	" template
+	"autocmd BufNewFile *.html,*.htm execute '0r '. GetFilePath('template/default.html')
+
+	" refresh config immediately
+	autocmd! bufwritepost .vimrc source %
+
+	" set options for specified filetype
+	autocmd FileType text setlocal textwidth=80
+	autocmd FileType c,cpp map <buffer> <leader><space> :write<cr>:make<cr> | setlocal foldmethod=syntax | setlocal foldenable
+    "autocmd FileType javascript,css,php call SetDict()
+
+	autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
+	autocmd FileType html,htm set omnifunc=htmlcomplete#CompleteTags
+	autocmd FileType css set omnifunc=csscomplete#CompleteCSS
+
+	autocmd FileType velocity set filetype=velocity.html
+	
+
+	if exists("+omnifunc")
+		autocmd Filetype *
+		    \	if &omnifunc == "" |
+		    \		setlocal omnifunc=syntaxcomplete#Complete |
+		    \	endif
+    endif
+	" map keys for quickfix
+	nmap <leader>cn :cnext<cr>
+	nmap <leader>cp :cprevious<cr>
+	nmap <leader>cw :cwindow 10<cr> 
+	nmap <leader>d yyp
+	map <leader>ht :TOhtml<cr>
+endif
+
+" multi byte
+if has("multi_byte")
+	language messages en_US.utf-8
+
+	setglobal fileencoding=utf-8
+	set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5
+	set formatoptions+=mm
+
+	if v:lang =~? '^\(zh\)\|\(ja\)\|\(ko\)'
+		set ambiwidth=double
+	endif
+endif
+
+
+function! ToggleWrapping()
+	if &wrap == 1
+		set nowrap
+	else
+		set wrap
+	endif
+endfunction
+
+"function! ToggleColor()
+"	let colors = ['molokai', 'ir_black', 'kellys']
+"	let current = (index(colors, g:colors_name) + 1) % len(colors)
+"	execute 'colorscheme ' . colors[current]
+"endfunction
+
+" keys & mouse
+set backspace=indent,eol,start
+set mouse=a
+map <Space> za
+map Q :exit<CR>
+map <Tab> <C-w><C-w>
+map <F2> :tabprevious<CR>
+map <F3> :tabnext<CR>
+map <F4> :vsplit<CR>
+map <F5> :!open -a Firefox.app %<CR><ESC>
+map <C-k> :tabclose<CR>
+map <C-F4> :tabclose<CR>
+map <F1> :NERDTreeToggle<CR>
+map <F9> :!svn update<CR>
+map <F10> :!svn commit --message=''<LEFT>
+map <F11> :call ToggleWrapping()<CR>
+map 66 ^
+map <C-n> :bn<CR>
+map <C-p> :bp<CR>
+
+" use Alt-n to switch tab
+for i in range(1, min([&tabpagemax, 9]))
+    execute 'nmap <A-'.i.'> '.i.'gt'
+endfor
+
+" Setup backup location and enable
+set backup
+set backupdir=$HOME/.vim/vim_backups/       "where to put those backups
+set directory=$HOME/.vim/vim_swp/           "this is for swp files   
+

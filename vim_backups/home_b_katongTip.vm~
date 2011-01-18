@@ -1,0 +1,22 @@
+##卡通简介
+
+<div class="ui-accordion-container tab-content-intro fn-clear">
+	<h4 class="ui-accordion-header">
+		什么是支付宝卡通？
+		<a href="http://abc.alipay.com/video.htm?filename=paymentKatong" target="_blank" class="new-icon new-icon-view-video">查看视频了解更多信息</a>
+	</h4>
+	<div class="ui-accordion-content">
+		<p class="tab-content-intro-desc">
+			支付宝卡通是支付宝与工、建、招、邮储等超过50家银行联合推出的一项网上支付服务。只需将您的支付宝账户和银行卡绑定，即可开通卡通。开通卡通后，您就可以：
+		</p>
+		<ul class="ui-list ui-list-square">
+			<li class="ui-list-item">无需开通网上银行，输入支付密码就能完成支付。</li>
+			<li class="ui-list-item">办理成功即可在淘宝网马上开店。</li>
+			<li class="ui-list-item">避免银行卡密码在网上泄露的风险。</li>
+		</ul>
+		<div class="new-service-action">
+			<a seed="active-katong-btn" target="_blank" href="https://lab.alipay.com/fund/katong/bank.htm" class="ui-btn ui-btn-ok"><span class="ui-btn-text">立即申请</span></a>
+		</div>
+		<img src="http://img.alipay.net/home/page/katong-intrp.png" class="tab-content-intro-img">
+	</div>
+</div>

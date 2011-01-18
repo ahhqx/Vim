@@ -1,0 +1,12 @@
+alias hosts='mvim /etc/hosts'
+alias static2='ssh admin@static2.alipay.net'
+alias personal.ui="ssh admin@personal.ui.alipay.net"
+alias home.p43="ssh admin@home.p43.alipay.net"
+alias ls='ls -G'
+alias fuck="ssh -qTfnN -D 7070 ahhqx@www.ediyang.com"
+alias home.p28='ssh admin@home.p28.alipay.net'
+alias home='cd ~/subversion/ali00116897_Other_20100926_home/'
+alias s="cd ~/subversion/ali0011"
+alias sc="svn ci -m '[!]'"
+alias vv="mvim"
+export PS1="\[$(tput setaf 2)\w $(tput setaf 1)$(tput bold)\]\n$"

@@ -1,0 +1,253 @@
+<link href="/css/calendar.css" rel="stylesheet" charset="utf-8" media="screen" type="text/css" />
+
+
+<style type="text/css">
+.popmenu li a{display: inline-block;}
+.popmenu{
+	float:none;
+	height:auto;
+}
+.helpArrow{
+	top:20px;
+}
+.tip-faq{
+	word-wrap:break-word;
+}
+.popmenu ul{
+	word-wrap: break-word;
+} 
+</style>
+<div id="frame-body" class="fn-clear">
+	<div id="frame-main">
+		<div id="frame-content">
+			<div class="tb-search">			
+				<table cellspacing="4">
+					<form action="$livehelpModule.setTarget('helpInfo.vm')" method="get" onsubmit="return chkform();">
+					<tr>
+						<th class="ft-right">查询分类：</th>
+						<th class="ft-left">
+							<b id="J-classname"></b><input id="J-setclassid" name="catalogueId" type="hidden" value="$!helpInfoForm.catalogueId" /><a id="J-class" class="ico-order arrow" href="#">更换产品分类</a>
+							<div id="J-popmenu" class="popmenu fn-hidden">
+								<iframe></iframe>
+								<ul></ul>
+							</div>
+						</th>
+					</tr>
+					<tr>
+						<th class="ft-right">查询关键词：</th>
+						<td><input name="keyWord" type="text" value="$!helpInfoForm.keyWord" maxlength="10" /></td>
+					</tr>
+					<tr>
+						<th class="ft-right">查询类型：</th>
+						<td>
+							<select name="queryOpenState" class="i-select">
+								<option value="">全部</option>
+								<option value="1" #if($stringUtil.equals("$helpInfoForm.queryOpenState","1")) selected #end>开通</option>
+								<option value="2" #if($stringUtil.equals("$helpInfoForm.queryOpenState","2")) selected #end>关闭</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td></td>
+						<td><span class="btn"><input type="submit" value="搜 索" /></span>
+							<a href="#">查询更多帮助数据</a>
+						</td>
+					</tr>
+					</form>
+				</table>
+			</div>
+			#set($helpurl="catalogueId=$!helpInfoForm.catalogueId&keyWord=$!helpInfoForm.keyWord&queryOpenState=$!helpInfoForm.queryOpenState")
+			<h3 style="margin:0px;">搜索结果</h3>
+			<div class="tb-result">
+				#if($returnObject.data && $returnObject.data.size()>0)
+				<table>
+					<thead>
+						<tr>
+							<th class="ft-left">报错信息</th>
+							<th class="ft-left" width="10%">帮助信息</th>
+							<th class="ft-left" width="10%">显示类型</th>
+							<th class="ft-left" width="8%">发布状态</th>
+							<th class="ft-left" width="12%">
+								#if($stringUtil.equals("$helpInfoForm.orderBy","time_desc"))
+								<a class="ico-order desc" href="?$!helpurl&orderBy=time_asc">修改时间</a>
+								#elseif($stringUtil.equals("$helpInfoForm.orderBy","time_asc"))
+								<a class="ico-order asc" href="?$!helpurl&orderBy=time_desc">修改时间</a>
+								#else
+								<a class="ico-order" href="?$!helpurl&orderBy=time_desc">修改时间</a>
+								#end
+							</th>
+							<th class="ft-left" width="10%">操作</th>
+						</tr>
+					</thead>
+					<tbody>
+						#foreach($object in $returnObject.data)
+						<tr data-errCode="$object.errorCode">
+							<td>$!object.errorMsg</td>
+							<td class="J-preview">
+								#if($!stringUtil.isNotBlank($!object.filePath))
+								<a class="previewBtn" href="#">[查看详情]</a>
+								#else
+								[无]
+								#end
+							</td>
+							<td>$!object.getDisplayType().message()</td>
+							<td><span class="status-$!object.OpenState.code()"></span></td>
+							<td>$!dateUtil.format($object.gmtModified,"yyyy-MM-dd HH:mm:ss")</td>
+							<td><a class="open-xbox-link" href="#" data="$!object.id" code="$!object.errorCode" path="$!object.filePath">编辑</a>
+								#if($!stringUtil.isNotBlank($!object.filePath))
+								&nbsp;<a class="J-chkstate" href="#" errid="$!object.id" data="$!object.OpenState.code()" onclick="chkstate(this,event)"></a>
+								#end
+							</td>
+						</tr>
+						#end
+					</tbody>
+				</table>
+				#end
+				#if($returnObject.totalRowNumber>0)
+				#if($returnObject.pageId>1)
+					#set($propage = $returnObject.pageId - 1)
+				#else
+					#set($propage = 1)
+				#end
+				#if($returnObject.pageId<$returnObject.totalPage)
+					#set($nextpage = $returnObject.pageId + 1)
+				#else
+					#set($nextpage = $returnObject.totalPage)
+				#end
+				<div class="help-page">
+					$!returnObject.currentRowStart&#45;$!returnObject.currentRowEnd条 共$!returnObject.totalRowNumber条
+					#if($returnObject.pageId>1)
+					<a href="?$!helpurl&orderBy=$!helpInfoForm.orderBy&pageId=1">&lt;&lt;首页</a> <a href="?$!helpurl&orderBy=$!helpInfoForm.orderBy&pageId=$!propage">&lt;上一页</a>
+					#end
+					#if($returnObject.pageId<$returnObject.totalPage)
+					<a href="?$!helpurl&orderBy=$!helpInfoForm.orderBy&pageId=$!nextpage">下一页&gt;</a> <a href="?$!helpurl&orderBy=$!helpInfoForm.orderBy&pageId=$!returnObject.totalPage">尾页&gt;&gt;</a>
+					#end
+				</div>
+				#else
+				<div class="help-err">没有搜索到符合你要求的报错信息 请重新搜索！</div>
+				#end
+			</div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript" charset="utf-8" src="http://static.alipay.com/build/js/arale.js?t=20100406.js"></script>
+<script src="http://bossimg.alipay.net/aboss/dev/js/app/arale/xbox/xbox.js" charset="utf-8" type="text/javascript"></script>
+<script type="text/javascript" charset="utf-8" src="/script/livehelp/help.js"></script>
+<script type="text/javascript">
+	window.INSHELP = window.INSHELP || {};
+	INSHELP = {
+		#showBgLivehelp($returnObject)
+	};
+</script>
+<script type="text/javascript">
+	function insHelpFn(){
+
+		var helpDom = "<div class=\"inshelpWrap fn-hide\" style=\"position:relative;\"><div class=\"instanceHelp\"><div class=\"helpHead\"></div>\r\n\
+		<div class=\"helpBody\">\r\n\
+		<em class=\"m-help\">帮助信息</em>\r\n\
+		<a class=\"closeHelp\" href=\"javascript:void(0)\">关闭</a>\r\n\
+		<ul class=\"helpUl\">\r\n\
+		</ul>\r\n\
+		</div>\r\n\
+		<div class=\"helpFoot\"></div>\r\n\
+		<div class=\"helpArrow\"></div></div></div>"; 
+
+		var helpRankDom = "<p>是否已解决了您的问题？</p><a href=\"javascript:void(0)\" class=\"helpYes\">是</a><a href=\"javascript:void(0)\" class=\"helpNo\">否</a>";
+
+
+		var resultTr = D.query('.tb-result tr');
+		D.setStyles(resultTr,{'position':'relative'});
+
+		for(var i = 1;i<resultTr.length;i++){
+			var errCode = resultTr[i].getAttribute('data-errcode');
+			if(D.query('.previewBtn',resultTr[i]).length>0){
+				insertCnt(resultTr[i],errCode);
+			}
+		}
+
+		function insertCnt(pa,errCode){
+			var supCnt = INSHELP[errCode],
+				helpLinkDom = '<dl class=\"tip-faq\">',
+				helpListDom = '<dl class=\"tip-faq\">',
+				helpBodyDom = '',
+				ftBar = '<em class=\"ft-bar\">|</em>',
+				regLink = /(\[url\=)(\S[^[]+)(\])(\S[^[]+)(\[\/url\])/g;
+
+			//Element.create('td',{innerHTML:helpDom,appendTo:pa})
+			var previewTd = D.query('.J-preview',pa)[0];
+			previewTd.innerHTML += helpDom;
+
+			D.setStyles(D.query('.instanceHelp',previewTd),{'left':'80px','top':'-40px','zIndex':'1000'});
+
+				//插入其它内容
+			var helpUl = D.query('.helpUl',pa),
+				relateHelpDom = supCnt['relateHelp'].length > 0 ? '<a href=\"' + supCnt['relateHelp'] + '\" target=\"_blank\">更多相关帮助</a>' : '',
+				//onlineChatDom = supCnt['onlineChat'] == 'true' ? '<em class=\"ft-bar\">|</em><a class=\"HelpOnlineChat\">咨询在线客服</a>' : '',
+				onlineChatDom = supCnt['onlineChat'] == 'true' ? ((relateHelpDom.length > 0) ? (ftBar + '<a class=\"HelpOnlineChat\">咨询在线客服</a>') : ('<a class=\"HelpOnlineChat\">咨询在线客服</a>' )) : '',
+				hotLineDom = supCnt['hotLine'] == 'true' ? ((onlineChatDom.length > 0 || relateHelpDom.length > 0) ? (ftBar + '<span>24小时服务热线：0571-88156688</span>') : ('<span>24小时服务热线：0571-88156688</span>')) : '';
+				//hotLineDom = supCnt['hotLine'] == 'true' ? '<em class=\"ft-bar\">|</em><span>24小时服务热线：0571-88156688</span>' : '';
+
+			for(var i = 0;i < 3;i++){
+				if(regLink.test(supCnt['content'+i])){
+					supCnt['content'+i] = supCnt['content'+i].replace(regLink,'<a href="$2" target="_blank">$4</a>');
+				};
+				
+				if(supCnt['title'+i].length>0){
+					supCnt['title'+i] && (helpListDom += '<dt>' + supCnt['title'+i] + '</dt>');
+					supCnt['content'+i] && (helpListDom += '<dd>' + supCnt['content'+i] + '</dd>');
+				}else{
+					supCnt['content'+i] && (helpListDom += '<dt class="inshelp-dt">' + supCnt['content'+i] + '</dt>');
+				}
+			}
+			
+			helpListDom += '</dl>';
+			
+			//var helpListDom = '<dl class=\"tip-faq\"><dt>' + supCnt['title0'] + '</dt><dd>' + supCnt['content0'] + '</dd><dt>' + supCnt['title1'] + '</dt><dd>' + supCnt['content1'] + '</dd><dt>' + supCnt['title2'] + '</dt><dd>' + supCnt['content2'] + '</dd></dl>'; 
+
+			helpBodyDom += helpListDom + '<div class=\"helpLink link\"' + relateHelpDom + onlineChatDom + hotLineDom + '</div>';
+			helpUl[0].innerHTML = helpBodyDom;
+			var helpRank = Element.create('div',{className:'helpRank fn-clear',innerHTML:helpRankDom,appendTo:helpUl[0]});
+			helpRankBind(helpUl[0],helpRank);
+		}
+			
+	//评价区动态变化seed
+
+		function helpRankBind(pa,current){
+			
+			var item = [D.query('.helpYes',pa)[0],D.query('.helpNo',pa)[0]];
+			E.on(item,'click',function(){
+				D.addClass(current,'fn-hide');
+				D.setStyles(
+					Element.create('p',{className:'userRanked',innerHTML:'您的评价已提交，谢谢！',appendTo:pa}),
+					{'marginTop':'10px','marginBottom':'0px','lineHeight':'20px'});
+			});
+		}
+
+
+		//绑定点击事件
+
+		var why = D.query('.previewBtn'); 
+			
+		E.on(why,'click',function(ev){
+			D.addClass(D.query('.inshelpWrap'),'fn-hide');
+			D.removeClass(D.query('.inshelpWrap',this.parentNode),'fn-hide');
+			D.setStyles(resultTr,{'zIndex':'1'});
+			this.parentNode.parentNode.style.zIndex='999';
+			this.setAttribute('seed','');
+			E.preventDefault(ev);
+			});
+
+		var closeHelp = D.query('.closeHelp');
+		
+		E.on(closeHelp,'click',function(){
+				D.addClass(this.parentNode.parentNode.parentNode,'fn-hide');	
+		});
+	};
+
+	insHelpFn();
+
+</script>	
+
+
+
+

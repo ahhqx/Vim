@@ -1,0 +1,233 @@
+<link href="/css/calendar.css" rel="stylesheet" charset="utf-8" media="screen" type="text/css" />
+<link charset="utf-8" rel="stylesheet" href="http://static.p88.alipay.net/build/css/pa/pa.css" media="all" />
+<div id="frame-body" class="fn-clear">
+	<div id="frame-main">
+		<div id="frame-content">
+			<div class="tb-search">
+				<table>
+					<form method="get" action="$livehelpModule.setTarget('actionLog.vm')" onsubmit="return chkform();">
+					<tr>
+						<th>查询时间：</th>
+						<td><div id="calendarContainer"></div>
+							<input type="text" id="J-start" name="startTime" readonly="readonly" class="i-text J-top" data-class="J-top" data-tag="start" rel="beginTime" value="$!startTime" size="10">
+							-
+							<input type="text" id="J-end" name="endTime" readonly="readonly" class="i-text J-top" data-class="J-top" data-tag="end" rel="endTime" value="$!endTime" size="10">
+						</td>
+					</tr>
+					<tr>
+						<td></td>
+						<td><span class="btn"><input type="submit" value="搜 索" /></span></td>
+					</tr>
+					</form>
+				</table>
+			</div>
+			<h3 style="margin:0px;">搜索结果</h3>
+			<div class="tb-result">
+				#if($actionlog.data && $actionlog.data.size()>0)
+				<table>
+					<thead>
+						<tr>
+							<th class="ft-left">报错信息</th>
+							<th class="ft-left" width="10%">操作信息</th>
+							<th class="ft-left" width="10%">操作ID</th>
+							<th class="ft-left" width="12%">操作时间</th>
+							<th class="ft-left" width="10%">操作内容</th>
+							<th class="ft-left" width="10%">目前状态</th>
+							<th class="ft-left" width="10%">显示类型</th>
+						</tr>
+					</thead>
+					<tbody>
+						#foreach($object in $actionlog.data)
+						<tr data-errCode="$object.errorCode">
+							<td>$!object.errorMsg</td>
+							<td class="J-preview">
+								#if($!stringUtil.isNotBlank($!object.filePath))
+								<a class="previewBtn" href="#">[查看详情]</a>
+								#else
+								[无]
+								#end
+							</td>
+							<td>$!object.operatorId</td>
+							<td>$!object.gmtCreateString</td>
+							<td>$!object.action.message</td>						
+							<td>$!object.getOpenState().message()</td>
+							<td>$!object.getDisplayType().message()</td>
+						</tr>
+						#end
+					</tbody>
+				</table>
+				#end
+				#if($actionlog.totalRowNumber>0)
+				#if($actionlog.pageId>1)
+					#set($propage = $actionlog.pageId - 1)
+				#else
+					#set($propage = 1)
+				#end
+				#if($actionlog.pageId<$actionlog.totalPage)
+					#set($nextpage = $actionlog.pageId + 1)
+				#else
+					#set($nextpage = $actionlog.totalPage)
+				#end
+				<div class="help-page">
+					$!actionlog.currentRowStart&#45;$!actionlog.currentRowEnd条 共$!actionlog.totalRowNumber条
+					#if($actionlog.pageId>1)
+					<a href="?startTime=$!startTime&endTime=$!endTime&pageId=1">&lt;&lt;首页</a> <a href="?startTime=$!startTime&endTime=$!endTime&pageId=$!propage">&lt;上一页</a>
+					#end
+					#if($actionlog.pageId<$actionlog.totalPage)
+					<a href="?startTime=$!startTime&endTime=$!endTime&pageId=$!nextpage">下一页&gt;</a> <a href="?startTime=$!startTime&endTime=$!endTime&pageId=$!actionlog.totalPage">尾页&gt;&gt;</a>
+					#end
+				</div>
+				#else
+				<div class="help-err">没有任何更新记录！</div>
+				#end
+			</div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript" charset="utf-8" src="http://static.alipay.com/build/js/arale.js?t=20100406.js"></script>
+<script type="text/javascript" charset="utf-8" src="http://static.alipay.net/build/js/app/calendar.js?t=20090707.js"></script>
+<script type="text/javascript" charset="utf-8" src="http://static.alipay.net/build/js/pa/calendar.js?t=20090707.js"></script>
+<script type="text/javascript">
+var calendar = new AP.widget.calendar('calendar', 'calendarContainer',{
+	show_dropfilter:true,
+	dropfilter:{startYear:new Date("2010/01/01").getFullYear()}
+},[D.query('.J-top')]);
+
+// 列表背景间隔
+var tb_tr=D.query(".tb-result tbody tr");
+tr_len=tb_tr.length;
+for(i=0;i<tr_len;i++){
+	if(i % 2 == 1){
+		D.addClass(tb_tr[i],"hasbg");
+	}
+}
+
+function chkform(){
+	var bvalue=D.get("J-start").value;
+	var evalue=D.get("J-end").value;
+	if(bvalue=="" || evalue==""){
+		alert("请选择要搜索的时间段！");
+		return false;
+	}else{
+		var d1 = new Date(bvalue.replace(/[.]/g,'-'));
+		var d2 = new Date(evalue.replace(/[.]/g,'-'));
+		if(Date.parse(d1) - Date.parse(d2)>0){
+			alert("请正确选择时间段！");
+			return false;
+		}
+	} 
+}
+</script>
+<script type="text/javascript">
+	window.INSHELP = window.INSHELP || {};
+	INSHELP = {
+		#showBgLivehelp($actionlog)
+	};
+</script>
+<script type="text/javascript">
+	function insHelpFn(){
+
+		var helpDom = "<div class=\"inshelpWrap fn-hide\" style=\"position:relative;\"><div class=\"instanceHelp\"><div class=\"helpHead\"></div>\r\n\
+		<div class=\"helpBody\">\r\n\
+		<em class=\"m-help\">帮助信息</em>\r\n\
+		<a class=\"closeHelp\" href=\"javascript:void(0)\">关闭</a>\r\n\
+		<ul class=\"helpUl\">\r\n\
+		</ul>\r\n\
+		</div>\r\n\
+		<div class=\"helpFoot\"></div>\r\n\
+		<div class=\"helpArrow\" style=\"top:20px;\"></div></div></div>"; 
+
+		var helpRankDom = "<p>是否已解决了您的问题？</p><a href=\"javascript:void(0)\" class=\"helpYes\">是</a><a href=\"javascript:void(0)\" class=\"helpNo\">否</a>";
+
+
+		var resultTr = D.query('.tb-result tr');
+		D.setStyles(resultTr,{'position':'relative'});
+
+		for(var i = 1;i<resultTr.length;i++){
+			var errCode = resultTr[i].getAttribute('data-errcode');
+			if(D.query('.previewBtn',resultTr[i]).length>0){
+				insertCnt(resultTr[i],errCode);
+			}
+		}
+
+		function insertCnt(pa,errCode){
+			var supCnt = INSHELP[errCode],
+				helpLinkDom = '',
+				helpBodyDom = '',
+				helpListDom = '<dl class=\"tip-faq\">',
+				ftBar = '<em class=\"ft-bar\">|</em>',
+				regLink = /(\[url\=)(\S[^[]+)(\])(\S[^[]+)(\[\/url\])/g;
+
+
+			var previewTd = D.query('.J-preview',pa)[0];
+			previewTd.innerHTML += helpDom;
+
+			D.setStyles(D.query('.instanceHelp',previewTd),{'left':'80px','top':'-40px','zIndex':'1000'});
+
+				//插入其它内容
+				var helpUl = D.query('.helpUl',pa),
+				relateHelpDom = supCnt['relateHelp'].length > 0 ? '<a href=\"' + supCnt['relateHelp'] + '\" target=\"_blank\">更多相关帮助</a>' : '',
+				//onlineChatDom = supCnt['onlineChat'] == 'true' ? '<em class=\"ft-bar\">|</em><a class=\"HelpOnlineChat\">咨询在线客服</a>' : '',
+				onlineChatDom = supCnt['onlineChat'] == 'true' ? ((relateHelpDom.length > 0) ? (ftBar + '<a class=\"HelpOnlineChat\">咨询在线客服</a>') : ('<a class=\"HelpOnlineChat\">咨询在线客服</a>' )) : '',
+				hotLineDom = supCnt['hotLine'] == 'true' ? ((onlineChatDom.length > 0 || relateHelpDom.length > 0) ? (ftBar + '<span>24小时服务热线：0571-88156688</span>') : ('<span>24小时服务热线：0571-88156688</span>')) : '';
+				//hotLineDom = supCnt['hotLine'] == 'true' ? '<em class=\"ft-bar\">|</em><span>24小时服务热线：0571-88156688</span>' : '';
+
+			for(var i = 0;i < 3;i++){
+				if(regLink.test(supCnt['content'+i])){
+					supCnt['content'+i] = supCnt['content'+i].replace(regLink,'<a href="$2" target="_blank">$4</a>');
+				};
+				
+				if(supCnt['title'+i].length>0){
+					supCnt['title'+i] && (helpListDom += '<dt>' + supCnt['title'+i] + '</dt>');
+					supCnt['content'+i] && (helpListDom += '<dd>' + supCnt['content'+i] + '</dd>');
+				}else{
+					supCnt['content'+i] && (helpListDom += '<dt style="margin-bottom:14px;">' + supCnt['content'+i] + '</dt>');
+				}
+			}
+			
+			helpListDom += '</dl>';
+			
+			helpBodyDom += helpListDom + '<div class=\"helpLink link\"' + relateHelpDom + onlineChatDom + hotLineDom + '</div>';
+			helpUl[0].innerHTML = helpBodyDom;
+			var helpRank = Element.create('div',{className:'helpRank fn-clear',innerHTML:helpRankDom,appendTo:helpUl[0]});
+			helpRankBind(helpUl[0],helpRank);
+		}
+			
+	//评价区动态变化seed
+
+		function helpRankBind(pa,current){
+			
+			var item = [D.query('.helpYes',pa)[0],D.query('.helpNo',pa)[0]];
+			E.on(item,'click',function(){
+				D.addClass(current,'fn-hide');
+				D.setStyles(
+					Element.create('p',{className:'userRanked',innerHTML:'您的评价已提交，谢谢！',appendTo:pa}),
+					{'marginTop':'10px','marginBottom':'0px','lineHeight':'20px'});
+			});
+		}
+
+
+		//绑定点击事件
+
+		var why = D.query('.previewBtn'); 
+			
+		E.on(why,'click',function(ev){
+			D.addClass(D.query('.inshelpWrap'),'fn-hide');
+			D.removeClass(D.query('.inshelpWrap',this.parentNode),'fn-hide');
+			D.setStyles(D.query('.tb-result tr'),{'zIndex':'1200'});
+			D.setStyles(this.parentNode.parentNode,{'zIndex':'9000'});
+			this.setAttribute('seed','');
+			E.preventDefault(ev);
+			});
+
+		var closeHelp = D.query('.closeHelp');
+		
+		E.on(closeHelp,'click',function(e){
+			D.addClass(this.parentNode.parentNode.parentNode,'fn-hide');	
+			e.preventDefault();
+		});
+	};
+
+	insHelpFn();
+
+</script>	

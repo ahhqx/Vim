@@ -1,0 +1,72 @@
+<div id="content">
+	<div class="payment-banner"><img src="http://img.alipay.net/home/payment-index-banner.jpg" alt="image"/>
+		<a class="payment-banner-link" href="$homeModule.setTarget('/bank/partner.vm')">查看支付宝合作伙伴>></a>
+	</div>	
+	<!-- new-title -->
+	<div class="ui-title fn-clear payment-title">
+		<h2>舒适线上支付<span>已有<a href="#">80家</a>机构与支付宝深入合作</span></h2>
+	</div>
+	<div class="payment-index-wrapper  payment-e fn-left">
+		<div class="payment-index-cnt">
+			<h4 class="payment-index-wrapper-title">我有储蓄卡<span>能使用什么产品呢？</span></h4>
+			<a class="choose-bank" href="$homeModule.setTarget('/bank/paymentBank.vm')">选择我的持卡行>></a>
+		</div>
+		<dl class="ui-list ui-list-square">
+			<dt class="ui-list-item">我没有银行卡，还能线上付款么？</dt>
+			<dd>
+				答：只要您有百联OK卡，便利通卡，话费充值卡，就能线上付款
+			</dd>
+			<dd><a href="$homeModule.setTarget('/bank/paymentVoucher.vm')">如何使用消费卡付款？>></a></dd>
+			<dt class="ui-list-item">支付宝有那么多合作银行，我该选哪一家？</dt>
+			<dd>
+				答：银行排行让您了解谁是最佳用户体验银行！
+			</dd>
+			<dd><a href="$homeModule.setTarget('/bank/bankRank.vm')">查看银行排名>></a></dd>
+		</dl>
+	</div>
+	<div class="payment-index-wrapper  payment-c fn-right">
+		<div class="payment-index-cnt">
+			<h4 class="payment-index-wrapper-title">我有信用卡<span>能使用什么产品呢？</span></h4>
+			<a class="choose-bank" href="$homeModule.setTarget('/bank/paymentCredit.vm')">选择我的持卡行>></a>
+		</div>
+		<dl class="ui-list ui-list-square">
+			<dt class="ui-list-item">我没有银行卡，还能线上付款么？</dt>
+			<dd>
+				答：只要您有百联OK卡，便利通卡，话费充值卡，就能线上付款
+			</dd>
+			<dd><a href="$homeModule.setTarget('/bank/bankActivity.vm')">查看银行活动>></a></dd>
+			<dt class="ui-list-item">支付宝有那么多合作银行，我该选哪一家？</dt>
+			<dd>
+				答：银行排行让您了解谁是最佳用户体验银行！
+			</dd>
+			<dd><a href="http://home.alipay.com/bank/partner.htm">查看支持银行>></a></dd>
+		</dl>
+	</div>
+	<div class="ui-title fn-clear payment-title">
+		<h2>便捷线下支付<span>结合<a href="#">10万</a>网点，<a href="#">4</a>大物流打造全方位付款</span></h2>
+	</div>
+	<div class="payment-index-wrapper-s payment-d">
+		<a class="payment-index-wrapper-s-title" href="http://home.alipay.com/bank/paymentPayDelivery.htm">货到付款</a>
+		<dl class="ui-list ui-list-square">
+			<dt class="ui-list-item">网购大件东西我不放心，我可以先验货后付款么？</dt>
+			<dd>答：支付宝提供货到付款服务，让您放心购物！</dd>
+		</dl>
+	</div>
+	<div class="payment-index-wrapper-s payment-s">
+		<a class="payment-index-wrapper-s-title" href="http://home.alipay.com/bank/paymentStore.htm">网点付款</a>
+		<dl class="ui-list ui-list-square">
+			<dt class="ui-list-item">网购大件东西我不放心，我可以先验货后付款么？</dt>
+			<dd>答：支付宝提供货到付款服务，让您放心购物！</dd>
+		</dl>
+	</div>
+	<div class="payment-index-wrapper-s payment-o">
+		<h5 class="payment-index-wrapper-s-title"><a href="http://home.alipay.com/bank/paymentPayOther.htm#">找人代付</a></h5>
+		<dl class="ui-list ui-list-square">
+			<dt class="ui-list-item">我不熟悉网上付款，可以让别人帮我付么？</dt>
+			<dd>答：只要使用找人代付功能，就能你选东西他买单！</dd>
+		</dl>
+	</div>
+</div>	
+
+
+

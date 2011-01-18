@@ -1,0 +1,267 @@
+##金账户判断 by Ethan, 2010-07-28
+#if(!$grade || $stringUtil.equals($grade.getGrade().getName(), "NORMAL"))
+	#set($vip_ico = "$imageServer.getURI('img/vip/ico-common-s.gif')")
+	#set($vip_tip = "普通账户")
+	#set($vip_target_url = "vip.vm")
+	#set($vip_css = "il-normal")
+	#set($vip_label = "[普通]")
+	#set($vip_seed = "accountCommon")
+#elseif($stringUtil.equals($grade.getGrade().getName(), "VIP") && $grade.isActive())
+	#set($vip_ico = "$imageServer.getURI('img/vip/ico-vip-s.gif')")
+	#set($vip_tip = "金账户")
+	#set($vip_target_url = "vip.vm")
+	#set($vip_css = "il-vip")
+	#set($vip_label = "[VIP]")
+	#set($vip_seed = "accountVIP")
+#elseif($stringUtil.equals($grade.getGrade().getName(), "VIP") && !$grade.isActive())
+	#if($pastOneMonth)
+		#set($canActive=true)
+		#set($vip_ico = "$imageServer.getURI('img/vip/ico-vip-n-s.gif')")
+		#set($vip_tip = "免费点亮金账户，享受更多特权")
+		#set($vip_target_url = "turn_result.vm")
+		#set($vip_css = "il-nonvip")
+		#set($vip_label = "[免费点亮]")
+		#set($vip_seed = "accountNonVIP")
+    #else	
+		#set($vip_ico = "$imageServer.getURI('img/vip/ico-vip-n-s.gif')")
+		#set($vip_tip = "金账户未点亮")
+		#set($vip_target_url = "turn_result.vm")
+		#set($vip_css = "il-nonvip")
+		#set($vip_label = "[未点亮]")
+		#set($vip_seed = "accountNonVIP")
+	#end
+#elseif($stringUtil.equals($grade.getGrade().getName(), "IMPERIAL_VIP"))
+	#set($vip_ico = "$imageServer.getURI('img/vip/ico-spec-s.gif')")
+	#set($vip_tip = "至尊账户")
+	#set($vip_target_url = "vip.vm")
+	#set($vip_css = "il-spec")
+	#set($vip_label = "[至尊账户]")
+	#set($vip_seed = "accountSpec")
+#end
+
+##根据是否使用登录中心登录替换表单提交目标和字段名称
+#if($stringUtil.equals("$newAuthcenter","true"))
+    #set($loginAction="$loginModule.setTarget('index.vm')")
+    #set($logonIdFieldName="logonId")
+    #set($passwordFieldName="password")
+    #set($checkCodeFieldName="checkCode")
+#else
+    #set($loginAction="$userModule.setTarget('login.vm')")
+    #set($logonIdFieldName=$group.email.key)
+    #set($passwordFieldName=$group.pwd.key)
+    #set($checkCodeFieldName=$group.checkcode.key)
+#end
+
+
+#if($rundata.getSession().getAttribute("iw.auth"))
+		## 登录后，form 表单不存在
+				## 换成下面的内容
+				<div id="il-cb">
+					<h4 class="new-sidebox-title" title="$rundata.getSession().getAttribute('iw.rname')">您好，$stringUtil.abbreviate("#SLITERAL($rundata.getSession().getAttribute('iw.rname'))", 7) [<a href="$userModule.setTarget('logout.vm')" seed="logoutPannel" >退出</a>]</h4>
+					<div id="il-cb-detail">
+						<p id="il-accout">您正在使用的支付宝账户为：
+
+						<span title='$!rundata.session.getAttribute("iw.email")'>#handleLongEmailExtend($!rundata.session.getAttribute("iw.email") 14 12)
+							#set($userTmpEmail=$!rundata.session.getAttribute('iw.email'))
+							<a class="il-accout-type $vip_css" href="$vipModule.setTarget($vip_target_url)" target="_blank" seed="$vip_seed" title="$vip_tip">$vip_label</a>	
+						</span>
+						</p>
+
+						<a class="ui-btn ui-btn-ok" href="$userModule.setTarget('ma_index.htm')"><span id="il-return-pa" class="new-btn-return-pa" seed="return" >返回我的支付宝</span></a>
+					</div>
+				</div>
+
+					## 登录后：
+					## dl 增加class="il-cb"
+					<dl id="il-pwdlost" class="il-cb">
+						<dt><a href="$tradeModule.setTarget('queryTradeList.vm')">消费记录</a> <a href="$userModule.setTarget('userInfoConsole.vm')" seed="myAccount" >账户管理</a></dt>
+						<dd><a href="$lifeModule.setTarget('gathering/index.htm')?_ad=c&_adType=c_gathering_index_02" seed="wannaGather" >我要收款</a> <a href="$lifeModule.setTarget('payment/index.htm')?_ad=c&_adType=c_pay_index_02" seed="wannaPay">我要付款</a></dd>
+					</dl>
+
+					<div class="il-mobile-download fn-clear">
+						<span>支付宝手机客户端下载</span>
+						<ul class="ui-list il-mobile-list fn-clear">
+							<li class="ui-list-item">
+								<a target="_blank" href="http://mobile.alipay.com/download.htm#NOKIA_N97">N97</a>
+							</li>
+							<li class="ui-list-item">
+								<a target="_blank" href="http://mobile.alipay.com/download.htm#NOKIA_E71">E71</a>
+							</li>
+							<li class="ui-list-item">
+								<a target="_blank" href="http://mobile.alipay.com/download.htm#Apple_iPhone%2FiPod%20touch">iPhone</a>
+							</li>
+							<li class="ui-list-item">
+								<a target="_blank" href="http://mobile.alipay.com/download.htm#HTC_G3">GPhone</a>
+							</li>
+							<li class="ui-list-item last-item">
+								<a target="_blank" href="http://mobile.alipay.com/download.htm">更多>></a>
+							</li>
+						</ul>
+					</div>
+	            
+#else
+
+	#set ($group = $form.login.defaultInstance)
+	#set ($downLoadFlag = $!rundata.session.getAttribute("downLoadableFlag"))
+
+	##是否需要校验码
+	#if($stringUtil.equals($!rundata.session.getAttribute("needCheckCode"),"yes"))
+		#set ($needCheckCode = true)
+	#else
+		#set ($needCheckCode = false)
+	#end
+
+	##是否可以选择无控件登录
+	#set($userAgent=$stringUtil.toLowerCase($!rundata.request.getHeader("User-Agent")))
+	#if($stringUtil.indexOf($userAgent, "windows")>-1 || $stringUtil.indexOf($userAgent, "win32")>-1)
+	    #set($canChooseAliedit = "no")
+	#else
+	    #set($canChooseAliedit = "yes")
+	#end
+
+	##================================
+	##=====是否使用密码控件===========
+	##=====mac, iphone, ipad默认不使用
+	##================================
+	#set($alieditUsing = $!rundata.session.getAttribute("J_aliedit_using"))
+	#if(!$stringUtil.isBlank("$!alieditUsing"))
+		#set($isAlieditUsing = $!alieditUsing)
+	#elseif($stringUtil.indexOf($userAgent, "macintosh")>-1 || $stringUtil.indexOf($userAgent, "mac os x")>-1)
+		#set($isAlieditUsing = false)
+	#else
+		#set($isAlieditUsing = true)
+	#end
+
+
+				<form name="login" id="il-form" action="$loginAction" class="com-aside-login" method="post">
+					<input type="hidden" name="support" value="000001" />
+					#if($stringUtil.equals($downLoadFlag,"true"))
+						<input type="hidden" name="CtrlVersion" value="$controlConstants.VERSION_2_0" />
+					#else
+						<input type="hidden" name="CtrlVersion" value="$controlConstants.CURR_VERSION" />
+					#end
+					##<input type="hidden" id="password" name="$group.pwd.key" value="" />
+					<input type="hidden" id="password" name="$passwordFieldName" value="" />
+					<input type="hidden" id="$controlConstants.REMOTE_MAC" name="$controlConstants.REMOTE_MAC" value="" />
+					<input type="hidden" name="action" value="login_action" />
+					<input type="hidden" name="goto" value="$!gotoPage" />
+					<input type="hidden" name="event_submit_do_login" value="anything" />
+					<input type="hidden" name="J_aliedit_using" id="J_aliedit_using" value="$isAlieditUsing" />
+					##<input type="hidden" name="J_aliedit_key_hidn" id="J_aliedit_key_hidn" value="$group.pwd.key" />
+					<input type="hidden" name="J_aliedit_key_hidn" id="J_aliedit_key_hidn"  value="$passwordFieldName" />
+					<fieldset>
+						<legend>用户登录 <a title="淘宝会员登录" id="il-tblink" href="$!newTaobaoMemberLoginUrl.getURI("").addQueryData("style","alipay").addQueryData("goto",$!userModule.setTarget("maIndex.vm"))" seed="taobaoLogin" >淘宝会员登录</a></legend>
+					
+						<label for="il-user">账户名（Email地址或手机号）：</label>
+							##<input id="il-user" type="text" tabindex="1" name="$group.email.key" value="$!group.email.value" class="text" />
+							<input id="il-user" type="text" tabindex="1" name="$logonIdFieldName" value="$!group.email.value" class="text" />
+							
+						<label for="il-pwd">登录密码：</label>
+						##=============Start=统计控件安装成功率，记录未安装控件的用户============##
+						<script>
+							(function(){
+								try{
+									var aDomain=document.domain.split(".");
+									var sDomain=aDomain[aDomain.length-2]+"."+aDomain[aDomain.length-1];
+									document.domain=sDomain;
+								} catch (e) {}
+								
+								window.AlieditControl = {};
+								
+								window.AlieditControl = {
+									cookie : {
+										set: function(name, value, expires) {
+											
+											var sCookie = name+'='+encodeURIComponent(value);
+								 
+											if(expires) {
+												var exp = new Date();
+												exp.setTime(exp.getTime() + expires);
+												sCookie += '; expires=' + exp.toGMTString();
+											}
+											if(!/undefined/.test(sDomain)) {
+												sCookie += '; domain=' + sDomain;
+											}
+											document.cookie = sCookie;
+										},
+										get: function(name) {
+											var cRE = new RegExp('(?:; )?'+name+'=([^;]*);?');
+											return cRE.test(document.cookie) ? decodeURIComponent(RegExp['$1']) : null;
+										},
+										remove: function(name) {
+											this.set(name, '', new Date(0));
+										}
+									},
+									getAlieditObj : function(){
+										if (window.ActiveXObject) {
+											try {
+												return (new ActiveXObject('Aliedit.EditCtrl'));
+											} catch (e) { };
+										} else {
+											return navigator.plugins['Alipay security control'] || navigator.plugins['Aliedit Plug-In'] || navigator.plugins['Aliedit'] || null;
+										}
+										return null;
+									}
+								}
+							 
+								if(window.ActiveXObject && !AlieditControl.getAlieditObj() && !AlieditControl.cookie.get('ac-install') && !AlieditControl.cookie.get('ac-install-just-now')) {
+									AlieditControl.cookie.set('ac-install-just-now', 'no',24*60*60*1000);
+								}
+							})();
+							
+						</script>
+						##=====================End==========================================##
+						#if($stringUtil.equals($canChooseAliedit, "yes"))
+							<span id="J_standardPwd" style="display:none"><input class="text" tabindex="2" id="standarPwd" type="password" name="standarPwd" onpaste="return false" oncontextmenu="return false" oncopy="return false" oncut="return false" /></span>
+							<span id="J_alieditPwd" style="display:block">
+							$control.setTemplate("trade:RSAEncryptControlUpdate.vm").setParameter("ActiveName","$!group.pwd.key").setParameter("controlConstants",$!controlConstants).setParameter("tradeDetail",$!tradeDetail).setParameter("TradeType",$!TradeType).setParameter("URL",$controlConstants.CTRL_VERSION20_CAB_PATH).setParameter("CURR_VERSION",$controlConstants.VERSION_2_0).setParameter("width","194")
+							</span>
+						#else
+							$control.setTemplate("trade:RSAEncryptControlUpdate.vm").setParameter("ActiveName","$!group.pwd.key").setParameter("controlConstants",$!controlConstants).setParameter("tradeDetail",$!tradeDetail).setParameter("TradeType",$!TradeType).setParameter("URL",$controlConstants.CTRL_VERSION20_CAB_PATH).setParameter("CURR_VERSION",$controlConstants.VERSION_2_0).setParameter("width","194")
+						#end
+					
+						#if($!needCheckCode || $stringUtil.equals($canChooseAliedit, "yes"))
+							<div #if($stringUtil.equals($canChooseAliedit, "yes") && !$!needCheckCode)id="J_checkCode"#end>
+								<label for="fourcode">校验码：</label>
+								<div class="il-fourcode">
+									##<input type="text" class="text" name="$group.checkcode.key" id="fourcode" value="" tabindex="3" maxlength="4" data="#if($needCheckCode)validate#end" />
+									<input type="text" class="text" name="$checkCodeFieldName" id="fourcode" value="" tabindex="3" maxlength="4" data="#if($needCheckCode)validate#end" />
+									#if($stringUtil.equals("$newAuthcenter","true"))
+										<img id="il-fourcodeimg" class="reload-code" onclick="javascript:this.src += '?cache=' + Math.random();" src="$checkCodeGetLink.addQueryData("sessionID",$rundata.getSession().getId())&r=$!randomUtils.nextDouble()" title="点击图片刷新校验码" alt="点击图片刷新校验码" seed="auth-authcode" />
+									#else
+										<img id="il-fourcodeimg" src="$userModule.setTarget('checkcode')"/>
+									#end
+								</div>
+							</div>
+						#else
+							##<input type="hidden" id="fourcode" name="$group.checkcode.key" maxLength="4" value="1111"/>
+							<input type="hidden" id="fourcode" name="$checkCodeFieldName" maxLength="4" value="1111"/>
+						#end
+
+						#if($stringUtil.equals($canChooseAliedit, "yes"))
+							<div id="il-checkbox">
+								<input type="checkbox" id="J_safeSignCheck" checked="checked" />
+								<label for="J_safeSignCheck">安全控件登录</label>
+							</div>
+						#end
+
+						#if($!needCheckCode || $stringUtil.equals($canChooseAliedit, "yes"))
+							<input id="il-smt" seed="home-signup" type="submit" class="new-btn-login" tabindex="4" value="" />
+						#else
+							<input id="il-smt" seed="home-signup" type="submit" class="new-btn-login" tabindex="3" value="" />
+						#end
+
+						<a id="il-active" href="$newUserModule.setTarget('reg/activate/index.vm')" seed="home-faq" >账户激活</a>
+					</fieldset>
+					
+				</form>
+				<dl id="il-pwdlost">
+					<dt><a href="$newUserModule.setTarget('passwordfind/index.vm').addQueryData('type', 'Q').addQueryData('src','ui_help_password_m_01')" seed="home-forgetpwd" >忘记密码？</a> <a href="http://help.alipay.com/lab/help_detail.htm?help_id=211475" target="_blank" seed="home-widget" >控件安装有问题？</a></dt>
+				</dl>
+				<div class="il-regnow">
+					<a href="$newUserModule.setTarget('reg/index.vm')" class="ui-button ui-button-round" seed="home-reg"><span class="ui-button-text">立即免费注册</span></a>
+				</div>
+
+#end
+
+

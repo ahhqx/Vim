@@ -1,0 +1,107 @@
+<style type="text/css">
+.ways{
+	margin-bottom: 0px;
+	padding: 10px;
+	width: 720px;
+	cursor: pointer;
+	_float: left;
+}
+.waysChecked{
+	background: #E5F5FF;
+}
+.ways h3{
+	font-size:14px;
+}
+.ways h3 span{
+	border: 1px solid #76D142;
+	background: #DCF869;
+	
+}
+.complete{
+	padding-top: 5px;
+	padding-left: 15px;
+	line-height: 20px;
+}
+.complete ul{
+	margin-bottom: 6px;
+}
+
+.complete ul li{
+    float:left;
+    line-height: 22px;
+    padding: 5px 5px 0px;
+}
+.complete span{
+    display:-moz-inline-box;
+    display:inline-block;
+    *zoom:1;
+    *display:inline;
+    background:url("$imageServer.getURI('pa/page/index/bg.png')") no-repeat  -10px -614px;
+    width:18px;
+    height:18px;
+    vertical-align: middle;
+}
+
+.complete .icbc {
+background-position:-97px -339px;
+}
+.complete .cmb {
+background-position:-170px -339px;
+}
+.complete .ccb {
+background-position:-152px -339px;
+}
+.complete .abc {
+background-position:-115px -339px;
+}
+.complete .comm {
+background-position:-134px -369px;
+}
+.complete .spdb {
+background-position:-1px -369px;
+}
+.complete .cmbc {
+background-position:-37px -369px;
+}
+.complete .citic {
+	background-position:-77px -369px;
+}
+.complete .sdb {
+	background-position:-95px -369px;
+}
+.complete .gdb{
+	background-position: -19px -369px;
+}
+.complete .boc{
+	background-position: -133px -339px;
+}
+.complete .ceb {
+	background-position:-54px -339px;
+	width:42px;
+}
+.complete .cib{
+	background-position: -56px -369px;
+	width: 21px;	
+}
+.fn-row{
+	margin: 10px 16px;
+}
+.tip-normal{	
+	margin: 0px;
+}
+.tip-normal ul{
+	margin-bottom:-3px;
+	_float: left;
+}
+.tip-normal li{
+	margin-bottom: 3px;
+	padding-left: 1em;
+	background: transparent url("$imageServer.getURI('pa/frame/v2/ico-pa.png')") no-repeat 3px -534px;
+	*zoom:1;
+}
+.help{
+	margin-top: 25px;
+	margin-bottom: -12px; 	
+	width:300px;
+}
+</style>

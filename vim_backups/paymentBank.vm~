@@ -1,0 +1,93 @@
+            <div id="content">
+    			
+				<!-- new-title -->
+				<div class="ui-title fn-clear new-title">
+					<h2>储蓄卡付款</h2>
+				</div>
+				<!-- new-title -->
+				
+				<!-- new-service-desc -->
+				<div class="new-service-desc">
+					<!-- ui-list-square -->
+					<ul class="ui-list ui-list-square">
+						<li class="ui-list-item">拥有储蓄卡，您只需开通网上银行即可完成网上付款</li>
+						<li class="ui-list-item">对于部分不支持网银的银行，您可以选择直接<a href="https://lab.alipay.com/fund/katong/bank.htm" target="_blank" seed="applyKatong">开通支付宝卡通</a>服务完成网上支付。</li>
+					</ul>
+					<!-- /ui-list-square -->
+					<div class="new-service-pic">
+						<img src="$imageServer.getURI('/home/page/paymentBank.png')" alt="储蓄卡付款" />
+					</div>
+				</div>
+				<!-- /new-service-desc -->
+				
+				<div class="new-wrap" id="bank-Cnt">
+					<h3>合作银行<span>点击银行查看详情</span></h3>
+				
+				
+				
+				<ul class="ui-list-icons fn-clear cashier-bank">
+				##读取储蓄卡银行列表
+            				#parse("/la/home_b_paymentBankOrder.vm")
+            				
+            				##设置需要排除的银行卡
+            				#parse("/la/home_b_excludeBank.vm")
+            				
+            				#set($prelist =$stringUtil.split($bankOrderList))
+            				#set($excludelist =$stringUtil.split($excludeBank))
+            				
+            				##设置优先排序
+            				#if($bankOrderList)
+            				
+                				#foreach($perOrderName in $prelist)
+                   					#foreach($bankCard in $ebankList)
+                       					#if($bankCard.getInstId() == $perOrderName)
+                    				    <li>
+                    				        <a class="icon-box" href='$homeModule.setTarget("bank/paymentBankDetail.vm").addQueryData("id","$bankCard.getInstId()").addQueryData("de","$bankCard.de").addQueryData("dk","$bankCard.dk").addQueryData("ce","$bankCard.ce").addQueryData("ck","$bankCard.ck")' for="$bankCard.getApiCode()" seed=""$bankCard.getInstId()">
+                    				            <span class="icon $bankCard.getInstId()" title="$!{bankCard.getShowName()}" send="a-$bankCard.getApiCode()">$!{bankCard.getShowName()}</span>
+                    				        </a>
+                    				    </li>
+                    				    #end
+                				   #end
+            					#end	
+            				
+            				#end
+            				
+            			##输出不在排序列表里的银行	
+            			 #foreach($bankCard in $ebankList)
+            			    #set($inPreList=false)
+            				#foreach($perOrderName in $prelist)
+                				#if($bankCard.getInstId() == $perOrderName)
+                					#set($inPreList=true)
+                			    #end
+            				#end
+            				
+                			   #if($inPreList == false)
+                					##遍历是否是需要排除的银行卡
+                				    #set($isExclude=false)
+                    				#foreach($excludeName in $excludelist)
+                           					#if($bankCard.getInstId() == $excludeName)
+                								#set($isExclude=true)
+                        				    #end
+                					#end
+                					
+                					
+                					#if($isExclude == false)
+                						<li>
+                    				        <a class="icon-box" isPreList="$inPreList" href='$homeModule.setTarget("bank/paymentBankDetail.vm").addQueryData("id","$bankCard.getInstId()").addQueryData("de","$bankCard.de").addQueryData("dk","$bankCard.dk").addQueryData("ce","$bankCard.ce").addQueryData("ck","$bankCard.ck")' for="$bankCard.getApiCode()" seed="$bankCard.getInstId()">
+                    				            <span class="icon $bankCard.getInstId()" title="$!{bankCard.getShowName()}" send="a-$bankCard.getApiCode()">$!{bankCard.getShowName()}</span>
+                    				        </a>
+                						</li>	
+									#end
+									
+            				   #end
+            			  #end
+				
+				
+				
+				
+				</ul>
+				</div>
+            </div>
+#set($secondMenu = "howToPay")
+#set($sNavName = "paymentBank")
+#parse("/bank/tile/sideNav.vm")

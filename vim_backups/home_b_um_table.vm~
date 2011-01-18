@@ -1,0 +1,48 @@
+<div class="ui-table new-tabble">
+<table style="width: 600px;text-align:center;">
+	<thead>
+		<tr>
+			<th>&nbsp</th>
+			<th>满足条件</th>
+			<th style="white-space:nowrap">单笔限额（元）</th>
+			<th style="white-space:nowrap">每日限额（元）</th>
+			<th>备注</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td style="white-space:nowrap" rowspan="2"><strong>付款限额</strong><br/>（包含手续费）</td>
+			<td style="white-space:nowrap">无实名认证</td>
+			<td>500</td>
+			<td>1000</td>
+			<td rowspan="2">按每笔交易金额的1%收取（最低1元，最高25元）发生退款，手续费不退回。</td>
+		</tr>
+		<tr>
+			<td style="white-space:nowrap">支付宝实名认证<br/><a href="http://home.alipay.com/individual/accountCertify.htm">如何认证</a></td>
+			<td>1000</td>
+			<td>5000</td>
+		</tr>
+		<tr>
+			<td style="white-space:nowrap"><strong>支持地区</strong></td>
+			#if($!stringUtil.equals("$id", "Abc"))
+				<td colspan="4" style="text-align:left;">深圳、长沙</td>
+			#elseif($!stringUtil.equals("$id", "China"))
+				<td colspan="4" style="text-align:left;">全国（除深圳、东莞、长沙、杭州、武汉、南宁、拉萨、香港、澳洲以外。）</td>
+			#elseif($!stringUtil.equals("$id", "Ccb"))
+			<td colspan="4" style="text-align:left;">全国（除重庆、成都、六安、济南、南昌、郑州、银川、贵阳、拉萨、香港、澳洲以外。）</td>
+			#elseif($!stringUtil.equals("$id", "Citic"))
+				<td colspan="4" style="text-align:left;">全国（除东莞、南京、哈尔滨、贵阳、拉萨、香港、澳洲以外。）</td>
+			#elseif($!stringUtil.equals("$id", "农信"))
+				<td colspan="4" style="text-align:left;">全国（除东莞、南京、哈尔滨、贵阳、拉萨、香港、澳洲以外。）</td>
+			#elseif($!stringUtil.equals("$id", "Post") || $!stringUtil.equals("$id", "Cscb"))
+				<td colspan="4" style="text-align:left;">长沙</td>
+			#elseif($!stringUtil.equals("$id", "Comm"))
+				<td colspan="4" style="text-align:left;">全国（除重庆、西宁、拉萨、香港、澳洲以外。）</td>
+			#elseif($!stringUtil.equals("$id", "Spd") || $!stringUtil.equals("$id", "Cib") || $!stringUtil.equals("$id", "Hx") || $!stringUtil.equals("$id", "Ceb"))
+				<td colspan="4" style="text-align:left;">全国（除拉萨、香港、澳洲以外。）</td>
+			#end
+		</tr>
+	</tbody>
+</table>
+</div>
+

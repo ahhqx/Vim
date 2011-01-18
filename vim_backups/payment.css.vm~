@@ -1,0 +1,149 @@
+<style type="text/css">
+#container{
+	width:100%;
+}
+#container a{color: #002398;}
+.payment-banner{
+	text-align:center;
+	position: relative;
+	margin-top: 20px;
+	*margin-top:5px;
+}
+.payment-banner-link{
+	position: absolute;
+	top:152px;
+	left: 43px;
+}
+#content,#foot{
+	width:950px;
+	margin:0 auto;
+	float:none;
+}
+h4{
+	font:600 14px/25px Tahoma;
+	margin:30px 0 55px;
+}
+.ui-title{
+	padding-bottom: 0;
+}
+.payment-title{
+	clear: both;
+}
+.payment-title h2{
+	font-size: 15px;
+	font-weight: 700;
+	margin-top: 18px;
+	padding-bottom: 3px;
+	padding-right: 10px;
+	border-bottom: 2px solid #FA4E07;
+}
+.payment-title h2 span{
+	font-size: 14px;
+	padding-left: 10px;
+	font-weight: 400;
+}
+.payment-title h2 span a{
+	color: #FA4E07;
+}
+.payment-index-wrapper{
+	background: #F8F8F8;
+	width: 428px;
+	height: 245px;
+	padding: 20px;
+	border: 1px solid #DEDEDE;
+}
+.payment-index-wrapper img{
+	float: left;
+	_display:inline;
+	margin-right: 20px;
+	width: 118px;
+	height: 73px;
+}
+.payment-index-wrapper .payment-index-wrapper-title{
+	background: url(http://img.alipay.net/home/payment-index-all.png) no-repeat 0 0;
+	text-indent: -9999px;
+	margin: 0;
+	height: 70px;
+	line-height:41px;
+	
+}
+
+.payment-e .payment-index-wrapper-title{
+	background-position: 0 0;
+}
+.payment-c .payment-index-wrapper-title{
+	background-position: 0 -73px;
+}
+.payment-index-wrapper .payment-index-wrapper-title span{
+	font-size: 14px;
+	color: #333;
+}
+.payment-index-wrapper-s{
+	margin-top: 10px;
+	width: 274px;
+	padding: 15px 25px;
+	border-right: 1px solid #eee;
+	float: left;
+	_display:inline;
+	position: relative;
+}
+.payment-o{
+	border: none;
+	padding: 15px 0 15px 15px;
+}
+.payment-index-wrapper-s-title{
+	text-indent: -9999px;
+	background: url(http://img.alipay.net/home/payment-index-all.png) no-repeat 0 0;
+	display: block;
+	width: 260px;
+	height: 79px;
+	overflow: hidden;
+}
+
+
+.payment-index-wrapper-s .ui-list{
+	border: none;
+}
+.payment-index-wrapper-s-title a:hover{
+	color: #FA4E07;
+}
+.payment-d .payment-index-wrapper-s-title{
+	background-position: -5px -155px;	
+}
+.payment-s .payment-index-wrapper-s-title{
+	background-position: 0 -337px;	
+}
+.payment-o .payment-index-wrapper-s-title{
+	background-position: 0 -514px;	
+}
+.payment-d .payment-index-wrapper-s-title:hover{
+	background-position: -5px -245px;	
+}
+.payment-s .payment-index-wrapper-s-title:hover{
+	background-position: -1px -427px;	
+}
+.payment-o .payment-index-wrapper-s-title:hover{
+	background-position: 0 -604px;	
+}
+.choose-bank{
+	float: left;
+	margin: -20px 0 0 135px;
+}
+.ui-list{
+	margin-top: 15px;
+}
+.ui-list .ui-list-item{
+	margin-top: 20px;
+}
+
+.payment-index-wrapper-s h5{
+	font-size: 18px;
+}
+.payment-index-cnt{
+	padding-bottom: 25px;
+	background: url(http://img.alipay.net/home/payment-index-all.png) no-repeat 0 -618px;
+}
+</style>
+
+
+

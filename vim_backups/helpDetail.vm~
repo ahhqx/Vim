@@ -1,0 +1,214 @@
+#*
+*体验版帮助中心 详细
+*@server(help)
+*@project(helpPa)
+*@pageflow_id()
+*@dl_id()
+*@date(2009-10-16)
+*@author(朝克图)
+***********************************
+*@变量列表
+*@变量名 数据类型&变量名说明
+*#
+###set($pageTitle="支付宝 - 个人体验版帮助中心 - 帮助详情")
+#set($pageTitle="支付宝 - 个人体验版帮助中心 - $helpDetail.title ")
+
+<div id="container">
+
+	##页头
+	$control.setTemplate("header.vm").setParameter('searchType','INDEX').setParameter('xian','XIAN')
+
+<div id="content" >
+	<!-- 常见问题分类 -->
+	$control.setTemplate("sidebar.vm").setParameter('catVO', $!catInfo).setParameter('catId', $catId)
+	<!-- 常见问题分类 -->
+	
+	<div class="main">
+        #if ($helpDetail)
+        		<!-- 面包屑 -->
+        		<div class="help-crumb">
+        			#if($path)
+            			$control.setTemplate("helpCatNavigation.vm").setParameter("path", $path)
+            		#else
+            			$control.setTemplate("helpCatNavigation.vm").setParameter("cat", "$helpDetail.catId")
+            		#end
+        		</div>
+        		<!-- /面包屑 -->
+        
+        		<!-- 帮助内容 -->
+        		<div class="help-detail">
+        			<h2 class="detail-title">
+        				$helpDetail.title
+        			</h2>
+        								#if($helpDetail.flowDisplay)
+        			<div class="detail-flow">
+        				<a href="$!helpDetail.flowDisplay" class="btn-normal">
+        					<span class="px14">查看演示流程</span>
+        				</a>
+        			</div>
+        			#end
+        			<div class="detail-content">
+        				#SHTML($helpDetail.content)
+        			</div>
+        			<div class="detail-operate">
+        				<a class="ico-print" href="#" id="btnPrint" seed="print_page">打印本页面</a> 
+        				<a class="ico-favorites" href="$personalModule.setTarget('help_detail.vm')?help_id=$helpDetail.id" title="$helpDetail.title" id="btnFav" seed="add_to_fav">加入收藏夹</a> 
+        			</div>
+        			<div class="detail-feedback">
+        						#if($helpDetail.selfService)
+    	    				#set($tempIndex=$stringUtil.indexOf($helpDetail.selfService,"="))
+    				    #if($tempIndex>0)
+        					#set($nextIndex=$tempIndex+1)
+        					#set($serviceName=$stringUtil.substring($helpDetail.selfService,0,$tempIndex))
+        					#set($serviceUrl=$stringUtil.substring($helpDetail.selfService,$nextIndex))
+        				#end
+        				<div class="f1">
+        					<span class="f-ib ico-square">&nbsp;</span> 
+        					<a href="$serviceUrl" class="btn-normal">
+        						<span class="px14">$serviceName</span>
+        					</a>
+        				</div>
+        				#end
+        				<div class="f2">
+        					<span class="f-ib ico-square">&nbsp;</span> 
+        					以上内容是否解决了您的问题呢？
+        				</div>
+        				<div class="f3">
+							<a id="detail-feedback-yesbtn" class="help-btn" href="javascript:void(0)" seed="rank_problem_yes"><span><strong class="f-ib ico-yes">&nbsp;</strong> 是，已经解决。</span></a>
+							<a id="detail-feedback-nobtn" class="help-btn" href="javascript:void(0)" seed="rank_problem_no"><span><strong class="f-ib ico-no">&nbsp;</strong> 否，尚未解决。</span></a>
+							您可以<a href="$personalModule.setTarget('mutualHelp.vm')" seed="to_mutual_help">点此问吧</a>。
+        					<div id="detail-feedback-content-yes" class="fn-hide">
+        						<a id="detail-feedback-content-yes-close" href="javascript:void(0)">关闭</a>
+								<div class="m-success fn-hide">您的反馈信息已成功提交，谢谢您的反馈。</div>
+        					</div>
+        					<div id="detail-feedback-content-no" class="fn-hide">
+        						<a id="detail-feedback-content-no-close" href="javascript:void(0)">关闭</a>
+        						<label><input type="radio" name="rankType" value="1" seed="problem_no_1"/>太简单，用不上</label>
+        						<label><input type="radio" name="rankType" value="2" seed="problem_no_2"/>字太多，不想看</label>
+        						<label><input type="radio" name="rankType" value="3" seed="problem_no_3"/>太复杂，看不懂</label>
+        						<label><input type="radio" name="rankType" value="4" seed="problem_no_4"/>搜到的内容不匹配</label>
+								<div class="submit">
+									<span id="btn_search" class="btn btn-ok-s"><input id="r_search" type="button" value="提 交" onclick="rank()" seed="problem_no_submit"/></span>
+									<div class="m-success fn-hide">您的反馈信息已成功提交，谢谢您的反馈。</div>
+								</div>
+        					</div>
+        				</div>
+        				#if($catInfo&&"$!catInfo.ivrPath"!="")
+						<div class="m-mainbox m-mainbox-list">
+							<h3 class="f-mb-10">客服热线语音分类</h3>
+							<p>若需要人工服务，请在拨完支付宝客服电话：0571-88156688后直接按<em class="f-color-f60 f-size-16">$!catInfo.ivrPath</em>。</p>
+						</div>
+						#end
+        				#if($!relationHelpList&&$relationHelpList.size()>0)
+        			<div class="detail-correlate">
+        					<h4>相关问题</h4>
+        					<ul>
+        				#foreach($relationHelpInfo in $!relationHelpList)
+        					#if($velocityCount > 4)
+        						#else
+        							<li><a href="help_detail.htm?help_id=$!{relationHelpInfo.id}">#SHTML($relationHelpInfo.title)</a></li>
+        					#end
+        				#end
+        					</ul>
+        				</div>
+        				#end
+        #end				
+        				<div class="more-search">
+        						<input class="i-text" type="text" id="inputsearch" name="textfield1" onclick="clearcontent();" onblur="recover();" onPropertyChange="doSearch()" onKeyUp="doKey(event)" onKeyPress="doLink1(event)"  />&nbsp;&nbsp;
+        						<span class="btn btn-ok-s"><input type="button" value="搜 索" onclick="isearch1();return false;" seed="more_search_submit"/></span>
+        				</div>
+        			</div>
+
+		</div>
+		<!-- /帮助内容 -->
+	</div>
+	
+</div>
+
+	##页脚
+	$control.setTemplate("footer.vm")
+
+</div>
+<span class="f-btnfix"></span>
+
+<script type="text/javascript" charset="utf-8" src="$staticServer.getURI('/js/arale/arale.js')?t=20090604.js"></script>
+<script type="text/javascript" charset="utf-8" src="$staticServer.getURI('/js/pa/pa.js')?t=20090710.js"></script>
+
+<script language="JavaScript" type="text/javascript">
+<!--//--><![CDATA[//><!--
+
+//--><!]]>
+</script>
+
+<!-- CMS区域临时标记层  -->
+<script type="text/javascript">
+var mytip = new AP.widget.tipdone();
+</script>
+<script type="text/javascript">
+	function rank() {
+		var rankType;
+		var c = 0;
+		for (i = 0; i < document.getElementsByName("rankType").length; i++) {
+			if (document.getElementsByName("rankType")[i].checked) {
+				rankType = document.getElementsByName("rankType")[i].value;
+				c++;
+			}
+		}
+		if (c > 0) {
+			#if ($helpDetail && $catInfo) helpRank.rank($helpDetail.id, "$helpDetail.title", $helpDetail.catId, "$catInfo.catPathIds", "$catInfo.catPathTitles", rankType, disable);#end
+		}
+	}
+	function rankYes() {
+		#if ($helpDetail && $catInfo) helpRank.rank($helpDetail.id, "$helpDetail.title", $helpDetail.catId, "$catInfo.catPathIds", "$catInfo.catPathTitles", "0");#end
+	}
+	function disable() {
+		D.query('#btn_search')[0].style.display = "none"
+		show(D.query('#detail-feedback-content-no .m-success')[0]);
+		//setTimeout("enable();", 60000); 
+	}
+	function enable() {
+		D.query('#btn_search')[0].style.display = ""
+		hide(D.query('#detail-feedback-content-no .m-success')[0]);
+	}
+</script>
+<script language="JavaScript" type="text/javascript">
+<!--//--><![CDATA[//><!--
+	//隐藏显示
+	function show(el) { D.removeClass(el, "fn-hide"); };
+	function hide(el) { D.addClass(el, "fn-hide"); };
+
+	//反馈表单 解决问题
+	E.on("detail-feedback-yesbtn", "click", function(e) {
+		show(D.get('detail-feedback-content-yes'));
+		D.addClass(D.get('detail-feedback-yesbtn'), "on");
+		show(D.query('#detail-feedback-content-yes .m-success'));
+		//取消事件
+		E.removeListener("detail-feedback-nobtn", "click");
+		D.addClass(D.get('detail-feedback-nobtn'), "off");
+		//提交表单
+		rankYes();
+	});
+	E.on("detail-feedback-content-yes-close", "click", function(e) {
+		E.removeListener("detail-feedback-yesbtn", "click");
+		hide(D.get('detail-feedback-content-yes'));
+		D.removeClass(D.get('detail-feedback-yesbtn'), "on");
+		D.addClass(D.get('detail-feedback-yesbtn'), "off");
+
+	});
+	//反馈表单 未解决问题
+	E.on("detail-feedback-nobtn", "click", function(e) {
+		show(D.get('detail-feedback-content-no'));
+		D.addClass(D.get('detail-feedback-nobtn'), "on");
+		//取消事件
+		E.removeListener("detail-feedback-yesbtn", "click");
+		D.addClass(D.get('detail-feedback-yesbtn'), "off");
+	});
+	E.on("detail-feedback-content-no-close", "click", function(e) {
+		E.removeListener("detail-feedback-nobtn", "click");
+		hide(D.get('detail-feedback-content-no'));
+		D.removeClass(D.get('detail-feedback-nobtn'), "on");
+		D.addClass(D.get('detail-feedback-nobtn'), "off");
+
+	});
+//--><!]]>
+</script>

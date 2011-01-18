@@ -1,0 +1,5852 @@
+﻿@charset "utf-8"; 
+/*
+	@名称：个人版样式
+	@版本：2.0
+	@参考文档：http://product.alipay.net/arale/section/
+*/
+/** 
+	Reset
+	@name:CSS Reset 
+	@desc:重置默认
+*/
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td {
+  margin:0;
+  padding:0;
+}
+table {
+  *border-collapse:collapse;
+  border-spacing:0;
+}
+caption,th {
+  text-align:left;
+}
+fieldset,img,a img {
+  border:0;
+}
+address,caption,cite,code,dfn,em,strong,th,var {
+  font-style:normal;
+  font-weight:normal;
+}
+em,strong {
+  font-weight:bold;
+}
+li {
+  list-style:none;
+}
+h1,h2,h3,h4,h5,h6 {
+  font-size:100%;
+  font-weight:bold;
+  color:#000;
+}
+q:before,q:after,blockquote:before,blockquote:after {
+  content:"";
+}
+abbr,acronym {
+  border:0;
+  font-variant:normal;
+}
+sup {
+  vertical-align:text-top;
+}
+sub {
+  vertical-align:text-bottom;
+}
+input,textarea,select {
+  font-family:inherit;
+  font-size:inherit;
+  *font-size:100%;
+  font-weight:inherit;
+}
+del,ins {
+  text-decoration:none;
+}
+legend {
+  *margin-left:-7px;
+}
+/** end Reset */
+/**
+	Base
+	@name:页面设置
+	@desc:如非特殊说明，只可修改颜色和背景
+*/
+/* 始终显示纵向滚动条 */
+html {
+	overflow-y:scroll;
+	overflow:-moz-scrollbars-vertical;
+}
+/* 全站字体风格 */
+body {
+  font:12px Tahoma,Helvetica,Arial,Simsun;
+  color:#4d4d4d;
+  background:#fff;
+}
+/* 链接默认样式 */
+a{
+	color:#07f;	
+	cursor:pointer;
+	text-decoration:none;
+	outline:none;
+}
+a:hover{
+ color:#07f;
+ text-decoration:underline;
+}
+/** end Base */
+/**
+	Layout
+	@name:布局
+	@desc:分栏布局
+*/
+/* .container-xbox页面内的XBOX container的class标识 */
+#container{
+	width:950px;
+	margin:0 auto;	
+}
+
+.xbox #container,.container-xbox{
+	padding: 20px;
+	width: auto;
+	overflow: hidden;
+	/* position: relative; */
+	/* ali00040205  先注释有问题再研究 */
+}
+
+.xbox #container .title,.container-xbox{
+	margin:0;
+}
+.xbox #container .no-title .xbox-close-link,.container-xbox .no-title .xbox-close-link{
+	right:7px;
+	top:5px;
+}
+
+#header {
+	position: relative;
+	margin: 14px 0 0 0;
+}
+#header h1{
+	float: left;
+}
+#header .title{
+	margin: 0;
+}
+#header .title .link{
+	padding: 20px 0 0 10px;
+}
+  .header-link {
+	position:absolute;
+	top:0;
+	right:0;
+	width:620px;
+	height:31px;
+	text-align:right;
+  }
+  /* 单任务头部 11/12 */
+	.single-header{
+		height:54px;
+		overflow:hidden;
+		border-bottom:1px solid #bfbfbf;
+		background:url(http://img.alipay.net/pa/frame/v2/bg-repeat-x.png) repeat-x;
+	}
+	.single-task #header{
+		width:950px;
+		margin:10px auto;
+	}
+	.single-header .title h2{
+		font-size:20px;
+		margin:14px 0 0 10px;
+		padding-left:5px;
+		background:url(http://img.alipay.net/pa/frame/v2/bg-repeat-x.png) 0 -74px no-repeat;
+	}
+	.single-header .header-link{
+		top:20px;
+	}
+	.single-footer{
+		border-top:1px solid #f0f0f0;
+	}
+	.single-task #footer{
+		border-top:1px solid #d7d7d7;
+	}
+  
+  /*
+  
+	.header-singletask{
+		padding-bottom:17px;
+	}
+	.header-singletask .title h2{
+		padding:17px 0 0 10px;
+	}
+	.header-singletask .header-link{
+		top:20px;
+	}
+	.header-singletask .line-shadow{
+		position:relative;
+		top:7px;
+	}
+*/
+/* 导航，水平分割 */ 
+#nav,
+.nav-container,
+.nav-container ul,
+#nav .nav-master-a:hover,
+#nav .nav-master-a-hover,
+#nav .nav-master-a:hover strong,
+#nav .nav-master-a-hover strong,
+#nav li.current .nav-master-a strong,
+#nav li.current .nav-master-a,
+#nav .nav-sub a:hover,
+#nav .nav-sub a:hover span,
+#nav a.current,
+#nav a.current span
+{
+	background-image: url(http://img.alipay.net/pa/frame/v2/bg-nav.png);
+	background-repeat:no-repeat;
+}
+
+#nav {
+	position: relative;
+	height: 66px;
+	margin: 10px 0 0 0;
+	background-position:0 -230px;
+	background-repeat:repeat-x;
+}
+/* 导航整个容器 */ 
+.nav-container {
+	padding-left: 15px;
+	height: 66px;
+	background-position:0 0;
+}
+.nav-container ul {
+	height: 100%;
+	zoom: 1;
+	background-position:right -66px;
+}
+.nav-container ul ul.nav-sub {
+	background: none;
+	height: auto;
+}
+/* 导航列表的ul容器 */ 
+.nav-master {
+	display: block;
+	float: left;
+	height: 36px;
+	width: 105px;
+	line-height: 36px;
+	text-align: center;
+	position: relative;
+	padding-right: 4px;
+}
+/* 导航一级的li */ 
+.nav-master-a {
+	display: block;
+	font-size: 14px;
+	height:26px;
+	line-height:26px;
+	overflow:hidden;
+	background: none;
+	text-decoration: none;
+	margin-top:5px;
+	
+}
+.nav-master-a strong{
+	display:block;
+	color: #fff;
+	height:100%;
+	*line-height:27px;
+}
+li.current .nav-master-a strong,
+#nav li.current .nav-master-a:hover strong{
+	color: #000;
+}
+.nav-master-a:hover,.nav-master-a-hover{
+	text-decoration: none;
+	background-position:0 -315px;
+}
+.nav-master-a:hover strong,.nav-master-a-hover strong{
+	background-position:right -360px;
+
+}
+
+/* 一级导航li里面的a */ 
+#nav li.current .nav-master-a strong{
+	background-position: right -180px;
+	padding-top:2px;
+}
+#nav li.current .nav-master-a,#nav li.current .nav-master-a-hover{
+	background-position:0 -131px;
+	overflow:hidden;
+	color:#000;
+	height:31px;
+}
+#nav li.current .nav-master-a:hover strong,#nav li.current .nav-master-a-hover strong{
+	color:#000;
+}
+
+/* 当前选中的一级导航 */
+ul.nav-sub {
+	position: absolute;
+	width: 800px;
+	text-align: left;
+	top: 36px;
+	left: 0;
+	display: none;
+	padding: 3px 0 0 0;
+	background: none;
+}
+/* 二级导航的ul容器 */ 
+#nav .current .nav-sub {
+	display: block;
+}
+/* 当前一级导航里的二级导航容器ul */ 
+.nav-sub li {
+	float: left;
+	display: block;
+	width: 78px;
+	text-align: center;
+	height: 30px;
+	overflow: hidden;
+	margin-right:4px;
+}
+/* 二级导航里的li */ 
+#nav .nav-sub a{
+	display: block;
+	height: 22px;
+	overflow:hidden;
+	color: #4d4d4d;
+	text-decoration: none;
+}
+#nav .nav-sub a span{
+	display:block;
+	line-height:22px;
+	*line-height:23px;
+	_line-height:21px;
+	height:22px;
+}
+
+/* 二级导航里的链接样式 */ 
+#nav .nav-sub a:hover{
+	background-position:0 -405px;
+}
+#nav .nav-sub a:hover span{
+	background-position:right -446px;
+}
+#nav a.current{
+	background-position:0 -487px;
+}
+#nav a.current span{
+	background-position:right -528px;
+}
+
+/* 生活助手 */
+#nav .nav-master-life{
+	float:right;
+	width:123px;
+	background:none;
+}
+#nav .nav-master-life strong{
+	display:none;
+}
+#nav li .nav-master-life-a,
+#nav li.current .nav-master-life-a{
+	display:block;
+	height:100%;
+	overflow:hidden;
+	background-image: url(http://img.alipay.net/pa/frame/v2/bg-nav.png);
+	background-repeat:no-repeat;
+}
+
+#nav li .nav-master-life-a:hover{
+	text-decoration:none;
+}
+#nav li.nav-master-life .nav-master-life-a{
+	background-position:-1px -568px;
+}
+#nav li.current .nav-master-life-a{
+	background-position:0 -621px;
+}
+.nav-master-life .nav-sub{
+	margin:0 0 0 -585px;
+}
+.nav-master-life li{
+	width:auto;
+	white-space:nowrap;
+}
+.ie6 .nav-master-life li{
+	width:0px;
+	overflow:visible;
+}
+.nav-master-life li span{
+	padding:0 6px;
+}
+.nav-master-life .ico-expand-arrow{
+	margin:5px 0 0;
+}
+.nav-life{
+	position:absolute;
+	z-index:999;
+	width:118px;
+	height:362px;
+	overflow:hidden;
+}
+.nav-sub-life{
+	position:absolute;
+	z-index:999;
+	top:-214px;
+	width:116px;
+	overflow:hidden;
+	background:#fff;
+	border:1px solid #BCBCBC;
+	zoom:1;
+}
+.nav-sub-life li{
+	height:30px;
+}
+.nav-sub-life li a{
+	display:block;
+	height:100%;
+	color:#656565;
+	padding-left:32px;
+	line-height:30px;
+	background-image:url(http://img.alipay.net/pa/frame/v2/ico-nav-life.png?t=20101020);
+	background-repeat:no-repeat;
+}
+.nav-sub-life li a:hover{
+	background-color:#DAEFFE;
+	text-decoration:none;
+	color:#656565;
+}
+.nav-a-payment a{
+	background-position:0 -3px;
+}
+.nav-a-gathering a{
+	background-position:0 -52px;
+}
+.nav-a-guarantee a{
+	background-position:0 -102px;
+}
+.nav-a-charge a{
+	background-position:0 -151px;
+}
+.nav-a-commun a{
+	background-position:0 -199px;
+}
+.nav-a-bill a{
+	background-position:0 -247px;
+}
+.nav-a-cashgift a{
+	background-position:0 -295px;
+}
+.nav-a-rent a{
+	background-position:0 -345px;
+}
+.nav-a-aa a{
+	background-position:0 -393px;
+}
+.nav-a-more a{
+	background-position:0 -440px;
+}
+.nav-a-donation a{
+	background-position:0 -488px;
+}
+.nav-a-train a{
+	background-position:0 -728px;
+}
+
+/* 商户版ico */
+.nav-a-ma-batchpayment a{/* 批量付款 */ 
+	background-position:0 -536px;
+}
+.nav-a-ma-batchgathering a{/* 批量收款 */ 
+	background-position:0 -584px;
+}
+.nav-a-ma-batchrefund a{/* 批量退款 */
+	background-position: 0 -813px;
+}
+.nav-a-ma-escoregathering a{/* 担保交易收款 */ 
+	background-position:0 -102px;
+}
+.nav-a-ma-credit a{/* 信贷 */ 
+	background-position:0 -680px;
+}
+.nav-a-ma-codprod a{/* COD */
+	background-position: 0 -764px;
+}
+.nav-a-ma-codprod{
+	background-position: 0 -764px;
+}
+
+/* 主体内容 */ 
+#content{
+    position: relative;
+	border-top: 1px solid #fff;
+	z-index: 2;
+}
+.expand #main{
+	float: left;
+	width: 697px;
+}
+/* 切换position布局模式 */
+.expand #aside{
+	float: right;
+	position: static;
+	width: 235px;
+}
+/* 主栏 */
+#main{
+	width: 910px;
+}
+/* 侧边栏 */
+#aside{
+	position: absolute;
+	right: 0;
+	top: 0;
+	z-index: 333;
+    width: 30px;
+	margin-top: 12px;
+	overflow: hidden;
+}
+.aside-notice a,.aside-widget .tip-normal a:link,.aside-widget .tip-normal a:visited{
+	color: #4d4d4d;
+}
+.aside-notice a:hover,.aside-widget .tip-normal a:hover{
+	color: #07f;
+}
+/* 消息定制标题 */
+.aside-notice ul li.first a{
+	color: #0077FF;
+}
+.aside-main{
+	position: relative;
+	padding-top: 8px;
+	background: #fff url(http://img.alipay.net/pa/frame/v2/bg-aside.png) no-repeat 0 0;	
+	color: #4d4d4d;
+	border-bottom: 1px solid #fff;
+	width: 235px;
+	z-index: 9;
+	_font-family: Arial;
+}
+.aside-layer-bg{
+	position:absolute;
+	top:0;
+	left:0;
+	z-index:1;
+	width: 235px;
+	background: #f00;
+	height: 464px;
+	overflow:hidden;
+}
+/* 当侧边栏消息条目为0时 */
+.aside-notice-hide .aside-info{
+	height: 106px;
+}
+.aside-notice-hide .aside-notice{
+	height: 5px;
+}
+.aside-notice-hide .aside-mlist-container,.aside-notice-hide .aside-page{
+	display: none;
+}
+/* 侧边栏个人信息组件 开始 */
+.aside-info{
+	position: relative;
+	top: 36px;
+	height: 113px;
+	background: transparent url(http://img.alipay.net/pa/frame/v2/bg-aside.png) no-repeat 0 -72px;
+}
+.aside-pop{
+	white-space: nowrap;
+}
+/* 侧边栏的apop组件带的额外样式 */
+.aside-info dt{
+	position: absolute;
+	top: -32px;
+	width: 203px;
+	height: 21px;
+	line-height: 21px;
+	margin-left: 17px;
+	overflow:hidden;
+}
+/* 当前登录帐号 */
+.aside-info dd{
+	position: absolute;	
+}
+.aside-info dt.multi{
+	background: transparent url(http://img.alipay.net/pa/frame/v2/bg-aside.png) no-repeat -508px -77px;
+	cursor: pointer;
+}
+/**.aside-info dt.multi span{
+	display:block;
+	width:193px;
+	overflow:hidden;
+}**/
+.aside-portrait{
+	border: 1px solid #d4d3d1;
+	left: 17px;
+	width: 58px;
+	height: 58px;
+}
+/* 头像 */
+.aside-portrait img{
+	border: 2px solid #fff;
+	width:54px;
+	height:54px;
+	display: block;
+}
+/* 当前余额 */
+.aside-balance{
+	left: 85px;	
+}
+.aside-balance li{
+	float: left;	
+}
+.aside-available{
+	color: #b2b2b2;
+	width: 117px;
+}
+.aside-available span{
+	display: block;
+}
+.aside-amount em{
+	font-size: 18px;
+	font-family: "Tahoma","Courier New";
+}
+.aside-amount {
+	position: relative;
+	color: #000;
+	height: 26px;
+}
+
+.aside-balance .ico-coupon{
+	/*margin-top: 26px;
+	*margin-top: 24px;*/
+	float:none;
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	_bottom: 4px;
+	margin-right: -19px;
+}
+.aside-balance .ico-coupon span{
+	display: none;
+}
+/* 红包信息 */
+.aside-rank{
+	left: 85px;
+	top: 45px;
+}
+/* 不可用余额 */
+.aside-freeze{
+	left:85px;
+	top:40px;
+	color:#B2B2B2;
+}
+.aside-freeze a{
+	color: #999;
+}
+/* 钱包 */
+.aside-minipay {
+	left:85px;
+	top:40px;
+}
+.aside-minipay a{
+	color: #4D4D4D;
+}
+.aside-minipay em {
+	font-family: "Tahoma","Courier New";
+}
+/* 账号等级 */
+.aside-status{
+	left: 170px;
+	top: 0px;
+}
+.aside-status li{
+	margin-right: 4px;
+	float: left;
+}
+.aside-status span{
+	display: none;
+}
+/* 账号状态 */
+.aside-action{
+	top: 67px;
+	left: 8px;
+	height: 34px;
+}
+.aside-action .btn-icon{
+	margin-top: 6px;
+}
+.aside-action li{
+	display: inline;
+	margin-left: 2px;
+}
+.aside-action .katong{
+	margin: 0 3px 0 14px;
+	padding-right: 5px;
+	border-right: 1px solid #628aa4;
+}
+/* 侧边栏提醒消息组件 开始 */
+.aside-notice{
+	margin-top: 35px;
+	background: #fff url(http://img.alipay.net/pa/frame/v2/bg-aside.png) no-repeat 0 bottom;
+}
+.aside-notice .aside-mlist-container{
+	border-left: 5px solid #bcbcbc;
+	border-right: 5px solid #bcbcbc;
+	background: #eee;
+	overflow: hidden;
+	width: 225px;
+	position: relative;
+}
+.aside-notice .maxheight{
+	height: 280px;
+}
+.aside-notice ul{
+	float: left;
+	width: 222px;
+}
+.aside-notice li{
+	background: transparent url(http://img.alipay.net/pa/frame/v2/bg-aside.png) no-repeat -249px -321px;
+	height: 28px;
+	line-height: 28px;
+	width: 214px;
+	margin: 0 0 0 4px;
+	padding-left: 4px;
+	overflow: hidden;
+	position:relative;
+}
+.aside-notice li.hover{
+	background-position: -249px -289px;
+}
+.aside-notice li span{
+	padding: 1px 0 1px 20px;
+}
+.aside-notice li .ico-del-aside{
+	position: absolute;
+	cursor: pointer;
+	display: none;
+	overflow: hidden;
+	text-indent: -5000px;
+	width: 15px;
+	right: 0;
+	top: 6px;
+}
+.aside-notice li.hover .ico-del-aside{
+	display: block;	
+}
+.aside-page{
+	padding: 3px 0 8px 10px;
+	height: 25px;
+}
+.aside-page em{
+	font-weight: normal;
+	padding: 0 2px;
+	line-height: 25px;
+}
+.aside-page .action{
+	float: left;
+}
+.aside-page .link{
+	float: right;
+	margin-top: 2px;
+	margin-right: 9px;
+}
+/* 状态栏翻页 */
+/* 状态栏下拉切换账户 */
+.aside-accounts{
+	position: absolute; /* 节点占位导致IE6样式BUG */
+	z-index: 10; /* IE6 下需要z-index设在这里 */
+	top: 0;
+	left: 0;
+}
+.aside-accounts .popmenu{
+	position: absolute;
+	width: 218px;
+	top: 32px;
+	left: 9px;
+	height: 0;
+}
+.aside-accounts .popmenu ul{
+	border:1px solid #D7D7D7;
+}
+.aside-accounts .popmenu ul.maxheight{
+	height: 210px;
+	overflow: auto;
+}
+/* 触发ie haslayout */
+.aside-accounts .popmenu li.selected{
+	height: 21px;
+}
+/* 状态栏切换头像样式 */
+.aside-portraits{
+	background: transparent url(http://img.alipay.net/pa/frame/v2/bg-aside.png) no-repeat -501px 0;
+	width: 77px;
+	height: 68px;
+	position: absolute;
+	top: 40px;
+	left: 13px;
+	z-index: 9;
+}
+.aside-portraits img{
+	display: block;
+	border: none;
+}
+.aside-portraits a{
+	border: 3px solid #fff;
+	display: block;
+}
+.aside-portraits a:hover{
+ 	border-color: #feff48;
+	text-decoration: none;
+}
+.aside-portraits ul.hover a:hover{
+	border-color: #fff;
+}
+.aside-portraits ul.expand a:hover{
+	border-color: #feff48;
+}
+.aside-portraits li{
+	width: 60px;
+	height: 60px;
+	float: left;
+	margin: 3px 6px 3px 0;
+	text-align: center;
+}
+.aside-portraits li span{
+	background: #ebebeb;
+	display: block;
+	height: 42px;
+	padding-top: 12px;
+}
+.aside-portraits ul{
+	background: transparent url(http://img.alipay.net/pa/frame/v2/bg-aside.png) no-repeat right 0;
+	display: none;
+	height: 68px;
+	margin-left: 4px;
+	padding: 1px 0;
+	overflow: hidden;
+}
+.aside-portraits ul.hover{
+	display: block;	
+}
+.aside-portraits ul.expand{
+	display: block;
+	width: 206px;
+}
+.aside-portraits .ico-angleR,.aside-portraits .ico-angleL{
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 10px;
+	_width: 9px;
+	height: 68px;
+	display: block;
+	background: transparent url(http://img.alipay.net/pa/frame/v2/bg-aside.png) no-repeat -504px -195px;
+	cursor: pointer;
+}
+
+.aside-portraits .ico-angleL{
+	left: 199px;
+	background-position: -504px -115px;
+}
+/*  侧边栏登录组件 开始 */ 
+.aside iframe.aside-login{
+	width:100%;
+	border:none;
+	overflow:hidden;
+}
+.aside-login{
+	height: 206px;
+	background: #fff url(http://img.alipay.net/pa/frame/v2/bg-aside.png) no-repeat 0 -13px;
+	overflow: hidden;
+}
+.aside-login h2{
+	border-left: 5px solid #bcbcbc;
+	border-right: 5px solid #bcbcbc;
+	background: #eee;
+	height: 19px;
+	padding: 4px 0 0 10px;
+}
+.aside-login .fm-item label{
+	display:block;
+	line-height: 1;
+	padding:2px 0;
+}
+.aside-login .fm-item{
+	padding: 3px 0 0 17px;
+	color: #658aa4;
+	height: 46px;
+}
+.aside-login .fm-item-submit{
+	padding: 9px 0 6px 10px;
+	line-height: 30px;
+	height: 30px;
+}
+.aside-login .i-text{
+	width: 196px;
+}
+.aside-login .btn-login{
+	float: left;
+	margin-right: 3px;
+}
+.aside-reg{
+	background: #fff url(http://img.alipay.net/pa/frame/v2/bg-aside.png) no-repeat 0 -348px;
+	height: 37px;
+	padding: 2px 0 0 11px;
+	/* 加上这个删除多余的线条，暂时不清楚原因 */
+	border-bottom: 1px solid #fff;
+}
+/*  侧边栏登录组件 结束 */ 
+/* 运营活动 常见问题 */
+.aside-widget{
+	margin-top:5px;
+	padding-top: 0;
+	background: transparent url(http://img.alipay.net/pa/frame/v2/bg-aside.png) no-repeat -250px -108px;
+	_font-family: Arial;
+}
+.aside-widget .title{
+	background: #fff url(http://img.alipay.net/pa/frame/v2/bg-aside.png) no-repeat -250px 0;
+	margin: 0;
+	padding: 15px 0 5px 15px;
+	position: static;
+	line-height:12px;	
+}
+.aside-widget .title .link{
+	padding-top: 0;
+	*padding-top: 1px;
+}
+.aside-widget .title h2{
+	font-size: 12px;
+	font-weight: bold;
+	font-family: Simsun;
+}
+.aside-widget .tip-normal{
+	margin: 0;
+	background: #fff url(http://img.alipay.net/pa/frame/v2/bg-aside.png) no-repeat -250px -10px;
+	line-height: 1.5;
+	padding-left: 1em;
+}
+.aside-widget .aside-search{
+	height:36px;
+	background: #fff url(http://img.alipay.net/pa/frame/v2/bg-aside.png) no-repeat -250px -250px;
+}
+.aside-widget .com-search{
+/*	margin: 11px 0 10px 10px;*/
+	padding:5px 0 0 10px;
+	*padding-top: 3px;
+	margin:0;
+}
+.aside-widget .com-search .i-text{
+	width: 160px;
+}
+
+/* 状态栏收缩状态 */
+.aside-bar{
+	background: transparent url(http://img.alipay.net/pa/frame/v2/bg-aside.png) no-repeat -532px -111px;
+	width: 30px;
+	height: 276px;
+	cursor: pointer;
+	position :relative;
+	z-index: 10;
+	_font-family: Arial;
+}
+.aside-bar dt{
+	writing-mode: tb-rl;
+	width: 14px;
+	white-space: normal;
+	padding: 40px 0 0 9px;
+	font-size: 14px;
+	text-align: left;
+	height: 196px;
+	overflow: hidden;
+	color:#b3b3b3;
+}
+.aside-bar .ico a{
+	display: none;
+}
+.aside-bar .ico{
+	width: 16px;
+	height: 16px;
+	position: absolute;
+	bottom: 9px;
+	left: 8px;
+}
+/* 状态栏消息 
+.aside-notice-loading{
+	position: absolute;
+	top: 153px;
+	width: 100%;
+	text-align: center;
+	background-color:#000;
+	filter: alpha(opacity=30);
+	-moz-opacity: 0.30;
+	opacity: 0.30;
+	height: 250px;
+	background: #000 url(http://img.alipay.net/global/preloader.gif) no-repeat center 10px;
+}
+*/
+/* 底部 */ 
+#footer {
+	margin:40px 2px 0 2px;
+	text-align: center;
+	border-top: 1px solid #ececec;
+} 
+  .footer-link{
+		position:relative;
+		margin:0 -1px;
+		height:26px;
+		background:#ececec;
+		padding-left: 3px;
+		z-index : 1;
+  }/* 底部信息的常见链接UL */ 
+	.footer-link a{
+		color:#4d4d4d;
+	}
+	.footer-link a:hover{
+		/*color:#07f;*/
+		color:#4d4d4d;
+	}
+	.footer-link li {
+		display:inline;
+		border-left:solid 1px #4d4d4d;
+		line-height: 2.25;
+		padding: 0 2px 0 7px;
+  }
+	.footer-link .first, .footer-link .feedback{
+		position:absolute;
+		width: 70px;
+		height:24px;
+		border:none;
+		background:#ececec;
+		line-height: 25px;
+	}
+	.footer-link li.first{
+		top:1px;
+		left:-1px;
+		padding: 0 0 0 3px;
+	}/* 第一个链接的样式 */ 
+	.footer-link li.fn-border-none{
+		border: none;
+	}/* 第一个链接的样式 */ 
+	#footer .feedback{
+		right: -1px;
+		top: 1px;
+	}/* 意见反馈的li的样式 */ 
+	#footer .feedback a{
+		color:#07f;
+	}
+	#footer .hotline{
+		border-top: 1px solid #ececec;
+		padding-top: 12px;
+	}
+	#footer .copyright{
+		margin: 5px auto 17px auto;
+	}
+	/* 版权信息段落 */ 
+
+/* 内容分列布局 按百分比 */ 
+.l-cols-80,.l-cols-75,.l-cols-666,.l-cols-60,.l-cols-50,.l-cols-50-fix,.l-cols-55,.l-cols-45,.l-cols-40,
+.l-cols-333,.l-cols-25 {
+	float:left;
+	overflow:hidden;
+}
+/* 单列 4/5 */ 
+.l-cols-80 {
+	width:80%;
+}
+/* 单列 3/4 */ 
+.l-cols-75 {
+	width:75%;
+}
+/* 单列 66.6% */ 
+.l-cols-666 {
+	width:66.6%;
+}
+/* 单列 60% */ 
+.l-cols-60 {
+	width:60%;
+}
+/* 每列 1/2 */ 
+.l-cols-50 {
+	width:50%;
+}
+/* 单列 55% */ 
+.l-cols-55 {
+	width:55%;
+}
+/* 单列 45% */ 
+.l-cols-45 {
+	width:45%;
+}
+/* 单列 40% */ 
+.l-cols-40 {
+	width:40%;
+}
+/* 每列 1/3 */ 
+.l-cols-333 {
+	width:33.3%;
+}
+/* 每列 1/4 */ 
+.l-cols-25 {
+	width:25%;
+}
+/* 每列 1/2 解决ie无法整除的浮点数bug */ 
+.l-cols-50-fix {
+	width:50%;
+	*margin-right:-2px;
+}
+/* 黄金比例二栏布局 */
+.fn-golden-layout{
+	width:950px;
+	height:256px;
+	margin:20px auto 0;
+}
+.fn-golden-layout .container{
+	padding:20px 18px 0 30px;
+}
+.fn-golden-layout .container h3{
+	font-size:14px;
+}
+.fn-golden-layout h3 a{
+	font-size:12px;
+	font-weight:500;
+}
+.fn-golden-layout .container h4{
+	position:static;
+	background:none;
+	width:auto;
+	text-align:left;
+	top:auto;
+}
+.fn-golden-left,.fn-golden-right{
+	float:left;
+	height:252px;
+	*display:inline;
+	border:1px solid #D6D6D6;
+	background:#F4F4F4;
+	padding:2px;
+}
+.fn-golden-layout .current{
+	border:3px #FFAB33 solid;
+	background:#FDFFC5;
+	padding:0;
+}
+
+.fn-golden-left{
+	width:378px;
+	margin-right:6px;
+}
+.fn-golden-right{
+	width:554px;
+}
+/* 横排列表 */
+.fn-row{
+	
+}
+.fn-row li{
+	float:left;
+	display:inline;
+}
+
+/** end Layout */ 
+/**
+	Function
+	@name:功能
+	@desc:功能，可作为应用 用于样式特殊设置、统一设置
+*/
+/* 设置自清除浮动，.fn-clear可作为应用 */ 
+.fn-clear:after,#header:after,#content:after,#aside:after,#footer:after,.pop-container:after,.fm-item:after,.fm-title:after,.page:after,.title:after,.pop:after{
+  clear:both;
+  content:'.';
+  display:block;
+  height:0;
+  visibility:hidden;
+}
+
+.fn-clear,#header,#content,#aside,.pop-container,.fm-item,.fm-title,.page,.title,.pop{
+  zoom:1;
+}
+
+/* 设置隐藏 */ 
+body .fn-hide,body a.fn-hide{
+  display:none;
+}
+body .fn-hidden{
+	visibility: hidden;
+}
+.fn-nobg{
+	background: none;
+}
+/* 表单分区色 add by catge 091129 */
+.fn-bgc-blue{
+	background-color: #e5f5ff;
+}
+/* 设置显示，仅用于块元素 */ 
+body .fn-show {
+  display:block;
+}
+body .fn-left {
+  float:left;
+}
+body .fn-right {
+  float:right;
+}
+.fn-center{
+	position:relative;
+	left:50%;
+	float:left;
+}
+.fn-center .fn-center{
+    right:50%;
+    left:auto;
+}
+.fn-zoom{zoom:1;}
+/* 设置容器内内联元素垂直居中 */ 
+.fn-middle *{
+  vertical-align:middle;
+}
+.fn-top,.fn-top *{
+  vertical-align:top;
+}
+.fn-overflow{
+	overflow:hidden;
+}
+/* 常用边距设置 */
+.fn-mt5 {
+  margin-top:5px;
+}
+.fn-mt10 {
+  margin-top:10px;
+}
+.fn-mt20 {
+  margin-top:20px;
+}
+.fn-ml5 {
+  margin-left:5px;
+}
+.fn-ml12{
+  margin-left:12px;
+}
+.fn-ml15 {
+  margin-left:15px;
+}
+.fn-ml10 {
+  margin-left:10px;
+}
+.fn-ml20{margin-left:20px;}
+.fn-mr10{
+	margin-right:10px;
+}
+.fn-mr15{
+	margin-right:15px;
+}
+.fn-pl20{padding-left:20px;}
+.fn-load {position: absolute; left: 45%; top: 0px; width: 77px; height: 26px; background: url(http://img.alipay.net/global/pa-loading.gif) no-repeat;}
+/** end Function */
+
+/* 内容居左 */
+.ft-left{
+	text-align:left;
+}
+/* 内容居右 */
+.ft-right{
+	text-align:right;
+}
+/* 内容居中 */
+.ft-center{
+	text-align:center;
+}
+/* 相对定位 */
+.fn-pr{position:relative;}
+/* 绝对定位 */
+.fn-pa{position:absolute;}
+/* 正文字体 */
+.ft-text{
+	font-size:12px;
+	font-weight:normal;
+	color:#4D4D4D;
+}
+.ft-bold{
+	font-weight:bold;
+}
+.ft-normal{
+	font-weight:normal;
+}
+.ft-9px {
+  font-size:9px;
+}
+.ft-10px {
+  font-size:10px;
+}
+.ft-11px {
+  font-size:11px;
+}
+.ft-12px {
+  font-size:12px;
+}
+.ft-14px {
+  font-size:14px;
+}
+.ft-16px {
+  font-size:16px;
+}
+.ft-18px {
+  font-size:18px;
+}
+/* 文本颜色 */
+.ft-red{
+	color:red;
+}
+.ft-gray{
+	color:#A1A1A1;
+}
+.ft-blue{
+	color:#07F;
+}
+.ft-orange,a.ft-orange,a.ft-orange:hover{
+	color:#FE7815;
+}
+.ft-000{
+	color:#000;
+}
+.ft-fff{
+	color:#fff;
+}
+/* 链接间的短竖线 */
+.ft-bar{
+	color:#4A4D4A;
+	padding:0 5px 0 4px;
+	font-weight:500;
+}
+/* 文案不隐藏的inline-block */
+.ft-btn,.ft-btn span{
+  display:-moz-inline-box;
+  display:inline-block;
+  *zoom:1;
+  *display:inline;
+  vertical-align:middle;
+  line-height:110%;
+  text-align:left;
+  text-indent:0;
+  font-size:12px;
+}
+.ft-btn {
+	overflow:hidden;
+	text-align:center;
+	color:#666;
+}
+.ft-btn:hover {
+  color:#666;
+}
+.ft-btn span {
+	overflow:hidden;
+	text-indent:0;
+	vertical-align:baseline;
+	font-size:14px;
+}
+
+/* 文案隐藏的inline-block */
+.ft-ico {
+  display:-moz-inline-box;
+  display:inline-block;
+  *zoom:1;
+  *display:inline;
+  vertical-align:middle;
+  text-indent:-9999px;
+  overflow:hidden;
+  *text-indent:0;
+  font-size:0;
+  line-height:0;
+}
+/* 隔行换色 */
+.split td,
+.split th,
+li.split{
+	background:#fafcff;
+}
+
+/**
+	Components
+	@name:元件
+	@desc:可被嵌套到任何组件中，并可重新定义覆盖
+*/
+/* 元件 水平线 */
+.line {
+  height:1px;
+  margin:3px 0;
+  overflow:hidden;
+  background:#e1e1e1;
+}
+.line-title{
+	margin:4px 0 -5px;
+	_margin:2px 0 -8px;
+}
+.line-message{
+	margin:3px 0 -12px;
+}
+.line-title-lightbox{
+	margin:2px 0 -8px;
+}
+/* 带阴影的水平线 */
+.line-shadow{
+	height:4px;
+	overflow:hidden;
+	border-top:1px solid #d5d5d5;
+	background:url(http://img.alipay.net/pa/frame/v2/bg-nav.png) 0 -676px repeat-x;
+}
+
+/*--------------------------------------------*/
+/* 元件 Loading */
+.lightbox-loading{
+  width:36px;
+  height:36px;
+  border:none;
+  vertical-align:middle;
+  margin:0 5px;
+  background:url(http://img.alipay.net/pa/frame/v2/ico-loading.gif) no-repeat center center;
+}
+/* 元件 Form 里的Loading */
+.loading{
+  width:26px;
+  height:15px;
+  margin:0 5px;
+  background:url(http://img.alipay.net/pa/frame/v2/ico-form-loading.gif) no-repeat center center;
+}
+/* 元件 提交按钮旁边的loading */
+.loading-text{
+	color:#20B907;
+	padding-right:15px;
+	background:url(http://img.alipay.net/pa/frame/v2/ico-loading-text.gif) no-repeat right 80%;
+}
+
+/*
+	@name：组件 按钮
+	@base：btn
+	@example：<span class="btn btn-ok"><input type="button" class="btn-ok" value="按我" /></span>
+*/
+/* 按钮 基类.btn */
+.btn,.btn-icon{
+	display:-moz-inline-box;
+	display:inline-block;
+	*display:inline;
+	vertical-align:middle;
+	line-height:100%;
+	text-align:left;
+	font-size:12px;
+	text-decoration:none;
+	cursor:pointer;
+	zoom:1;
+}
+
+.btn,
+.btn input,
+.btn button,
+.btn span{
+	background-image:url(http://img.alipay.net/pa/frame/v2/bg-btn.png);
+	background-repeat:repeat-x;
+	font-family:Tahoma;
+	cursor:pointer;
+	outline:none;
+}
+.btn{
+	font-family:SimSun;
+}
+.btn:hover{
+   text-decoration:none;
+}
+.btn span,.btn input,.btn button{
+	border:none;
+	*border:0;
+	*overflow:visible;
+}
+body .btn input,
+body .btn button,
+body .btn span{
+	vertical-align:baseline;
+}
+.btn span,.btn:hover span{
+	display:block;
+	float:left;
+	text-decoration:none;
+}
+/* 自适应宽度大按钮 */
+	.btn-ok,
+	.btn-ok-hover,
+	.btn-cancel,
+	.btn-ok-disabled,.btn button{
+		font-size:14px;
+		padding:1px;
+	}
+
+	/* 大 确定 */
+	.btn-ok{
+		border:1px #D74C00 solid;
+		background-position:0 0;
+	}
+	/* 大 确定 悬停 */	
+	.btn-ok-hover,
+	.btn-ok:hover{
+		padding:1px;
+		border:1px #e55100 solid;
+	}
+	/*  大 确定 不可点 */ 
+	.btn-ok-disabled{
+		background-position:0 -103px;
+		border:1px #aaa solid;
+	}	
+	
+	/* 大 取消 */
+	.btn-cancel{
+		background-position:0 -103px;
+		border:1px #A8A8A8 solid;
+	}
+
+	/*  大按钮 input button 公共 */ 
+	.btn-ok button,.btn-ok input,.btn-ok span,
+	.btn-ok-hover button,.btn-ok-hover input,.btn-ok-hover span,
+	.btn-cancel button,.btn-cancel input,.btn-cancel span,
+	.btn-ok-disabled input,.btn-ok-disabled span{
+		padding:0 16px;
+		padding-bottom:3px;
+		*padding-bottom:0;
+		height:28px;
+		line-height:28px;
+		font-weight:bold;
+		color:#fff;
+	}
+	/* 大 确定按钮 */
+	.btn-ok button,
+	.btn-ok input,
+	.btn-ok span{
+		background-position:0 -70px;
+	}
+	/* 对a>span IE6重写 */
+	.btn-ok span,.btn-ok-hover span,.btn-ok-hover:hover span{
+		padding-bottom:3px;
+		_padding-bottom:1px;
+		_line-height:28px;
+		height:26px;
+	}
+
+	.btn-ok-hover,.btn-ok-hover:hover{
+		text-decoration:none;
+	}
+	/* 大 确定按钮 不可点状态 */
+	.btn-ok-disabled button,
+	.btn-ok-disabled input,
+	.btn-ok-disabled span{
+		background:#ccc none;
+		cursor:default;
+	}
+	/* 大 确定 悬停 */
+	.btn-ok-hover button,
+	.btn-ok-hover input,
+	.btn-ok-hover span,
+	.btn-ok:hover span{
+		background-position:0 -36px;
+	}
+
+	/* 大 取消按钮 */
+	.btn-cancel button,
+	.btn-cancel input,
+	.btn-cancel span{
+		background:#cccccc;
+		color:#FFFFFF;
+	}	
+
+/* 自适应宽度小按钮 */
+	.btn-ok-s,
+	.btn-cancel-s{
+		padding:1px;
+	}
+	/* 小 确定 */
+	.btn-ok-s{
+		border:1px #D74C00 solid;
+		background-position:0 -10px;
+	}
+	/* 小 取消 */
+	.btn-cancel-s,.btn-cancel-s{
+		background-position:0 -103px;
+		color:#5B5B5B;
+		border:1px #BCBCBC solid;
+		*margin-left:3px;
+	}
+	
+	/*  小按钮 input/button 公共 */ 
+	.btn-ok-s input,.btn-ok-s span,
+	.btn-cancel-s input,.btn-cancel-s span{
+		padding:0 9px;
+		height:20px;
+		line-height:20px;
+		color:#fff;
+	}
+	
+	/* 小 确定按钮 */
+	.btn-ok-s,.btn-ok-s{
+		background-position:0 -15px;
+	}
+
+	.btn-ok-s input,
+	.btn-ok-s span{
+		background-position:0 -75px;
+	}
+	.btn-ok-s:hover,.btn-ok-s-hover{
+		border:1px solid #E47000;
+	}
+	.btn-ok-s:hover input,.btn-ok-s:hover span,
+	.btn-ok-s-hover input,.btn-ok-s-hover span{
+		background-position:0 -518px;
+	}
+
+	/* 小 取消按钮 */
+	.btn-cancel-s input,
+	.btn-cancel-s span{
+		background-position:0 -312px;
+		color:#5B5B5B;
+	}
+	.btn-ok-s span,
+	.btn-cancel-s span{
+		line-height:21px;
+	}
+	
+	.btn-cancel-s:hover,.btn-cancel-s:hover{
+		border:1px solid #6E6E6E;
+	}
+	.btn-cancel-s:hover span,.btn-cancel-s:hover input,
+	.btn-cancel-s-hover span,.btn-cancel-s-hover input{
+		background-position:0 -110px;
+	}
+	
+	.btn-ok-hover,.btn-ok-hover:hover,
+	.btn-cancel:hover,.btn-ok-s:hover,.btn-ok-s-hover:hover,
+	.btn-cancel:hover,.btn-cancel-s:hover,.btn-cancel-s-hover:hover{
+		text-decoration:none;
+	}
+
+/* 
+	@name:常见2个、4个中文字符宽度按钮
+	@example:
+		<a class="btn-2cn">按钮</a>
+		<a class="btn-4cn">按钮按钮</a>
+*/	
+.btn-fixed,.btn-4cn,.btn-2cn{
+	display:-moz-inline-box;
+	display:inline-block;
+	*zoom:1;
+	*display:inline;
+	padding:0 0 2px 0;
+	*padding:0;
+	height:19px;
+	*height:21px;
+	line-height:19px;
+	*line-height:21px;
+	vertical-align:middle;
+	background:transparent url(http://img.alipay.net/pa/frame/v2/bg-btn.png) 0 -336px no-repeat;
+	border:none;
+	font-size:12px;
+	text-align:center;
+	color:#4d4d4d;
+	cursor:pointer;
+}
+	/* FF下没有line-height的解决 */
+	input.btn-fixed,input.btn-4cn,input.btn-2cn,
+	button.btn-fixed,button.btn-4cn,button.btn-2cn{
+		height:21px;
+	}
+	.btn-fixed:hover,
+	.btn-2cn:hover,
+	.btn-4cn:hover{
+		text-decoration: none;
+		color:#4D4D4D;
+	}
+	.btn-fixed{
+		width:45px;
+	}
+	.btn-4cn{
+		width:66px;
+		background-position:-53px -336px;
+	}
+	.btn-2cn{
+		width:36px;
+		background-position:-128px -336px;
+	}
+	/* 悬停状态 */
+	.btn-fixed-hover,.btn-fixed:hover{
+		background-position:0 -612px;
+	}
+	.btn-4cn-hover,.btn-4cn:hover{
+		background-position:-53px -612px;
+	}
+	.btn-2cn-hover,.btn-2cn:hover{
+		background-position:-128px -612px;
+	}
+    
+    /* btn-ok-mini use for Calendar Quickadd */
+    .btn-ok-mini {
+    	vertical-align:top;
+    }
+    .btn-ok-mini input{
+    	height:23px;
+    	line-height:22px;
+    }
+
+    .btn-ok-mini input{
+    	height:23px;
+    	line-height:22px;
+    }
+
+/* 
+	@name:普通圆角自适应宽度按钮
+	@example:
+		<a class="btn-normal"><span>小按钮</span></a>
+		
+		<span class="btn-normal"><input type="button" value="小按钮" /></span>
+		
+		<span class="btn-normal-s"><input type="button" value="更小按钮" /></span>
+		
+		<span class="btn-normal">
+			<span><input type="button" class="px14" value="下拉箭头按钮"/></span>
+		</span>
+*/	
+.btn-normal,
+.btn-normal-disabled,
+.btn-normal-s{
+	display:-moz-inline-box;
+	display:inline-block;
+	*zoom:1;
+	*display:inline;
+	vertical-align:middle;
+	line-height:100%;
+	text-align:left;
+	font-size:12px;
+}
+
+.btn-normal,
+.btn-normal button,
+.btn-normal input,
+.btn-normal-disabled input,
+.btn-normal-disabled button,
+.btn-normal-disabled,
+.btn-normal-s,
+.btn-normal-s input,
+.btn-normal-s button,
+.btn-normal span,
+.btn-normal-disabled span,
+.btn-normal-s span,
+.btn-select em,
+.btn-normal:hover,
+.btn-normal-hover{
+	background:transparent url(http://img.alipay.net/pa/frame/v2/bg-btn.png) no-repeat 0 -138px;
+	border:none;
+	*border:0;
+	cursor:pointer;
+}
+
+.btn-normal span,.btn-normal-disabled span,.btn-normal-s span,.btn-select em{
+	display:block;
+	float:left;
+}
+
+.btn-normal,
+.btn-normal-disabled,
+.btn-normal-s{
+	padding-left:2px;
+}
+.btn-normal input,.btn-normal button,.btn-normal span,
+.btn-normal-disabled input,.btn-normal-disabled button,.btn-normal-disabled span{
+	height:27px;
+	line-height:27px;
+	padding:0 7px;
+	border:none;
+	*border:0;
+	*overflow:visible;
+	font-weight:700;
+}
+/* 普通状态 */
+.btn-normal{
+	background-position:0 -138px;
+}
+
+.btn-normal,
+.btn-normal-s,
+.btn-normal:hover,
+.btn-normal-s:hover,
+.btn-normal-disabled:hover{
+	text-decoration:none;
+}
+.btn-normal input,
+.btn-normal button,
+.btn-normal span,.btn-normal span input{
+	background-position:right -225px;
+	color:#4D4D4D;
+}
+span input.font-normal,
+span button.font-normal,
+a span.font-normal{
+	font-weight:normal;
+}
+/* 下拉小箭头 */
+span.btn-normal span,span.btn-normal:hover span,span.btn-normal-hover span{
+	display:block;
+	overflow:hidden;
+	padding:0;
+	background:url(http://img.alipay.net/pa/frame/v2/ico-text.png) 95% -202px no-repeat;
+}
+span.btn-normal span input{
+	padding-right:20px;
+}
+/* 悬停 */
+.btn-normal:hover,
+.btn-normal-hover{
+	background-position:0 -690px;
+}
+.btn-normal:hover input,
+.btn-normal-hover input,
+.btn-normal:hover button,
+.btn-normal-hover button,
+.btn-normal:hover span,
+.btn-normal-hover span,span.btn-normal-hover span input{
+	background-position:right -721px;
+}
+/* 禁用状态 */
+.btn-normal-disabled,.btn-normal-disabled:hover{
+	background-position:0 -169px;
+	cursor:default;
+}
+.btn-normal-disabled input,
+.btn-normal-disabled button,
+.btn-normal-disabled span{
+	background-position:right -256px;
+	color:#999;
+	cursor:default;
+}
+
+
+/* 小圆角自适应 */
+.btn-normal-s input,.btn-normal-s button,.btn-normal-s span{
+	height:21px;
+	line-height:21px;
+	border:none;
+	*border:0;
+	*overflow:visible;
+	font-family:Simsun;
+	padding-right:6px;
+}
+
+.btn-normal-s{
+	background-position:0 -200px;
+	padding-left:6px;
+}
+
+.btn-normal-s span,
+.btn-normal-s input,
+.btn-normal-s button{
+	background-position:right -287px;
+	color:#4d4d4d;/* 7-31 加 */
+}
+
+/* 悬停 */
+.btn-normal-s:hover,
+.btn-normal-s-hover{
+	background-position:0 -638px;
+}
+.btn-normal-s:hover span,
+.btn-normal-s-hover span,
+.btn-normal-s:hover input,
+.btn-normal-s-hover input,
+.btn-normal-s:hover button,
+.btn-normal-s-hover button{
+	background-position:right -664px;
+}
+
+
+/* 
+	@name:带下拉箭头的小按钮
+	@desc:
+	@example:
+		<a class="btn-normal-s btn-dropdown-s"><span><em class="ico-expand-arrow drop-down">添加</em></span></a>
+*/
+.btn-dropdown-s{
+	
+}
+.btn-dropdown-s span{
+	padding-right:1px;
+}
+.btn-dropdown-s .ico-expand-arrow{
+	background-position:right -120px;
+}
+.btn-dropdown-s em {
+	color:#646464;
+	font-weight:500;
+	padding-right:13px;
+}
+
+/* 下拉选择 按钮 */
+.btn-select em{
+	font-style:normal;
+	padding:0 21px 0 9px;
+	background-position:right -387px;
+}
+.btn-normal em{
+	font-weight:700;
+	background-position:right -384px;
+}
+/* 开关按钮状态 */
+.btn-on,.btn-off,.btn-icon{
+	border:none;
+	background:url('http://img.alipay.net/pa/frame/v2/bg-btn.png') no-repeat;
+}
+.btn-icon:hover{	
+	text-decoration:none;
+}
+.btn-on,.btn-off{
+	width:88px;
+	height:22px;
+	line-height:22px;
+	border:none;
+	outline:none;
+	*padding-top:1px;
+	color:#4d4d4d;
+}
+
+.btn-on{
+	background-position:0 -389px;
+	padding-right:4px;
+	text-align:right;
+}
+.btn-off{
+	background-position:0 -363px;
+	text-align:left;
+	padding-left:4px;
+}
+
+.btn-icon span{
+	visibility:hidden;
+}
+/* 登录 按钮 */
+.btn-login{
+	width:54px;
+	height:27px;
+	background-position:0 -580px;
+	overflow: hidden;
+	text-indent: -5000px;
+	display: block;
+}
+/* 注册 按钮 */
+.btn-reg{
+	background: transparent url(http://img.alipay.net/pa/frame/v2/bg-aside.png) no-repeat -250px -358px;
+	width: 215px;
+	height: 28px;
+}
+/* 提现 按钮 */
+.btn-withdraw{
+	width: 52px;
+	height: 27px;
+	background-position: -2px -450px;
+}
+.btn-withdraw-disabled,.btn-withdraw-disabled:hover{
+	width: 52px;
+	height: 27px;
+	background-position: -2px -483px;
+	cursor: default;
+}
+.btn-withdraw:hover{
+	background-position: -2px -416px;
+}
+/* 充值 按钮 */
+.btn-addfunds{
+	width:75px;
+	height: 27px;
+	background-position: -61px -450px;
+}
+.btn-addfunds-disabled,.btn-addfunds-disabled:hover{
+	width:75px;
+	height: 27px;
+	background-position: -61px -483px;
+	cursor: default;
+}
+.btn-addfunds:hover{
+	background-position: -61px -416px;
+}
+/* 生活助手 按钮 
+.btn-lifehelper{
+	width:123px;
+	height:27px;
+	background-position:0 -483px;
+}
+.btn-lifehelper:hover{
+	background-position:0 -516px;
+}
+*/
+
+/* 14px字体大小 */
+.px14,span.px14 input,span.px14 button{
+	font-size:14px;
+}
+
+
+/* 元件 缴费项目ICO remove to global */
+.ico-payment-water,.ico-payment-electric,.ico-payment-gas,.ico-payment-phone,.ico-payment-mobile,.ico-payment-broadband{
+	height:41px;
+	background:url(http://img.alipay.net/pa/frame/v2/ico-payment-item.png) no-repeat;
+}
+/* 缴水费 */ 
+.ico-payment-water{
+	width:84px;
+}
+/* 缴电费 */ 
+.ico-payment-electric{
+	width:84px;
+	background-position:0px -44px;
+}
+/* 缴燃气费 */ 
+.ico-payment-gas{
+	width:101px;
+	background-position:0 -89px;
+}
+/* 通讯费 */
+.ico-payment-phone{
+	width:101px;
+	background-position:0 -221px;
+}
+/* 宽带 */
+.ico-payment-broadband{
+	width:127px;
+	background-position:0 -133px;
+}
+/* 手机费 */
+.ico-payment-mobile{
+	width:101px;
+	background-position:0 -177px;
+}
+
+/* 卡通 网银 图标 */
+.ico-katong-text,.ico-online-bank-text{
+	display:inline-block;
+	width:30px;
+	height:15px;
+	overflow:hidden;
+	cursor:default;
+	vertical-align:middle;
+	background:url(http://img.alipay.net/pa/global/fund/ico-fund.png) no-repeat;
+}
+.ico-katong-text span,.ico-online-bank-text span{
+	display:none;
+}
+.ico-katong-text{
+	background-position:-470px 0px;
+}
+.ico-online-bank-text{
+	background-position:-470px -36px;
+}
+
+/* 
+	@name:链接
+	@desc:
+ */
+.ico-expand-arrow,
+.ico-plus,
+.ico-xbox-close,
+.xbox-close-link{/* xbox-close-link 将来被ico-xbox-close代替 */
+	background-image:url(http://img.alipay.net/pa/frame/v2/ico-text.png);
+	background-repeat:no-repeat;
+	font-family:Tahoma;
+}
+a.xbox-close-link:hover,
+a.ico-xbox-close:hover,
+a.pop-close-link:hover,
+a.ico-expand-arrow:hover{
+	text-decoration:none;
+}
+
+/* 右下箭头 */
+.ico-expand-arrow{
+	background-position:right -119px;
+	*background-position:right -121px;
+	_background-position:right -119px;
+	padding-right:15px;
+}
+a.ico-expand-arrow:hover{
+	background-position:right -149px;
+	*background-position:right -151px;
+	_background-position:right -149px;
+}
+/* 1px 纠结 右下箭头 
+.ico-expand-arrow{
+	background-position:right -119px;
+	*background-position:right -121px;
+	padding-right:15px;
+}
+a.ico-expand-arrow:hover{
+	background-position:right -149px;
+	*background-position:right -151px;
+}*/
+
+.xbox-close-link em,.pop-close-link em{
+	display:none;
+}
+.ico-expand-arrow em{
+	visibility:hidden;
+	padding:0 2px 0 2px;
+}
+/* tab处的下箭头 */
+.tab .ico-expand-arrow,
+.tab .ico-expand-arrow:hover{
+	background-position:right -119px;
+	padding-right:2px;
+	*margin:0 -8px;
+	*background-position:50% -119px;
+	*width:12px;
+	cursor:pointer;
+	outline:none;
+}
+/* 添加前面的+号 */
+.ico-plus{
+	background-position:0 -262px;
+	/* 1px纠结 *background-position:0 -264px; */
+	*background-position:0 -264px;
+	_background-position:0 -262px;
+	background-repeat: no-repeat;
+	padding-left:8px;
+}
+/* xbox关闭链接 */
+.xbox-close-link,.pop-close-link{
+	display:block;
+	height:19px;
+	position:absolute;
+	right:0;
+	top:0;
+	font:500 12px/19px Arial;
+}
+
+.xbox-close-link,.ico-xbox-close{
+	padding-left:14px;
+	background-position:-2px -73px;
+}
+/*
+	增大点击区域，
+	by 李白(1211)
+*/
+.pop-close-link{
+	padding:10px;
+	height: 1px;
+	top: 12px;
+	background:url(http://img.alipay.net/pa/frame/v2/ico-pa.png) 3px -155px no-repeat;
+}
+
+/** end Components */
+/*
+	Controls
+	@name:组件
+	@desc:可将元件或组件嵌套在组件中，并通过组件做特殊化设置
+*/
+/* 组件 翻页 */ 
+.page{
+  height:27px;
+  line-height:27px;
+  border-bottom:2px solid #e2e2e2;
+  overflow:hidden;
+  background:#f8f8f8;
+  text-align:right;
+}
+.page-action {
+	float:left;
+	padding-left:15px;
+}
+.page-action input{
+	vertical-align:middle;
+	margin-right:5px;
+	*margin:0 0 0 -3px;
+}
+.page-link {
+  margin-right:10px;
+}
+.page-link a,.page-link em {
+	font-size:12px;
+	margin:0 1px;
+}
+.page-link a{
+	background-image:url(http://img.alipay.net/pa/frame/v2/ico-text.png);
+	background-repeat:no-repeat;
+	*padding-top:2px;
+}
+.page-home{
+	background-position:0 4px;
+	padding-left:17px;
+}
+.page-previous{
+	padding-left:8px;
+	background-position:0 -53px;
+}
+.page-next{
+	padding-right:8px;
+	background-position:right -34px;
+}
+.page-end{
+	padding-right:15px;
+	background-position:right -15px;
+}
+
+/*
+	@name：组件 信息提示
+		
+	@class：
+			message	(默认是带info图标的)
+					m-forbidden
+					m-success
+					m-error
+					m-help
+					m-tips
+					m-warn
+					m-cue
+					
+					状态栏提示信息样式
+					m-alert
+					m-person
+					m-flag
+					m-alarm
+					m-gift
+					
+			notice
+					n-success		(大勾按钮)
+					n-success-m		(中勾按钮)
+					n-error
+					n-warn
+					n-forbidden
+					n-explain	完成后的说明
+					n-other		完成后的其他操作链接
+					n-extra		完成后的额外任务
+			
+			tip
+					tip-angel
+					tip-faq
+					tip-voice
+					tip-formside
+
+*/
+/*--------------------------------------------*/ 
+/* 组件 信息提示 */
+.message{
+	padding:0 0 0 24px;
+	line-height:15px;
+	overflow:hidden;
+	margin-top:20px;
+	background:url('http://img.alipay.net/pa/frame/v2/ico-pa.png') -27px -509px no-repeat;
+	*background-position:-27px -510px;
+	_background-position:-27px -509px;
+	color:#4D4D4D;
+	*zoom:1;
+/*	1px纠结
+	overflow:hidden;
+	line-height:normal;
+	*line-height:16px;
+	padding:0 0 0 24px;
+	margin-top:20px;
+	background:url('http://img.alipay.net/pa/frame/v2/ico-pa.png') -27px -510px no-repeat;
+	color:#4D4D4D; */
+}
+.message em {
+  float:left;
+}
+.message li,.message p {
+  margin-left:2px;
+  padding-bottom:5px;
+  line-height:16px;
+	vertical-align:baseline;
+  color:#666;
+}
+.message ul, .message ol {
+  clear:left;
+  padding-top:7px;
+}
+.message ul li{
+  list-style:disc inside;
+}
+.message ol li{
+  list-style:decimal inside;
+}
+
+	.m-cue{
+	}
+	.m-cue em {
+		color:#000;
+	}
+
+.m-forbidden,.m-success,.m-error,.m-help,.m-tips,.m-warn,.m-cue,.m-s001,.m-s002,.m-s003,.m-s004,.m-s005,.m-s006,.m-s007,.m-s008,.m-s009,.m-s010,.m-s011,.m-s012,.m-s013,.m-s014,.m-s015,.m-s016,.m-s017,.m-s018,.m-s019,.m-s020,.m-s021,.m-s022,.m-s023,.m-s024,.m-s025,.m-s026,.m-s027,.m-s028,.m-s029,.m-s030,.m-s031,.m-s032{
+	padding-left:20px;
+	background:url(http://img.alipay.net/pa/frame/v2/ico-pa.png) 0 0 no-repeat;
+}
+/* 1px纠结兼容IE FF */
+.m-forbidden,.m-success,.m-error,.m-help,.m-tips,.m-warn,.m-cue{
+	*line-height:1.53;
+	_line-height:1.231;
+	*margin-bottom:-2px;
+	_margin-bottom:0;
+	zoom:1;
+}
+.m-forbidden{
+	background-position:-200px -360px;
+	color:red;
+}
+.m-success{
+	background-position:-164px -389px;
+}
+.m-error{
+	color:#FF5243;
+	background-position:-128px -419px;
+}
+
+/* 1px 纠结
+.m-success{
+	background-position:-164px -389px;
+	*background-position:-164px -390px;
+	_padding-top:1px;
+} 
+.m-error{
+	color:#f00;
+	background-position:-128px -419px;
+	*background-position:-128px -420px;
+	_padding-top:1px;
+}
+*/
+.m-help{
+	background-position:-94px -450px;
+}
+.m-tips {
+	background-position:3px -963px;
+	height:18px;
+	line-height:18px;
+}
+.m-warn{
+	background-position:-59px -480px;
+}
+.m-cue{
+	background-position:-27px -509px;
+}
+/* 1px纠结
+.m-cue{
+	background-position:-27px -510px;
+}
+*/
+/* 状态栏场景消息ICON样式 */
+
+/* 邮箱 新邮件 */
+.m-s001 {background-position: -225px 3px;} 
+
+/* 邮箱 新邮件受限 */
+.m-s002 {background-position: -225px -22px;}
+
+/* 密码 key */
+.m-s003 {background-position: -225px -48px;}
+ 
+/* 密码 key受限 */
+.m-s004 {background-position: -225px -71px;} 
+
+/* 提醒 闹钟 */
+.m-s005 {background-position: -225px -96px;}
+ 
+ /* 提醒 闹钟受限  */
+.m-s006 {background-position: -225px -120px;}
+
+/* 代扣 时间 */
+.m-s007{background-position: -225px -142px;}
+
+/* 代扣 时间受限 */
+.m-s008 {background-position: -225px -166px;}
+
+/* 手机 */
+.m-s009 {background-position: -222px -192px;}
+
+/* 手机受限 */
+.m-s010 {background-position: -222px -216px;}
+ 
+/* 评价 红心 */
+.m-s011 {background-position: -225px -239px;}
+
+/* 评价 红心受限 */
+.m-s012 {background-position: -225px -263px;}
+
+/* 卡通 银行卡 */
+.m-s013 {background-position: -225px -286px;}
+
+/* 卡通 银行卡受限 */
+.m-s014 {background-position: -225px -310px;}
+ 
+/* 交易 绿旗 */
+.m-s015 {background-position: -225px -585px;}
+
+/* 失败 红旗  */
+.m-s016 {background-position: -225px -608px;}
+
+/* 退款 已读邮件 */
+.m-s017 {background-position: -225px -632px;}
+
+/* 退款 已读邮件受限 */
+.m-s018 {background-position: -225px -656px;}
+
+/* 警告 资金冻结 感叹号 */
+.m-s019 {background-position: -225px -680px;}
+
+/* 手机新  */
+.m-s020 {background-position: 2px -598px;}
+
+/* 手机新受限  */
+.m-s021 {background-position: 2px -618px;}
+
+/* 手机新未开通  */
+.m-s022 {background-position: 2px -658px;}
+
+/* 认证 身份证  */
+.m-s023 {background-position: 0 -689px;}
+
+/* 认证 身份证受限  */
+.m-s024 {background-position: 0 -709px;}
+
+/* 认证 未认证 */
+.m-s025 {background-position: 0 -748px;}
+
+/* 证书 安全证书 */
+.m-s026 {background-position: 0 -781px;}
+
+/* 证书 安全证书受限 */
+.m-s027 {background-position: 0 -801px;}
+
+/* 证书 安全证书未开通 */
+.m-s028 {background-position: 0 -839px;}
+
+/* 消费额 */
+.m-s029 {background-position: 0 -864px;}
+
+/* 消费额 受限 */
+.m-s030 {background-position: 0 -886px;}
+
+/* 联通密保 */
+.m-s031 {background-position: 0 -914px;}
+
+/* 联通密保受限 */
+.m-s032 {background-position: 0 -936px;}
+
+/* 通告组件 */
+.notice{
+	/*margin-top:20px;*/
+	margin-top:13px;
+	background:#F1FFD6 url('http://img.alipay.net/pa/frame/v2/ico-pa.png') -694px -103px no-repeat;
+	color:#333333;
+	min-height:50px;
+	_height:50px;
+	line-height:150%;
+	border:1px #EAEAD7 solid;
+	padding-left:102px;
+	padding-right:52px;
+}
+/* 此处覆盖 .message 样式 */
+.notice div.message {
+  padding:0;
+  margin:0 0 10px 0;
+  color:#333333;
+  background:none;
+}
+.notice div.message em {
+  margin-bottom:5px;
+  color:#333;
+}
+/* 通告标题 */
+.notice h2,.notice h3{
+	  font-size:14px;
+	  color:#000;
+}
+/* 完成的说明 */
+.notice .n-explain{
+	color:#808080;
+	margin-top:5px;
+	padding:0;
+}
+.notice ul.n-explain li{
+	padding-left:1em;
+	background:transparent url('http://img.alipay.net/pa/frame/v2/ico-pa.png') 4px -534px no-repeat;
+}
+.notice .n-explain .list{
+	margin: 6px 0 0 12px;
+}
+/* 完成后还可以进行的其他操作 */
+.notice .n-other{
+	margin-top:6px;
+	color:#333333;
+}
+/*  中完成 其他操作 */ 
+.n-success-m .n-other,.n-error-m .n-other,.n-warn-m .n-other,.n-cue-m .n-other,.n-help-m .n-other,.n-forbidden-m .n-other{
+	margin-top:6px;
+}
+/*  大完成 其他操作 里的链接 */ 
+.n-success .n-other a,.n-error .n-other a,.n-warn .n-other a,.n-cue .n-other a,.n-help .n-other a,.n-forbidden .n-other a{
+	font-size:14px;
+	padding:0 5px;
+}
+/* 大 提示 公共 */
+.n-success,.n-error,.n-warn,.n-cue,.n-help,.n-forbidden,.n-loading{
+		padding-top:20px;
+		padding-bottom:16px;
+}
+/* 中 提示 公共 */
+.n-success-m,.n-error-m,.n-warn-m,.n-cue-m,.n-help-m,.n-forbidden-m,.n-loading-m{
+		padding-top:9px;
+		padding-bottom:11px;
+}
+/* 中 提示 公共 单行标题样式 */
+.n-success-m-line,.n-error-m-line,.n-warn-m-line,.n-cue-m-line,.n-help-m-line,.n-forbidden-m-line,.n-loading-m-line{
+		min-height:37px;
+		height:37px;
+		padding: 16px 52px 0 102px;
+}
+/* 大 提示 标题 公共 */
+.n-success h2,.n-error h2,.n-warn h2,.n-cue h2,.n-help h2,.n-forbidden h2,.n-loading h2{
+		padding-top:7px;
+}
+/* 中 提示 标题 公共 */
+.n-success-m h2,.n-error-m h2,.n-warn-m h2,.n-cue-m h2,.n-help-m h2,.n-forbidden-m h2,.n-loading-m h2{
+		padding-top:6px;
+}
+/* 大 提示 标题 公共 */
+.n-success h3,.n-error h3,.n-warn h3,.n-cue h3,.n-help h3,.n-forbidden h3,.n-loading h3{
+		padding-top:7px;
+}
+/* 中 提示 标题 公共 */
+.n-success-m h3,.n-error-m h3,.n-warn-m h3,.n-cue-m h3,.n-help-m h3,.n-forbidden-m h3,.n-loading-m h3{
+		padding-top:2px;
+		padding-bottom:1px;
+}
+
+	/* 成功提示 公共 */
+	.n-success,.n-success-m{
+		border:1px #E5E5CD solid;
+		background-color:#EDFFCC;
+	}
+	.n-success{
+		background-position:-877px 18px;
+	}
+	.n-success-m,.n-success-m-line{
+	  	background-position:-878px -530px;
+	}
+	/* 出错提示 公共 */
+	.n-error,.n-error-m,.n-forbidden,.n-forbidden-m{
+		border:1px #F6C8B5 solid;
+		background-color:#FCEEE8;
+	}
+	.n-error{
+		background-position:-510px -224px;
+	}
+	.n-error-m{
+		background-position:-510px -768px;
+	}
+	/* 警告提示 公共 */
+	.n-warn,.n-warn-m{
+		border:1px #E7C560 solid;
+		background-color:#FFFF9D;
+	}
+	.n-warn{
+		background-position:-602px -163px;
+	}
+	.n-warn-m{
+		background-position:-602px -710px;
+		margin-top:12px;
+	}
+	/* 信息提示 公共 */
+	.n-cue,.n-cue-m,.n-loading,.n-loading-m{
+		border:1px #CBD7E3 solid;
+		background-color:#E5F5FF;
+	}
+	.n-cue{
+		background-position:-694px -103px;
+	}
+	.n-cue-m{
+		background-position:-694px -648px;
+	}
+	/* 帮助信息 */
+	.n-help{
+		background-position:-418px -284px;
+	}
+	.n-help-m{
+		background-position:-418px -828px;
+	}
+	/* 禁止信息 */
+	.n-forbidden{
+		background-position:-786px -44px;
+	}
+	.n-forbidden-m{
+		background-position:-786px -588px;
+	}
+	/* 加载中 */
+	.n-loading{
+		background-position:-228px -1000px;
+	}
+	.n-loading-m{
+		background-position:-323px -920px;	
+	}
+	.n-error-xbox,.n-cue-xbox,.n-forbidden-xbox,.n-warn-xbox{
+		border: none;
+		background-color: transparent;
+		background-position:-560px -780px;
+		padding-left: 52px;
+		padding-right: 0;
+		margin-top:5px;
+	}
+	.n-cue-xbox{
+		background-position:-744px -660px;	
+	}
+	.n-forbidden-xbox{
+		background-position:-836px -600px;	
+	}
+	.n-warn-xbox{
+		background-position: -652px -720px;	
+	}
+	/* 
+		@name:检测中
+		@example:
+			<div class="notice n-checking">
+				<h3>正在检测您的账户安全等级，请稍候...</h3>
+				<p class="n-explain">由于网络关系可能会花费半分钟的时间，请耐心等待。</p>
+			</div>
+	*/
+	.n-checking {
+		border: 1px #E7C560 solid;
+		background: #FFFF9D url(http://img.alipay.net/pa/frame/v2/ico-loading.gif) no-repeat 33px 12px;
+		padding: 12px 12px 12px 77px;
+		min-height: inherit;
+		_height: 38px;
+	}
+	.n-checking h3 {
+		font-size: 12px;
+		font-weight: 500;
+	}
+	.n-checking .n-explain {
+		margin: 0;
+	}
+	
+	/*
+		@name：组件 附加任务
+		@desc：操作完成后，附带的操作
+	*/
+	.n-extra{
+		padding:20px 56px;
+		border:1px #EAEAD8 solid;
+		background:#F7F7F7;
+		margin-top:5px;
+	}
+	.n-extra-btn{
+		margin-top:20px;
+	}
+	.n-extra-btn .btn{
+		vertical-align:baseline;
+		margin-right:5px;
+	}
+		.n-extra h3{
+			margin-bottom:10px;
+			font-size:14px;
+			color:#333333;
+		}
+		.n-extra .n-extra-contacts{
+			margin:-8px 0 0;
+		}
+		.n-extra .n-extra-contacts li{
+			padding-top:6px;
+			height:20px;
+		}
+		.n-extra .n-extra-contacts li input{
+			vertical-align:middle;
+			margin-right:2px;
+		}
+		
+
+.n-rbox{
+	border:1px solid #E8E8D2;
+	background:#fff url(http://img.alipay.net/pa/frame/v2/bg-rbox.png) 0 bottom repeat-x;
+	-moz-border-radius:2px;
+	border-radius:2px;
+}
+.n-rbox:hover,.n-rbox-hover{
+	border:1px solid #FFAE12;
+	background:#FFFF9D;
+}
+
+/* 1px圆角 */
+.round{
+	position:relative;
+}
+.rnd-lt,.rnd-rt,.rnd-lb,.rnd-rb{
+	display:block;
+	position:absolute;
+	z-index:1;
+	width:1px;
+	height:1px;
+	overflow:hidden;
+	line-height:1px;
+	background:#fff;
+}
+.rnd-lt{
+	top:-1px;
+	left:-1px;
+}
+.rnd-rt{
+	top:-1px;
+	right:-1px;
+}
+.rnd-lb{
+	bottom:-1px;
+	left:-1px;
+}
+.rnd-rb{
+	bottom:-1px;
+	right:-1px;
+}
+
+/*
+	@name：浮动提示
+	@desc：带上箭头的提示 
+	@example:
+		<div class="tip-angle t-warn">
+			<div class="tip-angle-container">
+				<div class="tip-angle-content">
+					提示信息文案。
+				</div>
+			</div>
+		</div>
+
+*/
+.tip-angle{
+	padding-top:9px;
+	position:relative;
+	line-height:16px;
+	font-size:12px;
+	clear:both;
+	overflow:hidden;
+	*zoom:1;
+}
+.tip-angle .tip-angle-container-bg-image-none .tip-angle-content{
+	background-image: none;
+}
+.tip-angle-container-bg-image-none .m-cue{
+	margin-left: -20px;
+}
+.tip-angle-container-bg-image-none li{
+	margin-top: 5px;
+	line-height: 1.4;
+}
+
+.fm-item .tip-angle{
+	margin-top:-2px;
+	*margin-top:-3px;
+	_margin-left: 3px; /* add by catge 091111 */
+}
+.tip-angle-container{
+	float:left;
+	border:1px #A5B9CE solid;
+	background:#E5F5FF;
+}
+
+	.t-cue .tip-angle-container{
+		border:1px #A5B9CE solid;
+		background:#E5F5FF;
+	}
+	.t-error .tip-angle-container,.t-forbidden .tip-angle-container{
+		border:1px #F6C8B5 solid;
+		background:#FCEEE8;
+	}
+	.t-error .tip-angle-container em{
+		font-weight:500;
+		color:#FF0000;
+	}
+
+	.t-warn .tip-angle-container{
+		border:1px #E7C560 solid;
+		background:#FFFF8D;
+	}
+
+.tip-angle-content{
+	margin-top:0;
+	padding:3px 2px 4px;
+  	*padding:4px 2px 2px;
+  	_padding:3px 2px;
+	padding-left:24px;
+	line-height:normal;
+	*line-height:15px;
+	_line-height:normal;
+	border:1px #FFF solid;
+	background:url(http://img.alipay.net/pa/frame/v2/ico-pa.png) -23px -506px no-repeat;
+	*overflow:hidden;
+}
+.t-cue .tip-angle-content{
+		background-position:-23px -506px;
+	}
+	.t-error .tip-angle-content{
+		background-position:-124px -416px;
+	}
+	.t-warn .tip-angle-content{
+		background-position:-55px -476px;
+	}
+	.t-forbidden .tip-angle-content{
+		background-position:-196px -356px;
+	}
+/* 1px纠结
+	.t-cue .tip-angle-content{
+		background-position:-23px -505px;
+	}
+	.t-error .tip-angle-content{
+		background-position:-124px -415px;
+	}
+	.t-warn .tip-angle-content{
+		background-position:-55px -475px;
+	}
+	.t-forbidden .tip-angle-content{
+		background-position:-196px -356px;
+	}
+*/
+/* 尖角提示在td中差一个像素唉 */
+td .tip-angle-content{
+	padding:4px 3px 1px 24px;
+	}	
+/* 箭头图标  */
+.tip-angle-arrow{
+	width:15px;
+	height:10px;
+	line-height:9px;
+	position:absolute;
+	top:1px;
+	left:10%;
+	margin:0 auto;
+	background:url('http://img.alipay.net/pa/frame/v2/ico-pa.png') 0 -100px no-repeat;
+	font-size:1px;
+	z-index:10;
+}
+.t-cue .tip-angle-arrow{
+	background-position:0 -100px; 
+}
+.t-error .tip-angle-arrow{
+	background-position:0 -120px;
+}
+
+.t-warn .tip-angle-arrow{
+	background-position:0px -140px;
+}
+/*
+	@name：组件 问答式
+	@desc：问答式 
+*/
+.tip-faq{
+	padding:17px 20px 7px 20px;
+	margin-top:40px;
+	line-height:150%;
+	background:none;
+	border-top:1px solid #f2f2f2;
+}
+.tip-faq h3{
+	font-size:14px;
+	color:#000;
+}
+.tip-faq dl{
+	margin-top:10px;
+}
+.tip-faq dd,.tip-faq dt{
+
+	padding-left:1em;
+}
+.tip-faq dt{
+	font-weight:bold;
+	background:transparent url('http://img.alipay.net/pa/frame/v2/ico-pa.png') 4px -534px no-repeat;
+}
+.tip-faq dd{
+	margin-bottom:14px;
+}
+
+.tip-faq-link{
+	margin:20px 0;
+} 
+/*
+	@name：组件 语音提示
+	@desc：语音提示 
+*/
+.tip-voice{
+	width:532px;
+	overflow:hidden;
+	background:#F9F9F9;
+	border:1px #D4D4D4 solid;
+	_font-family:Simsun;
+}
+.tip-voice-container{
+	padding:10px;
+	border:1px #FFFFFF solid;
+	line-height:normal;
+}
+.tip-voice-container .tip-voice-normal{
+	padding:0 0 3px 0;
+	line-height:17px;
+}
+.tip-voice-container .tip-voice-normal p{
+
+}
+.tip-voice .tip-voice-success{
+	margin:0;
+	line-height:16px;
+	padding:0 30px 10px 24px;
+	background:url('http://img.alipay.net/pa/frame/v2/ico-pa.png') no-repeat;
+	background-position:-164px -390px;
+	color:#4D4D4D;
+}
+.tip-voice .btn-normal{
+	*margin-right:4px;
+}
+/*
+	@name：组件 标题下单行 提示
+	@desc：标题下单行 提示 
+*/
+.tip-line{
+	border:1px solid #E1E1A2;
+	padding:3px 8px;
+	background:#ffc;
+	margin-top:6px;
+}
+.tip-line em{
+	color:#f60;
+}
+/*
+	@name：组件 数字序号列表
+	@desc：前带数字序号列表
+*/
+.tip-num{
+	
+}
+.tip-num li{
+	line-height:20px;
+	list-style:decimal inside;
+}
+
+.tip-note{
+	border:1px #CBD7E3 solid;
+	background:#E5F5FF;
+	padding:20px;
+	margin-top:20px;
+}
+.tip-note h3{
+	font-size:14px;
+}
+.tip-note h3 em{
+	font-size:16px;
+	font-weight:600;
+	font-family:Simsun;
+}
+.tip-note h3 a{
+	font-size:12px;
+	font-weight:500;
+}
+.tip-note h4{
+	color:#4D4D4D;
+	font-weight:500;
+	margin:10px 0;
+}
+
+.tip-order{
+	margin:20px 0;
+}
+.tip-order fieldset{
+	border:1px #d7d7d7 solid;
+	padding:11px 20px 20px;
+}
+.tip-order fieldset legend{
+	font-size:12px;
+	font-weight:700;
+	color:#000;
+}
+.tip-order .tip-normal{
+	*margin-top:15px;
+	margin-left:0px;
+}
+.tip-order h4{
+	font-size:14px;
+	line-height:30px;
+}
+/* 
+	@name:警告提示类 
+	@example:
+		<div class="tip-warn">
+			<h3>浏览器检测结果：</h3>
+			您的电脑目前安装的浏览器是：遨游Maxthon 2.5.1.4751 <a href="#">遨游已有新版本，点此下载更新</a>
+		</div>
+*/
+.tip-warn{
+	padding:12px;
+	border:1px solid #E7C560;
+	background:#FFFF9D;
+}
+
+/* 
+	@name:列表类 
+	@example:
+		<ul class="list list-square">
+			<li>内容<li>
+		</ul>
+*/
+.list li{
+   background: transparent url(http://img.alipay.net/pa/frame/v2/ico-text.png) no-repeat 0 -478px;
+   line-height: 1.5;
+   padding-left: 1em;
+}
+
+/*
+.list-angle li{
+   background-position: 0 -645px;
+}
+.list-square li{
+   background-position: 0 -610px;   
+}
+.list-bar li{
+   padding-left: 6px;
+   background-position: 0 -688px;
+   *background-position: 0 -690px;
+   _background-position: 0 -688px;
+}
+
+*/
+
+/*
+	@name：组件 搜索框
+	@desc：搜索框 带搜索按钮
+*/
+.com-search,.c-editable{
+	margin:10px 0;
+}
+.com-search .date{
+	float:left;
+}
+.com-search .keyword{
+	float:right;
+}
+/* 搜索框的高度要小些的哈 */
+.com-search .i-text,.c-editable .i-text{
+	height:15px;
+	line-height:16px;
+	padding:2px;
+}
+.com-search .fm-focus .i-text,.c-editable .fm-focus .i-text{
+	*padding:1px;
+}
+/* 1px 纠结 
+.com-search input.btn-fixed{
+	vertical-align:baseline;
+}
+ */
+.c-editable input,.com-search input{
+	margin:1px 3px 0 0;
+}
+.c-editable .i-text,.com-search .i-text{
+	width:150px;
+	vertical-align:middle;
+}
+/*
+	@name：组件 下拉菜单
+	@desc：点击弹出的下拉菜单
+	@base：popmenu(普通链接)
+	@extend：popmenu-select (圆角按钮)
+	@e.g.:
+
+*/
+/* 下拉菜单第三版 */
+.popmenu{
+	position: relative;
+	z-index:998;
+	height:18px;
+	float:left;
+	width:120px;
+	line-height:normal;
+}
+.popmenu dl{
+	position: absolute;
+	zoom:1;
+	width:100%;
+	overflow:hidden;
+	background:#fff;
+}
+.popmenu dt{
+	padding:3px 0 3px 6px;
+	border:1px #C5C5C5 solid;
+	background:#fff;
+}
+.popmenu dd{
+	height:20px;
+	line-height:20px;
+	background-color:#fff;
+}
+.popmenu li,.popmenu li a{
+    *zoom:1;
+}
+.popmenu dd a,.popmenu dd label,
+.popmenu li a
+{
+	display:block;
+	height:100%;
+	margin:0 5px;
+}
+.popmenu dd.selected a{
+	background:url(http://img.alipay.net/pa/frame/v2/ico-text.png) 0 -175px no-repeat;
+	line-height:21px;
+	white-space:nowrap;
+}
+.popmenu ul{
+	border:1px #C5C5C5 solid;
+	background:#fff;
+}
+.popmenu li.selected a{
+	background:url(http://img.alipay.net/pa/frame/v2/ico-text.png) 2px -175px no-repeat;
+	word-break:no-wrap;
+}
+.popmenu li.selected a:hover{
+	background-color:#DFEDFD;
+}
+.popmenu dd{
+	border:1px #C5C5C5 solid;
+	border-width:0 1px;
+}
+.popmenu dd.first{
+	border-top:1px #C5C5C5 solid;
+}
+.popmenu dd.split{
+	border-bottom:1px #D2D2D2 solid;
+}
+.popmenu dd.action{
+	border:1px #C5C5C5 solid;
+	white-space:nowrap;
+	margin-top:0;
+}
+
+.popmenu dd a,.popmenu dd label,
+.popmenu li a{
+	margin:0;
+	padding:0 5px;
+}
+.popmenu dd.last{
+	border-bottom:1px #C5C5C5 solid;
+}
+.popmenu dd a:link,.popmenu dd a:visited,
+.popmenu li a:link,.popmenu li a:visited
+{
+	background-color:#fff;
+}
+.popmenu dd a:hover,.popmenu li a:hover
+{
+	background-color:#DFEDFD;
+	text-decoration:none;
+}
+.popmenu .com-search{
+	margin:0;
+}
+/* 带日期选择的 */
+.popmenu-calender{
+	width:235px;
+	line-height:18px;
+}
+
+.popmenu-calender dl{
+	overflow:visible;
+}
+.popmenu-calender dt{
+	padding:2px 0 2px 5px;
+}
+.popmenu-calender dt input{
+	vertical-align:middle;
+}
+.popmenu-calender a.ico-expand-arrow{
+	*background-position:right -118px
+	zoom:1;
+}
+.popmenu-calender a.ico-expand-arrow:hover{
+	*background-position:right -148px
+	zoom:1;
+}
+.popmenu-calender .btn-normal-s,.popmenu-calender .btn-normal-s input{
+	_vertical-align:-3px;
+}
+/* 如果可选，则加dl标记上添加optional  */
+.popmenu .optional dd a,.popmenu ul.optional a{
+	padding-left:14px;
+}
+.popmenu .optional li{
+	line-height:21px;
+}
+.popmenu .optional li a{
+	height:auto;
+}
+/* 右边有缺口的菜单 */
+.popmenu-blank-r dl,.popmenu-blank-r ul{
+	background:transparent;
+}
+.popmenu-blank-r ul{
+	border-top:none;
+}
+.popmenu-blank-r dt,.popmenu-title{
+	height:22px;
+	position:relative;
+	top:1px;
+	*top:0;
+	border:none;
+	padding:0;
+	width:auto;
+	float:left;
+	background:#fff;
+}
+.popmenu-blank-r dt a,.popmenu-title a{
+	display:inline-block;
+	height:21px;
+	line-height:20px;
+	padding:0 15px 0 5px;
+	border:1px #C5C5C5 solid;
+	border-bottom:none;
+	background-position:right -118px;
+}
+.popmenu-blank-r dt a:hover,.popmenu-title a:hover{
+	background-position:right -148px;
+}
+.popmenu-blank-r dd,.popmenu-blank-r li,.popmenu-tab-title{
+	clear:both;
+	background:#fff;
+}
+.popmenu-blank-r dd.first,.popmenu-tab-title{
+	border-top:1px #C5C5C5 solid;
+	margin-top:-1px;
+}
+.popmenu-tab-title{
+	line-height:24px;
+	padding:0 5px;
+	background:#fff;
+	border:1px solid #C5C5C5;
+}
+.popmenu-blank-r .popmenu-tab-title{
+	overflow:hidden;
+}
+/* 折叠 只需 popmenu popmenu-calender popmenu-fold */
+.popmenu-fold dl{
+	
+}
+.popmenu-fold .popmenu-tab-title{
+	display:none;
+}
+.popmenu-fold dl{
+	background:transparent;
+}
+.popmenu-fold dt{
+	border:none;
+	padding:3px 0 3px 6px;
+	background:none;
+}
+.popmenu-fold dd,.popmenu-fold ul{
+	display:none;
+}
+
+/* -------------------------------------------- */ 
+/* 
+	@name: 组件 浮出提示小表单 
+	@example:
+	
+	<div class="pop-form">
+		<div class="container">
+			通讯费缴费通讯费缴费
+		</div>
+		<div class="angle"></div>
+	</div>
+*/
+
+.pop-form{
+	position:absolute;
+	z-index:999;
+}
+.pop-form .container{
+	background:#f5f5f5;
+	border:2px #797979 solid;
+	padding:10px;
+	_padding:10px 3px 10px 10px;
+	overflow:hidden;
+}
+.pop-form .title{
+	margin:0;
+}
+.pop-form .title h3{
+	font-size:14px;
+	line-height:21px;
+}
+.pop-form .angle{
+	width:12px;
+	height:14px;
+	line-height:14px;
+	background:url(http://img.alipay.net/pa/frame/v2/ico-pa.png) -40px -100px no-repeat;
+	margin:-2px 0 0 20px;
+}
+.pop-form .angle-top{
+	background-position:-57px -100px;
+	margin:-12px 0 0 0;
+	z-index:9999;
+	top:0;
+	right:15px;
+	position:absolute;
+}
+.pop-form .angle-br{
+	background-position:-74px -100px;
+	margin:-2px 0 0;
+}
+.pop-form .pop-close-link{
+	right:10px;
+	top:10px;
+}
+/*
+	@name:浮出提示 
+	@example:
+	
+	<div class="pop-info">
+		<div class="container">
+		内容内容内容内容内容内容内容
+		</div>
+		<div class="angle"></div>
+	</div>
+
+*/
+.pop-info {
+	background: #a8a8a8;
+	position: absolute;
+	top: 100px;
+	left: 60px;
+	z-index:900;
+}
+
+.pop-info .pop-close-link{
+	top:5px;
+	right:5px;
+}
+.pop-info .title h3{
+	font-size:14px;
+	line-height:21px;
+}
+.pop-info .container{
+	*display: inline-block;
+	height: 100%;
+	position: relative;
+	top: -2px;
+	left: -2px;
+	border: 1px #dea90c solid;
+	background: #ffff8d;
+	padding:5px;
+}
+.pop-info .container{
+	_display: inline;
+}
+.pop-info .angle{
+	position:absolute;
+	width:10px;
+	height:11px;
+	line-height:11px;
+	background:url(http://img.alipay.net/pa/frame/v2/ico-pa.png) -40px -128px no-repeat;
+	top:100%;
+	margin-top:-3px;
+	display:block;
+	left:20px;
+	z-index:888;
+}
+.pop-info .angle-top{
+	background:url(http://img.alipay.net/pa/frame/v2/ico-pa.png) -40px -140px no-repeat;
+	top:-9px;
+	_top:-10px;
+}
+.pop-info td,.pop-info th{
+	white-space:nowrap;
+}
+.p-cue{
+	
+}
+.p-cue .container{
+	border:1px solid #CBD7E3;
+	background: #E5F5FF;
+}
+/* 带阴影的pop-info */
+.p-normal{
+	background:#E3E3E3;
+}
+.p-normal .container{
+	left:-1px;
+	_top:1px;
+	padding:10px;
+	border:1px #A5A5A5 solid;
+	background:#F8F8F8;
+}
+.p-normal .angle{
+	font-size:1px;
+	background-position:-57px -126px;
+}
+.p-normal .pop-close-link{
+	display:block;
+	width:20px;
+	height:20px;
+	padding:0;
+	position:absolute;
+	right:0;
+	top:0;
+	background-position:0 -155px;
+}
+.p-normal .title{
+	margin:0;
+}
+.pop-close-link span{
+	visibility:hidden;
+}
+
+/*
+	@name：组件 确认操作弹窗
+	@desc：是否进行某操作，如是否删除
+*/
+.pop-confirm{
+	width:255px;
+	border:3px solid #FF7272;
+	background:#F5F5F5;
+	position:absolute;
+	z-index:100;
+}
+	.pop-confirm .pop-container{
+		padding:7px 12px;
+	}
+	.pop-confirm .pop-message{
+		padding-right:30px;
+		_display:inline-block;
+	}
+	.pop-confirm .btn{
+		margin-left:3px;	
+	}
+
+.pop,.pop-square{
+	position:absolute;
+	left:0;
+	top:0;
+	
+}
+.pop-square{
+	width:170px;
+}
+
+.pop .pop-container,.pop-square .pop-container{
+	position:relative;
+	z-index:2;
+	padding:5px;
+	border:1px solid #CBD7E3;
+	background:#E5F5FF;
+}
+.pop-square-cue .pop-container{
+}
+
+.pop-square-warn .pop-container{
+	border:1px solid #DEA90C;
+	background:#FFFF8D;
+}
+
+
+.pop .pop-shadow,.pop-square .pop-shadow{
+	position:absolute;
+	top:2px;
+	left:2px;
+	background:#666;
+	display:block;
+	width:100%;
+	height:100%;
+	z-index:1;
+	opacity:0.5;
+	filter:alpha(Opacity=70,Style=0);
+	-moz-opacity:0.5;
+}
+/*  类别下拉选择控件 */
+.pop-select{
+	position:absolute;
+	left:100px;
+	top:150px;
+	width:300px;
+	border:1px solid #D2D2D2;
+}
+.pop-select .pop-content{
+	position:relative;
+	zoom:1;
+}
+.pop-select dl{
+	margin:0 10px 8px;
+}
+.pop-select dt{
+    padding: 8px 0 0;
+}
+.pop-select dd{
+	border-bottom:1px solid #E3E3E3;
+}
+.pop-select dl a{
+    padding: 3px 10px 3px 0;
+    outline: none;
+    text-decoration: none;
+    white-space:nowrap;
+	*display:inline-block;
+	*padding:1px 10px 0 0;
+	line-height:20px;
+}
+.pop-select .selected,
+.pop-select .selected:hover{
+	padding-left:14px;
+	background-image:url(http://img.alipay.net/pa/frame/v2/ico-text.png);
+	background-repeat:no-repeat;
+}
+.pop-select .selected{
+	background-position:0 -230px;
+	*background-position:0 -231px;
+}
+.pop-select .selected:hover{
+	background-position:0 -174px;
+	*background-position:0 -175px;
+}
+.pop-select .pop-select-title{
+	position:absolute;
+	top:-22px;
+	left:-1px;
+	background:#fff;
+	border:1px solid #D2D2D2;
+	border-bottom:none;
+}
+.pop-select  .pop-select-title-link{
+	display:block;
+	padding: 3px 15px 3px 10px;
+	line-height:15px;
+	background-position:right -206px;
+}
+.pop-select  a.pop-select-title-link:hover{
+	background-position:right -146px;
+	*background-position:right -148px;
+}
+
+.pop-select .pop-select-action{
+	border:none;
+}
+
+/** end Controls */ 
+/*--------------------------------------------*/
+/* 设置为显示文字的inline-block，.fn-iblock-text可作为应用 */ 
+.fn-iblock-text,a.a-button,a.a-button span,a.a-icon-text,span.b-operate,span.b-form,.step li span,span.m-message,.fm-item span.t-explain,.com-popmenu{
+  display:-moz-inline-box;
+  display:inline-block;
+  *zoom:1;
+  *display:inline;
+  vertical-align:middle;
+  line-height:100%;
+  text-align:left;
+  font-size:12px;
+}
+/* 设置为不显示文字的inline-block，.fn-iblock可作为应用 */ 
+.fn-iblock,a.a-icon,.head-search-history,#search-control a,.loading,.loading-s {
+  display:-moz-inline-box;
+  display:inline-block;
+  *zoom:1;
+  *display:inline;
+  vertical-align:middle;
+  text-indent:-9999px;
+  overflow:hidden;
+  *text-indent:0;
+  font-size:0;
+  line-height:0;
+}
+/** 
+	Table
+	@name:表格
+ */
+/* 组件---主栏---表格---数据 */ 
+.tb-normal,.tb-data{
+	margin-top:20px;
+	border-bottom:1px solid #d7d7d7;
+}
+.tb-normal table,.tb-data table{
+  width:100%;
+}
+.tb-normal caption,.tb-data caption{
+	padding-bottom:10px;
+	font:700 14px/17px Simsun;
+	color:#333;
+}
+/* 圆角表头 */
+.tb-normal thead th,.tb-data thead th{
+  height:23px;
+  text-indent:10px;
+  text-align:left;
+  background:#fff url(http://img.alipay.net/pa/frame/v2/bg-table.png) 0 -92px repeat-x;
+  border:1px solid #d7d7d7;
+  border-width:0 0 0 1px;
+ }
+.tb-normal thead th{
+	  background:#fff url(http://img.alipay.net/pa/frame/v2/bg-table.png) 0 -382px repeat-x;
+}
+.tb-normal thead th.first,.tb-data thead th.first{
+  background-position:0 0;
+  border:none;
+}
+.tb-normal thead th.last,.tb-data thead th.last{
+  background-position:right -46px;
+}
+.tb-normal thead th.last,tb-data thead th.last{
+  background-position:right -46px;
+}
+.tb-normal thead th span{
+	display:block;
+	height:100%;
+	line-height:23px;
+	margin-left:1px;
+	background:url(http://img.alipay.net/pa/frame/v2/bg-table.png) right -382px repeat-x;
+}
+/* 功能介绍型表格 渐变颜色 */ 
+.tb-normal thead th.first span{
+	margin-left:2px;
+}
+.tb-normal thead th.last span{
+	background-position:0 -382px;
+	margin-right:2px;
+}
+.tb-normal tbody th,.tb-normal td,.tb-data tbody th,.tb-data td{ 
+  /* 1px纠结 padding:7px 10px; */
+  padding:10px;
+  border:1px solid #d7d7d7;
+  border-width:1px 0 0 1px;
+  word-break:break-all;
+}
+.tb-normal tbody th,.tb-data tbody th{
+  font-weight:700;
+}
+.tb-normal td.last,.tb-data td.last{
+  border:1px solid #d7d7d7;
+  border-width:1px 1px 0 1px;
+}
+
+/* 排序表格 */
+.tb-data thead th a,.tb-data thead th a:hover{
+	padding-right:15px;
+	text-decoration:none;
+	vertical-align:baseline;
+	background-image:url(http://img.alipay.net/pa/frame/v2/bg-table.png);
+	background-position:right -3px;
+	*background-position:right -5px;
+	_background-position:right -3px;
+	background-repeat:no-repeat;
+	color:#4d4d4d;
+}
+
+.tb-data thead th a.a-order-des,.tb-data thead th a.a-order-des:visited{
+	background-position:right -345px;
+}
+.tb-data thead th a.a-order-as,.tb-data thead th a.a-order-as:visited{
+	background-position:right -299px;
+}
+
+.tb-data .info{
+	width:50%;
+}
+.tb-data td.first{
+	width:95px;
+}
+.tb-data td.date{
+	width:60px;
+}
+.tb-data td.item{
+	width:45px;
+}
+.tb-data .amount{
+	width:50px;
+}
+.tb-data td.action{
+	width:95px;
+}
+.tb-data td.status{
+	width:75px;
+}
+
+/* -------------------------------------------- */ 
+/* 组件　详细表格 */
+tr.selected{
+	background-color:#FEFFC5;
+}
+tr.selected-risks{
+	background-color:#FFFF9E;
+}
+/* 单行选中 */
+tr.hover{
+	background-color:#f6f9fe;
+}
+/* 单行划过 */
+.tb-detail{
+	width:570px;
+	margin:20px auto;
+}
+.tb-detail table{
+	width:100%;
+	border:1px #B4B4B4 solid;
+	border-width:1px 0 0 1px;
+}
+.xbox .tb-detail{
+	border:1px #B4B4B4 solid;
+	border-width:1px 0 0 1px;
+}
+.xbox .tb-detail table{
+	width:auto;
+	border:none;
+}
+/* ie iframe下有BUG,需要重新定义样式 */
+.tb-detail .tb-bg{
+	background:#B4B4B4;
+	color:#ffffff;
+}
+.tb-detail .tb-bg h3{
+	color:#ffffff;
+}
+.tb-detail .tb-bg td{
+	padding:4px 0;
+	text-indent:6px;
+}
+.tb-detail caption{
+	height:29px;
+	line-height:29px;
+	padding-left:4px;
+	background:url('http://img.alipay.net/pa/frame/v2/bg-table.png') 0 -138px no-repeat;
+}
+.tb-detail caption span{
+	display:block;
+	text-indent:4px;
+	font-size:14px;
+	font-weight:700;
+	color:#000000;
+	background:url('http://img.alipay.net/pa/frame/v2/bg-table.png') right -190px no-repeat;
+}
+.tb-detail tbody th,.tb-detail thead th{
+	width: 170px;
+	padding:5px 0;
+	text-align:right;
+}
+.tb-detail tbody.half th{
+	width: 50%;
+}
+.tb-detail tbody td,.tb-detail thead td{
+	padding:5px;
+	word-break:break-all;
+}
+/* 详细表格 确认操作按钮 */
+.tb-detail .action{
+	text-align:right;
+	padding:3px 5px 3px;
+	background:#EBEBEC;
+	border:1px #B5B5B5 solid;
+	border-top:none;
+}
+/* 表格新规则 */
+.tb-detail .tip-angle{
+	padding-top:30px;
+}
+.tb-detail .action-left{
+	padding:6px 0;
+}
+/* 详细表格 下一步操作 按钮 */
+.tb-detail .next{
+	padding:8px 0;
+	*zoom: 1;
+}
+.tb-detail .next .btn{
+	margin-left: 170px;
+}
+.tb-detail .half .btn{
+	margin-left: 50%;
+}
+.tb-detail td,.tb-detail th{
+	border:1px #C7C7C7 solid;
+	border-width:0 1px 1px 0;
+	font-size:14px;
+}
+.tb-detail-ttl{
+	padding:5px 10px;
+	background:#EDEDF0;
+	border:1px #B5B5B5 solid;
+	border-bottom:none;
+	zoom:1;
+}
+.tb-detail-ttl h3{
+	color:#404040;
+	font-size:14px;
+}
+.tb-detail .tb-detail-tip,
+.tb-detail .tb-detail-sub{
+	text-align:left;
+	padding:5px 10px;
+}
+.tb-detail .tb-detail-sub{
+	background:#EDEDF0;
+}
+.tb-detail .tb-detail-tip{
+	background:#FFFFEE;
+}
+
+/* ------------------------------ */ 
+/* 子表格 */
+.tb-inner{
+	position:relative;
+	}
+.tb-inner table{
+	border-right:1px solid #C8C8C8;
+	border-bottom:1px solid #C8C8C8;
+	background:#fff;
+}
+.tb-inner caption{
+	font-weight:bold;
+	padding:3px 0 5px 2px;
+}
+.tb-inner td,.tb-inner thead th{
+	border-top:1px solid #C8C8C8;
+	border-left:1px solid #C8C8C8;
+	padding:3px 5px;
+	/* font-family:Simsun; */
+}
+.tb-inner thead th{
+	font-size:12px;
+	background:#E9E9E9;
+	vertical-align:baseline;
+}
+.tb-inner .action{
+	position:absolute;
+	top:3px;
+	right:0;
+}
+.xbox .tb-inner{
+	border:1px #B4B4B4 solid;
+	border-width:0 1px 1px 0;
+}
+.xbox .tb-inner table{
+	width:100%;
+	border:none;
+}
+/* ie iframe下有BUG,需要重新定义样式 */
+
+/* ------------------------------ */ 
+/* 子表格覆盖样式 */
+.tb-detail .tb-inner table{
+	border:none;
+	padding:0;
+}
+.tb-detail .tb-inner thead th{
+	border-width:0 0 1px;
+	text-align:left;
+	width:auto;
+}
+.tb-detail .tb-inner td{
+	border:none;
+}
+.tb-detail .tb-inner thead th{
+	border-top-width:0;
+	border-left-width:0;
+}
+.tb-detail td.tb-detail-reset{
+	padding:0;
+	vertical-align:top;
+}
+.tb-detail .tb-inner th,.tb-detail .tb-inner td{
+	border-bottom:1px solid #C8C8C8;
+}
+/* ------------------------------ */ 
+/* 状态 当前行 */
+.tb-detail tr.current td,.tb-detail tr.current th{
+	background:#FDFF48;
+}
+/* 将最后一行设为无边线 */
+.tb-detail tr.last td{
+	border-bottom:none;
+}
+/* 简单表格 */
+.tb-simple {
+	width: 100%;
+	margin-top: 15px;
+}
+.tb-simple table{
+	width:100%;
+}
+.tb-simple th,.tb-simple td {
+	padding:5px;
+	/* _font-family:Simsun; */
+}
+.tb-simple thead th {
+	background: #EBEBEB;
+	border-bottom: 1px #D2D2D2 solid;
+}
+.tb-simple tbody td {
+	border-bottom: 1px #EDEDED solid;
+}
+.tb-simple tfoot td {
+	border-top: 1px #D2D2D2 solid;
+	text-align: right;
+	color: #A6A6A6;
+}
+
+/* ----------------表格公共样式------------------------ */
+/* 单元格顶部对齐 */
+.tb-valign-top{
+	vertical-align:top;
+}
+/** end Table */ 
+/* -------------------------------------------- */ 
+/* 组件---主栏---步骤 */ 
+.step {
+	width:100%;
+	/* 1px纠结 margin-top:10px; */
+	margin-bottom:20px;
+	overflow:hidden;
+}
+.step li,.step li span{
+	background-image:url('http://img.alipay.net/pa/frame/v2/bg-step.png');
+	background-repeat:no-repeat;
+	text-align:center;
+}
+/* 默认步骤 四步 */ 
+.step li{
+  width:207px;
+  height:29px;
+  line-height:29px;
+  padding-left:20px;
+  float:left;
+  overflow:hidden;
+  text-align:center;
+  position:relative;
+  background-position:right -108px;
+  border:none;
+  color:#605F5F;
+}
+.step li span {
+  width:100%;
+  font-size:14px;
+  /* font-family:Simsun; */ 
+  line-height:27px;
+  line-height:29px;
+  display:block;
+  position:absolute;
+  left:-17px;
+  background-position:0 -108px;
+  text-indent:17px;
+  
+}
+/* 完成的步骤 */
+.step li.finished{
+	background-position:-4px -108px;
+}
+.step li.finished span{
+	left:0;
+	background-position:0 -108px;	
+}
+/* 当前步骤 */
+.step li.current {
+  height:29px;
+  background-position:right -51px;
+  border:none;
+}
+.step li.current span {
+  background-position:17px -51px;
+  font-weight:bold;
+  color:#AB4400;
+}
+/* 最后的步骤 */
+.step li.last{
+	border-right:1px #DBDBDB solid;
+	background-position:right -406px;
+}
+.step li.last span{
+	background:none;
+	left:0;
+}
+.step li.last-current{
+  height:29px;
+  background-position:right -166px;
+  border:none;
+  border-right: 1px solid #ffab0a;
+}
+
+.step li.last-current span {
+  background-position:15px -166px;
+  font-weight:bold;
+  color:#AB4400;
+  left:-15px;
+}
+.step-two li{
+  width: 434px;
+}
+.step-three li{
+	width:283px;
+}
+/* 调整单任务步骤总体宽度 add by catge 091111 */
+.single-task .step li{
+	width:217px;
+}
+.single-task .step-three li{
+	width:296px;
+}
+.single-task .step-two li{
+	width:454px;
+}
+.single-task .step-five li{
+	width:169px;
+}
+.step-five li{
+	width:161px;
+}
+
+.step-one{
+	background:#fff;
+	padding:1px;
+	border:1px solid #dbdbdb;
+	display:block;
+	height:81px;
+	position:relative;
+	overflow:visible;
+	font-size:14px;
+}
+.step-one h2{
+	position:absolute;
+	left:-1px;
+	top:-1px;
+	height:85px;
+	width:210px;
+	background:transparent url('http://img.alipay.net/pa/frame/v2/bg-step.png') repeat-x 0 -210px;
+	color:#ab4400;
+	text-align: center;
+	line-height:85px;
+}
+.step-one .step-explain{
+	background:transparent url('http://img.alipay.net/pa/frame/v2/bg-step.png') repeat-x 0 -310px;
+	height:81px;
+	line-height:81px;
+	padding-left:230px;
+}
+/* -------------------------------------------- */ 
+/* 1px 纠结 元件---表单提示 
+.tip-form{
+	margin-top:20px;
+}
+.tip-form .message{
+	margin-top:0;
+}
+*/ 
+/* -------------------------------------------- */ 
+/* 元件---普通提示 */ 
+.tip-normal{
+	margin-top:6px;
+/*	background:#E5F5FF;
+	border:1px #A8BCD0 solid;
+	overflow:hidden;	
+	*/
+	margin-left:24px;
+}
+.tip-normal ul{
+	margin-bottom:-3px;
+/*	padding:0 0 7px 8px;
+	border:1px #F4FAFF solid;*/
+}
+.tip-normal li{
+	margin-bottom: 3px;
+	padding-left: 1em;
+	background: transparent url(http://img.alipay.net/pa/frame/v2/ico-pa.png) no-repeat 3px -534px;
+	*zoom:1;
+}
+.tip-normal a:link,.tip-normal a:visited{
+	color:#3D86E5;
+}
+.tip-normal a:hover,.tip-normal a:active{
+	color:#07f;
+}
+/* 普通带点提示 */
+.tip-list li{	
+	padding-left: 1em;
+	background: transparent url(http://img.alipay.net/pa/frame/v2/ico-pa.png) no-repeat 3px -534px;
+}
+
+/* -------------------------------------------- */ 
+/* 元件---页面顶部操作完成提示 */ 
+.tip-done{
+	position:absolute;
+	z-index:999;
+	padding:0 2px 2px 0;
+	background: #9EDF8A;
+}
+.tip-done .container{
+	*display: inline-block;
+	position: relative;
+	top: 1px;
+	left: 1px;
+	padding:5px;
+	min-width:110px;
+	_width:110px;
+	white-space:nowrap;
+	text-align:center;
+	height: 100%;
+	border: 1px #fff solid;
+	background: #DEF9A5;
+	color:#5D8605;
+}
+.tip-done .container{
+	_display: inline;
+}
+/* -------------------------------------------- */ 
+/* 元件---POP提示 */ 
+.m-pop{
+	width:462px;
+	overflow:hidden;
+	background:#F9F9F9;
+	border:1px #D4D4D4 solid;
+}
+.m-pop .pop-container{
+	padding:7px 0 7px 8px;
+	border:1px #FFFFFF solid;
+}
+.m-pop .pop-btn{
+	padding-top:10px;
+}
+/* -------------------------------------------- */
+/** 
+	Form
+	@name:表单
+*/
+
+ /*
+	@name：元件 文字输入框
+	@desc：
+*/
+.i-text{
+	border:1px #9C9C9C solid;
+	font-family:Tahoma;
+}
+input.i-text {
+  width:170px;
+  padding:4px 2px 5px;
+  *padding:4px 2px;
+}
+/* 1px纠结 重写
+.i-text,.i-textarea{
+	border:1px #9C9C9C solid;
+	font-family:Tahoma;
+	cursor:text;
+}
+input.i-text {
+  width:170px;
+  padding:4px 2px 5px;
+  *padding:4px 2px;
+}
+*/
+/* 1px纠结 添加 */
+/* 
+	@name:小文本框
+	@desc:小文本框, 用于搜索、添加小分类
+	@example:
+		<input type="text" class="i-text i-text-s" />
+ */
+input.i-text-s{
+	height:15px;
+	line-height:16px;
+	padding:2px;
+	*padding:3px 2px 1px;
+	*line-height:14px;
+}
+
+/* 颜色文字 */
+.fm-item input.i-text-gray,input.i-text-gray,.fn-gray,body .fm-item .fn-tips,.fm-explain-top{
+	color:#b2b2b2;
+}
+  /* 元件 文字输入框 日期 */
+  input.i-date {
+    width:70px;
+  }
+  /* 元件 文字输入框 时间 */
+  input.i-time {
+    width:36px;
+  }
+  /* 元件 文字输入框 金额 */
+  input.i-money {
+    width:70px;
+  }
+  /* 元件 文字输入框 区号 */
+  input.i-len4 {
+    width:28px;
+  }
+  /* 元件 文字输入框---时间 10:11 */
+  input.i-len5 {
+    width:35px;
+  }    
+  /* 元件 文字输入框---邮政编码 */
+  input.i-len6 {
+    width:44px;
+  }
+  /* 元件 文字输入框 电话、分机号码8位 */
+  input.i-len8 {
+    width:58px;
+  }
+  /* 日期 2009-10-11 */ 
+  input.i-len10 {
+    width: 67px;
+  }  
+  input.i-len10cn{
+	width:122px;
+  }
+  input.i-len30cn,
+  textarea.i-len30cn{
+    width: 362px;
+  }
+/* 1px纠结
+  textarea.i-text {
+    padding: 2px;
+  }  */
+  /* 元件---文字输入框---超长文本框 */
+  input.i-text-sn,input.i-text-sn2{
+	  height:32px;
+	  font-size:20px !important;
+	  font-weight:bold;
+	  font-family:'微软雅黑';
+	}
+	input.i-text-sn{
+		width:470px;
+	}
+	input.i-text-sn2{
+		width:250px;
+	}
+	input.i-text-sn3{
+		width:200px;
+	}
+
+	/* 元件---文字输入框---验证码  */ 
+	input.i-text-authcode{
+	  width:45px;
+	}
+	input.i-text-amount{
+		width:80px;
+		font-weight:700;
+		ime-mode:disabled;
+	}
+
+/* 元件---多行文本框 1px纠结 */ 
+textarea.i-textarea{
+  width:422px;
+  height:79px;
+  *height:77px;
+  _height:74px;
+  line-height:1.6;
+  _line-height:1.5;
+  border:1px #9C9C9C solid;
+  padding:1px 3px 0 4px;
+  *padding:2px 2px 0 5px;
+  _padding:1px 2px 0 5px;
+  overflow:auto;
+  font-family:Tahoma;
+}
+
+/* 组件---主栏---表单项 */ 
+.fm-item {
+  padding:0 5px 15px 170px;
+  *padding:0 5px 12px 170px;
+  _padding:0 5px 13px 170px;
+}
+/* add by catge 091214 regForm group style */ 
+.fm-part{
+	padding-top:15px;
+}
+
+/* 确保内联元素对齐 .fm-item span */ 
+.fm-item select{
+}
+.fm-item .i-text{
+	vertical-align:middle;
+	*vertical-align: -5px;
+} 
+/* 1px纠结修复 */
+.fm-item .com-search .i-text,
+.fm-item .c-editable .i-text{
+	*vertical-align:middle;
+}
+/* 1px纠结 组件---主栏---表单项 
+.fm-item {
+  margin:1px 0;
+  padding:5px 5px 1px 170px;
+  line-height:24px;
+}
+ 确保内联元素对齐  
+.fm-item span, .fm-item input,.fm-item label,.fm-item select{
+  vertical-align:middle;
+}
+/* 冒号对齐，与.fm-item的padding-left一致 */ 
+.fm-item .fm-label {
+  float:left;
+  width:170px;
+  margin-left:-170px;
+  text-align:right;
+  font-size:14px;
+  /* 1px纠结添加 */
+   padding-top:3px;
+  *padding-top:4px;
+}
+/* 表单必填项，红星 */ 
+.fm-label .required {
+  margin-right:6px;
+  font-family:SimSun;
+  font-size:14px;
+  color:#f00;
+}
+/* 1px 纠结  表单必填项，红星 
+.fm-item .fm-label .required {
+  margin-right:6px;
+  color:#f00;
+}
+*/ 
+/* 1px纠结 删除 表单小标题
+.fm-title{
+	margin:0 0 15px 24px;
+	padding:14px 0 8px;
+	*padding:14px 0 6px;
+	border-bottom:1px solid #DCDCDC;
+}
+.fm-title h3{
+	font-size:12px;
+	color:#333;
+	float:left;
+	*line-height:17px;
+}
+.fm-title .fm-explain{
+	float:left;
+	margin-left:10px;
+	color:#B2B2B2;
+} */
+/* 重置元件-文本输入框 */ 
+.fm-item .i-text {
+  font-size:12px;
+  color:#000;
+  /* 1px纠结 添加 */
+  *font-size:11px;
+  _font-size:12px;
+}
+/* 重置元件-文本输入框-鼠标悬停 */ 
+.i-text:hover,.i-textarea:hover{
+  border:1px #000 solid;
+}
+/* 重置元件-文本输入框-获得焦点 */ 
+.i-text:focus,.i-textarea:focus{
+  border:1px #68acff solid;
+  outline:1px aqua solid;
+}
+
+
+/* 重置元件-文字说明 */ 
+.fm-item span.t-explain{
+  margin-left:7px;
+  font-size:12px;
+}
+.fm-item div.t-explain{
+  font-size:12px;
+}
+
+/* 重置元件-文字说明 */ 
+.fm-item .fm-explain {
+  font-size:12px;
+  color:#B2B2B2;
+  /* 1px纠结 
+  _padding-left: 2px;
+  */
+  padding:5px 0 0;
+  _margin:-1px 0 0 3px;
+}
+.fm-item .fm-list{
+	float:left;
+}
+.fm-list li{
+	*zoom: 1;
+}
+.fm-list li input,.fm-list li span{
+	margin-right: 5px;
+}
+.fm-list li.selected{
+	background-color: #FFFF8D;
+}
+.fm-list label{
+	cursor: pointer;
+	*font-family:Simsun;
+	display: inline-block;
+}
+.fm-item .fm-link {
+	_display:inline-block;
+	margin-left:4px;
+}
+.fm-item .fm-link a:link,.fm-item .fm-link a:visited {
+  color:#3D86E5;
+  font-size:12px;
+}
+/* 
+	@name:
+	@desc:
+	@example:
+		<div class="fm-item">
+			<label class="fm-label"><span class="required">*</span>上传文件：</label>
+			<input type="file" size="24" class="i-file" value="" />
+			<div class="fm-explain">支持JPG,GIF</div>
+		</div>
+*/
+.fm-item .i-file{
+	font-size:14px;
+	*font-size:12px;
+	*height:25px;
+	*width:188px;
+	_width:241px;
+	*line-height:25px;
+	vertical-align:middle;
+}
+
+
+/* 表单项中的强调性文字 */ 
+.fm-item strong {
+  color:#f60;
+}
+.fm-item select {
+  font-size:12px;
+}
+.fm-item .btn{
+	margin:15px 5px 0 0;
+	_margin-left:3px;
+	vertical-align:baseline;
+}
+.fm-btn label{
+	*margin-top:-10px;
+	*display:inline-block;
+}
+.fm-btn span.fm-explain{
+	*margin-top:-10px;
+	*display:inline-block;
+	background-position:-128px -420px;
+	*background-position:-128px -414px;
+}
+.fm-confirm{
+	display:inline-block;
+	height:33px;
+	line-height:33px;
+	vertical-align:middle;
+	/* 1px纠结 margin:0 0 0 9px; */
+	margin:0 0 0 9px;
+	zoom:1;
+}
+.fm-confirm span{
+	line-height:normal;
+	zoom:1;
+}
+/* 组件---主栏---表单项---hover时 */ 
+  .fm-hover .i-text,.fm-hover .i-textarea{
+    border:1px #727272 solid;
+  }
+	/* 组件---主栏---表单项---focus时 */ 
+  .fm-focus .i-text,.fm-focus .i-textarea{
+  	border:1px #68acff solid;
+ 	outline:1px aqua solid;
+ 	/* 1px纠结 删除
+ 	*padding:1px 0 1px 2px;
+	*border:2px #95DDFF solid;
+	*/
+	cursor:text;
+  }
+  /* 1px纠结 
+	.fm-focus .i-textarea{
+		*height:76px;
+		_height:73px;
+		*padding:1px 1px 0 4px;
+	}
+*/
+.fm-focus .i-text{
+	*border:2px #95DDFF solid;
+	*padding:3px 1px 3px 1px;
+}
+/* 激活状态 */
+.fm-focus .i-text-s{
+	*padding:2px 1px 0px;
+}
+
+.fm-focus .i-textarea{
+*border:2px #95DDFF solid;
+*height:76px;
+_height:73px;
+*padding:1px 1px 0 4px;
+_padding:0 1px 0 4px;
+}
+	
+
+  .fm-focus .fm-explain,.fm-hover .fm-explain{
+    color:#4d4d4d;
+  }
+
+/* 组件---主栏---表单项---警告、成功、校验时 用法同fm-error add by catge 091216 */ 
+.fm-success .fm-explain,.fm-warn .fm-explain,.fm-cue .fm-explain,.fm-loading .fm-explain{
+  	background:url(http://img.alipay.net/pa/frame/v2/ico-pa.png) -164px -384px no-repeat;
+  	padding:5px 0 0 20px;
+    color:#4d4d4d;
+  	line-height:15px;
+  }
+.fm-warn .fm-explain{
+  	background-position:-59px -474px;
+	*background-position:-59px -475px;
+  	_background-position:-59px -474px;
+  }
+.fm-cue .fm-explain{
+  	background-position:-27px -504px;
+	*background-position:-27px -505px;
+  	_background-position:-27px -504px;
+  }
+.fm-loading .fm-explain{
+	background:transparent url(http://img.alipay.net/pa/frame/v2/ico-form-loading.gif) no-repeat scroll 0 4px;	
+}
+
+/* 组件---主栏---表单项---出错时 */ 
+  .fm-error .i-text,.fm-error .i-textarea{
+    border:1px #FF0000 solid;
+    color:#FF5243;
+  }
+  .fm-error .i-text-reset{
+	border:1px #9C9C9C solid;
+	color:#000;
+  }
+  .fm-error .fm-explain{
+  	background:url(http://img.alipay.net/pa/frame/v2/ico-pa.png) -128px -414px no-repeat;
+  	*background-position:-128px -415px;
+  	_background-position:-128px -414px;
+  	padding:5px 0 0 20px;
+    color:#FF5243;
+    line-height:15px;
+    *zoom:1;
+   /* 1px纠结 删除 line-height:24px;
+    *line-height:28px;
+   */
+  }
+  .fm-error div.fm-explain{
+	  clear:both;
+	}
+  .fm-error .i-text:hover,.fm-error .i-textarea:hover{
+    border:1px #727272 solid;
+    color:#727272;
+  }
+   .fm-error .i-text:focus,.fm-error .i-textarea:focus{
+    border:1px #68ACFF solid;
+    color:#727272;
+  }
+  /* 1px纠结 添加 */
+   /* IE6单选/复选框 */
+	.fm-selectbox label{
+		vertical-align:2px;
+	}
+	.fm-selectbox select{
+		vertical-align:middle;
+		margin-top:3px;
+	}
+	.fm-selectbox .i-radio{
+		margin-top:5px;
+		*height:18px;
+		zoom:1;
+ 	}
+	.fm-selectbox input.i-text{
+		*margin-top:2px;
+		*vertical-align:-6px;
+	}
+	.fm-selectbox .fm-link{
+		vertical-align:2px;
+	}
+	.fm-select-list{
+		_float:left;
+	}
+	
+	/* 仅文字的表单项 */
+	.fm-text .fm-label{
+		padding:0;
+		margin-top:-2px;
+		*margin-top:0;
+		_margin-top:-2px;
+	}
+	/* 输入框上面的提示 */
+	.fm-explain-top{
+		padding-bottom:7px;
+	}
+  	.fm-item .m-error{
+  		*margin-top:-1px;
+  		_margin-top:0;
+		color:#FF5243;
+	}
+  
+  /* 组件---主栏---表单项---按钮区 */ 
+  .fm-btn-s {
+    margin:20px 0;
+		padding:0;
+		text-align:center;
+  }
+  .fm-btn-s .b-form {
+	  margin:0 5px;
+	}
+
+/* -------------------------------------------- */ 
+/* 组件---主栏---表单---填写 */ 
+.fm-input{
+	/* 1px纠结 margin-top:16px; */
+	margin-top:30px;
+}
+.fm-input legend {
+  padding-bottom:25px;
+  font-size:14px;
+  font-weight:bold;
+  display:none;
+}
+/* 组件---主栏---表单---上下表单 */ 
+.fm-col{
+	margin:15px 0;
+}
+.fm-col-item{
+	margin-top:7px;
+}
+.fm-col-item .fm-label{
+	display:block;
+	margin-bottom:7px;
+}
+.fm-col-item .btn{
+	margin-top:16px;
+	vertical-align:baseline;
+}
+
+/* -------------------------------------------- */ 
+/* 组件---主栏---表单---查看 */ 
+.fm-view legend {
+  padding-bottom:20px;
+  font-size:14px;
+  font-weight:bold;
+}
+.fm-view .fm-item {
+	line-height:20px;
+}
+/* -------------------------------------------- */ 
+/* 组件---主栏---表单---复位 */ 
+.fm-reset legend{
+	display:none;
+}
+.fm-reset .fm-muilt{
+	padding-left:2px;
+}
+.fm-reset .fm-muilt .label-for{
+	font-weight:700;
+	margin-left:0;
+}
+.fm-reset .fm-muilt textarea{
+	width:100%;
+}
+
+.fm-normal .fm-item{
+	padding-left:0;
+}
+.fm-normal .fm-item .fm-label{
+	margin-left:0;
+	width:auto;
+	font-size:12px;
+}
+/* 
+	@name:提示在上面的表单 
+	@desc:提示在上面的表单 
+	@example:
+		<div class="fm-input fm-normal fm-cue">
+		
+			<div class="fm-item">
+				<div>
+					<label class="fm-label"><span class="required">*</span>缴费金额：</label>
+					<div class="fm-explain">表单填写说明</div>
+				</div>
+				<input type="text" id="" class="i-text" />
+			</div>
+
+		</div>
+*/
+.fm-cue .fm-item .fm-label{
+	font-size:14px;
+	padding-top:0;
+}
+.fm-cue .fm-item .fm-explain{
+	display:inline-block;
+	margin-top:2px;
+	padding-top:0;
+	padding-bottom:6px;
+	*padding-bottom:4px;
+}
+.fm-cue .fm-error .fm-explain{
+	padding-top:5px;
+	margin-top:-3px;
+	clear:none;
+}
+
+/* @name:弹出层 xbox 表单样式
+	@desc:弹出层 xbox 表单样式
+*/
+.fm-input-xbox .fm-item{
+	padding-left:155px;
+}
+.fm-input-xbox .fm-item .fm-label{
+	margin-left:-155px;
+	width:155px;
+}
+/* 表单的许可协议 */
+.fm-license h3{
+	margin-top:20px;
+	font-size:14px;
+}
+.fm-license textarea{
+	margin-top:10px;
+	width:600px;
+	height:58px;
+	color:#4d4d4d;
+	padding:4px;
+	border:1px solid #b2b2b2;
+}
+.fm-license .fm-license-next{
+	width:600px;
+	text-align:center;
+	margin-top:3px;
+}
+
+/* 表单侧边栏 */
+.fm-side{
+	width:288px;
+	position:absolute;
+	right:15px;
+	top:0;
+	z-index:10;
+}
+.fm-side .ico-zoom{
+	position:absolute;
+	right:0;
+	top:0;
+}
+.fm-side-preview{
+	margin-top:5px;
+	position:relative;
+}
+.fm-side-preview img{
+	/* min-width:288px; */ 
+}
+/* 纯多项选择LIST表单 */
+.fm-choose label,.fm-choose dl{
+	float: left;
+}
+.fm-choose .fm-item{
+	padding-left: 45px;
+}
+.fm-choose .fm-item .fm-label{
+	margin-left: -177px;
+}
+.fm-choose dl{
+	cursor: pointer;
+}
+/** end Form */ 
+
+/* ----------------------------------------- */ 
+/* 组件　TAB切换　 */
+.tab{
+	position:relative;
+}
+.tab-title{
+	height:29px;
+	background:url('http://img.alipay.net/pa/frame/v2/bg-contact.png') 0 -208px repeat-x;
+	position:relative;
+}
+.tab-title ul{
+	overflow:hidden;
+	margin-top:3px;
+	float:left;
+}
+.tab-title li{
+	float:left;
+	_display:inline;
+	margin-right:2px;
+	cursor:pointer;
+	font-size:12px;
+	height:26px;
+	line-height:26px;
+	background:url('http://img.alipay.net/pa/frame/v2/bg-contact.png') 0 -104px no-repeat;
+}
+.tab-title li span{
+	height:26px;
+	line-height:26px;
+	display:block;
+	float:left;
+	padding:0 12px;
+	background:url('http://img.alipay.net/pa/frame/v2/bg-contact.png') right -156px no-repeat;
+}
+.tab-title li.current{
+	font-weight:700;
+	background:url('http://img.alipay.net/pa/frame/v2/bg-contact.png') no-repeat;	
+}
+.tab-title li.current span{
+	background:url('http://img.alipay.net/pa/frame/v2/bg-contact.png') right -52px no-repeat;	
+}
+.tab-title .tab-action{
+	height:29px;
+	line-height:29px;
+	text-indent:5px;
+}
+.tab-title .tab-action select{
+	vertical-align:middle;
+}
+.tab-title a,.tab-title a:hover{
+	color:#4D4D4D;
+	text-decoration:none;
+}
+.tab .tab-menu{
+	background:#fff;
+	border:1px #D6D6D6 solid;
+	border-top:none;
+	position:absolute;
+	z-index:9;
+	left:86px;
+	top:29px;
+	overflow:hidden;
+	width:180px;
+}
+.tab-menu ul{
+	overflow:hidden;
+}
+
+.tab .tab-menu li{
+	height:25px;
+	line-height:25px;
+	overflow:hidden;
+	background:#fff;
+}
+.tab .tab-menu a{
+	display:block;
+	overflow:hidden;
+	padding:0 5px;
+	width:100%;
+	word-break:no-wrap;
+	padding-left:15px;
+}
+.tab .tab-menu a:link,.tab .tab-menu a:visited{
+	background-color:#fff;
+}
+.tab .tab-menu a:hover{
+	background-color:#DFEDFD;
+	text-decoration:none;
+}
+.tab .tab-menu li.selected a{
+	background: transparent url(http://img.alipay.net/pa/frame/v2/ico-text.png) 0 -173px no-repeat;
+}
+.tab .tab-menu li.selected a:link,.tab .tab-menu li.selected a:visited{
+	background-color:#fff;
+}
+.tab .tab-menu li.selected a:hover{
+	background-color:#DFEDFD;
+}
+.tab .tab-menu li.action{
+	border-top:1px #C5C5C5 solid;
+}
+/* 2009 12 8 */
+/** 
+	@name:基础Tab
+	 
+*/
+.c-tab{
+	*zoom:1;
+}
+.c-tab-ttl{
+	clear:both;
+	*zoom:1;
+}
+.c-tab-ttl ul{
+	overflow:hidden;
+}
+.c-tab-ttl li{
+	float:left;
+	_display:inline;
+	margin-right:2px;
+	cursor:pointer;
+	font-size:12px;
+	height:24px;
+	overflow:hidden;
+	line-height:23px;
+	*line-height:25px;
+	cursor:pointer;
+}
+.c-tab-ttl li a{
+	display:block;
+	float:left;
+	height:100%;
+}
+.c-tab-ttl li span{
+	height:100%;
+	display:block;
+	float:left;
+	padding:0 14px 0 15px;
+	white-space:nowrap;
+}
+.c-tab-ttl li.current{
+	font-weight:700;
+}
+.c-tab-ttl li.current span{
+	padding:0 11px 0 13px;
+}
+.c-tab-ttl li.current .ico-expand-arrow{
+	margin-right:-3px;
+}
+.c-tab-ttl a,.c-tab-ttl a:hover{
+	color:#4D4D4D;
+	text-decoration:none;
+}
+
+/*
+	@name:第一类tab
+	@desc:用于联系人列表、联系人选择控件
+	@example:
+	
+	<!-- 标签 -->
+	<div class="c-tab c-tab-1">
+		<!-- 标签 标题 -->
+		<div class="c-tab-ttl"> 
+			<ul> 
+				<li><a href="#"><span>标题一</span></a></li>
+				<li class="current"><a href="#"><span>当前选中项</span></a></li>
+				<li><a href="#"><span><em class="ico-expand-arrow">含下拉菜单</em></span></a></li>
+			</ul>
+		</div>
+	
+		<!-- 标签 操作 -->
+		<div class="c-tab-menu popmenu">
+			<ul class="optional">
+				<li class="selected"><a href="#">菜单项一</a></li>
+				<li><a href="#">菜单项二</a></li>
+				<li><a href="#">菜单项三</a></li>
+			</ul>
+			<a href="#" class="c-tab-action">最后预留操作项</a>
+		</div>
+		<!-- /标签 操作 -->
+		 <!-- 搜索框 -->		
+	    <div class="com-search">
+	    		<div class="keyword">
+	    			<span><input class="i-text i-text-gray" data-default="从所有联系人中搜索" value="从所有联系人中搜索" /> 
+	    				<input class="btn-fixed" type="button" value="搜索" />
+	    			</span>
+	    		<div id="autoCompleteContainer"></div>
+	    </div>
+	     <!-- /搜索框 -->
+	</div>
+	<!-- /标签 标题 -->
+		<!-- 标签 内容 -->
+		<div class="c-tab-ctt"></div>
+		<!-- /标签 内容 -->
+	</div>
+	<!-- 标签 -->
+*/
+.c-tab-1{
+	position:relative;
+}
+.c-tab-1 .c-tab-ttl{
+	border-bottom:1px #D2D2D2 solid;
+}
+.c-tab-1 .c-tab-ttl ul{
+	position:relative;
+	top:1px;
+	_zoom:1;
+}
+.c-tab-1 .c-tab-ttl li{
+}
+.c-tab-1 .c-tab-ttl a,.c-tab-1 .c-tab-ttl span{
+	background-image:url(http://img.alipay.net/pa/frame/v2/bg-tab.png);
+	background-repeat:no-repeat;
+}
+.c-tab-1 .c-tab-ttl a{
+	background-position:0 -181px; 
+}
+.c-tab-1 .c-tab-ttl span{
+	background-position:right -215px;
+}
+/* 鼠标悬停 */
+.c-tab-1 .c-tab-ttl a:hover{
+	background-position:0 -249px; 
+}
+.c-tab-1 .c-tab-ttl a:hover span{
+	background-position:right -283px;
+}
+/* 当前项 */
+.c-tab-1 .c-tab-ttl .current a,
+.c-tab-1 .c-tab-ttl .current a:hover{
+	background-position:0 -316px; 
+}
+.c-tab-1 .c-tab-ttl .current span,
+.c-tab-1 .c-tab-ttl .current a:hover span{
+	background-position:right -349px; 
+}
+.c-tab-1 .c-tab-ttl em{
+	white-space:nowrap;
+	margin-right:-10px;
+}
+/* 搜索框 */
+.c-tab-1 .com-search{
+	position:absolute;
+	z-index:1;
+	right:0;
+	top:0;
+	*top:-2px;
+	width:300px;
+	float:right;
+	margin:0;
+}
+/* 联系人那样的下拉箭头 */
+.c-tab-ttl input.ico-expand-arrow{
+	display:inline-block;
+	width:18px;
+	height:21px;
+	*height:19px;
+	_height:21px;
+	border:none;
+	margin-left:-3px;
+	padding:2px 0;
+	background-color:transparent;
+	background-position:right -117px;
+	_background-position:right -115px;
+	cursor:pointer;
+	font-size:0px;
+	color:#6A6A6A;
+	text-align:center;
+	vertical-align:middle;
+	*vertical-align:baseline;
+}
+
+/* 下拉菜单 */
+.c-tab-menu{
+	width:165px;
+	position:absolute;
+	left:91px;
+}
+.c-tab-menu ul{
+	border-top:none;
+}
+/* 修复IE6bug */
+.c-tab-menu li a{
+	_zoom:1;
+}
+.c-tab-menu .c-tab-action{
+	display:block;
+	padding:0 0 0 14px;
+	line-height:21px;
+	background:#fff;
+	border:1px #D2D2D2 solid;
+	border-top:none;
+}
+
+/* end Tab */
+
+/* ------------------------------------------------- */ 
+/* 
+	组件 联系人
+		复杂：com-contacts-m 
+		简单：com-contacts-s
+
+*/
+.com-contacts-m,.com-contacts-s{
+	overflow:hidden;
+}
+
+/* 两个联系人组件不一样的地方 */
+.com-contacts-m{
+	width:655px;
+}
+.com-contacts-s{
+	width:335px;
+	z-index:50;
+	position:relative;
+}
+.com-contacts-list{
+	padding:2px 4px 4px 4px;
+	background:#E8E8E8 url(http://img.alipay.net/pa/frame/v2/bg-contact.png) 0 -436px repeat-x;
+	border:1px #D2D2D2 solid;
+}
+
+.com-contacts-m .com-contacts-list{
+	width:290px;
+}
+.com-contacts-s .com-contacts-list{
+	width:325px;
+}
+.com-contacts-list{
+	height:100%;
+	overflow:hidden;
+}
+.com-contacts-m .com-contacts-close{
+	display:none;
+}
+.com-contacts-s .com-contacts-close{
+	position:absolute;
+	top:0px;
+	right:5px;
+	z-index:10;
+	padding-top:5px;
+}
+
+/* ----------------------------------------------- */ 
+/* 组件 已选联系人列表  */ 
+.com-contacts-selected{
+	width:355px;
+	_width:352px;
+	height:100%;
+	overflow:hidden;
+	float:left;
+}
+
+.com-contacts-selected .com-panel{
+	height:337px;
+	_zoom:1;
+	overflow:hidden;
+	background:#FFFFFF;
+	border:1px #D2D2D2 solid;
+	border-right:none;
+}
+.com-panel .fm-item .i-text{
+	vertical-align:middle;
+}
+
+/* 联系人操作说明 */
+.com-contacts-selected .com-explain{
+	height:32px;
+	text-indent:5px;
+	font:500 12px/32px Simsun;
+}
+.com-contacts-selected ul.com-contacts-payers{
+	overflow:hidden;
+	overflow-y:auto;
+	_width:100%;
+	*height:0;
+}
+
+.com-contacts-selected .com-contacts-payers li{
+	padding:6px 10px;
+	clear:both;
+	overflow:hidden;
+	border-bottom:1px #DEDEDE solid;
+	_zoom:1;
+	width:100%;
+}
+.com-contacts-selected .com-contacts-payers li label{
+	display:block;
+	width:220px;
+	height:24px;
+	line-height:24px;
+	float:left;
+}
+.com-contacts-selected .com-contacts-payers li span{
+	float:left;	
+}
+.com-contacts-selected .com-contacts-payers .i-prize{
+	width:44px;
+	vertical-align:middle;	
+}
+.com-contacts-selected .com-contacts-payers .ico-del{
+	width:30px;
+	height:24px;
+	float:left;
+	background-position:10px -71px;
+	margin:0 0 0 10px;
+}
+.com-contacts-selected .com-contacts-payers .fm-explain{
+	clear:both;
+}
+
+.com-contacts-selected .contacts-sum{
+	margin-top:0;
+	height:33px;
+	line-height:33px;
+	_padding-top:6px;
+	_height:27px;
+	overflow:hidden;
+	border-bottom:1px #DEDEDE solid;
+	background:#F2F2F2;
+}
+.com-contacts-selected .com-contacts-sum{
+	padding:5px 10px;
+	background:#E8E8E8;
+}
+.com-contacts-selected .com-contacts-sum label{
+	line-height:29px;
+}
+.com-contacts-selected .com-contacts-sum .i-prize{
+	width:44px;
+	vertical-align:middle;
+}
+.com-contacts-selected .com-contacts-sum input{
+	margin-right:2px;
+}
+.com-contacts-selected .com-contacts-sum .fm-explain{
+	background-position:-128px -420px;
+}
+
+/* ----------------------------------------- */
+/*  组件 收费标准 */ 
+.com-charge-standard{
+	position:relative;
+	z-index:999;
+}
+.com-charge-standard table{
+	width:100%;
+}
+.com-charge-standard .tb-inner{zoom:1;}
+.com-charge-standard .pop-square{
+	width:446px;
+	*width:453px;
+	left:0;
+	top:14px;
+}
+.com-charge-standard .pop-shadow{
+	_height:102px;
+}
+/* ------------------------------------------ */ 
+/* 组件　所有分组联系人列表 */
+.com-contacts-list .com-contacts-list-group{
+	height:330px;
+	overflow:hidden;
+	overflow-y:auto;
+	padding-top:3px;
+	background:#FFFFFF;
+	border:1px #D2D2D2 solid;
+	border-width:0 1px 1px 1px;
+	position:relative;
+}
+.com-contacts-list h3{
+	position:relative;
+	height:27px;
+	line-height:27px;
+	background:url('http://img.alipay.net/pa/frame/v2/bg-contact.png') -142px -267px repeat-x;
+	cursor:pointer;
+}
+.com-contacts-list h3 span{
+	color:#000;
+	text-decoration:none;
+	display:block;
+	padding-left:23px;
+	background:url('http://img.alipay.net/pa/frame/v2/bg-contact.png') -237px -323px no-repeat;
+	font-size:12px;
+}
+.com-contacts-list h3 span em{
+	font-weight:400;
+}
+.com-contacts-list .switch h3 span{
+	background:url('http://img.alipay.net/pa/frame/v2/bg-contact.png') -192px -361px no-repeat;
+}
+.com-contacts-list-group ul{
+	margin:0;
+}
+.com-contacts-list-group li{
+	margin-top:0;
+	height:32px;
+	*height:31px;
+	overflow:hidden;
+	border-bottom:1px #DEDEDE solid;
+	word-break:break-all;
+	line-height:normal;
+	line-height:20px;
+}
+
+.com-contacts-list-group li input{
+	float:left;
+	height:23px;
+	*height:24px;
+	margin:-1px 6px 0 10px;
+	*margin:-4px 4px 0 6px;
+	*vertical-align:-3px;
+}
+.com-contacts-list-group li .i-radio{
+}
+
+.com-contacts-list-group li label{
+	display:block;
+	height:24px;
+	padding-top:5px;
+	*padding-top:7px;
+	cursor:pointer;
+	white-space:nowrap;
+	*white-space:normal;
+}
+.com-contacts-list-group li em{
+	font-weight:500;
+}
+.com-contacts-list-group .current{
+  background:#FEFFCE;
+}
+.com-contacts-list-group .hover{
+  background:#DCF1FF;
+}
+
+/* 我的联系人每个组 */
+.com-mycontacts-group{
+	position:relative;
+	cursor:pointer;
+}
+.com-mycontacts-empty{
+	color:#aaa;
+	height:330px;
+	line-height:330px;
+	text-align:center;	
+}
+/* 我的联系人每个组 全选 取消全选 操作 */
+.com-mycontacts-group .action{
+	position:absolute;
+	height:27px;
+	line-height:27px;
+	right:10px;
+	_right:20px;
+	top:0px;
+	z-index:9999;
+}
+
+/* 
+	@name:联系人分组选择 
+	@example:
+		
+	<div class="fm-item">
+		<label class="fm-label" for="groupSel">联系人分组：</label>
+		<div id="chooseGroups" class="c-group-all">
+			<a href="#" hidefocus="true"><span>同事</span></a><a href="#" hidefocus="true"><span>同事</span></a>
+		</div>
+	</div>
+*/
+.c-group-all{
+	overflow:hidden;
+	*zoom:1;
+}
+.c-group-all a{
+	display: block;
+	float:left;
+	padding:1px;
+	margin-right:5px;
+	margin-bottom:4px;
+	white-space: nowrap;
+	background:#c8c9cd;
+	color: #000;
+	text-align: center;
+	text-decoration: none;
+	_margin-right:3px; /* 新加 */
+}
+.c-group-all a span{
+	display:block;
+	padding:3px 7px;
+	background-color:#fff;
+	*line-height:15px;
+}
+
+.c-group-all a.selected,.c-group-all a:hover{
+	padding:2px;
+	background:#006fff;
+	text-decoration:none;
+}
+.c-group-all a.selected span,
+.c-group-all a:hover span{
+	color:#006fff;
+}
+.c-group-all a:hover span{
+	padding:2px 6px;
+}
+.c-group-all a.selected span{
+	padding:2px 7px 2px 5px;
+	background:#fff url(http://img.alipay.net/pa/frame/v2/bg-contact-selected.png) 100% 100% no-repeat;
+}
+
+/* ----------------------------------------- */ 
+/* 联系人组件　覆盖 .fm-item 原有样式 */
+.com-contacts-selected .com-panel .fm-item{
+	padding-left:10px;
+	padding-right:10px;
+}
+.com-contacts-selected .com-panel .fm-input{
+	margin-top:10px;
+}
+.com-contacts-selected .com-contacts-payers .fm-error .fm-explain{
+}
+
+.com-contacts-selected .com-contacts-sum .fm-error .fm-explain{
+	color:#FF0000;
+	background-position:-125px -419px;
+}
+/* 生活助手联系人组件 */
+.c-contact-search{
+	width:322px;
+}
+.c-contact-search,
+.c-contact-search .container,
+.c-contact-search-close,
+.c-contact-search-btn{
+	background:url(http://img.alipay.net/pa/frame/v2/bg-contact-search-bar.png) no-repeat;
+}
+.ico-loading-search{
+	background:url(http://img.alipay.net/pa/frame/v2/ico-loading-search.gif) right top no-repeat;
+}
+.c-contact-search,
+.c-contact-search .container{
+	height:60px;
+}
+
+.c-contact-search{
+	background-position: 0 0;
+}
+.c-contact-search .container{
+	background-position: right -61px;
+	position:relative;
+}
+.c-contact-search-text{
+	border:none;
+	position:absolute;
+	top:28px;
+	*top:27px;
+	left:26px;
+	height:19px;
+	line-height:19px;
+	width:224px;
+	background:transparent;	
+}
+.c-contact-search-btn,
+.c-contact-search-close{
+	width:13px;
+	height:13px;
+	border:none;
+	position:absolute;
+	right:57px;
+	top:30px;
+	background-color:#fff;
+	display:block;
+	text-indent:-999em;
+	cursor:pointer;
+}
+.ico-loading-search{
+	width:16px;
+	height:16px;
+	border:none;
+	position:absolute;
+	right:55px;
+	top:28px;
+	display:block;
+	text-indent:-999em;
+	background-color:none;
+	cursor:pointer;
+}
+.c-contact-search-btn{
+	background-position:-253px -30px;
+}
+.c-contact-search-close{
+	background-position:-309px -149px;
+}
+.c-contact-search .com-contacts-close{
+	position:absolute;
+	right:5px;
+	top:5px;
+}
+.c-contacts-licai{
+	width: 312px
+}
+.c-contacts-licai .c-tab-menu{
+	left:95px;
+	width:165px;
+}
+/* 列表说明 */
+.com-contacts-explain{
+	padding:5px;
+}
+/* 没有分组名时第一项 */
+.com-contacts-list-group li.first{
+	border-top:1px #DEDEDE solid;
+}
+.JS-SAll{display:none;}
+/* /////////////////////////////// 联系人 完  //////////////////////////////////////////////// */
+
+/* ----------------------------------------- */ 
+/* 密码强度等级组件样式 add by catge 091112 */
+/* 密码强度等级组件样式 add by catge 091212 */
+.com-pwd-level{
+	background: transparent url(http://img.alipay.net/pa/page/user/reg/bg-pwd-level.png) no-repeat 0 2px;
+	margin-left: 5px;
+	padding: 5px 0 5px 63px;
+}
+.com-pwd-level.low{
+	background-position: 0 2px;
+}
+.com-pwd-level.mid{
+	background-position: 0 -22px;
+}
+.com-pwd-level.high{
+	background-position: 0 -46px;
+}
+
+/* ----------------------------------------- */ 
+/* 元件 图标 */
+.ico{
+	display:-moz-inline-box;
+	display:inline-block;
+	*display:inline;
+	*zoom:1;
+	background:url('http://img.alipay.net/pa/frame/v2/ico-pa.png') no-repeat;
+}
+.ico-del{
+	width:20px;
+	height:20px;
+	background-position:4px -71px;
+}
+.ico-del-aside{
+	width: 14px;
+	height: 14px;
+	background: transparent url('http://img.alipay.net/pa/frame/v2/bg-aside.png') no-repeat -479px -296px;
+}
+.ico-detail{
+	width:9px;
+	height:10px;
+	background-position:0 -181px;
+}
+
+.ico-detail .pop-square{
+	display:none;
+	left:15px;
+}
+.ico-detail:hover{
+	position:relative;
+	border:none;
+	text-decoration:none;
+	color:#4d4d4d;
+}
+.ico-detail:hover .pop-square{
+	display: block;
+}
+.ico-zoom{
+	background-position:0 -214px;
+	padding-left:16px;
+	*display:inline-block;
+}
+.ico-alarm{background-position: -225px -96px;}
+/* 侧边栏ICON */
+.ico-coupon,.ico-verify,.ico-certi,.ico-mobile,.ico-verify-limiting,
+.ico-certi-limiting,.ico-mobile-limiting,.ico-verify-alpha,.ico-certi-alpha,
+.ico-mobile-alpha,.ico-verify-non,.ico-certi-non,.ico-mobile-non,
+.ico-otp,.ico-otp-limiting{
+	width: 16px;
+	height: 16px;
+}/* 状态栏icon */
+.ico-coupon{
+	background-position: 2px -866px;
+}/* 红包 */
+.ico-certi{
+	background-position: 0 -781px;
+}
+.ico-certi-limiting{
+	background-position: 0 -801px;
+}
+.ico-certi-alpha{
+	background-position: 0 -821px;
+}
+.ico-certi-non{
+	background-position: 0 -841px;
+}
+/* 实名认证 */
+.ico-verify{
+	background-position: 0 -689px;
+}
+.ico-verify-limiting{
+	background-position: 0 -709px;
+}
+.ico-verify-alpha{
+	background-position: 0 -729px;
+}
+.ico-verify-non{
+	background-position: 0 -749px;
+}/* 证书 */
+.ico-mobile{
+	background-position: 0 -600px;
+}
+.ico-mobile-limiting{
+	background-position: 0 -620px;
+}
+.ico-mobile-alpha{
+	background-position: 0 -640px;
+}
+.ico-mobile-non{
+	background-position: 0 -660px;
+}
+/* 支付密令 */
+.ico-otp{
+   background-position: 0 -916px;
+}
+.ico-otp-limiting{
+   background-position: 0 -937px;
+}
+
+/* ----------------------------------------- */ 
+/* 元件 标题 */
+.title{
+	display:block;
+	overflow:hidden;
+	position:relative;
+	margin-top:20px;
+	/* 1px纠结 添加 */
+	margin-bottom:6px;
+}
+.title h2{
+	font:500 18px "黑体";
+	float:left;
+}
+.title h3{
+	font:700 14px Simsun;
+	float:left;
+}
+.title .link{
+	float:left;
+	padding:3px 0 0 8px;
+}
+.title .action,.title .cancel,.title .return{
+	position:absolute;
+	right:0;
+	top:3px;
+	*top:5px;
+	z-index:2;
+	background:url(http://img.alipay.net/pa/frame/v2/ico-text.png) 999px 999px no-repeat;
+}
+.title a.cancel{
+	padding-left:16px;
+	background-position:0 -94px;
+}
+.ie7 .title a.cancel{
+	background-position:0 -95px;
+}
+.title a.return{
+	padding-left:10px;
+	background-position:-7px -94px;
+}
+.ie7 .title a.return{
+	background-position:-7px -95px;
+}
+/* 标题后的内容 */
+.title-link{
+	padding-left:7px;
+	font-size:12px;
+	font-weight:500;
+}
+
+/* 组件 自动完成 */
+.yui-ac-bd{
+	background:#ffffff;
+	position:absolute;
+	z-index:99999;
+	*top:21px;
+}
+.yui-ac-bd ul{
+	width:222px;
+	overflow:hidden;
+	overflow-y:auto;
+	border:1px #CCCCCC solid;
+}
+/*　普通项 */
+.yui-ac-bd li,.yui-ac-highlight,.yui-ac-prehighlight{
+	width:100%;
+	height:20px;
+	line-height:20px;
+	text-indent:5px;
+	overflow:hidden;
+	border-bottom:none;
+	word-break:break-all;
+	cursor:pointer;
+}
+/* 最符合项 */
+.yui-ac-highlight{
+	background:#FEFF48;
+}
+/* 当前焦点项 */
+.yui-ac-prehighlight{
+	background:#DBF0FF;
+}
+/* 银行账号放大镜样式 */
+.bank-card-review{
+	_width:174px;
+	min-width:174px;
+	border:1px solid #C5C5C5;
+	background:#fff;
+	position:absolute;
+	margin:2px 0 0;
+	z-index: 1000;
+}
+.bank-card-review .cardid{
+	font:600 14px Arial;
+	padding:5px;
+	padding-bottom:2px;
+	white-space:nowrap;
+}
+.bank-card-review .explain-info{
+	padding:5px;
+	padding-top:2px;
+}
+/* 密码控件 */
+.alieditReplaceCont{display:none;border:1px solid #f00;width:178px;height:22px;line-height:24px;text-align:center;vertical-align:bottom;}
+.alieditReplaceCont a.alieditDownLink{color:#f00!important;text-decoration:none;display:block;}
+.promptText_PTA{display:none;}
+.hideAliedit{width:0;height:0;overflow:hidden;}
+.alieditContainer  object,.alieditContainer embed{
+	height:24px;
+	_height:25px;
+	vertical-align:middle;
+}
+/*.fm-item .alieditContainer,.fm-item .alieditReplaceCont{
+	float:left;
+}
+.fm-item .alieditContainer object,.fm-item .alieditContainer embed{
+	vertical-align:middle;
+}*/
+/* editable组件样式 */
+.J_editable .btn-fixed{
+	margin: 0 3px;
+}
+
+.ico-safe {
+    display: block;
+    width: 113px;
+    height: 18px;
+    background: url("http://img.alipay.net/tp/frame/v1/bg-tp.png") 0 -612px no-repeat;
+    overflow: hidden;
+    vertical-align: middle;
+    display:inline-block;
+    zoom:1;
+}
+.ico-safe-small { 
+    display: block;
+    width: 16px;
+    height: 16px;
+    background: url("http://img.alipay.net/assets/i/nodes/payment/ico-safe-small.png") 0 0 no-repeat;
+    overflow: hidden;
+    vertical-align: middle;
+    display:inline-block;
+    zoom:1;
+}
+
+/** Added for VIP ICON, by Ethan, 2010-08-17 **/
+.ico-vip{
+	display:-moz-inline-box;
+	display:inline-block;
+	*zoom:1;
+	*display:inline;
+	width:16px;
+	height:16px;
+}
+em.ico-vip{ 
+	padding: 0px 0px 0px 8px;
+	position: relative;
+	top: -2px;
+	_top: 2px;
+	vertical-align: middle;
+}
+.aside-bar .ico-vip{ margin:8px auto 0;padding:0; }
+.m-s115{ background:url(http://img.alipay.net/img/vip/ico-msg.png) 1px 3px no-repeat; }
+
+/*  即时帮助, by saiyagg, 2010-09-15 begin */
+/*	modified  by ediyang,2010-11-25
+*/
+	body .pop_extend_txt{
+		display:none;
+	}
+	.C-help{
+		background: #f2f2f2;
+	}
+	body .C-help .container {
+		background:#E5F5FF;
+		border:1px solid #CBD7E3;
+	}
+	body .C-help .angle {
+		background:url("http://img.alipay.net/pa/frame/v2/popArrow.png") no-repeat scroll transparent;
+	}
+	#J_popContainer{
+		min-width:20px;
+		max-width:325px
+	}
+	#J_popBottom{
+		min-width:20px;
+		display: none;
+		/* max-width:325px; */
+	}
+
+	.helpHead,.helpBody,.helpFoot,.helpYes,.helpNo,.helpArrow,body .helpUl .inshelp-dt{
+		overflow:hidden;
+		background:url(http://img.alipay.net/pa/img/home/instanceHelp2.png) no-repeat;
+	}
+	body .helpUl .inshelp-dt{
+		margin-bottom:14px;
+		background-position:-1000px 0;
+		font-weight:normal;
+	}
+	.instanceHelp,.helpHead,.helpBody,.helpFoot{
+		width:433px;
+	}
+	.instanceHelp{
+		position:absolute;
+		z-index:100;
+		min-height:100px;
+		-moz-box-shadow: 1px 1px 20px #d5d4d4;
+		-webkit-box-shadow: 1px 1px 20px #d5d4d4;
+		-o-box-shadow: 1px 1px 20px #d5d4d4;
+		box-shadow:1px 1px 20px #d5d4d4;
+	}
+	.helpHead{
+		height:10px;
+		background-color:#efefef;
+		background-position:-460px 0;
+	}
+	.helpBody{
+		min-height:86px;
+		background-position:-20px 0;
+		background-repeat:repeat-y;
+	}
+	.helpBody .m-help, .helpBody .m-tips{
+		position:relative;
+		top:7px;
+		left:17px;
+	}
+	.helpBody .helpUl{
+		width:375px;
+		margin:20px 30px;
+		display:block;
+		margin-bottom:0;
+	}
+	.helpBody .helpUl li{
+		width:375px;
+		line-height:18px;
+		padding:4px 0;
+		list-style:square;
+		font-weight:600;
+	}
+	.helpFoot{
+		height:10px;
+		background-position:-460px -17px;
+		background-color:#efefef;
+	}
+	.helpArrow{
+		width:19px;
+		height:27px;
+		left:-14px;
+		position:absolute;
+		z-index:101;
+		background-position:0 0;
+	}
+	.closeHelp{
+		position:relative;
+		top:7px;
+		right:-310px;
+	}
+	.helpBody .m-help{font-size:14px;}
+	.helpUl p{margin-bottom:10px;}
+	.helpLink{padding:10px 0 10px;border-bottom:1px dotted #999;}
+	.helpRank{margin-top:10px;}
+	.helpRank p{line-height:22px;margin-bottom:0;}
+	.helpRank a:hover{text-decoration:none;}
+	.userRanked{height:22px;line-height:22px;}
+	.helpRank p,.helpYes,.helpNo{float:left;}
+	.helpYes,.helpNo{
+		width:20px;
+		height:22px;
+		display:block;
+		line-height:22px;
+		/*_display:inline;*/
+		padding-left:21px;
+		margin-left:10px;
+	}
+	.helpYes{background-position:-900px 0}
+	.helpNo{background-position:-954px 0;}	
+	.helpUl .tip-faq{
+		margin-top:0;
+		padding:0;
+		border-top:none;
+	}
+
+/*  即时帮助, by saiyagg, 2010-09-15 end */
+
+

@@ -1,0 +1,42 @@
+	<li> 
+		<a class="icon-box" href='http://home.alipay.com/bank/paymentBankDetail.htm?id=BOC&de=true&dk=true&ce=true&ck=false' for="migs101"> 
+			<span class="icon BOC" title="中国银行" send="a-migs101">中国银行</span> 
+		</a> 
+		<div class="ui-dialog ui-dialog-bubble new-dialog-bubble"> 
+			<div class="ui-dialog-container"> 
+				<strong>付款方式：</strong> 
+				<dl class="ap-bank-tip">
+					<dt> <a href="http://home.alipay.com/bank/paymentBankDetail.htm?id=BOCSH&de=false&dk=true&ce=false&ck=false" target="_blank">储蓄卡付款</a> </dt>
+					<dd> <a href="http://home.alipay.com/bank/paymentCreditDetail.htm?id=BOCCCL&de=false&dk=false&ce=false&ck=true" target="_blank">信用卡付款</a> </dd>
+				</dl> 
+			</div> 
+			<div class="ui-icon-dialog-arrow ui-icon-top-arrow"></div> 
+			<div class="ui-dialog-fix"> 
+				<!--[if lte IE 6.5]><iframe src="javascript:'';" frameborder="0"></iframe><![endif]--> 
+			</div> 
+		</div> 
+	</li>
+	<li>
+                    				        <a for="abc401" href="http://home.alipay.com/bank/paymentBankDetail.htm?id=ABC&amp;de=true&amp;dk=true&amp;ce=true&amp;ck=false" class="icon-box">
+                    				            <span send="a-abc401" title="中国农业银行" class="icon ABC">中国农业银行</span>
+                    				        </a>
+																						<div class="ui-dialog ui-dialog-bubble new-dialog-bubble">
+												<div class="ui-dialog-container">
+														<strong>付款方式：</strong>
+														
+<!--CMS大区域开始/与多家银行合作/银行图标tip/home_i_bankIconTip-->
+     <dl class="ap-bank-tip">
+   <dt> <a target="_blank" href="http://home.alipay.com/bank/paymentBankDetail.htm?id=ABC&amp;de=true&amp;dk=true&amp;ce=false&amp;ck=false">储蓄卡付款</a> </dt>
+   <dd> <a target="_blank" href="http://home.alipay.com/bank/paymentCreditDetail.htm?id=ABC&amp;de=false&amp;dk=false&amp;ce=true&amp;ck=false">信用卡付款</a> </dd>
+</dl>
+ 
+<!--CMS大区域结束/与多家银行合作/银行图标tip/home_i_bankIconTip-->
+												</div>
+												<div class="ui-icon-dialog-arrow ui-icon-top-arrow"></div>
+												<div class="ui-dialog-fix">
+													<!--[if lte IE 6.5]><iframe src="javascript:'';" frameborder="0"></iframe><![endif]-->
+												</div>
+											</div>
+											
+                    				    </li>
+

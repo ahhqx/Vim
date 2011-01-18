@@ -1,0 +1,161 @@
+/*
+ * project:instance help
+ * author:ediyang 
+ * email:edi.yangy@alipay.com
+ */
+
+	 D.query('.bindInsHelp').length > 0 && 
+	 (function(){
+		var helpDom = "<div class=\"helpHead\"></div>\r\n\
+		<div class=\"helpBody\">\r\n\
+		<em class=\"m-help\">帮助信息</em>\r\n\
+		<a class=\"closeHelp\" href=\"javascript:void(0)\" seed=\"ERR_personal_U\">关闭</a>\r\n\
+		<div class=\"helpUl\">\r\n\
+		</div>\r\n\
+		</div>\r\n\
+		<div class=\"helpFoot\"></div>\r\n\
+		<div class=\"helpArrow\" style=\"top:20px;\"></div>"; 
+
+		var helpRankDom = "<p>是否已解决了您的问题？</p><a href=\"javascript:void(0)\" class=\"helpYes\">是</a><a href=\"javascript:void(0)\" class=\"helpNo\">否</a>";
+		
+			var bindInsHelp = D.query('.bindInsHelp').length > 0 ? D.query('.bindInsHelp')[0] : [],//后台较验报错加class="bindInsHelp"
+				targetForm = bindInsHelp ? D.getAncestorByTagName(bindInsHelp,'form') : '',//取得祖先form
+				//formHelpName = targetForm.name.length > 0 ? targetForm.name : '',//索引INSHELP
+				fmError = D.query('.fm-error',targetForm),
+				autoOpenFlag = 0;
+
+			//INSHELP[formHelpName] = INSHELP['firstform'] != undefined ? INSHELP['firstform'] : [];
+
+			if(INSHELP['supCnt'] != undefined && INSHELP['sysName'] != undefined){
+
+				//如果有帮助信息才继续
+				for(var i = 0;i < fmError.length;i++){
+					var inputName;
+					//检测有name的input
+					var inputNameArr = D.query('input',fmError[i]);
+					for(var j = 0;j<inputNameArr.length;j++){
+						if(inputNameArr[j].name){
+							inputName = inputNameArr[j].name;
+						}
+					}
+			
+					D.setStyles(fmError[i],{'position':'relative'});
+					
+					if(INSHELP['supCnt'][inputName] != undefined){
+
+						//为每个存在帮助信息的fm-error插入DOM
+						insertCnt(fmError[i],inputName);
+						
+						//自动打开
+						var hasAutoOpen = INSHELP['supCnt'][inputName]['autoOpen'] || '';
+
+						if(autoOpenFlag == 0 && hasAutoOpen && hasAutoOpen == 'true'){
+							var helpWrap = D.query('.instanceHelp',fmError[i])[0],
+								instSupIco = D.query('.instSupIco',fmError[i])[0];
+							D.removeClass(helpWrap,'fn-hide');
+							helpWrap.parentNode.style.zIndex = '999';
+							instSupIco.setAttribute('seed','');
+							autoOpenFlag = 1;
+						}
+					}
+				}
+			}	
+		
+		function insertCnt(pa,inpName){
+
+			var fmExplainDiv = D.query('.fm-explain',pa),fmExplain;
+			if(fmExplainDiv.length>0){
+				fmExplain = fmExplainDiv;
+			}else{
+				fmExplain = D.query('.m-error',pa);
+			}
+
+			var instSupIco,
+				sysName = INSHELP['sysName'],
+				errCode = INSHELP['supCnt'][inpName]['errCode'],
+				supCnt = INSHELP['supCnt'][inpName],
+				helpBodyDom = '',
+				ftBar = '<em class=\"ft-bar\">|</em>',
+				helpListDom = '<dl class=\"tip-faq\">',//帮助信息dl列表
+				regLink = /(\[url\=)(\S[^[]+)(\])(\S[^[]+)(\[\/url\])/g;
+			
+			
+			D.setStyles(
+				instSupIco = 
+					Element.create('span',{className:'instSupIco m-tips',appendTo:fmExplain[0]}),
+					{'cursor':'pointer'}
+			);
+			
+			D.setStyles(
+				Element.create('div',{innerHTML:helpDom,className:'instanceHelp fn-hide',appendTo:pa}),
+				{'left':'370px','top':'-18px','zIndex':'100'}
+			);
+			instSupIco.setAttribute('seed','EER' + '-' + sysName + '-'  + errCode + '-' + 'open');
+			var closeHelp = D.query('.closeHelp',pa)[0];
+			closeHelp.setAttribute('seed','EER' + '-' + sysName + '-'  + errCode + '-' + 'U');
+			var helpArrow = D.query('.helpArrow',pa),
+				arrowTop = pa.offsetHeight;
+			D.setStyles(helpArrow,{'top':(arrowTop-30) + 'px'});
+
+			//插入其它内容
+			var helpUl = D.query('.helpUl',pa),
+				relateHelpDom = supCnt['relateHelp'].length > 0 ? '<a href=\"' + supCnt['relateHelp'] + '\" target=\"_blank\">更多相关帮助</a>' : '',
+				onlineChatDom = supCnt['onlineChat'] == 'true' ? ((relateHelpDom.length > 0) ? (ftBar + '<a class=\"HelpOnlineChat\">咨询在线客服</a>') : ('<a class=\"HelpOnlineChat\">咨询在线客服</a>' )) : '',
+				hotLineDom = supCnt['hotLine'] == 'true' ? ((onlineChatDom.length > 0 || relateHelpDom.length > 0) ? (ftBar + '<span>24小时服务热线：0571-88156688</span>') : ('<span>24小时服务热线：0571-88156688</span>')) : '';
+
+			for(var i = 0;i < 3;i++){
+				if(regLink.test(supCnt['content'+i])){
+					supCnt['content'+i] = supCnt['content'+i].replace(regLink,'<a href="$2" target="_blank">$4</a>');
+					regLink.lastIndex=0;//正则索引归0
+				};
+				if(supCnt['title'+i].length>0){
+					supCnt['title'+i] && (helpListDom += '<dt>' + supCnt['title'+i] + '</dt>');
+					supCnt['content'+i] && (helpListDom += '<dd>' + supCnt['content'+i] + '</dd>');
+				}else{
+					supCnt['content'+i] && (helpListDom += '<dt class=\"inshelp-dt\">' + supCnt['content'+i] + '</dt>');
+				}
+			}
+
+			helpListDom += '</dl>';
+
+			helpBodyDom += (helpListDom + '<div class=\"helpLink link\">' + relateHelpDom + onlineChatDom + hotLineDom + '</div>');
+			helpUl[0].innerHTML = helpBodyDom;
+			var helpRank = Element.create('div',{className:'helpRank fn-clear',innerHTML:helpRankDom,appendTo:helpUl[0]});
+			helpRankBind(helpUl[0],helpRank,errCode,sysName);
+		}
+
+		//评价区动态变化seed
+		function helpRankBind(pa,current,errcode,sysname){
+			
+			var item = [D.query('.helpYes',pa)[0],D.query('.helpNo',pa)[0]];
+			item[0].setAttribute('seed','ERR' + '-' + sysname + '-' + errcode + '-' + 'Y');
+			item[1].setAttribute('seed','ERR' + '-' + sysname + '-' + errcode + '-' + 'N');
+
+			E.on(item,'click',function(){
+				D.addClass(current,'fn-hide');
+				D.setStyles(
+					Element.create('p',{className:'userRanked',innerHTML:'您的评价已提交，谢谢！',appendTo:pa}),
+					{'marginTop':'10px','marginBottom':'0px','lineHeight':'20px'});
+				var closeHelp = D.query('.closeHelp',pa.parentNode)[0];
+				closeHelp.setAttribute('seed','');
+			});
+		}
+
+		//绑定点击事件
+		var why = D.query('.instSupIco'),
+			closeHelp = D.query('.closeHelp'); 
+		if(why.length > 0){	
+			E.on(why,'click',function(ev){
+				D.addClass(D.query('.instanceHelp'),'fn-hide');
+				D.removeClass(D.query('.instanceHelp',this.parentNode.parentNode),'fn-hide');
+				D.setStyles(D.query('.fm-item'),{'zIndex':'10'});
+				this.parentNode.parentNode.style.zIndex='999';
+				this.setAttribute('seed','');
+				E.preventDefault(ev);
+				});
+
+			E.on(closeHelp,'click',function(ev){
+				D.addClass(this.parentNode.parentNode,'fn-hide');	
+			});
+		}
+	})();

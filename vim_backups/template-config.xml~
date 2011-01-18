@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="GBK"?>
+<template>
+	<head title="付款方式 － 支付宝" charset="gb2312" doctype="text/html" path="/default/home/" menu="bank">
+		<css>
+			<ref path="$css_alice_alice" />
+			<ref path="$css_tp_bank-icon" />
+			<ref path="$css_home_home" />
+		</css>
+	</head>
+
+
+	<foot path="/default/home">
+		<js>
+			<!--<ref path="$js_home_arale" />-->
+			<ref path="$js_home_home" />
+		</js>	
+	</foot>
+
+</template>

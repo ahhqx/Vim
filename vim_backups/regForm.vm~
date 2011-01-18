@@ -1,0 +1,251 @@
+#*
+ * 注册的FORM
+ *
+ * @server pa
+ * @template_type null
+ * @css_package null
+ * @js_package null
+ * @tmp_css_to_be_doomed true
+ * @tmp_js_to_be_doomed false
+ *
+ * @author 齐济
+ *#
+
+ #*
+ $completeAll 必须填写全部信息
+ $regType 注册类型
+ 
+ *#
+#if($stringUtil.equals("email",$!regType))
+<script type="text/javascript">
+	var UA_Opt = new Object;
+	UA_Opt.LogTarget = ['reg','email','realname','secure_q','secure_q-custom','answer','passtype','passnum','phone','check_code','reg-submit'];
+	UA_Opt.FormId = "reg"; 
+	UA_Opt.MaxMCLog = 50;
+	UA_Opt.MaxKSLog = 50;
+	UA_Opt.Flag = 4054;
+</script>
+#else
+<script type="text/javascript">
+	var UA_Opt = new Object;
+	UA_Opt.LogTarget = ['reg','mobile','realname','secure_q','secure_q-custom','answer','passtype','passnum','bind-email','check_code','reg-submit'];
+	UA_Opt.FormId = "reg"; 
+	UA_Opt.MaxMCLog = 50;
+	UA_Opt.MaxKSLog = 50;
+	UA_Opt.Flag = 4054;
+</script>
+#end
+<div class="fm-input">
+	#set($f = $formManager.newForm($request))
+	<form name="" method="post" action="$!formAction" id="reg">
+	#addFormToken($f)
+
+	
+				<!-- add instance help-->
+			<script>
+
+			window.INSHELP = window.INSHELP || {};
+	
+			INSHELP.personalInfoForm = {
+				#showLivehelp()
+			};
+		
+			</script>
+
+
+		<fieldset>
+		#if($stringUtil.indexOf($!formAction,"/reg/activate")> -1)
+			<legend>
+				激活支付宝账户
+			</legend>
+			<div class="fm-item fm-text">
+				<label for="mobile" class="fm-label">支付宝账户名：</label>$!registerInfoForm.email
+				<input type="hidden" name="email" value="$!registerInfoForm.email"/>
+			</div>
+		#else
+		#if($stringUtil.equals("mobile",$!regType))	
+			<legend>用手机号码注册个人账户</legend>
+			#springBind("registerInfoForm.email")
+			<div class="fm-item #highLightField('')" id="acctstatus-container">
+				<label for="mobile" class="fm-label"><span class="required">*</span>手机号码：</label>
+				<input type="text" data-loginurl="$!authCenterServer.getURI('/login/index.htm')" data-activateurl="$!userModule.setTarget('reg/activate/index.vm').addQueryData('logonId',$!registerInfoForm.email)" data-explain="#springMessage('TIP.REGISTER.MOBILE')" class="i-text J-autofocus" id="mobile" name="email" value="$!registerInfoForm.email"/>
+				#if($stringUtil.equals("toLogon",$!hint))
+                   <div class="fm-explain">您输入的手机号码已经被注册，请<a href="$!authCenterServer.getURI('/login/index.htm')">立即登录</a>。</div>
+                #elseif($stringUtil.equals("toActive",$!hint))
+                   <div class="fm-explain">您输入的手机号码已经被注册，请<a href="$!userModule.setTarget('reg/activate/index.vm').addQueryData('logonId',$!registerInfoForm.email)">立即激活</a>。</div>
+                #else
+                   #showFieldErrorMessage("TIP.REGISTER.MOBILE")
+                #end
+			</div>
+		#else
+			<legend>EMAIL注册个人账户</legend>
+			#springBind("registerInfoForm.email")
+			<div class="fm-item #highLightField('')" id="acctstatus-container">
+				<label for="email" class="fm-label"><span class="required">*</span>Email：</label>
+				<input type="text" data-loginurl="$!authCenterServer.getURI('/login/index.htm')" data-activateurl="$!userModule.setTarget('reg/activate/index.vm').addQueryData('logonId',$!registerInfoForm.email)" data-explain="#springMessage('TIP.REGISTER.EMAIL')" class="i-text J-autofocus" id="email" name="email" value="$!registerInfoForm.email"/>
+				#if($stringUtil.equals("toLogon",$!hint))
+                   <div class="fm-explain">您输入的Email已经被注册，请<a href="$!authCenterServer.getURI('/login/index.htm')">立即登录</a>。</div>
+                #elseif($stringUtil.equals("toActive",$!hint))
+                   <div class="fm-explain">您输入的Email已经被注册，请<a href="$!userModule.setTarget('reg/activate/index.vm').addQueryData('logonId',$!registerInfoForm.email)">立即激活</a>。</div>
+                #else
+                   #showFieldErrorMessage("TIP.REGISTER.EMAIL")
+                #end
+			</div>
+		#end
+	#end	
+			##账户类型
+			<input type="hidden" name="accountType" value="$!accountType" />
+			
+			##注册类型
+			<input type="hidden" name="regType" value="$!regType" />
+			
+			#springBind("registerInfoForm.realName")
+			<div class="fm-item #highLightField('')">
+				<label for="realname" class="fm-label"><span class="required">*</span>真实姓名：</label>
+				<input type="text" class="i-text" id="realname" data-explain="#springMessage('TIP.REGISTER.REAL_NAME')" name="realName" value="$!registerInfoForm.realName" />
+				#showFieldErrorMessage("TIP.REGISTER.REAL_NAME")
+			</div>
+			
+			<div class="fm-part">
+				#springBind("registerInfoForm.queryPwd")
+				<div class="fm-item #highLightField('')">
+					<label class="fm-label" for="loginpwd"><span class="required">*</span>登录密码：</label>
+					<input type="password" data-explain="#springMessage('TIP.REGISTER.PASSWORD')"   class="i-text J-pwdStrengthCheck" id="loginpwd" name="queryPwd" value="" />
+					#showFieldErrorMessage("TIP.REGISTER.PASSWORD")
+				</div>
+	
+				#springBind("registerInfoForm.queryPwdConfirm")
+				<div class="fm-item #highLightField('')">
+					<label class="fm-label" for="loginpwd-confirm"><span class="required">*</span>确认登录密码：</label>
+					<input type="password"   class="i-text" id="loginpwd-confirm" name="queryPwdConfirm" value="" />
+					#showFieldErrorMessage("")
+				</div>
+			</div>
+			#if(!$completeAll)
+			<div class="fm-item fn-mt5">
+				#if($stringUtil.equals("quickRegister",$!registerInfoForm.supplyStage))
+					<span><a href="#" id="expand-all">填写全部信息</a></span>
+				#else
+					<span><a href="#" id="expand-all">取消填写全部信息</a></span>
+				#end
+				<input type="hidden" id="expand-all-value" name="supplyStage" value="$!registerInfoForm.supplyStage" />
+			</div>
+			#end
+			
+			<div id="expand-all-extend" #if($stringUtil.equals("quickRegister",$!registerInfoForm.supplyStage)) class="fn-hide" #end>
+				<div class="fm-part">
+					#springBind("registerInfoForm.payPwd")	
+					<div class="fm-item fm-cue #highLightField('')">
+						<label class="fm-label"><span class="required">*</span>支付密码：</label>
+						<input type="password"   data-explain="#springMessage('TIP.REGISTER.PAY_PASSWORD')" class="i-text J-pwdStrengthCheck" id="paypwd" name="payPwd" value="" />
+						#showFieldErrorMessage("TIP.REGISTER.PAY_PASSWORD")
+					</div>
+					#springBind("registerInfoForm.payPwdConfirm")
+					<div class="fm-item #highLightField('')">
+						<label class="fm-label"><span class="required">*</span>确认支付密码：</label>
+						<input type="password"   class="i-text" id="paypwd-confirm" name="payPwdConfirm" value="" />
+						#showFieldErrorMessage("")
+					</div>
+				</div>
+
+			
+				<div class="fm-part">		
+					#springBind("registerInfoForm.protectPasswordIssue")
+					<div class="fm-item fm-selectbox #highLightField('')">
+						<label for="secure_q" class="fm-label"><span class="required">*</span>设置安全保护问题：</label>
+						<select id="secure_q" name="protectPasswordIssue">
+    						<option  value="" #if($stringUtil.isBlank($!registerInfoForm.protectPasswordIssue))selected="selected"#end>请选择</option>
+        					<option  value="我爸爸的名字是？" #if($stringUtil.equals("我爸爸的名字是？",$!registerInfoForm.protectPasswordIssue))selected="selected"#end>我爸爸的名字是？</option>
+        					<option  value="我妈妈的名字是？" #if($stringUtil.equals("我妈妈的名字是？",$!registerInfoForm.protectPasswordIssue))selected="selected"#end>我妈妈的名字是？</option>
+        					<option  value="我爸爸的生日是？" #if($stringUtil.equals("我爸爸的生日是？",$!registerInfoForm.protectPasswordIssue))selected="selected"#end>我爸爸的生日是？</option>
+        					<option  value="我妈妈的生日是？" #if($stringUtil.equals("我妈妈的生日是？",$!registerInfoForm.protectPasswordIssue))selected="selected"#end>我妈妈的生日是？</option>
+        					<option  value="我妻子的名字是？" #if($stringUtil.equals("我妻子的名字是？",$!registerInfoForm.protectPasswordIssue))selected="selected"#end>我妻子的名字是？</option>
+        					<option  value="我丈夫的名字是？" #if($stringUtil.equals("我丈夫的名字是？",$!registerInfoForm.protectPasswordIssue))selected="selected"#end>我丈夫的名字是？</option>
+        					<option  value="我的出生地是？" #if($stringUtil.equals("我的出生地是？",$!registerInfoForm.protectPasswordIssue))selected="selected"#end>我的出生地是？</option>
+        					<option  value="我的小学校名是？" #if($stringUtil.equals("我的小学校名是？",$!registerInfoForm.protectPasswordIssue))selected="selected"#end>我的小学校名是？</option>
+        					<option  value="自定义问题" #if($stringUtil.equals("自定义问题",$!registerInfoForm.protectPasswordIssue))selected="selected"#end>自定义问题</option>
+						</select>
+						#showFieldErrorMessage("TIP.REGISTER.SECURITY_QUESTION")
+					</div>
+
+					#springBind("registerInfoForm.otherprotectPasswordIssue")
+					<div class="fm-item fn-hide #highLightField('')">
+						<label class="fm-label"><span class="required">*</span>自定义问题：</label>
+						<input type="text" class="i-text" id="secure_q-custom" name="otherprotectPasswordIssue" value="$!registerInfoForm.otherprotectPasswordIssue" />
+						#showFieldErrorMessage("")
+					</div>
+					
+					#springBind("registerInfoForm.protectPasswordKey")
+					<div class="fm-item #highLightField('')">
+						<label for="answer" class="fm-label"><span class="required">*</span>您的答案：</label>
+						<input type="text" data-explain="#springMessage('TIP.REGISTER.PROTECT_PASSWORD_KEY')" class="i-text" id="answer" name="protectPasswordKey" value="$!registerInfoForm.protectPasswordKey" />
+						#showFieldErrorMessage("TIP.REGISTER.PROTECT_PASSWORD_KEY")
+					</div>
+				</div>
+				
+				#springBind("registerInfoForm.certType")
+				<div class="fm-item fm-selectbox #highLightField('')">
+					<label for="passtype" class="fm-label"><span class="required">*</span>证件类型：</label>
+					<select id="passtype" name="certType">
+						<option #if($stringUtil.equals("身份证",$!registerInfoForm.certType))selected="selected"#end value="$stringEscapeUtil.escapeURL("身份证","utf-8")">身份证</option>
+						<option #if($stringUtil.equals("护照",$!registerInfoForm.certType))selected="selected"#end value="$stringEscapeUtil.escapeURL("护照","utf-8")">护照</option>
+						<option #if($stringUtil.equals("港澳台居民大陆通行证",$!registerInfoForm.certType))selected="selected"#end value="$stringEscapeUtil.escapeURL("港澳台居民大陆通行证","utf-8")">港澳台居民大陆通行证</option>
+						<option #if($stringUtil.equals("军官证",$!registerInfoForm.certType))selected="selected"#end value="$stringEscapeUtil.escapeURL("军官证","utf-8")">军官证</option>
+					</select>
+					#showFieldErrorMessage("TIP.REGISTER.CERT_TYPE")
+				</div>
+				
+				#springBind("registerInfoForm.certNo")
+				<div class="fm-item #highLightField('')">
+					<label for="passnum" class="fm-label"><span class="required">*</span>证件号码：</label>
+					<input type="text" class="i-text" id="passnum" data-explain="#springMessage('TIP.REGISTER.CERT_NO')" name="certNo" value="$!registerInfoForm.certNo" />
+					#showFieldErrorMessage("TIP.REGISTER.CERT_NO")
+				</div>
+							
+			#if($stringUtil.equalsIgnoreCase($regType,'mobile'))
+				#springBind("registerInfoForm.emailLogonId")
+				<div class="fm-item #highLightField('')"  id="emailstatus-container">
+					<label for="bind-email" class="fm-label">绑定Email：</label>
+					<input type="text" class="i-text" data-explain="#springMessage('TIP.COMPLETE.BIND_EMAIL')" name="emailLogonId" id="bind-email" value="$!registerInfoForm.emailLogonId"/>
+					#showFieldErrorMessage("TIP.COMPLETE.BIND_EMAIL")
+				</div>
+			#end
+			
+			#if($stringUtil.equals("email",$!regType))
+				#springBind("registerInfoForm.telephone")		
+				<div class="fm-item #highLightField('')">
+					<label for="phone" class="fm-label">联系电话：</label>
+					<input type="text" data-explain="#springMessage('TIP.REGISTER.TELEPHONE')" class="i-text" id="phone" name="telephone" value="$!registerInfoForm.telephone" />
+					#showFieldErrorMessage("TIP.REGISTER.TELEPHONE")
+				</div>
+			#end
+			</div>
+		
+			#springBind("registerInfoForm.verAuthcode")    
+			<div class="fm-item #highLightField('')">  
+				<label class="fm-label" for="check_code"><span class="required">*</span>校验码：</label> 
+				<input name="verAuthcode" tabIndex="3" class="i-text i-text-authcode" autocomplete="off" id="check_code" maxlength="4" data-explain='#springMessage("TIP.CHECK_CODE.INPUT")' />
+				## email注册使用强校验码
+				#if($!stringUtil.equals("mobile",$!regType))
+				<img align="absMiddle" alt="请输入您看到的内容" id="checkcode-img" src="$checkCodeLink.addQueryData($!constantTool.CheckCodeConstants.OMEO_KEY,$!operationContext.getEnvironment().getSessionId())&r=$!math.getRandom()" complete="complete" class="reload-code"/>
+				#else
+				<img align="absMiddle" alt="请输入您看到的内容" id="checkcode-img" src="$checkCodeLink.addQueryData($!constantTool.CheckCodeConstants.OMEO_KEY,$!operationContext.getEnvironment().getSessionId()).addQueryData($!constantTool.CheckCodeConstants.OMEO_TYPE, 'sla')&r=$!math.getRandom()" complete="complete" class="reload-code"/>
+				#end
+				#showFieldErrorMessage("TIP.CHECK_CODE.INPUT")
+			</div>
+				
+			#springBind("registerInfoForm")
+			<div class="fm-item #highLightField('')">
+				<span class="btn btn-ok"><input type="submit" id="reg-submit" value="同意以下协议并提交"/></span>
+				<span class="fm-confirm"><span class="loading-text fn-hide">正在提交信息</span></span>
+				 #showFormErrorMessage()
+			</div>
+				
+			<div class="fm-item">
+				<!-- 表单许可声明 -->
+				$tile.setTemplate("user:agreementRegister.vm")
+				<!-- /表单许可声明 -->
+			</div>
+		</fieldset>
+	</form>
+</div>

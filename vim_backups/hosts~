@@ -1,0 +1,56 @@
+127.0.0.1 localhost
+255.255.255.255 broadcasthost
+::1 localhost
+127.0.0.1        activate.adobe.com
+127.0.0.1        practivate.adobe.com
+127.0.0.1        ereg.adobe.com
+127.0.0.1        activate.wip3.adobe.com
+127.0.0.1        wip3.adobe.com
+127.0.0.1        3dns-3.adobe.com
+127.0.0.1        3dns-2.adobe.com
+127.0.0.1        adobe-dns.adobe.com
+127.0.0.1        adobe-dns-2.adobe.com
+127.0.0.1        adobe-dns-3.adobe.com
+127.0.0.1        ereg.wip3.adobe.com
+127.0.0.1        activate-sea.adobe.com
+127.0.0.1        wwis-dubc1-vip60.adobe.com
+127.0.0.1        activate-sjc0.adobe.com
+127.0.0.1        adobe.activate.com
+127.0.0.1        209.34.83.73:443
+127.0.0.1        209.34.83.73:43
+127.0.0.1        209.34.83.73
+127.0.0.1        209.34.83.67:443
+127.0.0.1        209.34.83.67:43
+127.0.0.1        209.34.83.67
+127.0.0.1        ood.opsource.net
+127.0.0.1        CRL.VERISIGN.NET
+127.0.0.1        199.7.52.190:80
+127.0.0.1        199.7.52.190
+127.0.0.1        adobeereg.com
+127.0.0.1        OCSP.SPO1.VERISIGN.COM
+127.0.0.1        199.7.54.72:80
+127.0.0.1        199.7.54.72
+174.36.30.71 dropbox.com
+110.75.128.96 chat.alipay.com  chat-99-1
+110.75.128.98 live.alipay.com  live-99-1
+
+#110.75.128.17 img.alipay.com  static.alipay.com
+#110.75.128.25 alipay.com www.alipay.com taobao.alipay.com
+#110.75.128.47 lab.alipay.com
+#110.75.128.61 shenghuo.alipay.com
+#110.75.128.10 certify.alipay.com
+#110.75.128.58 cashier.alipay.com
+#110.75.128.103 memberprod.alipay.com
+#110.75.128.52 securitycenter.alipay.com
+#110.75.128.68 hongbao.alipay.com
+#110.75.128.109 auth.alipay.com 
+#110.75.128.114 jf.alipay.com
+#110.75.128.41 help.alipay.com
+#110.75.128.67 zizhu.alipay.com
+#10.253.97.38 mservprod.stable.alipay.net mservprod.p28.alipay.net
+#10.253.91.23 abc.alipay.com
+#110.75.128.123 home.alipay.com
+#110.75.128.90 b.alipay.com
+#10.2.11.142   certify.alipay.net
+#110.75.128.135 katong.alipay.com
+#110.75.128.74 omeo.alipay.com

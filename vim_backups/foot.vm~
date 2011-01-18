@@ -1,0 +1,107 @@
+<!-- 页脚 -->
+<div id="footer">
+	<div class="single-footer">
+		<p class="copyright">支付宝版权所有 2004-2010 ICP证：浙B2-20050209</p>
+		<div id="ServerNum" class="ft-fff">$!systemUtil.hostInfo.name</div>
+			<div id="versionNum" class="ft-fff">版本：$!request.getSession().getAttribute("iw.logon.version")</div>
+	</div>
+</div>
+<!-- /页脚 -->
+</div>
+<!-- 密码控件 -->
+<div class="fn-hide">
+	<div id="alieditPopInfo" class="pop-aliedit">
+		<div class="container">
+			<div class="title">
+				<h3>安全控件提示</h3>
+				<div class="link"><a id="alieditHelpLink" href="http://help.alipay.com/support/help_detail.htm?help_id=7779&sh=null&tab=school&info_type=1%2C2" target="_blank">查看帮助</a></div>
+				<a class="xbox-close-link closeAlieditBox" href="javascript:void(0)">关闭</a>
+			</div>
+			<div class="line"></div>
+			<div id="notInstalledAlieditInfo" class="fn-hide">
+				<h4>您还未安装密码安全控件，安装后即可输入密码。</h4>
+				<p class="ft-gray">控件可对您输入的密码进行加密保护。</p>
+				<p class="install"><a class="btn btn-ok alieditDownLink"><span>立即安装</span></a></p>
+			</div>
+			<div id="afterClickInstallInfo" class="fn-hide">
+				<h4 class="exclaimed">完成安装后，请您重新启动浏览器。</h4>
+			</div>
+			<div id="notSupportAlieditInfo-win" class="fn-hide">
+				<h4>您现在所用的浏览器，暂不支持安全控件。</h4>
+				<p class="explain">·建议您使用以下支持支付宝控件的浏览器：</p>
+				<p class="other"><a class='maxthon' href="http://mk.maxthon.cn/" target='_blank'><span class='icon'></span>傲游</a><a class='ie' href="http://www.microsoft.com/china/windows/products/winfamily/ie/" target='_blank'><span class='icon'></span>IE</a><a class='firefox' href="http://www.mozillaonline.com/" target='_blank'><span class='icon'></span>火狐</a></p>
+			</div>
+			<div id="notSupportAlieditInfo-mac" class="fn-hide">
+				<h4>您现在所用的浏览器，暂不支持安全控件。</h4>
+				<p class="explain">建议您使用以下支持支付宝控件的浏览器：</p>
+				<p class="other"><a class='safari' href="http://www.apple.com/safari/download/"><span class='icon'></span>Safari</a></p>
+			</div>
+			<div id="notSupportAlieditInfo-other" class="fn-hide">
+				<h4>您现在所用的浏览器，暂不支持安全控件。</h4>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- /密码控件 -->
+#SLITERAL(${js_arale})
+#SLITERAL(${js_pa_pa})
+
+##即时帮助信息
+#set($liveHelps=$!request.getSession().getAttribute("liveHelps"))
+<script type="text/javascript">
+	window.INSHELP = window.INSHELP || {};
+	INSHELP = {
+		#if($!liveHelps && $!liveHelps.size()>0)
+			#showLivehelp()
+		#end		
+	};
+</script>
+
+$template.jsRef
+
+<!-- CMS区域临时标记层  -->
+<script type="text/javascript">
+
+//new AP.pk.pa.tempLayer();
+var mytip = new AP.widget.tipdone();
+
+#if($stringUtil.isNotBlank($okMessage))
+        #set($msg = "#springMessage($okMessage)")
+        #if($stringUtil.isNotBlank($!msg) && ($!msgParams))
+                #foreach($param in $msgParams)
+                        #set($i=$velocityCount - 1)
+                        #set($msg=$stringUtil.replace($!msg, "{${i}}", $!param))
+                #end
+        #end
+        mytip.show("#SLITERAL($!msg)")
+#end
+
+//feedback's xbox
+new AP.widget.xBox({
+	el:D.query('.J-feedback'),
+	type:'iframe',
+	value:function(el){
+		return '/feedbackXbox.htm';
+	},
+	modal:true,
+	fixed: false,
+	width:485
+});
+</script>
+$template.page
+
+## 个人版框架底部CMS 开始 -->
+#set($footType = 'task')
+#parse('/la/pa_foot_all.vm')
+
+## 在线客服
+#set($params = $!live800Encode.getUrlMD5Encode($!operationContext.getPrincipal().getUserId(), $!operationContext.getPrincipal().getLogonId(), $!operationContext.getPrincipal().getUserName(), ""))
+#parse('/la/onlineServiceNew.vm')
+
+##控制流量入口cms配置
+#parse('la/pa_on_service_ctr.vm')
+
+##CMS区域 全站tracker监控
+#parse("/la/tracker.vm")
+</body>
+</html>

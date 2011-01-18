@@ -1,0 +1,43 @@
+<h4 class="index-news-title">最新动态</h4>
+<ul class="ui-list ui-list-icons">
+	<li class="ui-list-item ui-list-item-red">
+		<a href="#">央视纪录片报道阿里巴巴</a>
+	</li>
+	<li class="ui-list-item">
+		<a href="#">支付宝提醒用户防木马钓鱼</a>
+	</li>
+	<li class="ui-list-item">
+		<a href="#">支付宝获中国互联网“价值之星”</a>
+	</li>
+	<li class="ui-list-item">
+		<a href="#">央视纪录片报道阿里巴巴</a>
+	</li>
+	<li class="ui-list-item">
+		<a href="#">支付宝提醒用户防木马钓鱼</a>
+	</li>
+		<li class="ui-list-item">
+		<a href="#">支付宝提醒用户防木马钓鱼</a>
+	</li>
+<li class="ui-list-item">
+		<a href="#">支付宝提醒用户防木马钓鱼</a>
+	</li>
+</ul>
+
+<ul class="ui-list ui-list-icons index-news-hot">
+	<li class="ui-list-item ui-list-item-red">
+		<a href="#">央视纪录片报道阿里巴巴</a>
+	</li>
+	<li class="ui-list-item">
+		<a href="#">支付宝提醒用户防木马钓鱼</a>
+	</li>
+	<li class="ui-list-item">
+		<a href="#">支付宝获中国互联网“价值之星”</a>
+	</li>
+	<li class="ui-list-item">
+		<a href="#">央视纪录片报道阿里巴巴</a>
+	</li>
+	<li class="ui-list-item">
+		<a href="#">支付宝提醒用户防木马钓鱼</a>
+	</li>
+</ul>
+

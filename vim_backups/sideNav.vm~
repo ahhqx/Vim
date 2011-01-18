@@ -1,0 +1,55 @@
+	<div id="aside">
+			<div id="J-snav" class="ui-snav">
+				<ul class="ui-snav-cnt">
+					<li class="ui-snav-item#if($stringUtil.equals("$sNavName","reg")) current#end"><a href="reg.htm" class="ui-snav-link#if($stringUtil.equals("$sNavName","reg")) selected#end" seed="reg-sideNav" >注册</a></li>
+					<li class="ui-snav-item#if($stringUtil.equals("$sNavName","trade")) current#end">
+						<a href="tradeTaobao.htm" class="ui-snav-link" seed="tradeTaobao-sideNav-main">如何购物</a>
+						<ul class="ui-snav-child">
+							<li><a#if($stringUtil.equals("$sSubNavName","tradeTaobao")) class="selected"#end href="tradeTaobao.htm" seed="tradeTaobao-sideNav"  >在淘宝购物</a></li>
+							<li><a#if($stringUtil.equals("$sSubNavName","tradeAlipay")) class="selected"#end href="tradeAlipay.htm" seed="tradeAlipay-sideNav" >在支付宝商户购物</a></li>
+						</ul>
+					</li>
+					<li class="ui-snav-item#if($stringUtil.equals("$sNavName","payment")) current#end"><a href="payment.htm" class="ui-snav-link#if($stringUtil.equals("$sNavName","payment")) selected#end" seed="payment-sideNav" >如何付款</a></li>
+					<li class="ui-snav-item#if($stringUtil.equals("$sNavName","inpour")) current#end">
+						<a href="inpour.htm" class="ui-snav-link#if($stringUtil.equals("$prefix","inpour")) selected#end" seed="inpour-sideNav-main" >账户充值</a>
+						<ul class="ui-snav-child">
+							<li><a#if($stringUtil.equals("$sSubNavName","inpourBank")) class="selected" #end href="inpourBank.htm" seed="inpourBank-sideNav" >网上银行充值</a></li>
+							<li><a#if($stringUtil.equals("$sSubNavName","inpourKatong")) class="selected" #end href="inpourKatong.htm" seed="inpourKatong-sideNav" >支付宝卡通充值</a></li>
+							<li><a#if($stringUtil.equals("$sSubNavName","inpourConcard")) class="selected" #end href="inpourConcard.htm" seed="inpourConcard-sideNav" >消费卡充值</a></li>
+							<li><a#if($stringUtil.equals("$sSubNavName","inpourWangdian")) class="selected" #end href="inpourWangdian.htm" seed="inpourWangdian-sideNav" >网点充值</a></li>
+						</ul>
+					</li>
+					<li class="ui-snav-item#if($stringUtil.equals("$sNavName","record")) current#end"><a href="record.htm" class="ui-snav-link#if($stringUtil.equals("$sNavName","record")) selected#end">消费记录</a></li>
+					<li class="ui-snav-item#if($stringUtil.equals("$sNavName","account")) current#end">
+						<a href="accountEdit.htm" class="ui-snav-link" seed="accountEdit-sideNav-main" >账户管理</a>
+						<ul class="ui-snav-child">
+							<li><a#if($stringUtil.equals("$sSubNavName","accountEdit")) class="selected" #end href="accountEdit.htm" seed="accountEdit-sideNav" >账户信息修改</a></li>
+							<li><a#if($stringUtil.equals("$sSubNavName","accountCertify")) class="selected" #end href="accountCertify.htm" seed="accountCertify-sideNav" >支付宝实名认证</a></li>
+						</ul>
+					</li>
+					<li class="ui-snav-item#if($stringUtil.equals("$sNavName","life")) current#end">
+						<a href="life.htm" class="ui-snav-link#if($stringUtil.equals("$prefix","life")) selected#end" seed="life-sideNav-main" >生活助手</a>
+						<ul class="ui-snav-child">
+							<li><a#if($stringUtil.equals("$sSubNavName","lifePayment")) class="selected" #end href="lifePayment.htm" seed="lifePayment-sideNav" >我要付款</a></li>
+							<li><a#if($stringUtil.equals("$sSubNavName","lifeGathering")) class="selected" #end href="lifeGathering.htm" seed="lifeGathering-sideNav" >我要收款</a></li>
+							<li><a#if($stringUtil.equals("$sSubNavName","lifeWaterElectricityGas")) class="selected" #end href="lifeWaterElectricityGas.htm" seed="lifeWaterElectricityGas-sideNav" >水电煤缴费</a></li>
+							<li><a#if($stringUtil.equals("$sSubNavName","lifeCorrespondence")) class="selected" #end href="lifeCorrespondence.htm" seed="lifeCorrespondence-sideNav" >通讯费</a></li>
+							<li><a#if($stringUtil.equals("$sSubNavName","lifeCredit")) class="selected" #end href="lifeCredit.htm" seed="lifeCredit-sideNav" >信用卡还款</a></li>
+							<li><a#if($stringUtil.equals("$sSubNavName","lifeAAcollect")) class="selected" #end href="lifeAAcollect.htm" seed="lifeAAcollect-sideNav" >AA收款</a></li>
+							<li><a#if($stringUtil.equals("$sSubNavName","lifeRent")) class="selected" #end href="lifeRent.htm" seed="lifeRent-sideNav" >交房租</a></li>
+							<li><a#if($stringUtil.equals("$sSubNavName","lifeCashGift")) class="selected" #end href="lifeCashGift.htm" seed="lifeRent-sideNav" >送礼金</a></li>
+						</ul>
+					</li>
+					<li class="ui-snav-item#if($stringUtil.equals("$sNavName","escore")) current#end">
+						<a href="escore.htm" class="ui-snav-link#if($stringUtil.equals("$prefix","escore")) selected#end" seed="withdraw-sideNav" >担保交易</a>
+						<ul class="ui-snav-child">
+							<li><a#if($stringUtil.equals("$sSubNavName","entityTrade")) class="selected" #end href="entityTrade.htm" seed="entity-sideNav" >实物交易</a></li>
+							<li><a#if($stringUtil.equals("$sSubNavName","virtualTrade")) class="selected" #end href="virtualTrade.htm" seed="virtual-sideNav" >虚拟物品交易</a></li>
+							<li><a#if($stringUtil.equals("$sSubNavName","servTrade")) class="selected" #end href="servTrade.htm" seed="serv-sideNav" >服务交易</a></li>
+						</ul>
+					</li>
+				
+					<li class="ui-snav-item#if($stringUtil.equals("$sNavName","withdraw")) current#end"><a href="withdraw.htm" class="ui-snav-link#if($stringUtil.equals("$sNavName","withdraw")) selected#end" seed="withdraw-sideNav" >提现</a></li>
+				</ul>
+			</div> <!-- .ui-snav -->
+		</div> <!-- #aside -->	

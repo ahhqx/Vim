@@ -1,0 +1,1422 @@
+/**
+ * 
+ * description: 2011 用户之家项目
+ * site: alipay.com
+ */
+
+/* reset */
+body{
+	color:#545454;
+	font: 12px/1.5 tahoma,arial,"STHeiti",Hei,"WenQuanYi Micro Hei",\5b8b\4f53,sans-serif;
+}
+a{color:#07F;}
+
+/* layout */
+#h-box, #container{width:950px;margin:0 auto;}
+#aside{width:184px;float:left;}
+#content{width:730px;float:right;}
+#foot{clear:both;}
+
+/* head */
+#head{margin:15px 0 10px 0;}
+#logo{float:left;}
+#logo, #logo a{width:258px;height:42px;}
+#logo a{display:block;text-indent:-9999em;background:url("http://img.alipay.net/home/logo.png") no-repeat 0 0;outline:none;}
+#h-meta{float:right;color:#bbb;}
+#h-meta a, .ui-snav a, .site-links a, #h-meta span{color:#545544;}
+
+/* nav */
+.ui-nav-item .ui-nav-link{
+	background-color:transparent;
+}
+.nav-new,
+.nav-new .nav-border,
+.nav-security-report,
+.current .ui-nav-link,
+.ui-nav-item .ui-nav-link:hover{
+	background-image:url(http://img.alipay.net/home/new-nav-2.png);
+}
+.nav-new{
+	margin-bottom:15px;
+	position:relative;
+	z-index:10;
+	background-position:0 0;
+	background-color:#FFF2E6;
+	height:60px;
+}
+.nav-new-container{
+	position:relative;
+	_z-index:1;
+	width:950px;
+	margin:0 auto;
+}
+.nav-new a:hover{
+	text-decoration:none;
+}
+
+.nav-new .ui-nav-item{
+	position:relative;
+	z-index:1;/* required A-browser */
+	width:103px;
+	height:33px;
+	float:left;
+	margin-right:4px;
+	top:5px;
+}
+.nav-new .ui-nav-link{
+	width:100%; height:100%; 
+    overflow:hidden; 
+    background-repeat:no-repeat;  
+    font:600 14px/29px Tahoma;
+    color:#FFF;
+} 
+.ui-nav-item .ui-nav-link:hover{
+	text-shadow:1px 1px 2px #cc4617;
+}
+.current .ui-nav-link:hover{
+	text-shadow:none;
+}
+
+/* 子级 */ 
+.nav-sub{
+	display:none;
+	font-family:Tahoma,arial;
+}
+.nav-sub-item{
+	float:left;
+	min-width:100px;
+	_width:100px;
+	margin-right:8px;
+	cursor:pointer;
+}
+.current .nav-sub{
+	position:absolute;
+	display:block;
+	height:100%;
+	margin-top:-5px;
+	min-width:500px;
+	_width:500px;
+}
+.nav-sub .nav-sub-link{
+	display:block;
+	height:24px;
+	line-height:24px;
+    _line-height:23px;
+	text-align:center;
+	color:#7f7f7f;
+	margin-top:2px;
+	padding:0 1px;
+}
+.nav-sub .nav-menu,.nav-security-report{
+	display:none;
+}
+.nav-sub .current .nav-sub-link, .nav-sub .selected .nav-sub-link{
+	padding:0;
+	font-weight:600;
+}
+
+.nav-sub .current .nav-sub-link,.nav-sub-link:hover{	
+	margin-top:1px;
+	background-color:#fffbf8;
+	border-width:1px 1px 0;
+	border-color:#ffd2b0;
+	border-style:solid;
+	-moz-border-radius:2px;
+	border-radius:2px;
+
+}
+.nav-sub .current .nav-sub-link-cnt,
+.nav-sub-link:hover .nav-sub-link-cnt{
+	margin-top:-1px;
+	background-color:#fffbf8;
+	width:100%;
+	display:inline-block;
+	border-top:1px solid #ffd2b0;
+}
+.nav-sub .current .nav-menu{
+	display:block;
+}
+.nav-sub .selected .nav-menu{
+	display:none;
+}
+.nav-light-bg{
+	background: url("http://img.alipay.net/home/new-nav-2.png") 0 -143px;
+	height: 33px;
+	width: 250px;
+	position: absolute;
+	right: 0;
+	top:0;
+}
+/* 状态 */
+/*
+.nav-b:hover{
+	color:#4f6178;
+	background-position:0 -64px;
+}
+ */
+.ui-nav-link:hover{
+	background-position:0 -105px;
+}
+.current .nav-personal,
+.current .nav-bank,
+.current .nav-security,
+.current .ui-nav-link,
+.current .ui-nav-link:hover{
+	color:#333;
+	background-position:0 -67px;
+}
+
+.current .nav-b{
+	color:#FFFFFF;
+	background-position:0 -202px;
+}
+
+/* 系统 */
+.ui-menu-text{
+	zoom:1;
+}
+.nav-sub .current .nav-sub-link, .nav-sub .selected .nav-sub-link{
+	color:#ff7b00;
+}
+.channel-b .nav-sub .current .nav-sub-link{
+	color:#0158a2;
+}
+.channel-security .nav-security-report{
+	display:block;
+	position:absolute;
+	right:0;
+	top:-20px;
+	bottom:8px;
+	padding-left:25px;
+	line-height:16px;
+	background-position:0 -180px;
+	color:#7f7f7f;
+}
+.channel-security .nav-security-report:hover{
+    text-decoration:underline;
+}
+
+/* 下拉菜单 */
+.nav-menu{
+	width:98px;
+    zoom:1;
+}
+.nav-menu .ui-menu-item a{
+	color:#797979;
+}
+.nav-menu .ui-menu-item a:hover{
+	background:#ffebd3;
+}
+.nav-menu{
+    border:1px solid #ffd2b0;
+	border-top:1px solid #f4e8df;
+	background-color:#fffbf8;
+}
+
+/*
+.nav-menu .ui-menu-icon{
+	display:block;
+	width:10px;
+	height:10px;
+	top:7px;
+	background:url(http://img.alipay.net/home/new-nav.png) 0 -234px no-repeat;
+}*/
+.nav-menu .ui-menu-item .ui-menu-text{
+    text-align:center;
+	padding-left:0.4em;
+} 
+/*.nav-menu a:hover .ui-menu-icon
+ * {
+	background-position:-10px -234px;
+}
+*/
+/* side navigation */
+.ui-snav{width:184px;padding-bottom:92px;overflow:hidden;background:url(http://img.alipay.net/home/snav_sprite.png) no-repeat bottom left;}
+.ui-snav-cnt{width:167px;padding:10px 0 130px 17px;border-top:1px solid #CCEBF2;background:#F0FBFD url(http://img.alipay.net/home/snav_repeat.png) repeat-y 0 0;}
+.ui-snav a{display:block;zoom:1;}
+.ui-snav a.selected{font-weight:700;padding-left:10px;background:url(http://img.alipay.net/home/arrow_orange.png) no-repeat left center;color:#f60;}
+.ui-snav .ui-snav-child a.selected{color:#666;}
+.ui-snav-item{display:block;width:152px;padding:2px 0 0 15px;font-size:14px;line-height:46px;background:url(http://img.alipay.net/home/snav_sprite.png) no-repeat bottom right;}
+.ui-snav .current{margin-top:-2px;}
+.ui-snav .current, .ui-snav .hover{background-position:-184px -47px;}
+.ui-snav .nobg{background:none;}
+.ui-snav .current .ui-snav-link{
+    font-weight:600;
+    color:#F60; 
+}
+//.ui-snav .c-nobg, .ui-snav .c-nobg .ui-snav-child{border-bottom-color:#F0FBFD;}
+.ui-snav .hover{background-position:-351px -45px}
+.ui-snav-child{display:none; line-height:1.5;padding:10px 0 10px 15px;margin-left:-15px;font-size:12px;border-bottom:1px solid #CCEBF2;}
+.ui-snav-child a{padding-left:10px;display:inline;line-height:24px;}
+.ui-snav .current .ui-snav-child{display:block;}
+
+/* base ui */
+/*
+	@name: 按钮
+	@base: ui-btn
+	@desc: 个人版按钮控件
+	@required: null
+	@example: 
+			<span class="ui-btn"><input class="ui-btn-text" type="button" value="" /></span>
+	
+*/
+.ui-btn{
+	display:-moz-inline-box;
+	display:inline-block;
+	*display:inline;
+	vertical-align:middle;
+	line-height:100%;
+	text-align:left;
+	font-size:12px;
+	text-decoration:none;
+	cursor:pointer;
+	zoom:1;
+}
+
+.ui-btn,
+.ui-btn .ui-btn-text{
+	background-image:url(http://img.alipay.net/alice/bg-btn.png);
+	background-repeat:repeat-x;
+	font-family:Tahoma;
+	cursor:pointer;
+	outline:none;
+}
+.ui-btn{
+	font-family:SimSun;
+}
+.ui-btn:hover{
+   text-decoration:none;
+}
+.ui-btn .ui-btn-text{
+	border:none;
+	*border:0;
+	*overflow:visible;
+}
+body .ui-btn .ui-btn-text{
+	vertical-align:baseline;
+}
+.ui-btn span,
+.ui-btn:hover span{
+	display:block;
+	float:left;
+	text-decoration:none;
+}
+/* 自适应宽度大按钮 */
+.ui-btn-ok,
+.ui-btn-ok-hover,
+.ui-btn-cancel,
+.ui-btn-ok-disabled,.ui-btn button{
+	font-size:14px;
+	padding:1px;
+}
+
+/* 大 确定 */
+.ui-btn-ok{
+	border:1px #D74C00 solid;
+	background-position:0 0;
+}
+/* 大 确定 悬停 */	
+.ui-btn-ok-hover,
+.ui-btn-ok:hover{
+	padding:1px;
+	border:1px #e55100 solid;
+}
+/*  大 确定 不可点 */ 
+.ui-btn-ok-disabled{
+	background-position:0 -103px;
+	border:1px #aaa solid;
+}	
+
+/* 大 取消 */
+.ui-btn-cancel{
+	background-position:0 -103px;
+	border:1px #A8A8A8 solid;
+}
+
+/*  大按钮 input button 公共 */ 
+.ui-btn-ok .ui-btn-text,
+.ui-btn-ok-hover .ui-btn-text,
+.ui-btn-cancel .ui-btn-text,
+.ui-btn-ok-disabled .ui-btn-text{
+	padding:0 16px;
+	padding-bottom:3px;
+	*padding-bottom:0;
+	height:28px;
+	line-height:28px;
+	font-weight:bold;
+	color:#FFFFFF;
+}
+/* 大 确定按钮 */
+.ui-btn-ok .ui-btn-text{
+	background-position:0 -70px;
+}
+/* 对a>span IE6重写 */
+.ui-btn-ok span.ui-btn-text,
+.ui-btn-ok-hover span.ui-btn-text,
+.ui-btn-ok-hover:hover span.ui-btn-text,
+.ui-btn-cancel span.ui-btn-text{
+	padding-bottom:3px;
+	_padding-bottom:1px;
+	_line-height:28px;
+	height:25px;
+	*height:26px;
+}
+
+.ui-btn-ok-hover,.ui-btn-ok-hover:hover{
+	text-decoration:none;
+}
+/* 大 确定按钮 不可点状态 */
+.ui-btn-ok-disabled .ui-btn-text{
+	background: #CCCCCC none;
+	cursor:default;
+}
+/* 大 确定 悬停 */
+.ui-btn-ok-hover .ui-btn-text,
+.ui-btn-ok:hover span{
+	background-position:0 -36px;
+}
+
+/* 大 取消按钮 */
+.ui-btn-cancel .ui-btn-text{
+	background:#CCCCCC;
+	color:#FFFFFF;
+}	
+
+/* 自适应宽度小按钮 */
+.ui-btn-ok-mini,
+.ui-btn-cancel-mini{
+	padding:1px;
+}
+/* 小 确定 */
+.ui-btn-ok-mini{
+	border:1px #D74C00 solid;
+	background-position:0 -10px;
+}
+/* 小 取消 */
+.ui-btn-cancel-mini,.ui-btn-cancel-mini{
+	background-position:0 -103px;
+	color:#5B5B5B;
+	border:1px #BCBCBC solid;
+	*margin-left:3px;
+}
+
+/*  小按钮 input/button 公共 */ 
+.ui-btn-ok-mini .ui-btn-text,
+.ui-btn-cancel-mini .ui-btn-text{
+	padding:0 9px;
+	height:20px;
+	line-height:20px;
+	color:#FFFFFF;
+}
+
+/* 小 确定按钮 */
+.ui-btn-ok-mini,.ui-btn-ok-mini{
+	background-position:0 -15px;
+}
+
+.ui-btn-ok-mini .ui-btn-text{
+	background-position:0 -75px;
+}
+.ui-btn-ok-mini:hover,.ui-btn-ok-mini-hover{
+	border:1px solid #E47000;
+}
+.ui-btn-ok-mini:hover .ui-btn-text,
+.ui-btn-ok-mini-hover .ui-btn-text{
+	background-position:0 -518px;
+}
+
+/* 小 取消按钮 */
+.ui-btn-cancel-mini .ui-btn-text{
+	background-position:0 -312px;
+	color:#5B5B5B;
+}
+.ui-btn-ok-mini span,
+.ui-btn-cancel-mini span{
+	line-height:21px;
+}
+
+.ui-btn-cancel-mini:hover,.ui-btn-cancel-mini:hover{
+	border:1px solid #6E6E6E;
+}
+.ui-btn-cancel-mini:hover .ui-btn-text,
+.ui-btn-cancel-mini-hover .ui-btn-text{
+	background-position:0 -110px;
+}
+
+.ui-btn-ok-hover,.ui-btn-ok-hover:hover,
+.ui-btn-cancel:hover,.ui-btn-ok-mini:hover,.ui-btn-ok-mini-hover:hover,
+.ui-btn-cancel:hover,.ui-btn-cancel-mini:hover,.ui-btn-cancel-mini-hover:hover{
+	text-decoration:none;
+}
+/*
+	@name: ui-dialog-bubble
+	@desc: 浮动提示
+	@required: ui-dialog
+	@note: 自适应
+	@example: 
+		<div class="ui-dialog ui-dialog-bubble" style="top:150px">
+			<div class="ui-dialog-container">
+				<!-- content -->
+					内容 content
+				<!-- /content -->
+			</div>
+			<div class="ui-icon-dialog-arrow"></div>
+			<div class="ui-dialog-fix">
+			    <!--[if lte IE 6.5]><iframe src="javascript:'';" frameborder="0"></iframe><![endif]-->
+			</div>
+		</div>
+
+*/
+.ui-dialog-bubble{
+	background:#a8a8a8;/* overwrite */
+}
+.ui-dialog-bubble .ui-dialog-container{
+	top:-2px;/* overwrite */
+	left:-2px;/* overwrite */
+	padding:5px;/* overwrite */
+	border:1px #DEA90C solid;/* overwrite */
+	background:#FFFF8D;/* overwrite */
+}
+.ui-dialog-bubble .ui-icon-dialog-arrow{
+	margin:-3px 0 0 -10px;/* overwrite */
+	width:10px;/* overwrite */
+	height:11px;/* overwrite */
+	_bottom:-11px;/* IE6 */
+	background-position:-160px 0;/* overwrite */
+}
+/*
+	@name: ui-intro
+	@base: ui-intro
+	@desc: 图片介绍
+	@note: 图片可以删除、操作区域也可以删除
+	@required: null
+	@example: 
+	
+		<!-- ui-intro -->
+		<div class="ui-intro">
+			<span class="ui-intro-icon"></span>
+			<div class="ui-intro-container">
+				<h3 class="ui-intro-title">图片标题</h3>
+				<ul class="ui-intro-content">
+					<li>图片说明文案</li>
+					<li>附带链接</li>
+				</ul>
+			</div>
+			<div class="ui-intro-action">
+				<input type="button" value="操作" />
+			</div>
+		</div>
+		<!-- /ui-intro -->
+*/
+.ui-intro{
+	padding:10px 20px;/* overwrite */
+	zoom:1;/* required */
+}
+.ui-intro:after{
+	visibility:hidden;
+	display:block;
+	font-size:0;
+	content:"";
+	clear:both;
+	height:0;
+}
+.ui-intro-icon, 
+.ui-intro-container{
+	float:left;/* required */
+}
+.ui-intro-action{
+	float:right;/* required */
+}
+.ui-intro-icon{
+	display:block;
+	width:60px;/* overwrite */
+	height:60px;/* overwrite */
+	margin-right:20px;/* overwrite */
+}
+.ui-intro-container{
+	
+}
+.ui-intro-action{
+	margin:10px;/* overwrite */
+}
+.ui-intro-title{
+	white-space:nowrap;/* overwrite */
+	font-weight:600;/* overwrite */
+	font-size:14px;/* overwrite */
+	line-height:2;/* overwrite */
+}
+/*
+	@name: ui-xbox
+	@desc: xbox
+	@required: ui-dialog,ui-dialog-modal
+	@note: 自适应
+	@example: 
+        <!-- xbox -->				
+        <!-- alpha layer -->
+        <div class="ui-xbox-shadow">
+            <iframe src="javascript:'';" frameborder="0"></iframe>
+        </div>
+        <!-- /alpha layer -->
+        <div class="ui-xbox">
+            <div class="ui-xbox-action"><a href="#">关闭</a></div>
+            <!-- xbox content -->
+            <div class="ui-xbox-content">
+               content...
+            </div>
+            <!-- /xbox content -->
+        </div>
+        <!-- /xbox -->
+*/
+.ui-xbox,.ui-xbox-shadow,
+.ui-xbox-action{
+    position:absolute;/* required */
+    top:0;/* overwrite */
+}
+.ui-xbox{
+    z-index:999;/* required */
+    left:50%;/* overwrite */
+    top:50%;/* overwrite */
+    width:300px;/* overwrite */
+    height:200px;/* overwrite */
+    background:#FFF;/* overwrite */
+    border:6px solid #767576/* overwrite */
+}
+.ui-xbox-shadow{
+    position:fixed;/* required */
+    _position:absolute;/* required */
+    z-index:998;/* required */
+    left:0;
+    width:100%;/* overwrite */
+    height:100%;/* overwrite */
+    opacity:.2;/* overwrite */
+    filter:alpha(opacity=20);/* overwrite */
+    -ms-filter:"alpha(opacity=20)";/* overwrite */
+    background:#000;/* overwrite */
+}
+.ui-xbox-shadow iframe{
+    width:100%;/* overwrite */
+    height:100%;/* overwrite */
+    opacity:0;/* overwrite */
+    filter:alpha(opacity=0);/* overwrite */
+    -ms-filter:"alpha(opacity=0)";/* overwrite */
+
+}
+.ui-xbox-action{
+    display:block;/* overwrite */
+    right:10px;/* overwrite */
+    top:10px;/* overwrite */
+}
+
+/* ui component start */
+
+/* new-tab */
+.new-tab{
+	position:relative;/* required */
+	background:url(http://img.alipay.net/home/new-thumb-detail.png) right -191px no-repeat;
+}
+.new-tab .ui-tab-head{
+	padding-bottom:2px;
+	border-bottom:1px #919191 solid;/* overwrite */
+	background:url(http://img.alipay.net/home/new-thumb-detail.png) -17px -190px no-repeat;
+}
+.new-tab .ui-tab-head ul{
+	position:relative;/* required */
+	top:1px;/* overwrite */
+	border-bottom:1px #919191 solid;/* overwrite */
+	background:#FFFFFF;
+	zoom:1;/* IE */
+}
+.new-tab .ui-tab-head li{
+	height:35px;
+	line-height:35px;
+}
+.new-tab .ui-tab-head a{
+	height:33px;
+	border:1px solid #FFF;
+	border-bottom:none;
+	background-position:0 -181px;/* overwrite */
+}
+.new-tab .ui-tab-head span{
+	padding:0px 30px;
+	font-size:14px;
+	font-weight:600;/* overwrite */
+}
+.ui-tab-body .ui-accordion{
+	display: none;
+}
+.ui-tab-body .current{
+	display: block;
+}
+/* 元件---页面顶部操作完成提示 */ 
+.ui-tip-done{
+	position:absolute;
+	z-index:999;
+	padding:0 2px 2px 0;
+	background: #9EDF8A;
+}
+.ui-tip-done .container{
+	*display: inline-block;
+	position: relative;
+	top: 1px;
+	left: 1px;
+	padding:5px;
+	min-width:110px;
+	_width:110px;
+	white-space:nowrap;
+	text-align:center;
+	height: 100%;
+	border: 1px #fff solid;
+	background: #DEF9A5;
+	color:#5D8605;
+}
+.ui-tip-done .container{
+	_display: inline;
+}
+/* ----------------------- */ 
+
+/* 鼠标悬停 */
+.new-tab .ui-tab-head a:hover{
+	height:34px;
+	border-color:#d5d5d5;
+}
+.new-tab .ui-tab-head a:hover span{
+	background-color: #efefef;
+	background-image: -moz-linear-gradient(top, #efefef, #ffffff); /* FF3.6 */
+	background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, #efefef),color-stop(1, #ffffff)); /* Saf4+, Chrome */
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorStr='#efefef', EndColorStr='#ffffff'); /* IE6,IE7 */
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#efefef', EndColorStr='#ffffff')"; /* IE8 */;/* overwrite */
+}
+/* 当前项 */
+.new-tab .ui-tab-head .current{
+	
+}
+.new-tab .ui-tab-head .current a,
+.new-tab .ui-tab-head .current a:hover{
+	position:relative;
+	_top:1px;
+	height:33px;
+	line-height:32px;
+	padding:1px;
+	background:#FFF;
+	border:1px solid #919191;
+	border-bottom:none;/* overwrite */
+}
+.new-tab .ui-tab-head .current span,
+.new-tab .ui-tab-head .current a:hover span{
+	background-color: #c8c8c8;
+	background-image: -moz-linear-gradient(top, #c8c8c8, #ffffff); /* FF3.6 */
+	background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, #c8c8c8),color-stop(1, #ffffff)); /* Saf4+, Chrome */
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorStr='#c8c8c8', EndColorStr='#ffffff'); /* IE6,IE7 */
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#c8c8c8', EndColorStr='#ffffff')"; /* IE8 */;/* overwrite */
+	color:#000;
+}
+.new-tab .ui-tab-body{
+	padding:25px 0 0 20px;
+}
+
+/* new-accordion */
+.new-accordion .ui-accordion-content{
+	display:block;
+}
+.new-accordion .ui-accordion-header{
+	font:600 14px/normal Tahoma;
+	padding:0;
+	margin-bottom:15px;
+}
+
+/* new-wrap */
+.new-wrap{
+	margin-bottom:40px;
+	clear:both;
+	zoom:1;
+}
+.new-wrap h3{
+	font:600 14px/1.5 Tahoma;
+	margin-bottom:15px;
+}
+.new-wrap .ui-title{
+	border:none;
+}
+.new-wrap .ui-title h3{
+	margin:0;
+}
+.new-wrap .ui-tip-info{
+	margin-bottom:10px;
+}
+.new-wrap .new-wrap-content{
+    padding-bottom:10px;
+}
+
+/* new-flow */
+.new-flow{
+	overflow:hidden;
+}
+.new-flow img{
+	float:left;
+}
+.new-flow .new-icon-view-flow{
+    float:left;
+    margin:15px 0 0 10px;
+}
+/* new-tabble */
+.new-tabble table{
+	border-color:#f3b96a;
+}
+.new-tabble td,
+.new-tabble th{
+	border-color:#f3b96a;
+	color:#545454;
+}
+.new-tabble th{
+	font-weight:600;
+}
+.new-tabble thead th{
+	background:#fff0d1;
+}
+.new-tabble tbody th{
+	background:#fff9ed;
+}
+
+/* new-icon */
+.new-icon{
+	background-image:url(http://img.alipay.net/home/new-icon.png);
+	background-repeat:no-repeat;
+}
+.new-icon-help{
+	padding-left:16px;
+	background-position:0 -21px;
+}
+.new-icon-latest{
+	padding-right:16px;
+	background-position:right 0;
+}
+.new-icon-view-flow{
+	display:inline-block;
+	line-height:21px;
+	padding-left:25px;
+	background-position:0 -42px;
+	font:600 14px/21px Tahoma;
+	color:#F16500;
+}
+.new-icon-view-video{
+	padding-left:18px;
+	background-position:0 -70px;
+}
+.new-icon-triangle{
+	padding-left:10px;
+	background-position:-40px -133px;
+    white-space:nowrap;
+}
+.new-icon-triangle-red{
+	color:#F60;
+	padding-left:8px;
+	background-position:0 -156px;
+}
+/* new-subtitle */
+.new-subtitle{
+	padding:0;
+	border-bottom:1px solid #dbdbdb;
+}
+.new-subtitle h3{
+	position:relative;
+	bottom:-1px;
+	border-bottom:2px solid #F60;
+	padding:0 14px 4px 0;
+	font-size:16px;
+	font-weight:600;
+	color:#616060;
+}
+
+/* new-channels */
+.new-channels{
+	color:#545454;
+}
+.new-channels .ui-repeater-item{
+	float:left;
+	width:358px;
+	margin:0 10px 10px 0;
+	border:1px solid #e9e9e9;
+	background:url(http://img.alipay.net/home/new-thumb-detail.png) 0 0 repeat-x;
+    cursor:pointer;
+}
+.new-channels .odd{
+	margin-right:0;
+}
+.new-channels .ui-repeater-hover{
+	border-color:#ffd38b;
+	background-position:0 -111px;
+}
+.new-channels .ui-intro{
+	padding:12px 0 12px 12px;
+	border:1px solid #fff;
+}
+.new-channels .ui-intro-container{
+	width:260px;
+}
+.new-channels .ui-intro-icon{
+    width:67px;
+	margin:10px 10px 0 0;
+    text-align:center;
+}
+.new-channels .ui-intro-title a{
+    color:#545454;
+}
+/* new-title */
+.new-title{
+    margin-top:8px;
+    margin-bottom:20px;
+    border-bottom:3px double #9f9f9f;
+}
+.new-title h2{
+	padding-bottom:8px;
+	color:#000;
+    font-size:20px;
+	*font-family:SimHei;
+}
+.new-title .ui-title-right{
+	top:0;
+}
+.new-title .ui-round-btn-text{
+	padding:0px 12px 4px;/* for Firefox */
+}
+/* for about */
+.new-about-title{
+    margin-bottom:0;
+    border:none;
+}
+/* new-faq */
+.new-faq{
+	margin-bottom:40px;
+}
+.new-faq .ui-title{
+	padding:0;
+	margin-bottom:15px;
+	border:none;
+}
+.new-faq .ui-title h3{
+	font-family:Tahoma;
+	font-weight:600;
+	color:#545454;
+}
+.new-faq .ui-list a{
+	color:#545454;
+}
+.new-faq .ui-list,
+.new-faq p{
+	clear:both;
+    zoom:1;
+}
+.new-faq li{
+	float:left;
+	width:48%;
+	padding:0 0 2px 10px;
+}
+
+/* 
+	@name: 二级页面 服务介绍
+	@example:
+		<div class="new-service-desc">	
+						
+			<dl class="new-service-content">
+				<dt></dt>
+				<dd></dd>
+			</dl>
+			
+			<!-- ui-tip info -->
+			
+			<div class="new-service-action">
+				<a class="ui-btn ui-btn-ok"><span>动作</span></a>
+			</div>
+
+			<div class="new-service-pic">
+				<img src="" />
+			</div>
+		</div>
+*/
+.new-service-desc{
+	padding-right:310px;
+	position:relative;
+	padding-bottom:70px;
+}
+.new-service-minheight{
+    min-height:235px;
+    _height:270px;
+    margin-top:35px;
+    margin-bottom:50px;
+    padding-bottom:0;
+    padding-right:370px;
+}
+.new-service-pic{
+	position:absolute;
+	right:0;
+	top:0;
+}
+.new-service-pic img{
+	max-width:261px;
+}
+.new-service-flash{
+	position:absolute;
+	top:-15px;
+	right:10px;
+}
+.new-service-action{
+	padding:20px 0 0;
+}
+.new-service-content{
+	padding-bottom:16px;
+}
+.new-service-desc .ui-tip-info{
+	color:#7f7f7f;
+}
+/* new-sidebox */
+.new-sidebox{
+	border:1px solid #dbdbdb;
+}
+.new-sidebox-title{
+	height:25px;
+	border:1px solid #FFF;
+	background:#ededed;
+	background-image: -moz-linear-gradient(top, #ededed, #ffffff); /* FF3.6 */
+	background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, #ededed),color-stop(1, #ffffff)); /* Saf4+, Chrome */
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorStr='#ededed', EndColorStr='#ffffff'); /* IE6,IE7 */
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#ededed', EndColorStr='#ffffff')"; /* IE8 */;/* overwrite */
+}
+.new-sidebox-title h4{
+	margin:0 6px;
+	border-bottom:1px solid #ddd;
+	line-height:25px;
+	font-weight:600;
+	color:#515151;
+}
+
+/* new-btn-login,new-btn-reg */
+.new-btn-login,
+.new-btn-reg,
+.new-btn-blue{
+	border:none;
+	background-color:transparent;
+	background-image:url(http://img.alipay.net/home/new-btn-fixed.png);
+}
+.new-btn-login{
+	width:72px;
+	height:27px;
+	background-position:0 -79px;
+}
+.new-btn-login:hover,
+.new-btn-login-hover{
+	background-position:-72px -79px;
+	cursor:pointer;
+}
+.new-btn-reg{
+	width:165px;
+	height:39px;
+}
+.new-btn-reg:hover{
+	background-position:0 -39px;
+}
+
+/* new-btn-blue */
+.new-btn-blue,
+.new-btn-blue .ui-round-btn-text{
+    background-image:url(http://img.alipay.net/home/new-btn-fixed.png); 
+
+}
+.new-btn-blue .ui-round-btn-text,
+.new-btn-blue:hover .ui-round-btn-text{
+    height:32px;    
+    line-height:32px;
+    padding:0 16px;            
+    background-position:right -141px;
+    color:#fff;
+    font:600 14px/32px Tahoma;
+}
+.new-btn-blue,
+.new-btn-blue:hover{
+    background-position:0 -107px;
+}
+
+/* 引号区块 */
+.new-quot{
+	/* position:relative;
+	padding:22px 0 0 30px;
+	font-size:14px;
+	color:#838383; */
+    color:#909090;
+	zoom:1;
+}
+.new-quot strong{
+    font-weight:500;
+}
+.new-icon-quot{
+    display:none;
+    /*
+	position:absolute;
+	top:0;
+	left:0;
+	z-index:-1;
+	display:block;
+	width:50px;
+	line-height:35px;
+	background:url(http://img.alipay.net/home/new-icon.png) 0 -94px no-repeat;
+	text-indent:-999em;*/
+}
+
+/* new-dialog-bubble */
+.new-dialog-bubble{
+	background:#f2f2f2;
+}
+.new-dialog-bubble .ui-dialog-container{
+	border:1px #cbd7e3 solid;
+	background:#e5f5ff;
+	z-index: 99;
+}
+.new-dialog-bubble .ui-icon-dialog-arrow{
+	width:12px;
+	z-index: 100;
+	background:url(http://img.alipay.net/home/new-icon.png) 0 -366px no-repeat;
+}
+.new-dialog-bubble .ui-icon-top-arrow{
+	background-position:0 -134px;
+	z-index: 100;
+}
+/* new-slider */
+.new-slider{
+	position:relative;
+	width:950px;
+	height:253px;
+	overflow:hidden;
+	background:#90847e;
+}
+.new-slider-picture{
+	width:100%;
+	height:100%;
+	overflow:hidden;
+	text-align:center;
+}
+.new-slider-page,.new-slider-page-bg{
+	position:absolute;
+	bottom:8px;
+	right:12px; 
+	width:70px;
+	height:18px;
+	padding-left:17px;
+	overflow:hidden;
+    background:url(http://img.alipay.net/home/new-slider-x24-s.png) 0 0 no-repeat;
+	_background:none;
+}
+.new-slider-page-bg{
+	_filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true,sizingMethod="scale",src="http://img.alipay.net/home/new-slider-x24.png");
+}
+.new-slider-page li{
+	float:left;
+}
+.new-slider-page a{
+	display:block;
+	padding:2px 6px 1px;
+	line-height:13px;
+	font-weight:600;
+	color:#fff;
+	_position:relative;
+}
+.new-slider-page .current{
+	background:#2f2f2f;
+}
+
+/* new-way */
+.new-way{
+	margin-bottom:20px;
+	border-bottom:1px solid #DDD;	
+}
+.new-way .ui-repeater-item{
+	float:left;
+	width:50%;
+	color:#7F7F7F;
+}
+.new-way .ui-intro{
+	padding:10px 10px 10px 0;
+}
+.new-way .ui-intro-title{
+	line-height:1.5;
+}
+.new-way .ui-intro-content{
+	line-height:2;
+}
+.new-way .ui-intro-container{
+	width:270px;
+}
+.new-way .ui-intro-icon{
+	width:63px;
+	height:31px;
+	margin-right:10px;
+	background:url(http://img.alipay.net/home/new-icon.png) 0 -301px no-repeat;
+}
+.new-way .new-way-icon2{
+	background-position:0 -333px;
+}
+.new-way .ui-intro-title a{
+	font:500 12px tahoma;
+}
+/* ui component end */
+
+/* status-banner */
+#ap-status{margin-bottom:20px;}
+.ap-s-banner{border:1px solid #c5c5c5;margin-bottom:20px;}
+
+.ap-article{margin-bottom:50px;}
+.ap-a-cnt-list{padding:20px 260px 20px 0;border-top:1px dotted #d9d9d9;}
+.ap-a-cnt-list h3{font:700 16px simsum;margin-bottom:20px;}
+.ap-a-cnt-list p{margin-bottom:20px;}
+.ap-a-submit{text-align:center;border-top:30px solid #fff;}
+
+.ap-article .ui-repeater{margin-bottom:30px;}
+.ap-article .ui-repeater-item{height:98px;}
+.ap-article .ui-intro{height:72px;}
+.ap-article .ui-repeater h3{font:700 14px/30px simsum;color:#f60;}
+.ap-article .ui-repeater h3 a{color:#f60;}
+.ap-article .ui-repeater strong{font:500 18px/30px impact;padding:0 3px;}
+.ap-article	.no-img{
+	padding-right:30px;
+}
+.ap-article .new-wrap{
+	margin-bottom:0;
+	padding-left:10px;
+}
+.ap-article .new-flow .new-icon-triangle{
+	float:left;
+}
+.ap-article .new-flow .first{
+	margin:10px 0 25px 0;
+}
+.ap-article h4{
+	font:600 12px Tahoma;
+	margin-bottom:15px;
+	padding:0;
+}
+.ap-article dd{
+	margin-bottom:20px;
+}
+#ap-a-cnt-trust, #ap-a-cnt-inhance{background:url(http://img.alipay.net/home/cnt_chart_sprite.png) no-repeat right -180px;}
+#ap-a-cnt-start, #ap-a-cnt-service{background:url(http://img.alipay.net/home/cnt_conv_sprite.jpg) no-repeat right 0;}
+#ap-a-cnt-life, #ap-a-cnt-pay{background:url(http://img.alipay.net/home/cnt_pay_sprite.png) no-repeat right 15px;}
+#ap-a-cnt-choice, #ap-a-cnt-method, #ap-a-cnt-price, #ap-a-cnt-board{background:url(http://img.alipay.net/home/cnt_middle_sprite.jpg) no-repeat right 0;}
+#ap-a-cnt-brand, #ap-a-cnt-consume{background:url(http://img.alipay.net/home/cnt_shop_sprite.png) no-repeat right 0px;}
+#ap-a-cnt-choice{background-position:right 20px;padding-bottom:100px;}
+#ap-a-cnt-inhance{background-position:right 20px;padding-bottom:60px;}
+#ap-a-cnt-life{background-position:right -170px;padding-bottom:80px;}
+#ap-a-cnt-price{background-position:right -250px;}
+#ap-a-cnt-start{background-position:right -180px;padding-bottom:90px;}
+#ap-a-cnt-method{background-position:right -480px;}
+#ap-a-cnt-brand{background-position:right -180px;padding-bottom:60px;}
+#ap-a-cnt-consume{background-position:right 20px;padding-bottom:80px;}
+#ap-a-cnt-board{background-position:right -740px;padding-bottom:100px;}
+
+#ap-article-free .ap-a-cnt-list{padding-right:0;}
+#ap-article-free .first{border-top:none;}
+
+#p-detail td, #p-detail th{border:1px solid #EBBB6D;padding:5px 10px;}
+#p-detail th{padding:10px;font:700 14px simsum;background:#FCF1D2;}
+#p-detail .first-col{width:280px;}
+
+.tab-content-intro{
+	margin-bottom:20px;
+}
+.tab-content-intro .new-icon-view-video{
+	font-size:12px;
+	font-weight:400;
+}
+.tab-content-intro .tab-content-intro-desc{
+	padding-bottom:10px;
+}
+.tab-content-intro .ui-accordion-content{
+	padding:0px 310px 20px 0px;
+	position:relative;
+}
+.tab-content-intro .tab-content-intro-img{
+	position:absolute;
+	top:0px;
+	right:0px;
+}
+
+/* bank-list */
+#ap-a-cnt-bank, #ap-a-cnt-paypoint{width:730px;}
+#ap-article-bank .ap-a-cnt-list{padding-right:0;}
+
+.ap-article #view-all-bank{background:url(http://img.alipay.net/home/arrow_orange.png) no-repeat left center;padding-left:10px;}
+.ap-article .ui-dialog-container{padding:10px;}
+.ap-article .ui-dialog .ui-icon-dialog-arrow{left:25px;}
+.ap-article .ap-bank-tip{white-space:nowrap;}
+.ap-article .ap-bank-tip dd{margin-bottom:0;}
+
+.ui-banklist-li{margin-bottom:10px;margin-left:-20px;_margin-left:-40px;_position:relative;;}
+.ui-banklist-li li{position:relative;z-index:1;display:inline-block;float:left;border:1px solid #ddd;padding:5px 2px;margin-left:20px;margin-bottom:15px;}
+.ui-banklist-li .hover{z-index:10;border-color:#f60;}
+.ui-banklist-li .ui-dialog{display:none;}
+.ui-banklist-li .hover .ui-dialog{display:block;}
+.ui-banklist-li span,.ui-banklist-li a{display:inline-block;*display:block;width:123px;height:30px;vertical-align:top;background:#fff url(http://img.alipay.net/pa/frame/v2/ico-bank.png) no-repeat 0 0;text-indent: -9999em;}
+
+/* bank icon */
+.ui-banklist-li .icbc{background-position:0 0;}
+.ui-banklist-li .cmb{background-position:0 -52px;}
+.ui-banklist-li .cmbc{background-position:0 -104px;}
+.ui-banklist-li .hkbea{background-position:0 -156px;}
+.ui-banklist-li .citic{background-position:0 -208px;}
+.ui-banklist-li .sdb{background-position:0 -260px;}
+.ui-banklist-li .gdb{background-position:0 -312px;}
+.ui-banklist-li .ccb{background-position:0 -364px;}
+.ui-banklist-li .spdb{background-position:0 -416px;}
+.ui-banklist-li .psbc{background-position:0 -468px;}
+.ui-banklist-li .ceb{background-position:0 -520px;}
+.ui-banklist-li .abc{background-position:0 -572px;}
+.ui-banklist-li .boc{background-position:0 -624px;}
+.ui-banklist-li .bohaib{background-position:0 -676px;}
+.ui-banklist-li .comm{background-position:0 -728px;}
+.ui-banklist-li .cib{background-position:0 -780px;}
+.ui-banklist-li .hxbank{background-position:0 -832px;}
+.ui-banklist-li .visa{background-position:0 -884px;}
+.ui-banklist-li .hzcb{background-position:0 -936px;}
+.ui-banklist-li .cqPubEcard{background-position:0 -987px;}
+.ui-banklist-li .shb{background-position:0 -1040px;}
+.ui-banklist-li .hsb{background-position:0 -1092px;}
+.ui-banklist-li .njcb{background-position:0 -1144px;}
+.ui-banklist-li .qdccb{background-position:0 -1195px;}
+.ui-banklist-li .cdcb{background-position:0 -1248px;}
+.ui-banklist-li .czbank{background-position:0 -1300px;}
+.ui-banklist-li .cscb{background-position:0 -1352px;}
+.ui-banklist-li .cqbank{background-position:0 -1404px;}
+.ui-banklist-li .csrcb{background-position:0 -1456px;}
+.ui-banklist-li .daqingb{background-position:0 -1508px;}
+.ui-banklist-li .nbbank{background-position:0 -1560px;}
+.ui-banklist-li .egbank{background-position:0 -1612px;}
+.ui-banklist-li .fdb{background-position:0 -1664px;}
+.ui-banklist-li .gycb{background-position:0 -1716px;}
+.ui-banklist-li .h3cb{background-position:0 -1768px;}
+.ui-banklist-li .hzccb{background-position:0 -1820px;}
+.ui-banklist-li .jccb{background-position:0 -1872px;}
+.ui-banklist-li .jsbank{background-position:0 -1924px;}
+.ui-banklist-li .jxbank{background-position:0 -1976px;}
+.ui-banklist-li .zjtlsycb{background-position:0 -2028px;}
+.ui-banklist-li .zycbank{background-position:0 -2080px;}
+.ui-banklist-li .yccb{background-position:0 -2132px;}
+.ui-banklist-li .wzcb{background-position:0 -2184px;}
+.ui-banklist-li .wjrcb{background-position:0 -2236px;}
+.ui-banklist-li .urmqccb{background-position:0 -2288px;}
+.ui-banklist-li .tzcb{background-position:0 -2340px;}
+.ui-banklist-li .spabank{background-position:0 -2392px;}
+.ui-banklist-li .sdeb{background-position:0 -2496px;}
+.ui-banklist-li .nhb{background-position:0 -2548px;}
+.ui-banklist-li .czrcb{background-position:0 -2600px;}
+.ui-banklist-li .nanchang{background-position:0 -2652px;}
+.ui-banklist-li .dlcb{background-position:0 -2704px;}
+.ui-banklist-li .fjhxcb{background-position:0 -2756px;}
+.ui-banklist-li .hkcb{background-position:0 -2808px;}
+.ui-banklist-li .sxcb{background-position:0 -2860px;}
+.ui-banklist-li .nmgcb{background-position:0 -2912px;}
+.ui-banklist-li .sdcu{background-position:0 -2964px;}
+.ui-banklist-li .zbcb{background-position:0 -3016px;}
+.ui-banklist-li .ljcb{background-position:0 -3068px;}
+.ui-banklist-li .dgncxyscb{background-position:0 -3120px;}
+.ui-banklist-li .shrcb{background-position:0 -3172px;}
+.ui-banklist-li .jzcb{background-position:0 -3224px;}
+.ui-banklist-li .jzccb{background-position:0 -3328px;}
+.ui-banklist-li .bjrcb{background-position:0 -3380px;}
+.ui-banklist-li .zjmtccb{background-position:0 -3432px;}
+
+
+/* aboutBank.vm's banklist */
+.ui-list-icons {margin-left:-20px;margin-bottom:10px;_margin-left:-40px;_position:relative;+display:inline;+position:relative;}
+.ui-list-icons li{position:relative;z-index:1;width:auto;display:inline-block;padding:5px 2px;border:1px solid #DDDDDD;margin:0 0 15px 20px;}
+.ui-list-icons li.hover{z-index:10;}
+.ui-list-icons a{outline:none;}
+.ui-list-icons .ui-dialog{display:none;z-index:10;left:1px;top:44px;width:129px;}
+.ui-list-icons .ui-dialog-container{_display:block;}
+.ui-list-icons li.hover .ui-dialog{display:block;}
+.ui-list-icons .icon-box{border:none;background:none;left:0;}
+
+
+/* foot */
+#foot{border-top:30px solid #fff;zoom:1;}
+
+.site-links{text-align:center;border-top:1px solid #d9d9d9;padding-top:15px;margin-bottom:15px;}
+.site-links li{display:inline;color:#bbb;}
+.site-links li a{padding:0 10px;}
+.site-links .first{border:none;}
+
+.copyright{height:60px;text-align:center;color:#888;}
+.copyright a{color:#888;}
+#errorTip{
+    border:1px solid #f6c8b5;
+    background:#fceee8 url("http://img.alipay.net/merchant/ico-pa.png") no-repeat -546px -776px;
+    padding:10px;
+    font-size:14px;
+    text-indent:50px;
+}
+
+.cmsBorder{
+	float:left;
+	*border:1px dotted blue;
+    outline:1px dotted blue;
+	position:relative;
+}
+.cmsFileName{
+	position:absolute;
+	right:-20px;
+	top:-10px;
+	background:red;
+	color:white;
+	padding:5px;
+	z-index:100;
+}
+#ServerNum{color:white}
+/* 担保交易开始 */
+#tradeNav{
+	width:100%;
+	height:30px;
+	display:block;
+	background:#F1FBFD;
+	border:1px solid #D1EBEC;
+	margin-bottom:20px;
+}			
+#tradeNav li{
+	height:30px;
+	float:left;
+	margin-left:20px;
+	
+}
+#tradeNav li a{
+	height:26px;
+	line-height:26px;
+	display:block;
+	padding:0 10px;
+	margin-top:3px;
+	position:relative;
+}
+#tradeNav li a:hover{
+	text-decoration:none;
+}
+#tradeNav li.current a, #tradeNav li a:hover{
+	border-top:1px solid #D8EAEE;
+	border-left:1px solid #D8EAEE;
+	border-right:1px solid #D8EAEE;
+	color:#f85f00;
+	line-height:25px;
+	padding:0px 9px;
+	background:white;
+	position:relative;
+}	
+#tradeNav li.word4{width:72px;}
+#tradeNav li.word6{width:98px;}
+#tradeNav li.current a{
+	font-weight:bold;
+}
+#tradeNav li.current a em, #tradeNav li a:hover em{
+	width:10px;
+	height:4px;
+	position:absolute;
+	overflow:hidden;
+	top:100%;
+	left:47%;
+	background:url(http://img.alipay.net/home/page/arrow-down.png) no-repeat 0 0 ;
+}
+.fn-mb40{margin-bottom:40px;}
+/* 担保交易结束 */
+

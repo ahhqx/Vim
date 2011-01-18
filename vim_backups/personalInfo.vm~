@@ -1,0 +1,167 @@
+#**
+ * 大陆会员认证--个人信息
+ * @author 卓文君
+ *
+ *#
+<div id="content">
+    <!-- 主栏 -->
+		<div class="title">
+			<h2>大陆会员实名认证</h2>
+			<div class="link"><a href="$homeModule.setTarget('choose.vm')">返回选择其他方式</a><em class="ft-bar">|</em><a id="viewFaq" href="#">使用遇到问题</a></div>
+		</div>
+		<ol class="step step-five">
+			<li class="current"><span>1.填写个人信息</span></li>
+			<li><span>2.填写银行卡信息</span></li>
+			<li><span>3.确认信息</span></li>
+			<li><span>4.填写打入卡内的金额</span></li>
+			<li class="last"><span>认证成功</span></li>
+		</ol>
+		<div class="fm-input">
+			#set($f = $formManager.newForm($request))
+			<form name="personalInfoForm" method="post" action="$mainlandPersonModule.setTarget('personalInfo.vm')" id="certifyForm" data-cert="IDENTITY_CARD" data-product="MAINLAND_PERSON_CERTIFY">
+
+			#addFormToken($f)
+			#addHiddenField($f "email" "email" "$!personalInfoForm.email")
+				<fieldset>
+				<legend>填写个人信息</legend>
+				
+				<div class="fm-item fm-text">
+					<label for="email" class="fm-label">账户名：</label><em>$!personalInfoForm.email</em>
+				</div>
+				#springBind("personalInfoForm.realName")
+				<div class="fm-item #highLightField('')">
+					<label class="fm-label"><span class="required">*</span>真实姓名：</label>
+					<input type="text" class="i-text" id="realName" name = "realName" value = "$!personalInfoForm.realName" data-explain="若您的姓名里有生僻字，请<a href='#' class='unfamiliarTag'>点此打开生僻字库</a>进行选择。"/>
+					 #if($!status.isError())
+						<div class="m-error">#getErrorMessage()</div>
+					 #else
+						<div class="fm-explain">若您的姓名里有生僻字，请<a href="#" class="unfamiliarTag">点此打开生僻字库</a>进行选择。</div>
+					 #end
+				</div>
+				
+				#springBind("personalInfoForm.credentialsNo")
+				<div class="fm-item #highLightField('')">
+					<label class="fm-label"><span class="required">*</span>身份证号码：</label>
+					<input type="text" class="i-text" id="IDcard" name = "credentialsNo" value = "$!personalInfoForm.credentialsNo" data-explain="#springMessage('TIP.ID_CARD_NO')"/>
+					#showFieldErrorMessage("TIP.ID_CARD_NO")
+				</div>
+				
+				#springBind("personalInfoForm.phone")
+				<div class="fm-item fm-text #highLightField('')">
+					<label class="fm-label"><span class="required">*</span>联系方式：</label>
+					<div class="fm-explain-top" id="J_tip">固定电话与手机号码至少填写1项。</div>
+					<div id="J_between" class="fn-hide m-error fm-explain-top">电话号码与手机号码至少填写一项。</div>
+					<input type="text" class="i-text" id="contactPhone" maxlength="20" name="phone" value ="$!personalInfoForm.phone"  data-explain='如：0571-88156688-0571，分机号码可不填写。'/>
+					#showFieldErrorMessage("TIP.PHONE")
+				</div>
+				
+				#springBind("personalInfoForm.mobile")
+				<div class="fm-item #highLightField('')">
+	            	<input id="contactMobile" class="i-text fn-tips" maxlength="11" name="mobile" value ="$!personalInfoForm.mobile"  data-explain='推荐填写。我们会将重要进度以短信形式通知您。'  tabindex="7" type="text" />
+					#showFieldErrorMessage("TIP.CONTACT_MOBILE")
+				</div>	
+				
+				#if(!$!openFlg)
+				<div class="fm-item">
+					<span><a href="#" id="expand-all"> #if($!stringUtil.equals('open',$!personalInfoForm.expandFlag))取消填写更全信息 #else 若您想开店或大额收付款，请填写更全的认证信息#end</a></span>
+				</div>
+				#end
+				<input type="hidden" id="expand-all-value" name="expandFlag" value="$!personalInfoForm.expandFlag" />
+				
+				<div id="expand-all-extend" #if(!$!stringUtil.equals('open',$!personalInfoForm.expandFlag)) class="fn-hide" #end>
+					#springBind("personalInfoForm.cardType")
+					<div class="fm-item fm-selectbox">
+                        <label class="fm-label">
+                        	<span class="required">*</span>身份证类型：
+                        </label>
+                        <input type="radio" hidefocus="true" tabindex="1" checked="checked" id="newCard" value="0" name="cardType" class="i-radio">
+                        <label for="newCard" id="newLab">二代身份证</label>
+                        <input type="radio" hidefocus="true" tabindex="2" id="oldCard" value="1" name="cardType" class="i-radio">
+                        <label for="oldCard" id="oldLab">一代身份证</label>
+                        <input type="radio" hidefocus="true" tabindex="3" id="temperCard" value="2" name="cardType" class="i-radio">
+                        <label for="temperCard" id="temperLab">临时身份证</label>
+    				</div>
+    				#springBind("personalInfoForm.faceUrl")
+    				<div class="fm-item J_extend_required #highLightField('')">
+    					<input type="hidden" value="$!personalInfoForm.faceUrl" id="card_face" name="faceUrl" />
+    					<label for="fileFile" class="fm-label"><span class="required">*</span>身份证图片正面：</label>
+    					<div class="iframes">
+    					<iframe id="uploadPrev1"  name="uploadPrev1" src="$homeModule.setTarget('uploadPrev.vm').addQueryData('filekey','card_face').addQueryData('iframe_id','uploadPrev1').addQueryData('imageUrl',$!personalInfoForm.faceUrl)" scrolling="no" frameborder="0" height="35" width="770"></iframe>
+    					</div>
+    					#showFieldErrorMessage("")
+    				</div>
+    				
+    				#springBind("personalInfoForm.versoUrl")
+    				<div class="fm-item J_extend_required #highLightField('')" id="J_verso">
+    					<input type="hidden" value="$!personalInfoForm.versoUrl" id="card_verso" name="versoUrl" />
+    					<label for="fileFile" class="fm-label"><span class="required">*</span>身份证图片反面：</label>
+    					<div class="iframes">
+    					<iframe id="uploadPrev2"  name="uploadPrev2" src="$homeModule.setTarget('uploadPrev.vm').addQueryData('filekey','card_verso').addQueryData('iframe_id','uploadPrev2').addQueryData('imageUrl',$!personalInfoForm.versoUrl)" scrolling="no" frameborder="0" height="35" width="770"></iframe>
+    					</div>
+    					#showFieldErrorMessage("")
+    				</div>
+    				<div class="fm-item">
+    					<div class="fm-explain">证件必须是彩色原件电子版，可以是扫描件或者数码拍摄照片。<div class="ico"><em class="m-tips J_pop"></em><span class="pop_extend_txt">请上传您身份证的扫描图片或用数码相机、手机拍摄的能够清晰辨认的图片。不能使用复印件。</span></div><br/>
+    					仅支持.jpg .jpeg .png .bmp .gif 的图片格式。<span class="ft-orange">图片大小不超过2M。</span><div class="ico"><em class="m-tips J_pop"></em><span class="pop_extend_txt">如果图片超过2M，请使用画图程序打开图片，然后点击最上面一行菜单栏的“图像”，选择“拉伸/扭曲”—水平/垂直选项中都填写为65%，然后选择“文件”，填写文件名后另存为“JPEG”或“GIF”进行保存即可。<a href="http://help.alipay.com/lab/help_detail.htm?help_id=212407&keyword=%CD%BC%C6%AC" target="_blank">查看图文演示</a>。</span></div>
+    					</div>
+    				</div>
+    				<!--身份证有效期图示-->
+					<div class="side-container">
+        				<div class="fm-side">
+                            <div class="fm-side-preview fn-hide" id="side-preview">
+                                <img class="fn-hide" id="J_new" src="$imageServer.getURI('pa/page/certify/newVali.png')" alt="二代身份证" />
+                                <img class="fn-hide" id="J_old" src="$imageServer.getURI('pa/page/certify/oldVali.png')" alt="一代身份证" />
+                                <img class="fn-hide" id="J_temper" src="$imageServer.getURI('pa/page/certify/temperVali.png')" alt="临时身份证" />
+                                <img id="flash-box1" class="fn-hide" src="$imageServer.getURI('pa/page/certify/short.gif')" />
+                 
+                            </div>
+                        </div>
+        				#springBind("personalInfoForm.idExpiryDate")
+        				<div class="fm-item #highLightField('')">
+        					<label for="passnum" class="fm-label"><span class="required">*</span>身份证到期时间：</label>
+        					<input type="text" class="i-text" id="validaty" #if($stringUtil.equals($!personalInfoForm.idExpiryDate, '长期')) value="" disabled #else value ="$!personalInfoForm.idExpiryDate" #end/>
+        				    <input type="checkbox"  #if($stringUtil.equals($!personalInfoForm.idExpiryDate, '长期')) checked #end class="long_term" id="long_term" value=""/><label for="long_term">长期</label><div class="ico"><em class="m-tips J_pop"></em><span class="pop_extend_txt">即您的身份证件的有效期没有时间限制。</span></div>
+        					<input type="hidden" id="validatyFlag" value="$!personalInfoForm.idExpiryDate" name = "idExpiryDate"/>
+        					#showFieldErrorMessage("TIP.EXPIRY_DATE")
+        				</div>
+					</div>
+    				#springBind("personalInfoForm.address")
+    				<div class="fm-item #highLightField('')">
+    	  				<label class="fm-label"><span class="required">*</span>联系地址：</label>
+    					<input type="text" id="address" value="$!personalInfoForm.address" maxlength="128" class="i-text i-len30cn" name="address"/>
+    					#showFieldErrorMessage("")
+    				</div>
+                
+				</div><!--expand结束-->
+				#springBind("personalInfoForm.checkCode")
+				<div class="fm-item #highLightField('')">
+					<label for="authcode" class="fm-label"><span class="required">*</span> 校验码：</label>
+					<input class="i-text i-text-authcode" id="authcode" data-explain="#springMessage('TIP.CHECK_CODE.INPUT')" name="checkCode" maxLength="4"/>
+					<img align="absMiddle" src="$checkCodeLink.addQueryData($!constantTool.CheckCodeConstants.OMEO_KEY,$!request.getSession().getId())&r=$!math.getRandom()" alt="请输入您看到的内容"/>
+					#showFieldErrorMessage("TIP.CHECK_CODE.INPUT")
+				</div>
+
+		       	#springBind("personalInfoForm")
+				<div class="fm-item">
+					<span class="btn btn-ok"><input type="submit" value="下一步"/></span>
+					<span class="fm-confirm"><span class="loading-text fn-hide">正在提交信息</span></span>
+					#showFormErrorMessage()
+				</div>
+				</fieldset>
+			</form>
+		</div>
+		
+		<!--组件 问答式-->       
+		#if($!liveHelps && $!liveHelps.size()>0)
+          #foreach($liveHelp in $liveHelps)
+             '$liveHelp.field':
+             #cmsparse("${liveHelp.path}")
+    		 ##每个json数据后面需要加上','，最后一个不能加
+    		 #if($velocityCount != $!liveHelps.size())
+    			,
+    		 #end
+          #end
+       #end
+      	$tile.setTemplate("$personalRemoteTile.setTarget('home:pageFaq.tile')")
+		<!--/组件 问答式-->
+</div>

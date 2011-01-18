@@ -1,0 +1,79 @@
+            <div id="content">
+    			
+				<!-- new-title -->
+				<div class="ui-title fn-clear new-title">
+					<h2>信用卡付款</h2>
+				</div>
+				<!-- new-title -->
+				
+				<!-- new-service-desc -->
+				<div class="new-service-desc">
+					<p>有了信用卡，您就可以尽情享受先消费后还款的购物乐趣。</p>	
+					<!-- ui-list-square -->
+					<ul class="ui-list ui-list-square">
+						<li class="ui-list-item">购买大金额的商品时，可一次完成付款。</a></li>
+						<li class="ui-list-item">支付宝为您提供免费的跨行<a target="_blank" href="https://shenghuo.alipay.com/credit.htm">信用卡还款</a>服务，轻松还款。</li>
+					</ul>
+					<!-- /ui-list-square -->
+                    <div class="new-service-pic">
+						<img src="$imageServer.getURI('/home/page/paymentCredit.png')" alt="信用卡付款" />
+					</div>
+				</div>
+				<!-- /new-service-desc -->
+				##读取信用卡银行列表
+				<ul class="ui-list-icons fn-clear cashier-bank">
+					##引入需要排序的银行列表
+					#parse("/la/home_b_paymentCreditOrder.vm")	
+    				
+    				##设置需要排除的银行卡
+            		#parse("/la/home_b_excludeCredit.vm.vm")
+            		#set($excludelist =$stringUtil.split($excludeBank))
+					
+					##优先打印需要排序的银行列表
+					#if($bankOrderList)
+    					#set($prelist =$stringUtil.split($bankOrderList))
+        				#foreach($perOrderName in $prelist)
+           					#foreach($bankCard in $ebankList)
+               					#if($bankCard.getInstId() == $perOrderName)
+            				     <li>
+			        <a class="icon-box" href='$homeModule.setTarget("bank/paymentCreditDetail.vm").addQueryData("id","$bankCard.getInstId()").addQueryData("de","$bankCard.de").addQueryData("dk","$bankCard.dk").addQueryData("ce","$bankCard.ce").addQueryData("ck","$bankCard.ck")' for="$bankCard.getApiCode()">
+				            <span class="icon $bankCard.getInstId()" title="$!{bankCard.getShowName()}" send="a-$bankCard.getApiCode()">$!{bankCard.getShowName()}</span>
+				        </a>
+								</li>
+            				    #end
+        				   #end
+						#end	
+    				#end
+					
+					##打印剩余银行列表
+					
+					#foreach($bankCard in $ebankList)
+				    #set($inPreList=false)
+       					#foreach($perOrderName in $prelist)
+       					#if($bankCard.getInstId() == $perOrderName)
+							#set($inPreList=true)
+    				    #end
+    				   #end
+    				   #if($inPreList == false)
+    				       ##遍历是否是需要排除的银行卡
+        				    #set($isExclude=false)
+            				#foreach($excludeName in $excludelist)
+                   					#if($bankCard.getInstId() == $excludeName)
+        								#set($isExclude=true)
+                				    #end
+        					#end
+        					#if($isExclude == false)
+	    				        <li>
+				                 <a class="icon-box" href='$homeModule.setTarget("bank/paymentCreditDetail.vm").addQueryData("id","$bankCard.getInstId()").addQueryData("de","$bankCard.de").addQueryData("dk","$bankCard.dk").addQueryData("ce","$bankCard.ce").addQueryData("ck","$bankCard.ck")' for="$bankCard.getApiCode()">
+					            <span class="icon $bankCard.getInstId()" title="$!{bankCard.getShowName()}" send="a-$bankCard.getApiCode()">$!{bankCard.getShowName()}</span>
+					           </a>
+							   </li>
+							#end
+    				    #end
+				  #end
+				</ul>
+			
+            </div> 
+#set($secondMenu = "howToPay")
+#set($sNavName = "paymentCredit")
+#parse("/bank/tile/sideNav.vm")

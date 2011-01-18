@@ -1,0 +1,103 @@
+#*
+ * 自助任务确认表单
+ *
+ * @server pa
+ * @template_type null
+ * @css_package null
+ * @js_package null
+ * @tmp_css_to_be_doomed true
+ * @tmp_js_to_be_doomed false
+ *
+ * @author 齐济
+ *#
+
+ $rundata.moduleInfo.setLayoutTemplate("layout/usertask.vm", false)
+<!-- 主体 -->
+<div id="content">
+
+	<!-- 元件 标题(含链接) -->
+	<div class="title">
+	  <h2>查看重要通知</h2>
+	  <div class="link"></div>
+	</div>
+	<!-- /元件 标题(含链接) -->
+	<div class="line line-message"></div>
+	<p class="message">以下提示涉及您的账户安全，请认真阅读，并核对您的的账户信息，以确认您的账户是否正常。</p>
+	
+	<div class="task-container"> 
+		<h3>#SHTML($!userTaskTemplate.title)</h3> 
+		<p class="n-explain">#if($userTaskDO.content)#SHTML($!{userTaskDO.content})#else #SHTML($!userTaskTemplate.content)#end</p> 
+	</div>
+	
+	#if($!userTaskTemplate.isNoShow=="1")
+	<form name="skipUserTask" method="post" action="">
+	<input type="hidden" name="action" value="verify_maintain_action">
+	<input type="hidden" name="event_submit_do_close_task" value="anything">
+	<input type="hidden" name="taskId" value="$!taskId">
+	<div class="tip-angle t-cue task-info"> 
+		<div class="tip-angle-container">
+			<div class="tip-angle-content">如果您阅读了以上通知后，认为不需要处理，可以点击按钮取消此通知，此条通知将不再出现。<span class="btn-normal"><input type="submit" value="忽略此通知" /></span></div> 
+		</div> 
+	</div>
+	</form>
+	#end
+	
+	<div class="tb-detail">
+	<form name="verifyId" method="post" action="">
+	<input type="hidden" name="action" value="verify_maintain_action">
+	<input type="hidden" name="event_submit_do_verify_maintain" value="anything">
+	<input type="hidden" name="taskId" value="$!taskId">
+	<input type="hidden" name="isAllowModifiedPWD" value="$!isAllowModifiedPWD">
+		<table>
+			<tbody>
+			<tr>
+				<th class="tb-detail-sub" colspan="2">查看账户信息：</th>
+			</tr>
+			<tr>
+				<th>您的支付宝账号：</th>
+				<td>$!logonId</td>
+			</tr>
+			<tr>
+				<th>账户余额：</th>
+				<td><strong class="ft-red">$!accountInfo.availableAmount</strong> 元 | <a href="$!personalConsumeModule.setTarget('record/index.vm')">收支明细</a></td>
+			</tr>
+			<tr>
+				<th>上次登录：</th>
+				<td>$!rundata.getSession().getAttribute("iw.last.login.date")，$!rundata.getSession().getAttribute("last.login.prov")$!rundata.getSession().getAttribute("last.login.city")</td>
+			</tr>
+			
+			#if($stringUtil.equals($!isAllowRisk, "1"))
+				<tr>
+					<th class="tb-detail-sub" colspan="2">确认账户状态：</th>
+				</tr>
+				<tr>
+					<th>请确认账户状态：</th>
+					<td class="tb-detail-reset">
+					<!-- 子表格 -->
+					<div class="tb-inner">
+						<table>
+							<tbody>
+							<tr class="last">
+								<td><label><input type="radio" checked="checked" name="accountStatus" value="normal"/> 我的账户正常 <span class="ft-text">（余额数目正确；登录等操作为我本人操作等）</span></label>
+								</td>
+							</tr>
+							<tr class="last">
+								<td><label><input type="radio" name="accountStatus" value="abnormal"/> 我的账户有异常<span class="ft-text">（余额数目不正确或者登录等操作不是我本人操作等）</span></label>
+								</td>
+							</tr>
+						</tbody></table>
+					</div>
+					</td>
+				</tr>
+			#end
+			
+		</tbody></table>
+		<!-- 详细表格相关操作 -->
+
+		<div class="next">
+			<span class="btn btn-ok">
+			<input type="submit" value="下一步" seed="userTaskMantain-next" id="nextbtn"/></span>
+		</div>
+	</form>
+	</div>
+</div>

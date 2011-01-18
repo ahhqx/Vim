@@ -1,0 +1,169 @@
+
+	/**
+
+	需要判断INSHELP不为空，因为前端js校验一样会加fm－error
+
+	**/
+
+	
+	function insHelpFn(){
+
+		var helpDom = "<div class=\"helpHead\"></div>\r\n\
+		<div class=\"helpBody\">\r\n\
+		<em class=\"m-help\">帮助信息</em>\r\n\
+		<a class=\"closeHelp\" href=\"javascript:void(0)\" seed=\"ERR_personal_U\">关闭</a>\r\n\
+		<div class=\"helpUl\">\r\n\
+		</div>\r\n\
+		</div>\r\n\
+		<div class=\"helpFoot\"></div>\r\n\
+		<div class=\"helpArrow\" style=\"top:20px;\"></div>"; 
+
+		var helpRankDom = "<p>是否已解决了您的问题？</p><a href=\"javascript:void(0)\" class=\"helpYes\">是</a><a href=\"javascript:void(0)\" class=\"helpNo\">否</a>";
+
+
+		var formHelp = D.query('form');
+		
+		formHelp.forEach(function(el,n){
+			
+			var formHelpName = el.name,//索引INSHELP
+				fmError = D.query('.fm-error',el),
+				autoOpenFlag = 0;
+
+			if(formHelpName && INSHELP[formHelpName] != undefined && INSHELP[formHelpName]['sysName'] != undefined){
+
+				//如果有帮助信息才继续
+
+				for(var i = 0;i < fmError.length;i++){
+					//var inputName = D.query('input',fmError[i])[0].name;
+					var inputName;
+					//检测有name的input
+					var inputNameArr = D.query('input',fmError[i]);
+					for(var j = 0;j<inputNameArr.length;j++){
+						if(inputNameArr[j].name){
+							inputName = inputNameArr[j].name;
+						}
+					}
+			
+					//D.setStyles(fmError[i],{'position':'relative'});
+					
+					var hasSupCnt = INSHELP[formHelpName]['supCnt'][inputName] != undefined;
+
+					if(hasSupCnt){
+
+						//为每个存在帮助信息的fm-error插入DOM
+
+						insertCnt(fmError[i],formHelpName,inputName);
+						
+						//自动打开
+
+						var hasAutoOpen = INSHELP[formHelpName]['supCnt'][inputName]['autoOpen'] || '';
+
+						if(autoOpenFlag == 0 && hasAutoOpen && hasAutoOpen == 'true'){
+							var helpWrap = D.query('.instanceHelp',fmError[i])[0],
+								instSupIco = D.query('.instSupIco',fmError[i])[0];
+							D.removeClass(helpWrap,'fn-hide');
+							instSupIco.setAttribute('seed','');
+							autoOpenFlag = 1;
+						}
+					}
+				}
+			}	
+		});
+		
+		function insertCnt(pa,formId,inpName){
+
+			var fmExplainDiv = D.query('.fm-explain',pa),fmExplain;
+			if(fmExplainDiv.length>0){
+				fmExplain = fmExplainDiv;
+			}else{
+				fmExplain = D.query('.m-error',pa);
+			}
+
+			var instSupIco,
+				sysName = INSHELP[formId]['sysName'],
+				errCode = INSHELP[formId]['supCnt'][inpName]['errCode'],
+				supCnt = INSHELP[formId]['supCnt'][inpName],
+				helpLinkDom = '',
+				helpBodyDom = '',
+				regLink = /(\[url\=)(\S[^[]+)(\])(\S[^[]+)(\[\/url\])/g;
+			
+			
+			//D.setStyles(
+			//	instSupIco = 
+			//		Element.create('span',{className:'instSupIco m-tips',appendTo:fmExplain[0]}),
+			//		{'cursor':'pointer'}
+			//);
+				instSupIco = 
+					Element.create('span',{className:'instSupIco m-tips',appendTo:fmExplain[0]});
+			Element.create('div',{innerHTML:helpDom,className:'instanceHelp fn-hide',appendTo:pa});
+			//D.setStyles(
+			//	Element.create('div',{innerHTML:helpDom,className:'instanceHelp fn-hide',appendTo:pa}),
+			//	{'left':'370px','top':'-18px','zIndex':'100'}
+			//);
+			instSupIco.setAttribute('seed','EER' + '_' + sysName + '_'  + errCode + '_' + 'open');
+			var closeHelp = D.query('.closeHelp',pa)[0];
+			closeHelp.setAttribute('seed','EER' + '_' + sysName + '_'  + errCode + '_' + 'U');
+			var helpArrow = D.query('.helpArrow',pa),
+			arrowTop = D.getStyle(pa,'height');
+			var fmErrH = arrowTop.slice(0,-2);
+			D.setStyles(helpArrow,{'top':(fmErrH-30) + 'px'});
+
+			//插入其它内容
+			var helpUl = D.query('.helpUl',pa),
+				relateHelpDom = supCnt['relateHelp'].length > 0 ? '<a href=\"' + supCnt['relateHelp'] + '\" target=\"_blank\">更多相关帮助</a>' : '',
+				onlineChatDom = supCnt['onlineChat'] == 'true' ? '<em class=\"ft-bar\">|</em><a class=\"HelpOnlineChat\">咨询在线客服</a>' : '',
+				hotLineDom = supCnt['hotLine'] == 'true' ? '<em class=\"ft-bar\">|</em><span>24小时服务热线：0571-88156688</span>' : '';
+	
+			for(var i = 0;i < 3;i++){
+				if(regLink.test(supCnt['content'+i])){
+					supCnt['content'+i] = supCnt['content'+i].replace(regLink,'<a href="$2" target="_blank">$4</a>');
+				};
+			}
+
+			var helpListDom = '<dl class=\"tip-faq\"><dt>' + supCnt['title0'] + '</dt><dd>' + supCnt['content0'] + '</dd><dt>' + supCnt['title1'] + '</dt><dd>' + supCnt['content1'] + '</dd><dt>' + supCnt['title2'] + '</dt><dd>' + supCnt['content2'] + '</dd></dl>'; 
+
+			helpBodyDom += helpListDom + '<div class=\"helpLink link\"' + relateHelpDom + onlineChatDom + hotLineDom + '</div>';
+			helpUl[0].innerHTML = helpBodyDom;
+			var helpRank = Element.create('div',{className:'helpRank fn-clear',innerHTML:helpRankDom,appendTo:helpUl[0]});
+			helpRankBind(helpUl[0],helpRank,errCode,sysName);
+		}
+
+		//评价区动态变化seed
+
+		function helpRankBind(pa,current,errcode,sysname){
+			
+			var item = [D.query('.helpYes',pa)[0],D.query('.helpNo',pa)[0]];
+			item[0].setAttribute('seed','ERR' + '_' + sysname + '_' + errcode + '_' + 'Y');
+			item[1].setAttribute('seed','ERR' + '_' + sysname + '_' + errcode + '_' + 'N');
+			E.on(item,'click',function(){
+
+				D.addClass(current,'fn-hide');
+					Element.create('p',{className:'userRanked',innerHTML:'您的评价已提交，谢谢！',appendTo:pa});
+				/*
+				D.setStyles(
+					Element.create('p',{className:'userRanked',innerHTML:'您的评价已提交，谢谢！',appendTo:pa}),
+					{'marginTop':'10px','marginBottom':'0px','lineHeight':'20px'});
+				var closeHelp = D.query('.closeHelp',pa.parentNode)[0];
+				closeHelp.setAttribute('seed','');				*/
+
+			});
+		}
+
+		//绑定点击事件
+
+		var why = D.query('.instSupIco'); 
+			
+		E.on(why,'click',function(){
+			D.addClass(D.query('.instanceHelp'),'fn-hide');
+			D.removeClass(D.query('.instanceHelp',this.parentNode.parentNode),'fn-hide');
+			this.setAttribute('seed','');
+			});
+
+		var closeHelp = D.query('.closeHelp');
+			E.on(closeHelp,'click',function(){
+				D.addClass(this.parentNode.parentNode,'fn-hide');	
+		});
+	};
+
+	insHelpFn();
+
