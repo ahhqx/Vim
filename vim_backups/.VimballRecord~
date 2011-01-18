@@ -1,2 +1,0 @@
-supertab.vba: call delete('/Users/eddie/.vim/doc/supertab.txt')|call delete('/Users/eddie/.vim/plugin/supertab.vim')
-histwin-0.20.vba: call delete('/Users/ediyang/.vim/plugin/histwinPlugin.vim')|call delete('/Users/ediyang/.vim/autoload/histwin.vim')|call delete('/Users/ediyang/.vim/doc/histwin.txt')

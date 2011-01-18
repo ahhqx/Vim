@@ -1,9 +1,0 @@
- "ediyang's VIMRC
- 
- colorscheme molokai
- set go+=r
- set guifont=Menlo:h13
- let g:user_zen_expandabbr_key = '<D-e>'
- "set transparency=6
- set autochdir
- set linespace=4
