@@ -45,7 +45,8 @@ hi FoldColumn	guifg=#a0a0c0 guibg=#102010
 hi Search	guifg=#000000 guibg=#c0c0ff gui=none
 hi IncSearch	guifg=#000000 guibg=#c0c0ff gui=none
 
-hi LineNr	guifg=#606080 guibg=#000000 gui=none
+"hi LineNr	guifg=#606080 guibg=#000000 gui=none
+hi LineNr	guifg=#606080 guibg=#acacac gui=none
 hi Question	guifg=#a0a0c0 guibg=#000000
 
 "\n, \0, %d, %s, etc...
@@ -57,7 +58,8 @@ hi StatusLine	guifg=#c0c0ff guibg=#000000 gui=bold,underline
 hi StatusLineNC	guifg=#606080 guibg=#000000 gui=bold,underline
 hi WildMenu	guifg=#000000 guibg=#c0c0ff
 
-hi Title	guifg=#c0c0ff guibg=#000000 gui=bold
+"hi Title	guifg=#c0c0ff guibg=#000000 gui=bold
+hi Title	guifg=#f0b040 guibg=#000000 gui=none
 hi Visual	guifg=#000000 guibg=#707090 gui=none
 hi VisualNOS	guifg=#a0a0c0 guibg=#000000
 
@@ -66,13 +68,16 @@ hi Char		guifg=#d0e080 guibg=#000000
 hi String	guifg=#d0e080 guibg=#000000
 
 hi Boolean	guifg=#d0e080 guibg=#000000
-hi Comment	guifg=#606080
+hi Comment	guifg=#606080 gui=italic
 hi Constant 	guifg=#f0a0b0 guibg=#000000 gui=none
 hi Identifier	guifg=#8090f0
-hi Statement	guifg=#8090f0 gui=none
+"hi Statement	guifg=#8090f0 gui=none
+hi Statement	guifg=#f0b040 gui=none
+hi htmlStatement      guifg=#8090f0 gui=none
+hi Define	guifg=#f0b040 gui=none
 
 "Procedure name
-hi Function	guifg=#f0b040
+"hi Function	guifg=#f0b040
 
 "Define, def
 " hi PreProc	guifg=#f0a0b0 gui=none
