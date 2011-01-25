@@ -21,7 +21,7 @@ hi lCursor	guifg=#000000 guibg=#a0a0c0
 hi CursorIM	guifg=#000000 guibg=#a0a0c0
 
 " Directory
-hi Directory	guifg=#e0e0ff guibg=#000000 gui=bold
+hi Directory	guifg=#e0e0ff guibg=#000000 gui=none
 
 " Diff
 hi DiffAdd	guifg=#8090f0 guibg=#000000 gui=none
