@@ -90,6 +90,7 @@ set smartindent
 " display shorthand commands, Don't display start text :help iccf
 set shortmess=atI 
 
+
 "---------------"
 "	Shortcuts	"
 "---------------"
@@ -259,10 +260,11 @@ vnoremap #" <esc>`>a"<esc>`<i"<esc>
 
 " NERD_tree.vim
 map <F8> :NERDTreeToggle<CR>
-map <leader>f ::NERDTreeFind<CR>
+map <leader>f :NERDTreeFind<CR>
 let g:NERDTreeShowBookmarks = 1
 let g:NERDTreeChDirMode = 2
 let NERDTreeIgnore=['\.pyc$','\.svn$','\.tmp$','\.bak','\~$']
+let NERDChristmasTree = 1 
 
 " closetag.vim
 let g:closetag_html_style=1
@@ -411,4 +413,10 @@ fun! GetSnipsInCurrentScope()
     endfor 
     return snips 
 endf 
- 
+
+ "设置esc后切换到英文输入法
+set noimdisable
+set imactivatekey=D-space
+set imsearch=0
+inoremap <ESC> <ESC>:set iminsert=0<CR>
+
