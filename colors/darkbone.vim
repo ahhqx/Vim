@@ -105,3 +105,5 @@ if version >= 700
 endif
 
 " vim:set ts=8 sts=2 sw=2 tw=0:
+highlight htmlH3 guifg=#ffffff
+highlight javascriptIF gui=italic

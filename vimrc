@@ -52,7 +52,7 @@ set showcmd
 " Sets how many lines of history VIM har to remember
 set history=800
 " Always switch to the current file directory
-set autochdir  
+"set autochdir  
 "Set the terminal title
 set title
 

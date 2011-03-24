@@ -69,7 +69,7 @@ hi Identifier	guifg=white
 hi Statement    guifg=#8fffff			gui=none
 
 " Procedure name
-hi Function     guifg=#ffaa33
+"hi Function     guifg=#ffaa33
 
 " Define, def
 hi PreProc	guifg=lightred			gui=none
