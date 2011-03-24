@@ -237,22 +237,22 @@ vnoremap <silent> # :call VisualSearch('b')<cr>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Map auto complete of (, ", ', [,{
-inoremap ( ()<esc>:let leavechar=")"<cr>i
-inoremap [ []<esc>:let leavechar="]"<cr>i
-inoremap { {}<esc>:let leavechar="}"<cr>i
-inoremap < <><esc>:let leavechar=">"<cr>i
-"inoremap ' ''<esc>:let leavechar="'"<cr>i
-"inoremap " ""<esc>:let leavechar='"'<cr>i
-inoremap )) (<esc>o)<esc>:let leavechar=")"<cr>O
-inoremap ]] [<esc>o]<esc>:let leavechar="]"<cr>O
-inoremap }} {<esc>o}<esc>:let leavechar="}"<cr>O
-
-vnoremap #( <esc>`>a)<esc>`<i(<esc>
-vnoremap #[ <esc>`>a]<esc>`<i[<esc>
-vnoremap #{ <esc>`>a}<esc>`<i{<esc>
-vnoremap #< <esc>`>a><esc>`<i<<esc>
-vnoremap #' <esc>`>a'<esc>`<i'<esc>
-vnoremap #" <esc>`>a"<esc>`<i"<esc>
+"inoremap ( ()<esc>:let leavechar=")"<cr>i
+"inoremap [ []<esc>:let leavechar="]"<cr>i
+"inoremap { {}<esc>:let leavechar="}"<cr>i
+"inoremap < <><esc>:let leavechar=">"<cr>i
+""inoremap ' ''<esc>:let leavechar="'"<cr>i
+""inoremap " ""<esc>:let leavechar='"'<cr>i
+"inoremap )) (<esc>o)<esc>:let leavechar=")"<cr>O
+"inoremap ]] [<esc>o]<esc>:let leavechar="]"<cr>O
+"inoremap }} {<esc>o}<esc>:let leavechar="}"<cr>O
+"
+"vnoremap #( <esc>`>a)<esc>`<i(<esc>
+"vnoremap #[ <esc>`>a]<esc>`<i[<esc>
+"vnoremap #{ <esc>`>a}<esc>`<i{<esc>
+"vnoremap #< <esc>`>a><esc>`<i<<esc>
+"vnoremap #' <esc>`>a'<esc>`<i'<esc>
+"vnoremap #" <esc>`>a"<esc>`<i"<esc>
 
 "---------------"
 "    plugin     "
