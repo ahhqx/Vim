@@ -420,3 +420,18 @@ set imactivatekey=D-space
 set imsearch=0
 inoremap <ESC> <ESC>:set iminsert=0<CR>
 
+colorscheme rootwater	
+set guifont=Menlo:h12
+
+
+set linespace=2
+
+set matchpairs=(:),{:},[:],<:>
+
+"js语法高亮脚本的设置
+let g:javascript_enable_domhtmlcss=1
+
+let g:acp_mappingDriven = 1
+let g:acp_behaviorSnipmateLength = 1
+let g:acp_behaviorKeywordLength = 2
+
