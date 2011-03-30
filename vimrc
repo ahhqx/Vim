@@ -52,7 +52,7 @@ set showcmd
 " Sets how many lines of history VIM har to remember
 set history=800
 " Always switch to the current file directory
-"set autochdir  
+set autochdir  
 "Set the terminal title
 set title
 
@@ -157,10 +157,11 @@ map <F4> :vsplit<CR>
 map <F5> :! open -a Firefox.app %<cr><esc>
 map <C-k> :tabclose<CR>
 map <C-F4> :tabclose<CR>
-map <F7> :call ToggleColor()<CR>
+map <F7> :set columns=999 lines=999<CR>
 map <F9> :!svn update<CR>
 map <F10> :!svn commit --message=''<LEFT>
 map <F11> :call ToggleWrapping()<CR>
+
 
 " use Alt-n to switch tab
 for i in range(1, min([&tabpagemax, 9]))
