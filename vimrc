@@ -136,9 +136,9 @@ imap <C-F> <Right>
 "cnoremap <C-F> <Right>
 
 " Usefull when insert a new indent line
-imap fj <cr><C-O>O
+"imap fj <cr><C-O>O
 " Remove tag content see :help object-select
-imap jf <C-O>cit
+"imap jf <C-O>cit
 
 " Super paste
 inoremap <C-v> <esc>:set paste<cr>mui<C-R>+<esc>mv'uV'v=:set nopaste<cr>
