@@ -431,8 +431,8 @@ set matchpairs=(:),{:},[:],<:>
 
 "js语法高亮脚本的设置
 let g:javascript_enable_domhtmlcss=1
-
 let g:acp_mappingDriven = 1
 let g:acp_behaviorSnipmateLength = 1
 let g:acp_behaviorKeywordLength = 2
 
+au FileType xhtml,xml so ~/.vim/ftplugin/html_autoclosetag.vim
