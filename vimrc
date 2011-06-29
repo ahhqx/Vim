@@ -154,10 +154,11 @@ map <F1> :NERDTreeToggle<CR>
 map <F2> :tabprevious<CR>
 map <F3> :tabnext<CR>
 map <F4> :vsplit<CR>
-map <F5> :! open -a Firefox.app %<cr><esc>
+"map <F5> :! open -a Firefox.app %<cr><esc>
 map <C-k> :tabclose<CR>
 map <C-F4> :tabclose<CR>
 map <F7> :set columns=999 lines=999<CR>
+map <F8> :set columns=100 lines=999<CR>
 map <F9> :!svn update<CR>
 map <F10> :!svn commit --message=''<LEFT>
 map <F11> :call ToggleWrapping()<CR>
@@ -260,7 +261,7 @@ vnoremap <silent> # :call VisualSearch('b')<cr>
 "---------------"
 
 " NERD_tree.vim
-map <F8> :NERDTreeToggle<CR>
+"map <F8> :NERDTreeToggle<CR>
 map <leader>f :NERDTreeFind<CR>
 let g:NERDTreeShowBookmarks = 1
 let g:NERDTreeChDirMode = 2
@@ -301,8 +302,10 @@ autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 syntax enable
 
 if has("gui_running")
-    colorscheme molokai
+    "colorscheme molokai
     " Highlight current
+    "
+
     set cursorline
     " Toggle Menu and Toolbar and switch fullscreen mode
     set guioptions-=b " Hide bottom scrollbar
@@ -324,13 +327,13 @@ if has("gui_running")
     endif
 
     " Omni menu colors
-    hi Pmenu guibg=#333333
-    hi PmenuSel guibg=#555555 guifg=#ffffff
+    "hi Pmenu guibg=#333333
+    "hi PmenuSel guibg=#555555 guifg=#ffffff
 
     " Turn undofile on
-    set undofile
+    "set undofile
     " Set undofile path
-    set undodir=~/tmp/vim/undofile/
+    "set undodir=~/tmp/vim/undofile/
 
     " 关闭VIM的时候保存会话，按F6读取会话
     set sessionoptions=buffers,sesdir,help,tabpages,winsize
@@ -338,8 +341,8 @@ if has("gui_running")
     nmap <F6> :so ~/.Session.vim<CR>
 
 else
-    set background=dark
-    colorscheme kellys
+    "set background=dark
+    "colorscheme kellys
 endif
 
 if has("gui_macvim")
@@ -359,7 +362,7 @@ endif
 " global
 set encoding=utf-8
 set helplang=cn,en
-set t_Co=256
+"set t_Co=256
 
 " autocmd
 if has("autocmd")
@@ -399,11 +402,11 @@ function! ToggleWrapping()
 	endif
 endfunction
 
-function! ToggleColor()
-	let colors = ['molokai', 'ir_black', 'yytextmate']
-	let current = (index(colors, g:colors_name) + 1) % len(colors)
-	execute 'colorscheme ' . colors[current]
-endfunction
+"function! ToggleColor()
+"	let colors = ['molokai', 'ir_black', 'yytextmate']
+"	let current = (index(colors, g:colors_name) + 1) % len(colors)
+"	execute 'colorscheme ' . colors[current]
+"endfunction
 
  
 fun! GetSnipsInCurrentScope() 
@@ -421,12 +424,7 @@ set imactivatekey=D-space
 set imsearch=0
 inoremap <ESC> <ESC>:set iminsert=0<CR>
 
-colorscheme rootwater	
-set guifont=Menlo:h12
-
-
 set linespace=2
-
 set matchpairs=(:),{:},[:],<:>
 
 "js语法高亮脚本的设置
